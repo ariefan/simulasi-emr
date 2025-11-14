@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(node --import tsx src/db/reset.ts:*)",
+      "Bash(pnpm drizzle-kit push:*)",
+      "Bash(node --import tsx src/db/seed.ts:*)",
+      "Bash(pnpm dev)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /F /PID 17624)",
+      "Bash(taskkill //F //PID 17624)",
+      "Bash(tasklist:*)",
+      "Bash(taskkill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
