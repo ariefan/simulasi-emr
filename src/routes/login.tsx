@@ -1,11 +1,11 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { toast } from 'sonner';
 import { loginAction } from '@/lib/auth-actions';
 
 export const Route = createFileRoute('/login')({
@@ -24,7 +24,7 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
-      const user = await loginAction({ data: { username, password } });
+      const user = await loginAction({ data: { username, password } } as any);
       login(user);
       toast.success('Login successful!');
       navigate({ to: '/dashboard' });

@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
 import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
-import { users } from '@/db/schema';
 import bcrypt from 'bcryptjs';
+import { users } from '@/db/schema';
 
 config();
 

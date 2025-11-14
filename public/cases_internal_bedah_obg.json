@@ -1,0 +1,1141 @@
+[
+  {
+    "case_id": "PD-01",
+    "department": "Penyakit Dalam",
+    "skdi_diagnosis": "Diabetes melitus tipe 2 tidak terkontrol (Level 4A)",
+    "icd10": "E11.9",
+    "skdi_level": "4A",
+ "difficulty": "Core",               
+  "time_limit_minutes": 15,           
+  "competencies": [
+    "Menegakkan diagnosis DM tipe 2 tidak terkontrol",
+    "Menyusun rencana tata laksana komprehensif DM dengan dislipidemia"
+  ],
+    "tags": ["penyakit_kronik", "metabolik", "komorbid_kardiovaskular"],
+    "patient": {
+      "name": "Pasien 1",
+      "age": 55,
+      "sex": "L",
+      "marital_status": "Menikah",
+      "gravida": null,
+      "para": null,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Sering haus dan sering BAK sejak 3 bulan terakhir",
+    "history_of_present_illness": "Pasien mengeluh sering haus, sering BAK terutama malam hari, dan penurunan berat badan sekitar 5 kg dalam 3 bulan. Keluhan disertai mudah lelah. Tidak ada demam, batuk, atau sesak. Pasien sudah terdiagnosis DM tipe 2 sejak 5 tahun lalu, minum obat tidak teratur dan sering lupa kontrol.",
+    "past_medical_history": "DM tipe 2 5 tahun, hipertensi ringan; tidak ada riwayat rawat inap karena komplikasi DM.",
+    "family_history": "Ayah DM, ibu hipertensi.",
+    "social_history": "Perokok 10 batang/hari, aktivitas fisik rendah, pola makan tinggi gula dan karbohidrat.",
+    "physical_exam": {
+      "general": "Kompos mentis, tampak lelah, status gizi overweight.",
+      "vital_signs": {
+        "bp_mmHg": "150/90",
+        "hr_bpm": 86,
+        "rr_per_min": 18,
+        "temp_c": 36.8,
+        "spo2_percent": 98
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal, tidak ada ronki atau wheezing.",
+        "cardiovascular": "Bunyi jantung reguler, murmur tidak terdengar.",
+        "abdomen": "Lunak, tidak nyeri tekan, hepar dan lien tidak teraba.",
+        "neuro": "Kekuatan motorik dan sensibilitas ekstremitas dalam batas normal.",
+        "extremities": "Tidak ada edema, acanthosis nigricans di leher."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "hb_g_dL": 14.2,
+      "gdp_mg_dL": 190,
+      "gd2jpp_mg_dL": 260,
+      "hba1c_percent": 9.2,
+      "cholesterol_total_mg_dL": 230,
+      "hdl_mg_dL": 38,
+      "ldl_mg_dL": 145,
+      "triglyceride_mg_dL": 210,
+      "ureum_mg_dL": 32,
+      "kreatinin_mg_dL": 1.0,
+      "urinalisis": "Glukosa positif, protein negatif",
+      "catatan": "Gambaran laboratorium mendukung DM tidak terkontrol dengan dislipidemia."
+    },
+    "imaging": null,
+    "procedures": [],
+    "working_diagnosis": "Diabetes melitus tipe 2 tidak terkontrol dengan dislipidemia",
+    "differential_diagnoses": [
+      "Diabetes melitus tipe 1 onset dewasa",
+      "Poliuria karena penggunaan diuretik"
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Edukasi diet DM (batasi gula sederhana dan porsi karbohidrat, perbanyak sayur dan serat).",
+        "Anjurkan aktivitas fisik aerobik intensitas sedang minimal 150 menit/minggu.",
+        "Edukasi berhenti merokok dan manajemen stres."
+      ],
+      "pharmacological": [
+        "Metformin 500 mg 2x sehari setelah makan, titrasi sesuai respons dan toleransi.",
+        "Pertimbangkan penambahan sulfonilurea bila target glikemik tidak tercapai.",
+        "Statin dosis moderat karena risiko kardiovaskular meningkat.",
+        "ACE inhibitor/ARB bila tekanan darah tetap >140/90 mmHg."
+      ],
+      "procedure": "Tidak ada prosedur invasif pada kunjungan ini.",
+      "monitoring": "Kontrol ulang 1 bulan untuk evaluasi glukosa darah, tekanan darah, dan kepatuhan.",
+      "referral": "Rujuk ke poliklinik penyakit dalam bila tetap tidak terkontrol atau muncul komplikasi mikrovaskular/makrovaskular."
+    },
+    "red_flags": [
+      "Nyeri dada akut.",
+      "Sesak napas berat.",
+      "Penurunan kesadaran.",
+      "Luka pada kaki yang tidak sembuh atau infeksi berat."
+    ],
+    "learning_points": [
+      "Menegakkan diagnosis DM tipe 2 tidak terkontrol berdasarkan gejala dan parameter laboratorium.",
+      "Menyusun rencana tata laksana komprehensif (farmakologis dan nonfarmakologis).",
+      "Mengaitkan DM dengan faktor risiko kardiovaskular lain dan pentingnya pencegahan komplikasi."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Diabetes melitus tipe 2 tidak terkontrol",
+      "key_icd10": "E11.9",
+      "key_skdi_level": "4A",
+  
+  "estimated_difficulty": "Core",
+  "max_score": 100,
+      "critical_actions": [
+        "Mengonfirmasi diagnosis DM tidak terkontrol dengan HbA1c dan glukosa darah.",
+        "Memberikan edukasi perubahan gaya hidup.",
+        "Memulai atau menyesuaikan terapi obat hipoglikemik oral.",
+        "Mengelola faktor risiko kardiovaskular (lipid dan hipertensi)."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "PD-01-Q1",
+          "stem": "Parameter laboratorium mana yang paling tepat untuk menilai kontrol jangka panjang pada pasien ini?",
+          "options": [
+            "Glukosa darah puasa",
+            "Glukosa darah 2 jam post prandial",
+            "HbA1c",
+            "Urinalisis rutin",
+            "Kolesterol total"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "PD-02",
+    "department": "Penyakit Dalam",
+    "skdi_diagnosis": "Hipertensi esensial (Level 4A)",
+    "icd10": "I10",
+    "skdi_level": "4A",
+"difficulty": "Intro",
+"time_limit_minutes": 10,
+"competencies": [
+  "Mengklasifikasikan derajat hipertensi dan target tekanan darah",
+  "Menyusun rencana tata laksana hipertensi esensial tanpa komplikasi",
+  "Memberikan edukasi perubahan gaya hidup terkait diet, aktivitas fisik, dan konsumsi garam"
+],
+    "tags": ["kardiovaskular", "penyakit_kronik"],
+    "patient": {
+      "name": "Pasien 2",
+      "age": 48,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 2,
+      "para": 2,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Sering pusing sejak 2 bulan",
+    "history_of_present_illness": "Keluhan pusing ringan sampai sedang, terutama saat kelelahan. Tekanan darah sering didapat tinggi saat pemeriksaan di puskesmas. Tidak ada nyeri dada, sesak berat, atau kelemahan anggota gerak. Riwayat hipertensi sejak 3 tahun, obat sering tidak diminum jika merasa sehat.",
+    "past_medical_history": "Hipertensi 3 tahun, tidak ada riwayat stroke atau penyakit jantung koroner.",
+    "family_history": "Orang tua hipertensi.",
+    "social_history": "Pekerja kantoran, kurang olahraga, konsumsi makanan asin dan makanan olahan cukup tinggi.",
+    "physical_exam": {
+      "general": "Kompos mentis, obesitas sentral.",
+      "vital_signs": {
+        "bp_mmHg": "160/100",
+        "hr_bpm": 80,
+        "rr_per_min": 18,
+        "temp_c": 36.7,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal bilateral.",
+        "cardiovascular": "Bunyi jantung reguler, tidak ada murmur, tidak ada gallop.",
+        "abdomen": "Tidak ada nyeri tekan, organ tidak membesar.",
+        "neuro": "Fungsi motorik dan sensorik dalam batas normal.",
+        "extremities": "Tidak ada edema, pulsasi perifer teraba baik."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "ureum_mg_dL": 30,
+      "kreatinin_mg_dL": 0.9,
+      "gdp_mg_dL": 110,
+      "kolesterol_total_mg_dL": 210,
+      "hdl_mg_dL": 45,
+      "ldl_mg_dL": 135,
+      "triglyceride_mg_dL": 160,
+      "kalium_mEq_L": 4.0,
+      "natrium_mEq_L": 140,
+      "urinalisis": "Normal",
+      "catatan": "Belum tampak kerusakan organ target."
+    },
+    "imaging": null,
+    "procedures": [],
+    "working_diagnosis": "Hipertensi esensial derajat 2 tanpa komplikasi",
+    "differential_diagnoses": [
+      "Hipertensi sekunder akibat penyakit ginjal kronik",
+      "Endokrinopati (contoh: hiperaldosteronisme primer)",
+      "Vertigo perifer sebagai penyebab pusing (bila keluhan berputar jelas)"
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Edukasi diet rendah garam (<5 g/hari) dan membatasi makanan olahan.",
+        "Penurunan berat badan secara bertahap.",
+        "Aktivitas fisik aerobik teratur.",
+        "Mengurangi stres dan berhenti merokok bila ada."
+      ],
+      "pharmacological": [
+        "ACE inhibitor atau ARB dosis rendah, titrasi berkala.",
+        "Pertimbangkan penambahan diuretik tiazid bila target tekanan darah tidak tercapai."
+      ],
+      "procedure": "Tidak ada prosedur khusus pada kunjungan ini.",
+      "monitoring": "Kontrol tekanan darah setiap 1–2 minggu sampai tercapai <140/90 mmHg, kemudian tiap 1–3 bulan.",
+      "referral": "Rujuk ke spesialis penyakit dalam bila tidak terkontrol dengan ≥2 obat, dicurigai hipertensi sekunder, atau terdapat kerusakan organ target."
+    },
+    "red_flags": [
+      "Tekanan darah ≥180/120 dengan gejala target organ damage.",
+      "Nyeri dada hebat.",
+      "Sesak berat.",
+      "Penurunan kesadaran atau gejala neurologis fokal."
+    ],
+    "learning_points": [
+      "Mengklasifikasikan derajat hipertensi dan menentukan target terapi.",
+      "Merencanakan intervensi gaya hidup sebagai bagian penting tata laksana.",
+      "Memilih kombinasi obat antihipertensi lini pertama sesuai pedoman."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Hipertensi esensial derajat 2",
+      "key_icd10": "I10",
+      "key_skdi_level": "4A",
+"estimated_difficulty": "Intro",
+"max_score": 100,
+      "critical_actions": [
+        "Mengonfirmasi diagnosis hipertensi dengan pengukuran berulang.",
+        "Memberi edukasi diet rendah garam dan modifikasi gaya hidup.",
+        "Memulai terapi antihipertensi lini pertama.",
+        "Melakukan follow up berkala untuk evaluasi target tekanan darah."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "PD-02-Q1",
+          "stem": "Target tekanan darah yang dianjurkan untuk pasien dewasa tanpa komorbid spesifik menurut pedoman umumnya adalah:",
+          "options": [
+            "<160/100 mmHg",
+            "<150/90 mmHg",
+            "<140/90 mmHg",
+            "<130/80 mmHg",
+            "<120/80 mmHg"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "PD-03",
+    "department": "Penyakit Dalam",
+    "skdi_diagnosis": "Demam dengue tanpa tanda bahaya (Level 3)",
+    "icd10": "A90",
+    "skdi_level": "3",
+"difficulty": "Intro",
+"time_limit_minutes": 12,
+"competencies": [
+  "Mengenali kriteria klinis dan laboratorik demam dengue tanpa tanda bahaya",
+  "Merencanakan tata laksana rawat jalan termasuk edukasi asupan cairan",
+  "Mengidentifikasi tanda bahaya DBD yang memerlukan rujukan atau rawat inap"
+],
+    "tags": ["infeksi", "tropis", "demam_akut"],
+    "patient": {
+      "name": "Pasien 3",
+      "age": 17,
+      "sex": "L",
+      "marital_status": "Belum menikah",
+      "gravida": null,
+      "para": null,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Demam tinggi sejak 3 hari",
+    "history_of_present_illness": "Demam mendadak sejak 3 hari, suhu tinggi terutama sore hingga malam, disertai nyeri kepala, nyeri otot, dan mual. Tidak ada muntah berulang, perdarahan, atau nyeri perut hebat. BAB dan BAK normal.",
+    "past_medical_history": "Tidak ada penyakit kronis.",
+    "family_history": "Tidak ada anggota keluarga dengan keluhan serupa.",
+    "social_history": "Tinggal di daerah endemis DBD dengan banyak genangan air, sanitasi sedang.",
+    "physical_exam": {
+      "general": "Tampak lemah, tidak sesak.",
+      "vital_signs": {
+        "bp_mmHg": "110/70",
+        "hr_bpm": 96,
+        "rr_per_min": 20,
+        "temp_c": 38.9,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler, tidak ada murmur.",
+        "abdomen": "Tidak ada hepatomegali nyeri, tidak ada nyeri tekan lokal.",
+        "neuro": "Status neurologis dalam batas normal.",
+        "extremities": "Uji torniket positif ringan, tidak ada petekie luas, tidak ada edema."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "hb_g_dL": 14.0,
+      "ht_percent": 40,
+      "leukosit_per_uL": 3500,
+      "trombosit_per_uL": 140000,
+      "hematokrit_trend": "Stabil",
+      "sgot_u_L": 45,
+      "sgpt_u_L": 40,
+      "catatan": "Kriteria laboratorik mengarah ke demam dengue tanpa tanda bahaya."
+    },
+    "imaging": null,
+    "procedures": [],
+    "working_diagnosis": "Demam dengue tanpa tanda bahaya pada hari ke-3 sakit",
+    "differential_diagnoses": [
+      "Demam tifoid awal.",
+      "Infeksi virus lain (influenza, chikungunya)."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Istirahat cukup.",
+        "Peningkatan asupan cairan oral (air putih, jus, oralit sesuai toleransi).",
+        "Edukasi pasien dan keluarga tentang tanda bahaya DBD."
+      ],
+      "pharmacological": [
+        "Antipiretik parasetamol sesuai dosis berat badan.",
+        "Hindari NSAID seperti ibuprofen atau aspirin."
+      ],
+      "procedure": "Tidak ada prosedur invasif; monitoring harian dapat dilakukan.",
+      "monitoring": "Kontrol harian bila dikelola rawat jalan untuk evaluasi trombosit, hematokrit, dan gejala klinis.",
+      "referral": "Rujuk rawat inap bila muncul tanda bahaya atau kondisi umum memburuk."
+    },
+    "red_flags": [
+      "Nyeri perut hebat dan menetap.",
+      "Muntah berulang.",
+      "Perdarahan mukosa (hidung/gusi).",
+      "Penurunan kesadaran.",
+      "Sesak napas atau gelisah berat."
+    ],
+    "learning_points": [
+      "Mengenali kriteria klinis demam dengue tanpa tanda bahaya.",
+      "Memahami pentingnya pemantauan dinamika trombosit dan hematokrit.",
+      "Memberi edukasi tanda bahaya dan kapan harus segera ke fasilitas kesehatan."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Demam dengue tanpa tanda bahaya",
+      "key_icd10": "A90",
+      "key_skdi_level": "3",
+"estimated_difficulty": "Intro",
+"max_score": 100,
+      "critical_actions": [
+        "Menegakkan kecurigaan klinis DBD berdasarkan gejala dan riwayat.",
+        "Tidak memberikan NSAID/aspirin.",
+        "Menganjurkan peningkatan asupan cairan.",
+        "Edukasi tanda bahaya yang mengharuskan pasien segera kembali."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "PD-03-Q1",
+          "stem": "Obat berikut yang TIDAK boleh diberikan pada pasien dengan kecurigaan demam dengue adalah:",
+          "options": [
+            "Parasetamol",
+            "Ibuprofen",
+            "Kompres hangat",
+            "Peningkatan asupan cairan",
+            "Istirahat"
+          ],
+          "answer_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "PD-04",
+    "department": "Penyakit Dalam",
+    "skdi_diagnosis": "Pneumonia komuniti (Level 4A)",
+    "icd10": "J18.9",
+    "skdi_level": "4A",
+"difficulty": "Core",
+"time_limit_minutes": 20,
+"competencies": [
+  "Mengidentifikasi gejala, tanda, dan temuan penunjang yang konsisten dengan pneumonia komuniti",
+  "Menentukan indikasi rawat inap dan kebutuhan oksigen pada pasien pneumonia",
+  "Memilih terapi antibiotik empiris awal sesuai derajat keparahan dan pedoman lokal"
+],
+    "tags": ["infeksi", "paru", "rawat_inap"],
+    "patient": {
+      "name": "Pasien 4",
+      "age": 60,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 4,
+      "para": 4,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Batuk berdahak dan sesak napas sejak 5 hari",
+    "history_of_present_illness": "Batuk berdahak kuning kehijauan sejak 5 hari, disertai demam, menggigil, dan sesak yang semakin memberat. Tidak ada riwayat TBC, tetapi pasien perokok 20 batang/hari selama 30 tahun.",
+    "past_medical_history": "Hipertensi terkontrol dengan obat antihipertensi.",
+    "family_history": "Tidak ada riwayat TBC atau penyakit paru kronik di keluarga.",
+    "social_history": "Perokok berat, tinggal di rumah padat penduduk dengan ventilasi kurang baik.",
+    "physical_exam": {
+      "general": "Tampak sakit sedang, sesak ringan.",
+      "vital_signs": {
+        "bp_mmHg": "130/80",
+        "hr_bpm": 104,
+        "rr_per_min": 26,
+        "temp_c": 38.5,
+        "spo2_percent": 92
+      },
+      "systemic": {
+        "respiratory": "Perkusi pekak di basal kanan, suara napas bronkial, ronki basah halus di lapangan bawah kanan.",
+        "cardiovascular": "Jantung reguler, takikardi, murmur tidak terdengar.",
+        "abdomen": "Lunak, tidak ada nyeri tekan.",
+        "neuro": "Tidak ada defisit neurologis.",
+        "extremities": "Tidak ada edema, perfusi perifer cukup."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "leukosit_per_uL": 15000,
+      "neutrofil_percent": 80,
+      "crp_mg_L": 60,
+      "ureum_mg_dL": 35,
+      "kreatinin_mg_dL": 1.1,
+      "catatan": "Leukositosis dan peningkatan CRP mendukung infeksi bakteri."
+    },
+    "imaging": {
+      "chest_xray": "Infiltrat konsolidasi lobus bawah kanan."
+    },
+    "procedures": [],
+    "working_diagnosis": "Pneumonia komuniti lobus bawah kanan derajat sedang",
+    "differential_diagnoses": [
+      "Eksaserbasi akut PPOK.",
+      "Tuberkulosis paru.",
+      "Gagal jantung kongestif."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Istirahat tirah baring relatif.",
+        "Hidrasi adekuat.",
+        "Latihan napas dalam dan batuk efektif."
+      ],
+      "pharmacological": [
+        "Antibiotik empiris sefalosporin generasi ketiga ditambah makrolid atau sesuai panduan lokal.",
+        "Antipiretik parasetamol.",
+        "Bronkodilator inhalasi bila ada bronkospasme.",
+        "Oksigen nasal cannula untuk mempertahankan SpO2 >94%."
+      ],
+      "procedure": "Tidak ada prosedur invasif segera, namun dapat dipertimbangkan kultur sputum bila fasilitas memadai.",
+      "monitoring": "Evaluasi klinis harian, pantau saturasi oksigen, tanda vital, dan respons terhadap antibiotik. Ulang foto toraks bila tidak ada perbaikan.",
+      "referral": "Rujuk ke ICU bila terjadi gagal napas atau instabilitas hemodinamik."
+    },
+    "red_flags": [
+      "SpO2 <90% dengan oksigen.",
+      "Penurunan kesadaran.",
+      "Tekanan darah menurun (syok sepsis).",
+      "Frekuensi napas >30/menit."
+    ],
+    "learning_points": [
+      "Mengidentifikasi gejala dan tanda pneumonia komuniti.",
+      "Menentukan indikasi perawatan rawat inap.",
+      "Memilih terapi antibiotik empiris awal sesuai pedoman."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Pneumonia komuniti",
+      "key_icd10": "J18.9",
+      "key_skdi_level": "4A",
+"estimated_difficulty": "Core",
+"max_score": 100,
+      "critical_actions": [
+        "Menegakkan diagnosis pneumonia komunitas berdasarkan kombinasi gejala, tanda, dan foto toraks.",
+        "Memberikan terapi antibiotik empiris yang sesuai.",
+        "Memberi suplementasi oksigen bila saturasi menurun.",
+        "Memantau tanda vital dan respons terapi."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "PD-04-Q1",
+          "stem": "Temuan berikut yang PALING khas mendukung pneumonia lobus bawah kanan adalah:",
+          "options": [
+            "Ronki kering difus",
+            "Vesikuler menurun tanpa ronki",
+            "Suara napas bronkial dan perkusi pekak lokal",
+            "Sibilan ekspirasi menyeluruh",
+            "Suara napas melemah bilateral"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "BD-01",
+    "department": "Bedah",
+    "skdi_diagnosis": "Apendisitis akut (Level 4A)",
+    "icd10": "K35.9",
+    "skdi_level": "4A",
+    "tags": ["abdomen_akut", "bedah_umum", "gawat_darurat"],
+    "patient": {
+      "name": "Pasien 5",
+      "age": 23,
+      "sex": "L",
+      "marital_status": "Belum menikah",
+      "gravida": null,
+      "para": null,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Nyeri perut kanan bawah sejak 1 hari",
+    "history_of_present_illness": "Nyeri awal dirasakan di daerah ulu hati lalu berpindah ke kuadran kanan bawah sejak 24 jam, nyeri semakin berat saat bergerak dan batuk. Disertai mual dan muntah dua kali, nafsu makan menurun, dan sedikit demam.",
+    "past_medical_history": "Tidak ada penyakit kronis.",
+    "family_history": "Tidak ada riwayat serupa di keluarga.",
+    "social_history": "Mahasiswa, tidak merokok, pola makan tidak teratur.",
+    "physical_exam": {
+      "general": "Tampak nyeri, berbaring miring kanan untuk mengurangi nyeri.",
+      "vital_signs": {
+        "bp_mmHg": "120/80",
+        "hr_bpm": 98,
+        "rr_per_min": 20,
+        "temp_c": 38.2,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Nyeri tekan dan lepas di fossa iliaka kanan, tanda Rovsing (+), rebound tenderness (+), defans muskuler lokal.",
+        "neuro": "Dalam batas normal.",
+        "extremities": "Tidak ada edema."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "hb_g_dL": 13.8,
+      "ht_percent": 41,
+      "leukosit_per_uL": 14000,
+      "neutrofil_percent": 82,
+      "catatan": "Leukositosis dengan neutrofilia mendukung infeksi akut."
+    },
+    "imaging": {
+      "usg_abdomen": "Appendiks membesar dengan diameter >6 mm, dinding menebal, tidak tampak abses."
+    },
+    "procedures": [],
+    "working_diagnosis": "Apendisitis akut non-perforasi",
+    "differential_diagnoses": [
+      "Gastroenteritis akut.",
+      "Kehamilan ektopik (pada pasien perempuan).",
+      "Infeksi saluran kemih bawah."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Puasa oral (NPO).",
+        "Pemasangan infus dan pemberian cairan kristaloid.",
+        "Edukasi pasien dan keluarga tentang rencana operasi."
+      ],
+      "pharmacological": [
+        "Antibiotik profilaksis spektrum luas sebelum operasi.",
+        "Analgesik sesuai kebutuhan (hindari menutupi tanda peritonitis)."
+      ],
+      "procedure": "Apendektomi (laparoskopik atau terbuka) sesuai fasilitas dan kondisi pasien.",
+      "monitoring": "Pantau tanda vital dan nyeri pascaoperasi, awasi tanda perforasi atau peritonitis.",
+      "referral": "Bila di fasilitas primer, rujuk segera ke RS dengan fasilitas bedah."
+    },
+    "red_flags": [
+      "Nyeri mendadak sangat hebat dengan perut kaku (peritonitis).",
+      "Demam tinggi dan menggigil.",
+      "Tekanan darah turun, nadi cepat (syok)."
+    ],
+    "learning_points": [
+      "Mengenali pola nyeri berpindah khas apendisitis akut.",
+      "Menentukan indikasi operasi segera pada kasus apendisitis.",
+      "Membedakan apendisitis dari diagnosis banding lain nyeri perut kanan bawah."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Apendisitis akut",
+      "key_icd10": "K35.9",
+      "key_skdi_level": "4A",
+      "critical_actions": [
+        "Mengidentifikasi gejala dan tanda apendisitis akut.",
+        "Menjaga pasien NPO dan memasang infus.",
+        "Memberi antibiotik profilaksis.",
+        "Merujuk untuk tindakan apendektomi."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "BD-01-Q1",
+          "stem": "Urutan klasik perpindahan nyeri pada apendisitis akut adalah:",
+          "options": [
+            "Kuadran kiri bawah ke epigastrium",
+            "Epigastrium ke kuadran kanan bawah",
+            "Periumbilikal ke kuadran kiri atas",
+            "Epigastrium ke kuadran kiri bawah",
+            "Kuadran kanan atas ke periumbilikal"
+          ],
+          "answer_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "BD-02",
+    "department": "Bedah",
+    "skdi_diagnosis": "Fraktur terbuka cruris (tibia) (Level 3)",
+    "icd10": "S82.201",
+    "skdi_level": "3",
+    "tags": ["trauma", "fraktur_terbuka", "ortopedi"],
+    "patient": {
+      "name": "Pasien 6",
+      "age": 35,
+      "sex": "L",
+      "marital_status": "Menikah",
+      "gravida": null,
+      "para": null,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Luka robek dan nyeri hebat pada tungkai kanan setelah kecelakaan",
+    "history_of_present_illness": "Pasien terjatuh dari motor 1 jam sebelum masuk, tungkai kanan menghantam trotoar. Tidak kehilangan kesadaran. Ada luka terbuka dengan tulang terlihat. Nyeri hebat, tidak dapat menapak.",
+    "past_medical_history": "Tidak ada komorbid.",
+    "family_history": "Tidak relevan.",
+    "social_history": "Pekerja bengkel, perokok ringan.",
+    "physical_exam": {
+      "general": "Compos mentis, tampak kesakitan.",
+      "vital_signs": {
+        "bp_mmHg": "125/80",
+        "hr_bpm": 96,
+        "rr_per_min": 20,
+        "temp_c": 37.0,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Lunak, tidak nyeri.",
+        "neuro": "Gerak dan sensibilitas jari kaki dalam batas normal.",
+        "extremities": "Luka terbuka 8 cm di regio cruris tengah kanan, tampak fragmen tulang, perdarahan aktif ringan, deformitas, nyeri tekan hebat, gerak terbatas. Kapiler refill jari kaki <2 detik, nadi dorsalis pedis teraba."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "hb_g_dL": 12.8,
+      "ht_percent": 38,
+      "leukosit_per_uL": 11000,
+      "catatan": "Belum tampak anemia berat."
+    },
+    "imaging": {
+      "xray_cruris_ap_lateral": "Fraktur kominutif midshaft tibia dengan hubungan ke luka terbuka."
+    },
+    "procedures": [],
+    "working_diagnosis": "Fraktur terbuka cruris dextra (tibia) derajat II",
+    "differential_diagnoses": [
+      "Kontusio jaringan lunak tanpa fraktur.",
+      "Fraktur tertutup cruris."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Imobilisasi tungkai kanan dengan bidai sementara.",
+        "Elevasi tungkai.",
+        "Stabilisasi awal sesuai prinsip ATLS (primary survey)."
+      ],
+      "pharmacological": [
+        "Analgesik intravena sesuai kebutuhan.",
+        "Antibiotik spektrum luas intravena.",
+        "Profilaksis tetanus (TT/TIG) sesuai status imunisasi."
+      ],
+      "procedure": "Debridement luka dan fiksasi fraktur di kamar operasi oleh tim bedah ortopedi.",
+      "monitoring": "Pantau status vaskular distal, tanda infeksi, dan nyeri.",
+      "referral": "Bila berada di fasilitas primer, rujuk segera ke RS dengan layanan bedah ortopedi."
+    },
+    "red_flags": [
+      "Tidak adanya nadi perifer distal.",
+      "Perdarahan hebat tidak terkendali.",
+      "Tanda syok (hipotensi, takikardi, kulit dingin)."
+    ],
+    "learning_points": [
+      "Mengidentifikasi fraktur terbuka dan prinsip penatalaksanaan awal.",
+      "Menentukan kebutuhan antibiotik dan profilaksis tetanus.",
+      "Memahami pentingnya rujukan tepat waktu untuk tindakan definitif."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Fraktur terbuka cruris dextra derajat II",
+      "key_icd10": "S82.201",
+      "key_skdi_level": "3",
+      "critical_actions": [
+        "Stabilisasi awal sesuai ATLS (ABC).",
+        "Imobilisasi ekstremitas yang cedera.",
+        "Memberikan antibiotik dan profilaksis tetanus.",
+        "Merujuk untuk debridement dan fiksasi segera."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "BD-02-Q1",
+          "stem": "Langkah awal terpenting pada penatalaksanaan fraktur terbuka di IGD adalah:",
+          "options": [
+            "Segera melakukan fiksasi internal",
+            "Memberikan antibiotik oral",
+            "Stabilisasi ABC dan imobilisasi ekstremitas",
+            "Memberikan gips sirkuler",
+            "Memberikan analgesik oral"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "BD-03",
+    "department": "Bedah",
+    "skdi_diagnosis": "Kolesistitis akut (Level 3)",
+    "icd10": "K81.0",
+    "skdi_level": "3",
+    "tags": ["abdomen_atas", "batu_empedu", "bedah_umum"],
+    "patient": {
+      "name": "Pasien 7",
+      "age": 50,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 3,
+      "para": 3,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Nyeri perut kanan atas sejak 2 hari",
+    "history_of_present_illness": "Nyeri perut kanan atas timbul setelah makan berlemak, menetap dan bertambah berat selama 2 hari. Nyeri menjalar ke punggung kanan, disertai mual dan muntah sekali, demam ringan.",
+    "past_medical_history": "Obesitas, dislipidemia.",
+    "family_history": "Ibu pernah menjalani operasi batu empedu.",
+    "social_history": "Ibu rumah tangga, pola makan tinggi lemak dan gorengan.",
+    "physical_exam": {
+      "general": "Tampak sakit sedang.",
+      "vital_signs": {
+        "bp_mmHg": "130/80",
+        "hr_bpm": 96,
+        "rr_per_min": 20,
+        "temp_c": 38.0,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Nyeri tekan kuadran kanan atas, Murphy sign (+), tidak ada defans luas, tidak ada distensi.",
+        "neuro": "Dalam batas normal.",
+        "extremities": "Tidak ada edema."
+      },
+      "obstetric_exam": null
+    },
+    "laboratory": {
+      "leukosit_per_uL": 13500,
+      "neutrofil_percent": 78,
+      "sgot_u_L": 60,
+      "sgpt_u_L": 55,
+      "alp_u_L": 180,
+      "bilirubin_total_mg_dL": 1.2,
+      "catatan": "Peningkatan enzim hati ringan dan ALP menyertai peradangan kandung empedu."
+    },
+    "imaging": {
+      "usg_abdomen": "Batu di kandung empedu, penebalan dinding vesika biliaris, cairan perikolesistik."
+    },
+    "procedures": [],
+    "working_diagnosis": "Kolesistitis akut kalkulus",
+    "differential_diagnoses": [
+      "Kolik bilier.",
+      "Pankreatitis akut.",
+      "Hepatitis akut."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "NPO (puasa) sementara.",
+        "Cairan intravena untuk hidrasi.",
+        "Istirahat dan observasi ketat."
+      ],
+      "pharmacological": [
+        "Analgesik.",
+        "Antiemetik.",
+        "Antibiotik spektrum luas sesuai pedoman (misalnya sefalosporin generasi ketiga + metronidazol)."
+      ],
+      "procedure": "Kolesistektomi elektif/awal setelah kondisi stabil sesuai kebijakan RS.",
+      "monitoring": "Pantau demam, nyeri, dan tanda komplikasi (peritonitis, sepsis).",
+      "referral": "Bila di fasilitas primer, rujuk ke RS dengan fasilitas bedah dan USG."
+    },
+    "red_flags": [
+      "Ikterus dan demam tinggi (curiga kolangitis).",
+      "Nyeri perut menyebar dengan defans muskuler (perforasi).",
+      "Tanda sepsis (takikardi, hipotensi, takipnea)."
+    ],
+    "learning_points": [
+      "Mengenali perbedaan kolik bilier dan kolesistitis akut.",
+      "Menginterpretasikan temuan USG hepatobilier sederhana.",
+      "Mengetahui indikasi tindakan bedah pada kolesistitis akut."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Kolesistitis akut kalkulus",
+      "key_icd10": "K81.0",
+      "key_skdi_level": "3",
+      "critical_actions": [
+        "Mencurigai kolesistitis akut berdasarkan gejala dan tanda Murphy (+).",
+        "Memulai NPO dan hidrasi intravena.",
+        "Memberikan analgesik dan antibiotik.",
+        "Merencanakan kolesistektomi setelah stabil."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "BD-03-Q1",
+          "stem": "Tanda klinis berikut yang paling khas untuk kolesistitis akut adalah:",
+          "options": [
+            "Nyeri perut kiri bawah",
+            "Nyeri epigastrium menjalar ke punggung",
+            "Murphy sign positif",
+            "Rebound tenderness difus",
+            "Nyeri bertambah saat buang air kecil"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "OBG-01",
+    "department": "Obstetri dan Ginekologi",
+    "skdi_diagnosis": "Kehamilan intrauterin normal trimester III (Level 3)",
+    "icd10": "Z34.0",
+    "skdi_level": "3",
+    "tags": ["ANC", "kehamilan_normal", "trimester_III"],
+    "patient": {
+      "name": "Pasien 8",
+      "age": 28,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 1,
+      "para": 0,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Kontrol rutin kehamilan usia 32 minggu",
+    "history_of_present_illness": "Pasien datang untuk antenatal care rutin. Tidak ada keluhan mual, perdarahan, nyeri perut, atau ketuban pecah. Gerak janin dirasakan baik.",
+    "past_medical_history": "Kehamilan pertama, tidak ada penyakit kronis.",
+    "family_history": "Tidak ada riwayat preeklampsia, DM gestasional, atau kelainan kongenital pada keluarga dekat.",
+    "social_history": "Ibu rumah tangga, tidak merokok, tidak konsumsi alkohol.",
+    "physical_exam": {
+      "general": "Sehat, tampak hamil sesuai usia kehamilan.",
+      "vital_signs": {
+        "bp_mmHg": "110/70",
+        "hr_bpm": 84,
+        "rr_per_min": 18,
+        "temp_c": 36.8,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Tidak ada nyeri tekan, uterus membesar sesuai usia kehamilan.",
+        "neuro": "Normal.",
+        "extremities": "Tidak ada edema."
+      },
+      "obstetric_exam": {
+        "tfu_cm": 30,
+        "fetal_heart_rate_bpm": 140,
+        "presentation": "Kepala",
+        "edema": "Tidak ada"
+      }
+    },
+    "laboratory": {
+      "hb_g_dL": 11.8,
+      "gds_mg_dL": 90,
+      "urinalisis": "Protein negatif, glukosa negatif",
+      "catatan": "Sesuai kehamilan normal risiko rendah."
+    },
+    "imaging": {
+      "usg_obstetri": "Janin tunggal, presentasi kepala, biometrik sesuai 32 minggu, plasenta fundal, cairan ketuban normal."
+    },
+    "procedures": [],
+    "working_diagnosis": "Kehamilan intrauterin normal 32 minggu, primigravida",
+    "differential_diagnoses": [],
+    "management_plan": {
+      "non_pharmacological": [
+        "Edukasi tanda bahaya kehamilan dan persalinan (perdarahan, nyeri perut hebat, gerak janin berkurang, ketuban pecah).",
+        "Anjurkan diet seimbang dan istirahat cukup.",
+        "Latihan pernapasan dan persiapan persalinan."
+      ],
+      "pharmacological": [
+        "Suplemen zat besi dan asam folat lanjutan.",
+        "Imunisasi TT bila belum lengkap."
+      ],
+      "procedure": "Tidak ada prosedur invasif, lanjutkan ANC rutin.",
+      "monitoring": "Kontrol ANC tiap 2 minggu sampai 36 minggu, kemudian tiap minggu.",
+      "referral": "Tidak perlu rujukan bila tidak ada faktor risiko dan fasilitas mampu melayani persalinan normal."
+    },
+    "red_flags": [
+      "Perdarahan per vaginam.",
+      "Gerak janin berkurang atau tidak dirasakan.",
+      "Sakit kepala hebat dan pandangan kabur.",
+      "Nyeri perut hebat dan terus-menerus.",
+      "Keluar cairan dari jalan lahir sebelum waktunya."
+    ],
+    "learning_points": [
+      "Melakukan penilaian ANC trimester III yang komprehensif.",
+      "Mengidentifikasi kehamilan risiko rendah.",
+      "Memberikan konseling dan edukasi tanda bahaya kehamilan."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Kehamilan intrauterin normal trimester III",
+      "key_icd10": "Z34.0",
+      "key_skdi_level": "3",
+      "critical_actions": [
+        "Melakukan pengukuran TFU dan memeriksa DJJ.",
+        "Menilai tekanan darah dan urinalisis untuk skrining preeklampsia.",
+        "Mengedukasi tanda bahaya kehamilan.",
+        "Menjadwalkan ANC lanjutan."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "OBG-01-Q1",
+          "stem": "Berikut ini yang termasuk tanda bahaya kehamilan yang harus disampaikan kepada ibu hamil adalah, KECUALI:",
+          "options": [
+            "Perdarahan per vaginam",
+            "Gerak janin berkurang",
+            "Sakit kepala hebat disertai pandangan kabur",
+            "Mual ringan di pagi hari",
+            "Nyeri perut hebat dan terus menerus"
+          ],
+          "answer_index": 3
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "OBG-02",
+    "department": "Obstetri dan Ginekologi",
+    "skdi_diagnosis": "Preeklampsia berat (Level 4A)",
+    "icd10": "O14.1",
+    "skdi_level": "4A",
+    "tags": ["kehamilan_risiko_tinggi", "hipertensi_dalam_kehamilan", "gawat_darurat"],
+    "patient": {
+      "name": "Pasien 9",
+      "age": 32,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 2,
+      "para": 1,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Sakit kepala hebat dan pandangan kabur pada usia kehamilan 34 minggu",
+    "history_of_present_illness": "Kehamilan kedua, usia kehamilan sekitar 34 minggu. Sejak 2 hari mengeluh sakit kepala, mual, dan pandangan kabur. Tungkai bengkak sejak 1 minggu. Gerak janin masih dirasakan.",
+    "past_medical_history": "Kehamilan pertama normal, tidak ada riwayat hipertensi kronik.",
+    "family_history": "Ibu pernah mengalami preeklampsia.",
+    "social_history": "Ibu rumah tangga, tidak merokok, tidak minum alkohol.",
+    "physical_exam": {
+      "general": "Tampak sakit, sadar penuh.",
+      "vital_signs": {
+        "bp_mmHg": "170/110",
+        "hr_bpm": 96,
+        "rr_per_min": 22,
+        "temp_c": 36.9,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Vesikuler normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Uterus sesuai usia kehamilan, nyeri tekan minimal.",
+        "neuro": "Refleks patella meningkat, tidak ada defisit fokal.",
+        "extremities": "Edema tungkai hingga lutut."
+      },
+      "obstetric_exam": {
+        "tfu_cm": 32,
+        "fetal_heart_rate_bpm": 150,
+        "presentation": "Kepala",
+        "edema": "Edema tungkai"
+      }
+    },
+    "laboratory": {
+      "proteinuria": "3+ pada urinalisis",
+      "hb_g_dL": 12.0,
+      "trombosit_per_uL": 150000,
+      "sgot_u_L": 70,
+      "sgpt_u_L": 65,
+      "kreatinin_mg_dL": 1.2,
+      "catatan": "Kriteria preeklampsia berat terpenuhi (TD tinggi dan proteinuria bermakna)."
+    },
+    "imaging": {
+      "usg_obstetri": "Janin tunggal hidup, presentasi kepala, plasenta normal, AFI normal."
+    },
+    "procedures": [],
+    "working_diagnosis": "Preeklampsia berat usia kehamilan 34 minggu",
+    "differential_diagnoses": [
+      "Hipertensi kronik dengan superimposed preeklampsia.",
+      "Migren pada kehamilan (tidak menjelaskan hipertensi dan proteinuria)."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Rawat inap, tirah baring lateral kiri.",
+        "Monitoring ketat tekanan darah, diuresis, dan kondisi janin."
+      ],
+      "pharmacological": [
+        "Antihipertensi kerja cepat (misalnya nifedipin oral) sesuai protokol.",
+        "Profilaksis kejang dengan magnesium sulfat.",
+        "Kortikosteroid untuk maturasi paru janin jika persalinan ditunda (bila usia kehamilan <34 minggu, dipertimbangkan kasus per kasus)."
+      ],
+      "procedure": "Terminasi kehamilan (induksi persalinan atau seksio sesarea) setelah stabilisasi ibu, mempertimbangkan kondisi janin dan serviks.",
+      "monitoring": "Pantau tekanan darah, diuresis, tanda-tanda toksisitas MgSO4, dan kesejahteraan janin.",
+      "referral": "Bila di fasilitas primer/sekunder, rujuk segera ke RS rujukan dengan fasilitas obstetri emergensi dan ICU."
+    },
+    "red_flags": [
+      "Kejang (eklampsia).",
+      "Oliguria (<500 mL/24 jam).",
+      "Nyeri epigastrium hebat.",
+      "Penurunan kesadaran."
+    ],
+    "learning_points": [
+      "Mengenali kriteria preeklampsia berat.",
+      "Menentukan langkah awal stabilisasi ibu (antihipertensi, MgSO4).",
+      "Memahami prinsip bahwa terapi definitif adalah terminasi kehamilan dengan mempertimbangkan maturitas janin."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Preeklampsia berat",
+      "key_icd10": "O14.1",
+      "key_skdi_level": "4A",
+      "critical_actions": [
+        "Mengidentifikasi preeklampsia berat berdasarkan TD dan proteinuria.",
+        "Memberikan MgSO4 untuk profilaksis kejang.",
+        "Menurunkan tekanan darah secara bertahap dengan antihipertensi.",
+        "Merencanakan terminasi kehamilan setelah stabilisasi."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "OBG-02-Q1",
+          "stem": "Terapi profilaksis kejang yang paling tepat pada preeklampsia berat adalah:",
+          "options": [
+            "Diazepam intravena",
+            "Magnesium sulfat",
+            "Furosemid intravena",
+            "Fenitoin",
+            "Midazolam"
+          ],
+          "answer_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "OBG-03",
+    "department": "Obstetri dan Ginekologi",
+    "skdi_diagnosis": "Abortus inkompletus dengan perdarahan (Level 4A)",
+    "icd10": "O03.4",
+    "skdi_level": "4A",
+    "tags": ["abortus", "perdarahan_kehamilan_awal", "ginekologi_darurat"],
+    "patient": {
+      "name": "Pasien 10",
+      "age": 24,
+      "sex": "P",
+      "marital_status": "Menikah",
+      "gravida": 1,
+      "para": 0,
+      "address_type": "Perkotaan",
+      "insurance_status": "JKN"
+    },
+    "chief_complaint": "Perdarahan per vaginam sejak 1 hari pada kehamilan 10 minggu",
+    "history_of_present_illness": "Kehamilan pertama, terlambat haid 10 minggu. Sejak kemarin keluar darah dari jalan lahir disertai gumpalan jaringan, nyeri perut bagian bawah seperti mulas haid. Perdarahan berkurang namun masih ada.",
+    "past_medical_history": "Tidak ada penyakit kronik.",
+    "family_history": "Tidak ada riwayat abortus berulang.",
+    "social_history": "Tidak merokok, tidak konsumsi alkohol.",
+    "physical_exam": {
+      "general": "Tampak agak pucat, sadar.",
+      "vital_signs": {
+        "bp_mmHg": "110/70",
+        "hr_bpm": 92,
+        "rr_per_min": 20,
+        "temp_c": 36.8,
+        "spo2_percent": 99
+      },
+      "systemic": {
+        "respiratory": "Normal.",
+        "cardiovascular": "Jantung reguler.",
+        "abdomen": "Uterus teraba sesuai 10 minggu, nyeri tekan ringan.",
+        "neuro": "Normal.",
+        "extremities": "Tidak ada edema."
+      },
+      "obstetric_exam": {
+        "tfu_cm": 10,
+        "fetal_heart_rate_bpm": null,
+        "presentation": null,
+        "edema": "Tidak ada"
+      }
+    },
+    "laboratory": {
+      "hb_g_dL": 10.5,
+      "golongan_darah": "O",
+      "test_kehamilan": "Positif",
+      "catatan": "Anemia ringan akibat perdarahan."
+    },
+    "imaging": {
+      "usg_obstetri": "Rongga uterus berisi sisa hasil konsepsi, tidak tampak janin hidup."
+    },
+    "procedures": [],
+    "working_diagnosis": "Abortus inkompletus 10 minggu gravid dengan perdarahan sedang",
+    "differential_diagnoses": [
+      "Abortus komplit.",
+      "Kehamilan ektopik terganggu (biasanya nyeri unilateral dengan gambaran USG berbeda)."
+    ],
+    "management_plan": {
+      "non_pharmacological": [
+        "Penilaian status hemodinamik dan stabilisasi bila perlu.",
+        "Dukungan emosional dan konseling."
+      ],
+      "pharmacological": [
+        "Analgesik.",
+        "Antibiotik profilaksis bila dilakukan tindakan.",
+        "Oksitosin pascatindakan bila diperlukan."
+      ],
+      "procedure": "Kuretase vakum manual atau evakuasi sisa hasil konsepsi sesuai protokol dan fasilitas.",
+      "monitoring": "Pantau perdarahan, nyeri, dan tanda infeksi (demam, nyeri perut hebat).",
+      "referral": "Bila di fasilitas primer tanpa kemampuan evakuasi, rujuk ke RS yang memiliki fasilitas tindakan ginekologi darurat."
+    },
+    "red_flags": [
+      "Perdarahan banyak dengan tanda syok.",
+      "Nyeri perut hebat menetap.",
+      "Demam tinggi setelah tindakan (kecurigaan sepsis)."
+    ],
+    "learning_points": [
+      "Membedakan abortus inkompletus dari abortus komplit dan abortus imminens.",
+      "Menentukan indikasi evakuasi sisa hasil konsepsi.",
+      "Mengelola aspek emosional dan edukasi pasien pascakeguguran."
+    ],
+    "assessment_items": {
+      "key_diagnosis": "Abortus inkompletus",
+      "key_icd10": "O03.4",
+      "key_skdi_level": "4A",
+      "critical_actions": [
+        "Menilai status hemodinamik dan tanda syok.",
+        "Menegakkan diagnosis abortus inkompletus dengan pemeriksaan klinis dan USG.",
+        "Merencanakan dan melakukan evakuasi sisa hasil konsepsi.",
+        "Memberikan dukungan emosional dan konseling."
+      ],
+      "possible_mcq_questions": [
+        {
+          "id": "OBG-03-Q1",
+          "stem": "Ciri khas abortus inkompletus dibanding abortus komplit adalah:",
+          "options": [
+            "Tidak ada perdarahan sama sekali",
+            "Ostium uteri eksternum tertutup",
+            "Sisa hasil konsepsi masih tertinggal di kavum uteri",
+            "Test kehamilan selalu negatif",
+            "Tidak ada nyeri perut"
+          ],
+          "answer_index": 2
+        }
+      ]
+    }
+  }
+]

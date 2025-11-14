@@ -1,16 +1,8 @@
-import { createFileRoute, Navigate, useNavigate } from '@tanstack/react-router';
+import { Link, Navigate, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { FileText, Home, LogOut, Menu } from 'lucide-react';
+import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
-import {
-  Home,
-  Users,
-  Calendar,
-  FileText,
-  Settings,
-  LogOut,
-  Menu,
-} from 'lucide-react';
-import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export const Route = createFileRoute('/dashboard')({
@@ -41,10 +33,7 @@ function DashboardPage() {
 
   const menuItems = [
     { icon: Home, label: 'Dashboard', href: '/dashboard' },
-    { icon: Users, label: 'Patients', href: '/patients' },
-    { icon: Calendar, label: 'Appointments', href: '/appointments' },
-    { icon: FileText, label: 'Records', href: '/records' },
-    { icon: Settings, label: 'Settings', href: '/settings' },
+    { icon: FileText, label: 'Pembelajaran', href: '/pembelajaran' },
   ];
 
   const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => (
@@ -54,16 +43,15 @@ function DashboardPage() {
       </div>
       <nav className="flex-1 p-4 space-y-2">
         {menuItems.map((item) => (
-          <button
+          <Link
             key={item.label}
-            onClick={() => {
-              onItemClick?.();
-            }}
+            to={item.href}
+            onClick={() => onItemClick?.()}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors"
           >
             <item.icon className="w-5 h-5" />
             <span>{item.label}</span>
-          </button>
+          </Link>
         ))}
       </nav>
       <div className="p-4 border-t border-slate-800">

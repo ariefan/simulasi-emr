@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
+import bcrypt from 'bcryptjs';
 import { db } from '@/db';
 import { users } from '@/db/schema';
-import bcrypt from 'bcryptjs';
 
 export interface User {
   id: number;

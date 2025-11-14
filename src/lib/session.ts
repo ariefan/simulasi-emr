@@ -1,4 +1,4 @@
-import { User } from '@/lib/auth';
+import type { User } from '@/lib/auth';
 
 const SESSION_KEY = 'emr_user_session';
 
