@@ -346,339 +346,319 @@ function PembelajaranPage() {
                       <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 gap-1">
                         <TabsTrigger value="identitas" className="text-xs md:text-sm">Identitas</TabsTrigger>
                         <TabsTrigger value="anamnesis" className="text-xs md:text-sm">Anamnesis</TabsTrigger>
-                        <TabsTrigger value="pemeriksaan" className="text-xs md:text-sm">Pemeriksaan</TabsTrigger>
-                        <TabsTrigger value="lab" className="text-xs md:text-sm">Lab</TabsTrigger>
-                        <TabsTrigger value="diagnosis" className="text-xs md:text-sm">Diagnosis</TabsTrigger>
+                        <TabsTrigger value="pemeriksaan" className="text-xs md:text-sm">Pemeriksaan Fisik</TabsTrigger>
+                        <TabsTrigger value="lab" className="text-xs md:text-sm">Lab & Penunjang</TabsTrigger>
+                        <TabsTrigger value="diagnosis" className="text-xs md:text-sm">Diagnosis & Plan</TabsTrigger>
                         <TabsTrigger value="refleksi" className="text-xs md:text-sm">Refleksi</TabsTrigger>
                       </TabsList>
 
                       <ScrollArea className="h-96 lg:h-[calc(100vh-340px)] mt-4">
                         <TabsContent value="identitas" className="space-y-4">
+                          <div className="section-title font-semibold text-sm">Identitas Pasien</div>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                              <Label className="font-semibold">Nama</Label>
+                              <Label className="font-semibold">Nama:</Label>
                               <p>{selectedCase.patient.name}</p>
                             </div>
                             <div>
-                              <Label className="font-semibold">Usia</Label>
+                              <Label className="font-semibold">Umur:</Label>
                               <p>{selectedCase.patient.age} tahun</p>
                             </div>
                             <div>
-                              <Label className="font-semibold">Jenis Kelamin</Label>
+                              <Label className="font-semibold">Jenis kelamin:</Label>
                               <p>{selectedCase.patient.sex === 'L' ? 'Laki-laki' : 'Perempuan'}</p>
                             </div>
                             <div>
-                              <Label className="font-semibold">Status Pernikahan</Label>
+                              <Label className="font-semibold">Status perkawinan:</Label>
                               <p>{selectedCase.patient.marital_status || '-'}</p>
                             </div>
                             {selectedCase.patient.gravida !== null && (
                               <div>
-                                <Label className="font-semibold">Gravida</Label>
+                                <Label className="font-semibold">Gravida:</Label>
                                 <p>{selectedCase.patient.gravida}</p>
                               </div>
                             )}
                             {selectedCase.patient.para !== null && (
                               <div>
-                                <Label className="font-semibold">Para</Label>
+                                <Label className="font-semibold">Para:</Label>
                                 <p>{selectedCase.patient.para}</p>
                               </div>
                             )}
                             <div>
-                              <Label className="font-semibold">Alamat</Label>
+                              <Label className="font-semibold">Konteks:</Label>
                               <p>{selectedCase.patient.address_type || '-'}</p>
                             </div>
                             <div>
-                              <Label className="font-semibold">Asuransi</Label>
+                              <Label className="font-semibold">Jaminan:</Label>
                               <p>{selectedCase.patient.insurance_status || '-'}</p>
                             </div>
                           </div>
+                          <hr className="my-2" />
+                          <div className="section-title font-semibold text-sm">Ringkasan Kasus</div>
                           <div>
-                            <Label className="font-semibold">Keluhan Utama</Label>
+                            <Label className="font-semibold">Keluhan utama:</Label>
                             <p className="mt-1">{selectedCase.chief_complaint}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Diagnosis kerja:</Label>
+                            <p className="mt-1">{selectedCase.working_diagnosis}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">ICD-10:</Label>
+                            <p className="mt-1">{selectedCase.icd10}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Level SKDI:</Label>
+                            <p className="mt-1">{selectedCase.skdi_level}</p>
                           </div>
                         </TabsContent>
 
                         <TabsContent value="anamnesis" className="space-y-4">
+                          <div className="section-title font-semibold text-sm">Anamnesis</div>
                           <div>
-                            <Label className="font-semibold">Riwayat Penyakit Sekarang</Label>
+                            <Label className="font-semibold">Keluhan utama:</Label>
+                            <p className="mt-1">{selectedCase.chief_complaint}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Riwayat penyakit sekarang:</Label>
                             <p className="mt-1 whitespace-pre-wrap">
                               {selectedCase.history_of_present_illness}
                             </p>
                           </div>
-                          {selectedCase.past_medical_history && (
-                            <div>
-                              <Label className="font-semibold">Riwayat Penyakit Dahulu</Label>
-                              <p className="mt-1">{selectedCase.past_medical_history}</p>
-                            </div>
-                          )}
-                          {selectedCase.family_history && (
-                            <div>
-                              <Label className="font-semibold">Riwayat Penyakit Keluarga</Label>
-                              <p className="mt-1">{selectedCase.family_history}</p>
-                            </div>
-                          )}
-                          {selectedCase.social_history && (
-                            <div>
-                              <Label className="font-semibold">Riwayat Sosial</Label>
-                              <p className="mt-1">{selectedCase.social_history}</p>
-                            </div>
-                          )}
+                          <div>
+                            <Label className="font-semibold">Riwayat penyakit dahulu:</Label>
+                            <p className="mt-1">{selectedCase.past_medical_history || '-'}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Riwayat keluarga:</Label>
+                            <p className="mt-1">{selectedCase.family_history || '-'}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Riwayat sosial:</Label>
+                            <p className="mt-1">{selectedCase.social_history || '-'}</p>
+                          </div>
                         </TabsContent>
 
                         <TabsContent value="pemeriksaan" className="space-y-4">
-                          {selectedCase.physical_exam.general && (
-                            <div>
-                              <Label className="font-semibold">Keadaan Umum</Label>
-                              <p className="mt-1">{selectedCase.physical_exam.general}</p>
-                            </div>
-                          )}
+                          <div className="section-title font-semibold text-sm">Status Generalis</div>
+                          <div>
+                            <Label className="font-semibold">Kesan umum:</Label>
+                            <p className="mt-1">{selectedCase.physical_exam.general || '-'}</p>
+                          </div>
                           {selectedCase.physical_exam.vital_signs && (
                             <div>
-                              <Label className="font-semibold">Tanda Vital</Label>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
-                                {selectedCase.physical_exam.vital_signs.bp_mmHg && (
-                                  <p>TD: {selectedCase.physical_exam.vital_signs.bp_mmHg}</p>
-                                )}
-                                {selectedCase.physical_exam.vital_signs.hr_bpm && (
-                                  <p>Nadi: {selectedCase.physical_exam.vital_signs.hr_bpm} bpm</p>
-                                )}
-                                {selectedCase.physical_exam.vital_signs.rr_per_min && (
-                                  <p>RR: {selectedCase.physical_exam.vital_signs.rr_per_min} /menit</p>
-                                )}
-                                {selectedCase.physical_exam.vital_signs.temp_c && (
-                                  <p>Suhu: {selectedCase.physical_exam.vital_signs.temp_c}°C</p>
-                                )}
-                                {selectedCase.physical_exam.vital_signs.spo2_percent && (
-                                  <p>SpO2: {selectedCase.physical_exam.vital_signs.spo2_percent}%</p>
-                                )}
-                              </div>
+                              <Label className="font-semibold">Tanda vital:</Label>
+                              <ul className="mt-1 space-y-1 list-none">
+                                <li>TD: {selectedCase.physical_exam.vital_signs.bp_mmHg || '-'} mmHg</li>
+                                <li>Nadi: {selectedCase.physical_exam.vital_signs.hr_bpm || '-'} x/menit</li>
+                                <li>RR: {selectedCase.physical_exam.vital_signs.rr_per_min || '-'} x/menit</li>
+                                <li>Suhu: {selectedCase.physical_exam.vital_signs.temp_c || '-'} °C</li>
+                                <li>SpO₂: {selectedCase.physical_exam.vital_signs.spo2_percent || '-'}%</li>
+                              </ul>
                             </div>
                           )}
-                          {selectedCase.physical_exam.systemic && (
-                            <div>
-                              <Label className="font-semibold">Pemeriksaan Sistemik</Label>
-                              <div className="space-y-2 mt-1">
-                                {selectedCase.physical_exam.systemic.respiratory && (
-                                  <div>
-                                    <p className="font-medium text-sm">Respirasi:</p>
-                                    <p className="text-sm">{selectedCase.physical_exam.systemic.respiratory}</p>
-                                  </div>
-                                )}
-                                {selectedCase.physical_exam.systemic.cardiovascular && (
-                                  <div>
-                                    <p className="font-medium text-sm">Kardiovaskular:</p>
-                                    <p className="text-sm">{selectedCase.physical_exam.systemic.cardiovascular}</p>
-                                  </div>
-                                )}
-                                {selectedCase.physical_exam.systemic.abdomen && (
-                                  <div>
-                                    <p className="font-medium text-sm">Abdomen:</p>
-                                    <p className="text-sm">{selectedCase.physical_exam.systemic.abdomen}</p>
-                                  </div>
-                                )}
-                                {selectedCase.physical_exam.systemic.neuro && (
-                                  <div>
-                                    <p className="font-medium text-sm">Neurologi:</p>
-                                    <p className="text-sm">{selectedCase.physical_exam.systemic.neuro}</p>
-                                  </div>
-                                )}
-                                {selectedCase.physical_exam.systemic.extremities && (
-                                  <div>
-                                    <p className="font-medium text-sm">Ekstremitas:</p>
-                                    <p className="text-sm">{selectedCase.physical_exam.systemic.extremities}</p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          )}
+                          <div className="section-title font-semibold text-sm mt-4">Pemeriksaan Sistemik</div>
+                          <ul className="space-y-1 list-none">
+                            <li><strong>Respirasi:</strong> {selectedCase.physical_exam.systemic?.respiratory || '-'}</li>
+                            <li><strong>Kardiovaskular:</strong> {selectedCase.physical_exam.systemic?.cardiovascular || '-'}</li>
+                            <li><strong>Abdomen:</strong> {selectedCase.physical_exam.systemic?.abdomen || '-'}</li>
+                            <li><strong>Neurologis:</strong> {selectedCase.physical_exam.systemic?.neuro || '-'}</li>
+                            <li><strong>Ekstremitas:</strong> {selectedCase.physical_exam.systemic?.extremities || '-'}</li>
+                          </ul>
                           {selectedCase.physical_exam.obstetric_exam && (
-                            <div>
-                              <Label className="font-semibold">Pemeriksaan Obstetrik</Label>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
-                                {selectedCase.physical_exam.obstetric_exam.tfu_cm && (
-                                  <p>TFU: {selectedCase.physical_exam.obstetric_exam.tfu_cm} cm</p>
-                                )}
-                                {selectedCase.physical_exam.obstetric_exam.fetal_heart_rate_bpm && (
-                                  <p>DJJ: {selectedCase.physical_exam.obstetric_exam.fetal_heart_rate_bpm} bpm</p>
-                                )}
-                                {selectedCase.physical_exam.obstetric_exam.presentation && (
-                                  <p>Presentasi: {selectedCase.physical_exam.obstetric_exam.presentation}</p>
-                                )}
-                                {selectedCase.physical_exam.obstetric_exam.edema && (
-                                  <p>Edema: {selectedCase.physical_exam.obstetric_exam.edema}</p>
-                                )}
-                              </div>
-                            </div>
+                            <>
+                              <div className="section-title font-semibold text-sm mt-4">Pemeriksaan Obstetri</div>
+                              <ul className="space-y-1 list-none">
+                                <li><strong>TFU:</strong> {selectedCase.physical_exam.obstetric_exam.tfu_cm || '-'} cm</li>
+                                <li><strong>DJJ:</strong> {selectedCase.physical_exam.obstetric_exam.fetal_heart_rate_bpm || '-'} x/menit</li>
+                                <li><strong>Presentasi:</strong> {selectedCase.physical_exam.obstetric_exam.presentation || '-'}</li>
+                                <li><strong>Edema:</strong> {selectedCase.physical_exam.obstetric_exam.edema || '-'}</li>
+                              </ul>
+                            </>
                           )}
                         </TabsContent>
 
                         <TabsContent value="lab" className="space-y-4">
-                          {selectedCase.laboratory && (
-                            <div>
-                              <Label className="font-semibold">Pemeriksaan Laboratorium</Label>
-                              <div className="mt-2 space-y-1">
-                                {Object.entries(selectedCase.laboratory).map(([key, value]) => (
-                                  <p key={key} className="text-sm">
-                                    <span className="font-medium">{key}:</span>{' '}
-                                    {typeof value === 'object' ? JSON.stringify(value) : String(value)}
-                                  </p>
+                          <div className="section-title font-semibold text-sm">Pemeriksaan Laboratorium</div>
+                          {selectedCase.laboratory && Object.keys(selectedCase.laboratory).length > 0 ? (
+                            <ul className="space-y-1 list-none">
+                              {Object.entries(selectedCase.laboratory)
+                                .filter(([key]) => key !== 'catatan')
+                                .map(([key, value]) => (
+                                  <li key={key}>
+                                    <strong>{key}</strong>: {typeof value === 'object' ? JSON.stringify(value) : String(value)}
+                                  </li>
                                 ))}
-                              </div>
+                            </ul>
+                          ) : (
+                            <p>Tidak ada data lab.</p>
+                          )}
+                          {selectedCase.laboratory?.catatan && (
+                            <div>
+                              <Label className="font-semibold">Catatan:</Label>
+                              <p className="mt-1">{String(selectedCase.laboratory.catatan)}</p>
                             </div>
                           )}
-                          {selectedCase.imaging && (
-                            <div>
-                              <Label className="font-semibold">Pemeriksaan Penunjang</Label>
-                              <div className="mt-2 space-y-1">
-                                {Object.entries(selectedCase.imaging).map(([key, value]) => (
-                                  <p key={key} className="text-sm">
-                                    <span className="font-medium">{key}:</span> {value}
-                                  </p>
-                                ))}
-                              </div>
-                            </div>
+                          <hr className="my-2" />
+                          <div className="section-title font-semibold text-sm">Pemeriksaan Penunjang / Imaging</div>
+                          {selectedCase.imaging && Object.keys(selectedCase.imaging).length > 0 ? (
+                            <ul className="space-y-1 list-none">
+                              {Object.entries(selectedCase.imaging).map(([key, value]) => (
+                                <li key={key}>
+                                  <strong>{key}</strong>: {value}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p>Tidak ada data penunjang.</p>
                           )}
                         </TabsContent>
 
                         <TabsContent value="diagnosis" className="space-y-4">
+                          <div className="section-title font-semibold text-sm">Diagnosis</div>
                           <div>
-                            <Label className="font-semibold">Diagnosis Kerja</Label>
+                            <Label className="font-semibold">Diagnosis kerja:</Label>
                             <p className="mt-1">{selectedCase.working_diagnosis}</p>
                           </div>
-                          {selectedCase.differential_diagnoses && selectedCase.differential_diagnoses.length > 0 && (
-                            <div>
-                              <Label className="font-semibold">Diagnosis Banding</Label>
+                          <div>
+                            <Label className="font-semibold">Diagnosa banding:</Label>
+                            {selectedCase.differential_diagnoses && selectedCase.differential_diagnoses.length > 0 ? (
                               <ul className="mt-1 list-disc list-inside">
                                 {selectedCase.differential_diagnoses.map((dd, idx) => (
                                   <li key={idx}>{dd}</li>
                                 ))}
                               </ul>
-                            </div>
-                          )}
-                          {selectedCase.management_plan && (
-                            <div>
-                              <Label className="font-semibold">Rencana Tatalaksana</Label>
-                              <div className="mt-2 space-y-2">
-                                {selectedCase.management_plan.non_pharmacological && (
-                                  <div>
-                                    <p className="font-medium text-sm">Non-Farmakologis:</p>
-                                    <ul className="list-disc list-inside text-sm">
-                                      {selectedCase.management_plan.non_pharmacological.map((item, idx) => (
-                                        <li key={idx}>{item}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {selectedCase.management_plan.pharmacological && (
-                                  <div>
-                                    <p className="font-medium text-sm">Farmakologis:</p>
-                                    <ul className="list-disc list-inside text-sm">
-                                      {selectedCase.management_plan.pharmacological.map((item, idx) => (
-                                        <li key={idx}>{item}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {selectedCase.management_plan.procedure && (
-                                  <div>
-                                    <p className="font-medium text-sm">Prosedur:</p>
-                                    <p className="text-sm">{selectedCase.management_plan.procedure}</p>
-                                  </div>
-                                )}
-                                {selectedCase.management_plan.monitoring && (
-                                  <div>
-                                    <p className="font-medium text-sm">Monitoring:</p>
-                                    <p className="text-sm">{selectedCase.management_plan.monitoring}</p>
-                                  </div>
-                                )}
-                                {selectedCase.management_plan.referral && (
-                                  <div>
-                                    <p className="font-medium text-sm">Rujukan:</p>
-                                    <p className="text-sm">{selectedCase.management_plan.referral}</p>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          )}
-                          {selectedCase.red_flags && selectedCase.red_flags.length > 0 && (
-                            <div>
-                              <Label className="font-semibold text-red-600">Red Flags</Label>
+                            ) : (
+                              <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
+                            )}
+                          </div>
+                          <hr className="my-2" />
+                          <div className="section-title font-semibold text-sm">Rencana Tata Laksana</div>
+                          <div>
+                            <Label className="font-semibold">Non-farmakologis:</Label>
+                            {selectedCase.management_plan?.non_pharmacological && selectedCase.management_plan.non_pharmacological.length > 0 ? (
                               <ul className="mt-1 list-disc list-inside">
-                                {selectedCase.red_flags.map((flag, idx) => (
-                                  <li key={idx} className="text-red-600">{flag}</li>
+                                {selectedCase.management_plan.non_pharmacological.map((item, idx) => (
+                                  <li key={idx}>{item}</li>
                                 ))}
                               </ul>
-                            </div>
-                          )}
-                          {selectedCase.learning_points && selectedCase.learning_points.length > 0 && (
-                            <div>
-                              <Label className="font-semibold">Poin Pembelajaran</Label>
+                            ) : (
+                              <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
+                            )}
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Farmakologis:</Label>
+                            {selectedCase.management_plan?.pharmacological && selectedCase.management_plan.pharmacological.length > 0 ? (
                               <ul className="mt-1 list-disc list-inside">
-                                {selectedCase.learning_points.map((point, idx) => (
-                                  <li key={idx}>{point}</li>
+                                {selectedCase.management_plan.pharmacological.map((item, idx) => (
+                                  <li key={idx}>{item}</li>
                                 ))}
                               </ul>
-                            </div>
+                            ) : (
+                              <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
+                            )}
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Prosedur:</Label>
+                            {selectedCase.management_plan?.procedure ? (
+                              <ul className="mt-1 list-disc list-inside">
+                                <li>{selectedCase.management_plan.procedure}</li>
+                              </ul>
+                            ) : (
+                              <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
+                            )}
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Monitoring:</Label>
+                            <p className="mt-1">{selectedCase.management_plan?.monitoring || '-'}</p>
+                          </div>
+                          <div>
+                            <Label className="font-semibold">Rujukan:</Label>
+                            <p className="mt-1">{selectedCase.management_plan?.referral || '-'}</p>
+                          </div>
+                          <hr className="my-2" />
+                          <div className="section-title font-semibold text-sm">Red Flags</div>
+                          {selectedCase.red_flags && selectedCase.red_flags.length > 0 ? (
+                            <ul className="mt-1 list-disc list-inside text-red-600">
+                              {selectedCase.red_flags.map((flag, idx) => (
+                                <li key={idx}>{flag}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
+                          )}
+                          <div className="section-title font-semibold text-sm mt-4">Learning Points</div>
+                          {selectedCase.learning_points && selectedCase.learning_points.length > 0 ? (
+                            <ul className="mt-1 list-disc list-inside">
+                              {selectedCase.learning_points.map((point, idx) => (
+                                <li key={idx}>{point}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <ul className="mt-1 list-disc list-inside"><li>-</li></ul>
                           )}
                         </TabsContent>
 
                         <TabsContent value="refleksi" className="space-y-4">
+                          <div className="section-title font-semibold text-sm">Refleksi Mahasiswa</div>
+                          <div className="text-sm text-slate-600 mb-4">
+                            Gunakan kerangka <strong>What – So What – Now What</strong> untuk merefleksikan kasus ini.
+                          </div>
                           <div>
-                            <Label htmlFor="what">What? (Apa yang terjadi?)</Label>
+                            <Label htmlFor="what" className="font-medium">1. What? (Apa yang terjadi pada kasus ini?)</Label>
                             <Textarea
                               id="what"
-                              placeholder="Jelaskan apa yang Anda pelajari dari kasus ini..."
+                              placeholder="Ringkas temuan penting, keputusan yang Anda buat, dan hal yang menurut Anda menantang."
                               value={reflection.what}
                               onChange={(e) =>
                                 setReflection({ ...reflection, what: e.target.value })
                               }
-                              className="mt-1"
+                              className="mt-2"
                               rows={4}
                             />
                           </div>
                           <div>
-                            <Label htmlFor="so_what">So What? (Apa makna/signifikansinya?)</Label>
+                            <Label htmlFor="so_what" className="font-medium">2. So what? (Apa maknanya bagi Anda sebagai calon dokter?)</Label>
                             <Textarea
                               id="so_what"
-                              placeholder="Jelaskan mengapa pembelajaran ini penting..."
+                              placeholder="Apa yang Anda pelajari? Bagaimana kasus ini mengubah cara Anda memandang diagnosis atau tata laksana?"
                               value={reflection.so_what}
                               onChange={(e) =>
                                 setReflection({ ...reflection, so_what: e.target.value })
                               }
-                              className="mt-1"
+                              className="mt-2"
                               rows={4}
                             />
                           </div>
                           <div>
-                            <Label htmlFor="now_what">Now What? (Apa yang akan Anda lakukan?)</Label>
+                            <Label htmlFor="now_what" className="font-medium">3. Now what? (Apa rencana Anda ke depan?)</Label>
                             <Textarea
                               id="now_what"
-                              placeholder="Jelaskan bagaimana Anda akan menerapkan pembelajaran ini..."
+                              placeholder="Apa yang akan Anda lakukan berbeda di kasus berikutnya? Apa yang masih perlu Anda pelajari?"
                               value={reflection.now_what}
                               onChange={(e) =>
                                 setReflection({ ...reflection, now_what: e.target.value })
                               }
-                              className="mt-1"
+                              className="mt-2"
                               rows={4}
                             />
                           </div>
-                          <Button onClick={handleReflectionSave} className="w-full">
-                            Simpan Refleksi
-                          </Button>
                           {studentProgress[selectedCase.case_id]?.reflection_last_saved && (
-                            <p className="text-xs text-slate-500 text-center">
-                              Terakhir disimpan:{' '}
-                              {new Date(
+                            <p className="text-xs text-slate-500">
+                              Refleksi terakhir disimpan: {new Date(
                                 studentProgress[selectedCase.case_id].reflection_last_saved!
                               ).toLocaleString('id-ID')}
                             </p>
                           )}
+                          <Button onClick={handleReflectionSave} className="w-full mt-2">
+                            Simpan Refleksi
+                          </Button>
                         </TabsContent>
                       </ScrollArea>
                     </Tabs>
                   ) : (
-                    <div className="flex items-center justify-center h-full text-slate-500">
-                      Pilih kasus dari daftar untuk memulai pembelajaran
+                    <div className="flex items-center justify-center h-full text-slate-500 text-sm">
+                      Silakan klik salah satu kasus di sisi kiri untuk melihat detail rekam medis.
                     </div>
                   )}
                 </CardContent>
@@ -687,9 +667,11 @@ function PembelajaranPage() {
               {/* Quiz Panel */}
               <Card className="w-full lg:w-96 xl:w-[28rem] h-auto lg:h-[calc(100vh-180px)] shrink-0">
                 <CardHeader>
-                  <CardTitle>Soal Latihan</CardTitle>
+                  <CardTitle>Kuis Cepat</CardTitle>
                   <CardDescription>
-                    {selectedCase?.assessment_items?.possible_mcq_questions?.length || 0} soal
+                    {selectedCase
+                      ? `Kasus: ${selectedCase.case_id} • Fokus: ${selectedCase.assessment_items?.key_diagnosis || selectedCase.working_diagnosis}`
+                      : 'Pilih kasus terlebih dahulu untuk memulai kuis.'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -734,22 +716,28 @@ function PembelajaranPage() {
                       </ScrollArea>
 
                       <div className="space-y-2">
-                        {!quizSubmitted ? (
+                        <div className="flex gap-2">
                           <Button
                             onClick={handleQuizSubmit}
-                            className="w-full"
-                            disabled={
-                              Object.keys(selectedAnswers).length !==
-                              selectedCase.assessment_items.possible_mcq_questions.length
-                            }
+                            className="flex-1"
                           >
-                            Submit Quiz
+                            Cek Jawaban
                           </Button>
-                        ) : (
-                          <div className="text-center">
-                            <p className="text-lg font-semibold">
-                              Score:{' '}
-                              {(
+                          <Button
+                            onClick={() => {
+                              setSelectedAnswers({});
+                              setQuizSubmitted(false);
+                            }}
+                            variant="outline"
+                            className="flex-1"
+                          >
+                            Reset
+                          </Button>
+                        </div>
+                        {quizSubmitted && (
+                          <div className="text-center p-2 bg-slate-50 rounded">
+                            <p className="text-sm font-semibold">
+                              Skor: {(
                                 (Object.entries(selectedAnswers).filter(
                                   ([qId, ansIdx]) =>
                                     selectedCase.assessment_items?.possible_mcq_questions?.find(
@@ -758,19 +746,20 @@ function PembelajaranPage() {
                                 ).length /
                                   (selectedCase.assessment_items?.possible_mcq_questions?.length || 1)) *
                                 100
-                              ).toFixed(0)}
-                              %
+                              ).toFixed(0)}%
                             </p>
-                            <Button
-                              onClick={() => {
-                                setSelectedAnswers({});
-                                setQuizSubmitted(false);
-                              }}
-                              variant="outline"
-                              className="w-full mt-2"
-                            >
-                              Try Again
-                            </Button>
+                          </div>
+                        )}
+                        {selectedCase.assessment_items?.critical_actions && selectedCase.assessment_items.critical_actions.length > 0 && (
+                          <div className="border border-slate-200 rounded-lg p-3 bg-slate-50 mt-4">
+                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-600 mb-2">
+                              Aksi kritis (untuk refleksi)
+                            </div>
+                            <ul className="text-sm list-disc list-inside space-y-1">
+                              {selectedCase.assessment_items.critical_actions.map((action, idx) => (
+                                <li key={idx}>{action}</li>
+                              ))}
+                            </ul>
                           </div>
                         )}
                       </div>
