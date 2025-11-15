@@ -21,6 +21,11 @@ import { ProblemRepresentationComponent } from '@/components/clinical-reasoning/
 import { DDxBuilder } from '@/components/clinical-reasoning/DDxBuilder';
 import { DecisionJustification } from '@/components/clinical-reasoning/DecisionJustification';
 import { ReasoningScore } from '@/components/clinical-reasoning/ReasoningScore';
+import { PatientTimeline } from '@/components/emr/PatientTimeline';
+import { SOAPNote } from '@/components/emr/SOAPNote';
+import { VitalSignsChart } from '@/components/emr/VitalSignsChart';
+import { LabResults } from '@/components/emr/LabResults';
+import { TreatmentProgress } from '@/components/emr/TreatmentProgress';
 import type { ProblemRepresentation, DifferentialDiagnosis, EvidenceReference, ReasoningScoreBreakdown } from '@/types/clinical-reasoning';
 
 type ReflectionState = { what: string; so_what: string; now_what: string };
@@ -694,11 +699,12 @@ function PembelajaranPage() {
                 <CardContent className="flex-1 flex flex-col overflow-hidden p-3 pt-0">
                   {selectedCase ? (
                     <Tabs defaultValue="identitas" className="flex-1 flex flex-col">
-                      <TabsList className="grid w-full grid-cols-3 md:grid-cols-7 gap-0.5 h-8">
+                      <TabsList className="grid w-full grid-cols-4 md:grid-cols-8 gap-0.5 h-8">
                         <TabsTrigger value="identitas" className="text-[10px] md:text-xs py-1">Identitas</TabsTrigger>
                         <TabsTrigger value="anamnesis" className="text-[10px] md:text-xs py-1">Anamnesis</TabsTrigger>
                         <TabsTrigger value="pemeriksaan" className="text-[10px] md:text-xs py-1">Pemeriksaan Fisik</TabsTrigger>
                         <TabsTrigger value="lab" className="text-[10px] md:text-xs py-1">Lab & Penunjang</TabsTrigger>
+                        <TabsTrigger value="emr" className="text-[10px] md:text-xs py-1">Workspace EMR</TabsTrigger>
                         <TabsTrigger value="diagnosis" className="text-[10px] md:text-xs py-1">Diagnosis & Plan</TabsTrigger>
                         <TabsTrigger value="clinical-reasoning" className="text-[10px] md:text-xs py-1">Clinical Reasoning</TabsTrigger>
                         <TabsTrigger value="refleksi" className="text-[10px] md:text-xs py-1">Refleksi</TabsTrigger>
@@ -831,39 +837,16 @@ function PembelajaranPage() {
                         </TabsContent>
 
                         <TabsContent value="lab" className="space-y-2 pr-3">
-                          <div className="section-title font-semibold text-xs">Pemeriksaan Laboratorium</div>
-                          {selectedCase.laboratory && Object.keys(selectedCase.laboratory).length > 0 ? (
-                            <ul className="space-y-0.5 list-none text-xs">
-                              {Object.entries(selectedCase.laboratory)
-                                .filter(([key]) => key !== 'catatan')
-                                .map(([key, value]) => (
-                                  <li key={key}>
-                                    <strong>{key}</strong>: {typeof value === 'object' ? JSON.stringify(value) : String(value)}
-                                  </li>
-                                ))}
-                            </ul>
-                          ) : (
-                            <p className="text-xs">Tidak ada data lab.</p>
-                          )}
-                          {selectedCase.laboratory?.catatan && (
-                            <div>
-                              <Label className="font-semibold text-xs">Catatan:</Label>
-                              <p className="text-xs mt-0.5">{String(selectedCase.laboratory.catatan)}</p>
-                            </div>
-                          )}
-                          <hr className="my-1.5" />
-                          <div className="section-title font-semibold text-xs">Pemeriksaan Penunjang / Imaging</div>
-                          {selectedCase.imaging && Object.keys(selectedCase.imaging).length > 0 ? (
-                            <ul className="space-y-0.5 list-none text-xs">
-                              {Object.entries(selectedCase.imaging).map(([key, value]) => (
-                                <li key={key}>
-                                  <strong>{key}</strong>: {value}
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <p className="text-xs">Tidak ada data penunjang.</p>
-                          )}
+                          <LabResults labData={selectedCase.laboratory} imaging={selectedCase.imaging} />
+                        </TabsContent>
+
+                        <TabsContent value="emr" className="space-y-3 pr-3">
+                          <PatientTimeline caseData={selectedCase} />
+                          <div className="grid gap-3 md:grid-cols-2">
+                            <VitalSignsChart vitalSigns={selectedCase.physical_exam?.vital_signs} />
+                            <TreatmentProgress caseId={selectedCase.case_id} plan={selectedCase.management_plan} />
+                          </div>
+                          <SOAPNote caseData={selectedCase} />
                         </TabsContent>
 
                         <TabsContent value="diagnosis" className="space-y-2 pr-3">

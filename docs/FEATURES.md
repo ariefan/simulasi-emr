@@ -38,11 +38,12 @@ Sistem Simulator RME Koas adalah platform pembelajaran klinik berbasis web yang 
 | ├─ Medical History | Riwayat medis pasien | ✅ Done | CaseData type | 🔴 Critical |
 | └─ Lab Results | Hasil laboratorium | ✅ Done | CaseData type | 🔴 Critical |
 | **Timeline Pasien** | | | | |
-| ├─ Chronological Events | Timeline kejadian pasien | ❌ Todo | New Component | 🟡 High |
-| ├─ Vital Signs Over Time | Grafik vital signs | ❌ Todo | Charts | 🟢 Medium |
-| └─ Treatment Progress | Progress pengobatan | ❌ Todo | New Component | 🟢 Medium |
+| ├─ Chronological Events | Timeline kejadian pasien | ✅ Done | `PatientTimeline.tsx` | 🟡 High |
+| ├─ Vital Signs Over Time | Grafik vital signs | ✅ Done | `VitalSignsChart.tsx` | 🟢 Medium |
+| └─ Treatment Progress | Progress pengobatan | ✅ Done | `TreatmentProgress.tsx` | 🟢 Medium |
 | **UI EMR Edukatif** | | | | |
-| ├─ SOAP Note Interface | Interface untuk menulis SOAP | ❌ Todo | New Component | 🟡 High |
+| ├─ SOAP Note Interface | Interface untuk menulis SOAP | ✅ Done | `SOAPNote.tsx` | 🟡 High |
+| ├─ Lab Results Display | Tabel lab dengan flag abnormal | ✅ Done | `LabResults.tsx` | 🟡 High |
 | ├─ Order Entry System | Sistem pemesanan obat/lab | ❌ Todo | New Component | 🟢 Medium |
 | └─ Progress Notes | Catatan perkembangan | ❌ Todo | New Component | 🟢 Medium |
 
@@ -206,11 +207,11 @@ Sistem Simulator RME Koas adalah platform pembelajaran klinik berbasis web yang 
 - [x] Clinical reasoning scoring
 
 ### 📋 Sprint 4 - EMR Module (Week 5-6)
-- [ ] Patient timeline component
-- [ ] SOAP note interface
-- [ ] Vital signs visualization
-- [ ] Lab results display
-- [ ] Treatment progress tracker
+- [x] Patient timeline component (`src/components/emr/PatientTimeline.tsx`)
+- [x] SOAP note interface dengan auto-save lokal (`src/components/emr/SOAPNote.tsx`)
+- [x] Vital signs visualization (Recharts line chart) (`src/components/emr/VitalSignsChart.tsx`)
+- [x] Lab results display dengan referensi & flag abnormal (`src/components/emr/LabResults.tsx`)
+- [x] Treatment progress tracker dengan checklist intervensi (`src/components/emr/TreatmentProgress.tsx`)
 
 ### 📋 Sprint 5 - Adaptive Learning (Week 7-8)
 - [ ] Performance profiling
@@ -404,8 +405,34 @@ All Sprint 3 features have been audited and verified as working:
 
 **Build Status**: ✅ TypeScript compilation passes with no errors after fixing hooks order (moved debouncedReasoningSave to line 167)
 
+### Sprint 4 Verification (2025-01-16)
+Semua fitur Sprint 4 untuk modul EMR sudah dibangun dan diverifikasi.
+
+#### Patient Timeline ✅
+- **Component**: `PatientTimeline.tsx` – Event klinis berurutan dengan filter kategori & badge severitas.
+- **Integrasi**: Tab “Workspace EMR” (`pembelajaran.tsx`) memanggil komponen ini untuk setiap kasus aktif.
+
+#### Vital Signs Visualization ✅
+- **Component**: `VitalSignsChart.tsx` – Line chart multi-metrik Recharts dengan guard SSR dan fallback pesan.
+- **Data**: Menghasilkan tren deterministik dari tanda vital pada `CaseData`.
+
+#### Lab Results Display ✅
+- **Component**: `LabResults.tsx` – Tabel lab dengan referensi rentang, badge status, catatan, dan daftar imaging.
+- **Integrasi**: Menggantikan konten tab “Lab & Penunjang” pada `pembelajaran.tsx`.
+
+#### Treatment Progress Tracker ✅
+- **Component**: `TreatmentProgress.tsx` – Checklist rencana tata laksana dengan progress bar & penyimpanan lokal per kasus.
+
+#### SOAP Note Interface ✅
+- **Component**: `SOAPNote.tsx` – Template Subjective/Objective/Assessment/Plan dengan auto-populate data kasus dan auto-save (debounce 1,5 dtk).
+- **Integrasi**: Ditampilkan di “Workspace EMR” bersama timeline, chart, dan tracker.
+
+#### Workspace EMR ✅
+- **UI**: `pembelajaran.tsx` – Tab baru “Workspace EMR” + grid layout untuk Vital Signs Chart & Treatment Tracker.
+- **Data Flow**: Memanfaatkan `CaseData` secara langsung sehingga sinkron dengan database, hook, dan state percobaan.
+
 ---
 
-**Last Updated:** 2025-01-15
+**Last Updated:** 2025-01-16
 **Version:** 1.0.0
 **Maintained by:** Development Team
