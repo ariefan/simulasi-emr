@@ -1,9 +1,13 @@
 import { Link, Navigate, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { FileText, Home, LogOut, Menu, Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
-import type { CaseData, StudentProgress } from '@/types/case';
+import type { CaseData } from '@/types/case';
 import { useAuth } from '@/contexts/AuthContext';
+import { useCases, useDepartments } from '@/hooks/use-cases';
+import { useStudentProgress, useSubmitQuiz, useSaveReflection, useStartCaseAttempt } from '@/hooks/use-progress';
+import { useDebouncedCallback } from '@/hooks/use-debounce';
+import { useClinicalReasoning, useSaveClinicalReasoning, useCalculateReasoningScore } from '@/hooks/use-clinical-reasoning';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,6 +17,13 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { ProblemRepresentationComponent } from '@/components/clinical-reasoning/ProblemRepresentation';
+import { DDxBuilder } from '@/components/clinical-reasoning/DDxBuilder';
+import { DecisionJustification } from '@/components/clinical-reasoning/DecisionJustification';
+import { ReasoningScore } from '@/components/clinical-reasoning/ReasoningScore';
+import type { ProblemRepresentation, DifferentialDiagnosis, EvidenceReference, ReasoningScoreBreakdown } from '@/types/clinical-reasoning';
+
+type ReflectionState = { what: string; so_what: string; now_what: string };
 
 export const Route = createFileRoute('/pembelajaran')({
   component: PembelajaranPage,
@@ -22,56 +33,291 @@ function PembelajaranPage() {
   const { user, logout, isLoading } = useAuth();
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [cases, setCases] = useState<Array<CaseData>>([]);
   const [selectedCase, setSelectedCase] = useState<CaseData | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState<string>('all');
-  const [studentProgress, setStudentProgress] = useState<StudentProgress>({});
+  const [selectedSkdiLevel, setSelectedSkdiLevel] = useState<string>('all');
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
-  const [reflection, setReflection] = useState({ what: '', so_what: '', now_what: '' });
+  const [reflection, setReflection] = useState<ReflectionState>({
+    what: '',
+    so_what: '',
+    now_what: '',
+  });
+  const [currentAttemptId, setCurrentAttemptId] = useState<number | null>(null);
+  const [attemptStartTime, setAttemptStartTime] = useState<number | null>(null);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'typing' | 'draft' | 'saving' | 'saved' | 'error'>('idle');
+  const [clinicalReasoning, setClinicalReasoning] = useState<{
+    problemRepresentation: ProblemRepresentation;
+    differentialDiagnoses: DifferentialDiagnosis[];
+    decisionJustification: string;
+    evidenceReferences: EvidenceReference[];
+  }>({
+    problemRepresentation: {
+      summary: '',
+      demographics: '',
+      chiefComplaint: '',
+      timeline: '',
+      context: '',
+      acuity: '',
+      severity: '',
+      pattern: '',
+    },
+    differentialDiagnoses: [],
+    decisionJustification: '',
+    evidenceReferences: [],
+  });
+  const [reasoningScore, setReasoningScore] = useState<ReasoningScoreBreakdown | null>(null);
 
-  useEffect(() => {
-    // Load cases from JSON
-    fetch('/cases_internal_bedah_obg.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setCases(data);
-        if (data.length > 0) {
-          setSelectedCase(data[0]);
-        }
-      })
-      .catch((error) => {
-        console.error('Error loading cases:', error);
-        toast.error('Failed to load cases');
+  // Fetch cases from database
+  const { data: cases = [], isLoading: casesLoading } = useCases({
+    department: selectedDepartment,
+    search: searchTerm,
+    skdiLevel: selectedSkdiLevel,
+  });
+
+  // Fetch departments for filter
+  const { data: departments = ['all'] } = useDepartments();
+
+  // Fetch student progress
+  const { data: studentProgress = {} } = useStudentProgress(user?.id || 0);
+  const selectedCaseProgress = selectedCase
+    ? studentProgress[selectedCase.case_id]
+    : undefined;
+
+  // Mutations
+  const startAttemptMutation = useStartCaseAttempt();
+  const submitQuizMutation = useSubmitQuiz();
+  const saveReflectionMutation = useSaveReflection();
+  const saveClinicalReasoningMutation = useSaveClinicalReasoning();
+  const calculateScoreMutation = useCalculateReasoningScore();
+
+  // Fetch clinical reasoning for current attempt
+  const { data: existingReasoning } = useClinicalReasoning(currentAttemptId);
+
+  const skdiLevelOptions = useMemo(() => ['all', '1', '2', '3', '4'], []);
+
+  const getDraftStorageKey = useCallback(
+    (caseId: string) => {
+      if (!user) return null;
+      return `reflection-draft-${user.id}-${caseId}`;
+    },
+    [user?.id]
+  );
+
+  const persistDraftToLocalStorage = useCallback(
+    (caseId: string, draft: ReflectionState) => {
+      if (typeof window === 'undefined') return;
+      const key = getDraftStorageKey(caseId);
+      if (!key) return;
+      window.localStorage.setItem(
+        key,
+        JSON.stringify({ ...draft, updatedAt: new Date().toISOString() })
+      );
+    },
+    [getDraftStorageKey]
+  );
+
+  const loadDraftFromLocalStorage = useCallback(
+    (caseId: string): ReflectionState | null => {
+      if (typeof window === 'undefined') return null;
+      const key = getDraftStorageKey(caseId);
+      if (!key) return null;
+      try {
+        const raw = window.localStorage.getItem(key);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        return {
+          what: parsed.what || '',
+          so_what: parsed.so_what || '',
+          now_what: parsed.now_what || '',
+        };
+      } catch (error) {
+        console.error('Failed to load reflection draft', error);
+        return null;
+      }
+    },
+    [getDraftStorageKey]
+  );
+
+  const saveReflectionToServer = (
+    caseId: string,
+    draft: ReflectionState,
+    options?: { notify?: boolean }
+  ) => {
+    if (!user) return;
+    setSaveStatus('saving');
+    saveReflectionMutation.mutate(
+      {
+        studentId: user.id,
+        caseId,
+        attemptId:
+          selectedCase?.case_id === caseId && currentAttemptId
+            ? currentAttemptId
+            : undefined,
+        what: draft.what,
+        soWhat: draft.so_what,
+        nowWhat: draft.now_what,
+      },
+      {
+        onSuccess: () => {
+          if (options?.notify) {
+            toast.success('Reflection saved!');
+          }
+          persistDraftToLocalStorage(caseId, draft);
+          setSaveStatus('saved');
+        },
+        onError: (error) => {
+          console.error('Error saving reflection:', error);
+          if (options?.notify) {
+            toast.error('Failed to save reflection');
+          }
+          setSaveStatus('error');
+        },
+      }
+    );
+  };
+
+  const debouncedLocalSave = useDebouncedCallback(
+    (caseId: string | undefined, draft: ReflectionState) => {
+      if (!caseId) return;
+      persistDraftToLocalStorage(caseId, draft);
+      setSaveStatus('draft');
+    },
+    2000
+  );
+
+  const debouncedRemoteSave = useDebouncedCallback(
+    (caseId: string | undefined, draft: ReflectionState) => {
+      if (!caseId || !user) return;
+      saveReflectionToServer(caseId, draft, { notify: false });
+    },
+    30000
+  );
+
+  // Debounced save for Clinical Reasoning
+  const debouncedReasoningSave = useDebouncedCallback(
+    (caseId: string | undefined) => {
+      if (!caseId || !user || !currentAttemptId) return;
+      saveClinicalReasoningMutation.mutate({
+        attemptId: currentAttemptId,
+        studentId: user.id,
+        caseId,
+        ...clinicalReasoning,
       });
+    },
+    30000
+  );
 
-    // Load student progress from localStorage
-    const savedProgress = localStorage.getItem('student_progress');
-    if (savedProgress) {
-      setStudentProgress(JSON.parse(savedProgress));
-    }
-  }, []);
-
+  // Set first case as selected when cases load
   useEffect(() => {
-    // Load reflection for selected case
-    if (selectedCase) {
-      const caseProgress = studentProgress[selectedCase.case_id];
-      if (caseProgress?.reflection) {
-        setReflection({
-          what: caseProgress.reflection.what || '',
-          so_what: caseProgress.reflection.so_what || '',
-          now_what: caseProgress.reflection.now_what || '',
-        });
+    if (cases.length === 0) {
+      setSelectedCase(null);
+      return;
+    }
+    const stillVisible = selectedCase
+      ? cases.some((c) => c.case_id === selectedCase.case_id)
+      : false;
+    if (!selectedCase || !stillVisible) {
+      setSelectedCase(cases[0]);
+    }
+  }, [cases, selectedCase]);
+
+  // Load reflection for selected case and start attempt
+  useEffect(() => {
+    if (!selectedCase || !user) return;
+
+    debouncedLocalSave.cancel();
+    debouncedRemoteSave.cancel();
+
+    if (selectedCaseProgress?.reflection) {
+      const serverReflection: ReflectionState = {
+        what: selectedCaseProgress.reflection.what || '',
+        so_what: selectedCaseProgress.reflection.so_what || '',
+        now_what: selectedCaseProgress.reflection.now_what || '',
+      };
+      setReflection(serverReflection);
+      persistDraftToLocalStorage(selectedCase.case_id, serverReflection);
+      setSaveStatus('saved');
+    } else {
+      const draft = loadDraftFromLocalStorage(selectedCase.case_id);
+      if (draft) {
+        setReflection(draft);
+        setSaveStatus('draft');
       } else {
         setReflection({ what: '', so_what: '', now_what: '' });
+        setSaveStatus('idle');
       }
-      setSelectedAnswers({});
-      setQuizSubmitted(false);
     }
-  }, [selectedCase, studentProgress]);
 
-  if (isLoading) {
+    setSelectedAnswers({});
+    setQuizSubmitted(false);
+    setCurrentAttemptId(null);
+    setAttemptStartTime(null);
+
+    // Start a new attempt for this case
+    startAttemptMutation.mutate(
+      { studentId: user.id, caseId: selectedCase.case_id },
+      {
+        onSuccess: (attempt) => {
+          setCurrentAttemptId(attempt.id);
+          const started = attempt.startedAt
+            ? new Date(attempt.startedAt).getTime()
+            : Date.now();
+          setAttemptStartTime(started);
+        },
+      }
+    );
+  }, [
+    selectedCase?.case_id,
+    user?.id,
+    selectedCaseProgress,
+    debouncedLocalSave,
+    debouncedRemoteSave,
+    persistDraftToLocalStorage,
+    loadDraftFromLocalStorage,
+  ]);
+
+  // Load Clinical Reasoning when data becomes available
+  useEffect(() => {
+    if (existingReasoning) {
+      setClinicalReasoning({
+        problemRepresentation: existingReasoning.problemRepresentation || {
+          summary: '',
+          demographics: '',
+          chiefComplaint: '',
+          timeline: '',
+          context: '',
+          acuity: '',
+          severity: '',
+          pattern: '',
+        },
+        differentialDiagnoses: existingReasoning.differentialDiagnoses || [],
+        decisionJustification: existingReasoning.decisionJustification || '',
+        evidenceReferences: existingReasoning.evidenceReferences || [],
+      });
+      setReasoningScore(existingReasoning.scoreBreakdown || null);
+    } else {
+      setClinicalReasoning({
+        problemRepresentation: {
+          summary: '',
+          demographics: '',
+          chiefComplaint: '',
+          timeline: '',
+          context: '',
+          acuity: '',
+          severity: '',
+          pattern: '',
+        },
+        differentialDiagnoses: [],
+        decisionJustification: '',
+        evidenceReferences: [],
+      });
+      setReasoningScore(null);
+    }
+  }, [existingReasoning]);
+
+  if (isLoading || casesLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-lg">Loading...</div>
@@ -126,18 +372,6 @@ function PembelajaranPage() {
     </div>
   );
 
-  const filteredCases = cases.filter((c) => {
-    const matchesSearch =
-      c.case_id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.skdi_diagnosis.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.chief_complaint.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment =
-      selectedDepartment === 'all' || c.department === selectedDepartment;
-    return matchesSearch && matchesDepartment;
-  });
-
-  const departments = ['all', ...Array.from(new Set(cases.map((c) => c.department)))];
-
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
       case 'easy':
@@ -151,6 +385,38 @@ function PembelajaranPage() {
     }
   };
 
+  const getSkdiBadgeClass = (level?: string) => {
+    switch (level) {
+      case '1':
+        return 'bg-emerald-100 text-emerald-800';
+      case '2':
+        return 'bg-amber-100 text-amber-800';
+      case '3':
+        return 'bg-orange-100 text-orange-800';
+      case '4':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-slate-100 text-slate-700';
+    }
+  };
+
+  const saveStatusLabel = () => {
+    switch (saveStatus) {
+      case 'typing':
+        return 'Sedang mengetik...';
+      case 'draft':
+        return 'Draft tersimpan lokal';
+      case 'saving':
+        return 'Menyimpan...';
+      case 'saved':
+        return 'Tersimpan';
+      case 'error':
+        return 'Gagal menyimpan';
+      default:
+        return 'Belum ada perubahan';
+    }
+  };
+
   const handleAnswerSelect = (questionId: string, answerIndex: number) => {
     if (!quizSubmitted) {
       setSelectedAnswers({ ...selectedAnswers, [questionId]: answerIndex });
@@ -158,7 +424,7 @@ function PembelajaranPage() {
   };
 
   const handleQuizSubmit = () => {
-    if (!selectedCase?.assessment_items?.possible_mcq_questions) return;
+    if (!selectedCase?.assessment_items?.possible_mcq_questions || !user || !currentAttemptId) return;
 
     const questions = selectedCase.assessment_items.possible_mcq_questions;
     let correct = 0;
@@ -170,44 +436,111 @@ function PembelajaranPage() {
     });
 
     const score = (correct / questions.length) * 100;
-    setQuizSubmitted(true);
+    const timeSpentSeconds = attemptStartTime
+      ? Math.max(1, Math.round((Date.now() - attemptStartTime) / 1000))
+      : undefined;
 
-    // Update progress
-    const updatedProgress = {
-      ...studentProgress,
-      [selectedCase.case_id]: {
-        attempts: (studentProgress[selectedCase.case_id]?.attempts || 0) + 1,
-        lastScore: score,
-        reflection: studentProgress[selectedCase.case_id]?.reflection,
+    // Submit quiz to server
+    submitQuizMutation.mutate(
+      {
+        attemptId: currentAttemptId,
+        studentId: user.id,
+        caseId: selectedCase.case_id,
+        answers: selectedAnswers,
+        score,
+        maxScore: questions.length,
+        timeSpentSeconds,
       },
-    };
-    setStudentProgress(updatedProgress);
-    localStorage.setItem('student_progress', JSON.stringify(updatedProgress));
+      {
+        onSuccess: () => {
+          setQuizSubmitted(true);
+          setAttemptStartTime(null);
+          toast.success(`Quiz submitted! Score: ${score.toFixed(0)}%`);
+        },
+        onError: (error) => {
+          console.error('Error submitting quiz:', error);
+          toast.error('Failed to submit quiz');
+        },
+      }
+    );
+  };
 
-    toast.success(`Quiz submitted! Score: ${score.toFixed(0)}%`);
+  const handleReflectionChange = (field: keyof ReflectionState, value: string) => {
+    setReflection((prev) => {
+      const updated = { ...prev, [field]: value };
+      if (selectedCase) {
+        setSaveStatus('typing');
+        debouncedLocalSave(selectedCase.case_id, updated);
+        debouncedRemoteSave(selectedCase.case_id, updated);
+      }
+      return updated;
+    });
   };
 
   const handleReflectionSave = () => {
-    if (!selectedCase) return;
+    if (!selectedCase || !user) return;
+    debouncedRemoteSave.cancel();
+    saveReflectionToServer(selectedCase.case_id, reflection, { notify: true });
+  };
 
-    const updatedProgress = {
-      ...studentProgress,
-      [selectedCase.case_id]: {
-        ...studentProgress[selectedCase.case_id],
-        attempts: studentProgress[selectedCase.case_id]?.attempts || 0,
-        lastScore: studentProgress[selectedCase.case_id]?.lastScore || 0,
-        reflection: {
-          what: reflection.what,
-          so_what: reflection.so_what,
-          now_what: reflection.now_what,
+  const handleProblemRepChange = (data: ProblemRepresentation) => {
+    setClinicalReasoning((prev) => {
+      const updated = { ...prev, problemRepresentation: data };
+      if (selectedCase) {
+        debouncedReasoningSave(selectedCase.case_id);
+      }
+      return updated;
+    });
+  };
+
+  const handleDDxChange = (data: DifferentialDiagnosis[]) => {
+    setClinicalReasoning((prev) => {
+      const updated = { ...prev, differentialDiagnoses: data };
+      if (selectedCase) {
+        debouncedReasoningSave(selectedCase.case_id);
+      }
+      return updated;
+    });
+  };
+
+  const handleJustificationChange = (value: string) => {
+    setClinicalReasoning((prev) => {
+      const updated = { ...prev, decisionJustification: value };
+      if (selectedCase) {
+        debouncedReasoningSave(selectedCase.case_id);
+      }
+      return updated;
+    });
+  };
+
+  const handleReferencesChange = (data: EvidenceReference[]) => {
+    setClinicalReasoning((prev) => {
+      const updated = { ...prev, evidenceReferences: data };
+      if (selectedCase) {
+        debouncedReasoningSave(selectedCase.case_id);
+      }
+      return updated;
+    });
+  };
+
+  const handleCalculateScore = () => {
+    if (!currentAttemptId) {
+      toast.error('No active attempt');
+      return;
+    }
+    calculateScoreMutation.mutate(
+      { attemptId: currentAttemptId },
+      {
+        onSuccess: (score) => {
+          setReasoningScore(score);
+          toast.success('Skor berhasil dihitung!');
         },
-        reflection_last_saved: new Date().toISOString(),
-      },
-    };
-
-    setStudentProgress(updatedProgress);
-    localStorage.setItem('student_progress', JSON.stringify(updatedProgress));
-    toast.success('Reflection saved!');
+        onError: (error) => {
+          console.error('Error calculating score:', error);
+          toast.error('Gagal menghitung skor');
+        },
+      }
+    );
   };
 
   return (
@@ -281,11 +614,22 @@ function PembelajaranPage() {
                       </option>
                     ))}
                   </select>
+                  <select
+                    value={selectedSkdiLevel}
+                    onChange={(e) => setSelectedSkdiLevel(e.target.value)}
+                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded-md text-xs"
+                  >
+                    {skdiLevelOptions.map((level) => (
+                      <option key={level} value={level}>
+                        {level === 'all' ? 'Semua Level SKDI' : `Level ${level}`}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <ScrollArea className="flex-1">
                   <div className="space-y-1.5 pr-3">
-                    {filteredCases.map((c) => (
+                    {cases.map((c) => (
                       <button
                         key={c.case_id}
                         onClick={() => setSelectedCase(c)}
@@ -309,6 +653,15 @@ function PembelajaranPage() {
                                   className={`text-xs px-1.5 py-0 h-4 ${getDifficultyColor(c.difficulty)} text-white`}
                                 >
                                   {c.difficulty}
+                                </Badge>
+                              )}
+                              {c.skdi_level && (
+                                <Badge
+                                  className={`text-xs px-1.5 py-0 h-4 ${getSkdiBadgeClass(
+                                    c.skdi_level
+                                  )}`}
+                                >
+                                  SKDI {c.skdi_level}
                                 </Badge>
                               )}
                             </div>
@@ -341,12 +694,13 @@ function PembelajaranPage() {
                 <CardContent className="flex-1 flex flex-col overflow-hidden p-3 pt-0">
                   {selectedCase ? (
                     <Tabs defaultValue="identitas" className="flex-1 flex flex-col">
-                      <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 gap-0.5 h-8">
+                      <TabsList className="grid w-full grid-cols-3 md:grid-cols-7 gap-0.5 h-8">
                         <TabsTrigger value="identitas" className="text-[10px] md:text-xs py-1">Identitas</TabsTrigger>
                         <TabsTrigger value="anamnesis" className="text-[10px] md:text-xs py-1">Anamnesis</TabsTrigger>
                         <TabsTrigger value="pemeriksaan" className="text-[10px] md:text-xs py-1">Pemeriksaan Fisik</TabsTrigger>
                         <TabsTrigger value="lab" className="text-[10px] md:text-xs py-1">Lab & Penunjang</TabsTrigger>
                         <TabsTrigger value="diagnosis" className="text-[10px] md:text-xs py-1">Diagnosis & Plan</TabsTrigger>
+                        <TabsTrigger value="clinical-reasoning" className="text-[10px] md:text-xs py-1">Clinical Reasoning</TabsTrigger>
                         <TabsTrigger value="refleksi" className="text-[10px] md:text-xs py-1">Refleksi</TabsTrigger>
                       </TabsList>
 
@@ -597,10 +951,68 @@ function PembelajaranPage() {
                           )}
                         </TabsContent>
 
+                        <TabsContent value="clinical-reasoning" className="space-y-4 pr-3">
+                          <div className="section-title font-semibold text-xs">Clinical Reasoning Workspace</div>
+                          <div className="text-xs text-slate-600">
+                            Gunakan workspace ini untuk melatih kemampuan <strong>Clinical Reasoning</strong> Anda.
+                            Lengkapi setiap bagian untuk mendapatkan penilaian otomatis.
+                          </div>
+
+                          {/* Problem Representation */}
+                          <div className="border-t pt-3">
+                            <h4 className="font-semibold text-sm mb-3">1. Problem Representation</h4>
+                            <ProblemRepresentationComponent
+                              data={clinicalReasoning.problemRepresentation}
+                              onChange={handleProblemRepChange}
+                            />
+                          </div>
+
+                          {/* Differential Diagnoses */}
+                          <div className="border-t pt-3">
+                            <h4 className="font-semibold text-sm mb-3">2. Differential Diagnosis (DDx)</h4>
+                            <DDxBuilder
+                              differentials={clinicalReasoning.differentialDiagnoses}
+                              onChange={handleDDxChange}
+                            />
+                          </div>
+
+                          {/* Decision Justification */}
+                          <div className="border-t pt-3">
+                            <h4 className="font-semibold text-sm mb-3">3. Justifikasi Keputusan</h4>
+                            <DecisionJustification
+                              justification={clinicalReasoning.decisionJustification}
+                              references={clinicalReasoning.evidenceReferences}
+                              onJustificationChange={handleJustificationChange}
+                              onReferencesChange={handleReferencesChange}
+                            />
+                          </div>
+
+                          {/* Reasoning Score */}
+                          <div className="border-t pt-3">
+                            <h4 className="font-semibold text-sm mb-3">4. Penilaian Clinical Reasoning</h4>
+                            <ReasoningScore
+                              score={reasoningScore}
+                              onCalculate={handleCalculateScore}
+                              isCalculating={calculateScoreMutation.isPending}
+                            />
+                          </div>
+                        </TabsContent>
+
                         <TabsContent value="refleksi" className="space-y-2 pr-3">
                           <div className="section-title font-semibold text-xs">Refleksi Mahasiswa</div>
                           <div className="text-xs text-slate-600">
                             Gunakan kerangka <strong>What – So What – Now What</strong> untuk merefleksikan kasus ini.
+                          </div>
+                          <div className="flex items-center justify-between text-[10px] text-slate-500">
+                            <span>Status penyimpanan: {saveStatusLabel()}</span>
+                            {studentProgress[selectedCase.case_id]?.reflection_last_saved && (
+                              <span>
+                                Terakhir simpan:{' '}
+                                {new Date(
+                                  studentProgress[selectedCase.case_id].reflection_last_saved!
+                                ).toLocaleTimeString('id-ID')}
+                              </span>
+                            )}
                           </div>
                           <div>
                             <Label htmlFor="what" className="font-medium text-xs">1. What? (Apa yang terjadi pada kasus ini?)</Label>
@@ -609,7 +1021,7 @@ function PembelajaranPage() {
                               placeholder="Ringkas temuan penting, keputusan yang Anda buat, dan hal yang menurut Anda menantang."
                               value={reflection.what}
                               onChange={(e) =>
-                                setReflection({ ...reflection, what: e.target.value })
+                                handleReflectionChange('what', e.target.value)
                               }
                               className="mt-1 text-xs"
                               rows={3}
@@ -622,7 +1034,7 @@ function PembelajaranPage() {
                               placeholder="Apa yang Anda pelajari? Bagaimana kasus ini mengubah cara Anda memandang diagnosis atau tata laksana?"
                               value={reflection.so_what}
                               onChange={(e) =>
-                                setReflection({ ...reflection, so_what: e.target.value })
+                                handleReflectionChange('so_what', e.target.value)
                               }
                               className="mt-1 text-xs"
                               rows={3}
@@ -635,19 +1047,12 @@ function PembelajaranPage() {
                               placeholder="Apa yang akan Anda lakukan berbeda di kasus berikutnya? Apa yang masih perlu Anda pelajari?"
                               value={reflection.now_what}
                               onChange={(e) =>
-                                setReflection({ ...reflection, now_what: e.target.value })
+                                handleReflectionChange('now_what', e.target.value)
                               }
                               className="mt-1 text-xs"
                               rows={3}
                             />
                           </div>
-                          {studentProgress[selectedCase.case_id]?.reflection_last_saved && (
-                            <p className="text-[10px] text-slate-500">
-                              Refleksi terakhir disimpan: {new Date(
-                                studentProgress[selectedCase.case_id].reflection_last_saved!
-                              ).toLocaleString('id-ID')}
-                            </p>
-                          )}
                           <Button onClick={handleReflectionSave} className="w-full h-8 text-xs">
                             Simpan Refleksi
                           </Button>
