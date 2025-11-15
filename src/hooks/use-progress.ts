@@ -1,10 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
+  getDashboardStats,
+  getStudentProgress,
+  saveReflection,
   startCaseAttempt,
   submitQuiz,
-  saveReflection,
-  getStudentProgress,
-  getDashboardStats,
 } from '@/lib/progress-actions';
 
 // Hook to fetch student progress for all cases

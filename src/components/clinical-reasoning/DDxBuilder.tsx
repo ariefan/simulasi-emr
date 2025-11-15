@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronUp, Plus, Trash2 } from 'lucide-react';
+import type { DifferentialDiagnosis } from '@/types/clinical-reasoning';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import type { DifferentialDiagnosis } from '@/types/clinical-reasoning';
 
 interface DDxBuilderProps {
-  differentials: DifferentialDiagnosis[];
-  onChange: (differentials: DifferentialDiagnosis[]) => void;
+  differentials: Array<DifferentialDiagnosis>;
+  onChange: (differentials: Array<DifferentialDiagnosis>) => void;
   disabled?: boolean;
 }
 

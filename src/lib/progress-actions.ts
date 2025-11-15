@@ -1,11 +1,12 @@
 import { createServerFn } from '@tanstack/react-start';
+import { and, desc, eq } from 'drizzle-orm';
+
 import { db } from '@/db';
 import {
-  studentCaseAttempts,
   quizSubmissions,
+  studentCaseAttempts,
   studentReflections,
 } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
 
 // Start a new case attempt
 export const startCaseAttempt = createServerFn({ method: 'POST' }).handler(
@@ -213,7 +214,7 @@ export const getStudentProgress = createServerFn({ method: 'GET' }).handler(
             now_what: reflection.nowWhat,
           };
           progressByCase[reflection.caseId].reflection_last_saved =
-            reflection.updatedAt?.toISOString();
+            reflection.updatedAt.toISOString();
         }
       });
 
@@ -274,7 +275,7 @@ export const getDashboardStats = createServerFn({ method: 'GET' }).handler(
       const totalTimeSeconds = attempts.reduce((sum, attempt) => {
         const derived =
           attempt.timeSpentSeconds ??
-          (attempt.completedAt && attempt.startedAt
+          (attempt.completedAt
             ? Math.max(
                 0,
                 Math.round(
@@ -294,21 +295,17 @@ export const getDashboardStats = createServerFn({ method: 'GET' }).handler(
         if (!isToday) return sum;
         const derived =
           attempt.timeSpentSeconds ??
-          (attempt.startedAt
-            ? Math.max(
-                0,
-                Math.round(
-                  (attempt.completedAt.getTime() - attempt.startedAt.getTime()) / 1000
-                )
-              )
-            : 0);
+          Math.max(
+            0,
+            Math.round(
+              (attempt.completedAt.getTime() - attempt.startedAt.getTime()) / 1000
+            )
+          );
         return sum + derived;
       }, 0);
 
       const attemptsWithTime = attempts.filter(
-        (attempt) =>
-          attempt.timeSpentSeconds ||
-          (attempt.startedAt && attempt.completedAt)
+        (attempt) => attempt.timeSpentSeconds || attempt.completedAt
       );
       const averageTimeSeconds =
         attemptsWithTime.length > 0

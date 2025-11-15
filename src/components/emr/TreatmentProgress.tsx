@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { CaseData } from '@/types/case';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
-import type { CaseData } from '@/types/case';
 
 interface TreatmentProgressProps {
   caseId: string;
@@ -16,10 +16,10 @@ interface TreatmentStep {
   category: string;
 }
 
-const buildSteps = (caseId: string, plan?: CaseData['management_plan']): TreatmentStep[] => {
+const buildSteps = (caseId: string, plan?: CaseData['management_plan']): Array<TreatmentStep> => {
   if (!plan) return [];
 
-  const steps: TreatmentStep[] = [];
+  const steps: Array<TreatmentStep> = [];
   const addStep = (prefix: string, label: string) => {
     steps.push({
       id: `${caseId}-${prefix}-${steps.length}`,

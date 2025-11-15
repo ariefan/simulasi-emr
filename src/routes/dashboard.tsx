@@ -51,7 +51,7 @@ function DashboardPage() {
 
   const menuItems = [
     { icon: Home, label: 'Dasbor', href: '/dashboard' },
-    { icon: FileText, label: 'Pembelajaran', href: '/pembelajaran' },
+    { icon: FileText, label: 'Daftar Kasus', href: '/kasus' },
   ];
 
   const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => (
@@ -200,8 +200,8 @@ function DashboardPage() {
                 <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                   <p className="text-sm text-blue-800">
                     Anda belum memulai kasus apapun. Kunjungi halaman{' '}
-                    <Link to="/pembelajaran" className="font-semibold underline">
-                      Pembelajaran
+                    <Link to="/kasus" className="font-semibold underline">
+                      Daftar Kasus
                     </Link>{' '}
                     untuk memulai pelatihan klinis Anda.
                   </p>

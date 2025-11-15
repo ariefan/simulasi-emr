@@ -20,8 +20,8 @@ export interface DifferentialDiagnosis {
   id: string;
   diagnosis: string;
   likelihood: 'very-high' | 'high' | 'medium' | 'low' | 'very-low';
-  supportingEvidence: string[];
-  againstEvidence: string[];
+  supportingEvidence: Array<string>;
+  againstEvidence: Array<string>;
   rank: number; // 1 = most likely
 }
 
@@ -44,9 +44,9 @@ export interface ClinicalReasoningData {
   studentId: number;
   caseId: string;
   problemRepresentation?: ProblemRepresentation | null;
-  differentialDiagnoses?: DifferentialDiagnosis[] | null;
+  differentialDiagnoses?: Array<DifferentialDiagnosis> | null;
   decisionJustification?: string | null;
-  evidenceReferences?: EvidenceReference[] | null;
+  evidenceReferences?: Array<EvidenceReference> | null;
   reasoningScore?: string | null; // Decimal as string from DB
   scoreBreakdown?: ReasoningScoreBreakdown | null;
   createdAt?: Date;
@@ -56,9 +56,9 @@ export interface ClinicalReasoningData {
 // Form state types
 export interface ClinicalReasoningFormState {
   problemRepresentation: ProblemRepresentation;
-  differentialDiagnoses: DifferentialDiagnosis[];
+  differentialDiagnoses: Array<DifferentialDiagnosis>;
   decisionJustification: string;
-  evidenceReferences: EvidenceReference[];
+  evidenceReferences: Array<EvidenceReference>;
 }
 
 // Initial empty states

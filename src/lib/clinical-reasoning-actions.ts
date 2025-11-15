@@ -1,14 +1,15 @@
 import { createServerFn } from '@tanstack/react-start';
-import { db } from '@/db';
-import { clinicalReasoning } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+
 import type {
   ClinicalReasoningData,
-  ProblemRepresentation,
   DifferentialDiagnosis,
   EvidenceReference,
+  ProblemRepresentation,
   ReasoningScoreBreakdown,
 } from '@/types/clinical-reasoning';
+import { db } from '@/db';
+import { clinicalReasoning } from '@/db/schema';
 
 // Save or update clinical reasoning
 export const saveClinicalReasoning = createServerFn({ method: 'POST' }).handler(
@@ -26,9 +27,9 @@ export const saveClinicalReasoning = createServerFn({ method: 'POST' }).handler(
       studentId: number;
       caseId: string;
       problemRepresentation?: ProblemRepresentation;
-      differentialDiagnoses?: DifferentialDiagnosis[];
+      differentialDiagnoses?: Array<DifferentialDiagnosis>;
       decisionJustification?: string;
-      evidenceReferences?: EvidenceReference[];
+      evidenceReferences?: Array<EvidenceReference>;
     };
 
     try {
@@ -98,8 +99,8 @@ export const getClinicalReasoning = createServerFn({ method: 'GET' }).handler(
       return {
         ...reasoning,
         problemRepresentation: reasoning.problemRepresentation as ProblemRepresentation | null,
-        differentialDiagnoses: reasoning.differentialDiagnoses as DifferentialDiagnosis[] | null,
-        evidenceReferences: reasoning.evidenceReferences as EvidenceReference[] | null,
+        differentialDiagnoses: reasoning.differentialDiagnoses as Array<DifferentialDiagnosis> | null,
+        evidenceReferences: reasoning.evidenceReferences as Array<EvidenceReference> | null,
         scoreBreakdown: reasoning.scoreBreakdown as ReasoningScoreBreakdown | null,
       } as ClinicalReasoningData;
     } catch (error) {
@@ -146,13 +147,13 @@ export const calculateReasoningScore = createServerFn({ method: 'POST' }).handle
 
       // Score Differential Diagnoses (0-100)
       if (reasoning.differentialDiagnoses) {
-        const ddxList = reasoning.differentialDiagnoses as DifferentialDiagnosis[];
+        const ddxList = reasoning.differentialDiagnoses as Array<DifferentialDiagnosis>;
         if (ddxList.length > 0) ddxScore += 20;
         if (ddxList.length >= 3) ddxScore += 20; // At least 3 differentials
 
         // Check for evidence
-        const withSupporting = ddxList.filter(d => d.supportingEvidence && d.supportingEvidence.length > 0);
-        const withAgainst = ddxList.filter(d => d.againstEvidence && d.againstEvidence.length > 0);
+        const withSupporting = ddxList.filter((d) => d.supportingEvidence.length > 0);
+        const withAgainst = ddxList.filter((d) => d.againstEvidence.length > 0);
 
         ddxScore += (withSupporting.length / Math.max(ddxList.length, 1)) * 30; // Supporting evidence
         ddxScore += (withAgainst.length / Math.max(ddxList.length, 1)) * 30; // Against evidence
@@ -163,7 +164,7 @@ export const calculateReasoningScore = createServerFn({ method: 'POST' }).handle
         const justification = reasoning.decisionJustification;
         if (justification.length > 50) justificationScore += 30;
         if (justification.length > 150) justificationScore += 30;
-        if (reasoning.evidenceReferences && (reasoning.evidenceReferences as EvidenceReference[]).length > 0) {
+        if (reasoning.evidenceReferences && (reasoning.evidenceReferences as Array<EvidenceReference>).length > 0) {
           justificationScore += 40; // Has references
         }
       }

@@ -206,12 +206,13 @@ Sistem Simulator RME Koas adalah platform pembelajaran klinik berbasis web yang 
 - [x] Reasoning summary auto-generation
 - [x] Clinical reasoning scoring
 
-### 📋 Sprint 4 - EMR Module (Week 5-6)
+### ✅ Sprint 4 - COMPLETED (Week 5-6)
 - [x] Patient timeline component (`src/components/emr/PatientTimeline.tsx`)
 - [x] SOAP note interface dengan auto-save lokal (`src/components/emr/SOAPNote.tsx`)
 - [x] Vital signs visualization (Recharts line chart) (`src/components/emr/VitalSignsChart.tsx`)
 - [x] Lab results display dengan referensi & flag abnormal (`src/components/emr/LabResults.tsx`)
 - [x] Treatment progress tracker dengan checklist intervensi (`src/components/emr/TreatmentProgress.tsx`)
+- [x] UX Improvement: Separate case list page (`src/routes/kasus.tsx`) - Improved navigation and space utilization
 
 ### 📋 Sprint 5 - Adaptive Learning (Week 7-8)
 - [ ] Performance profiling
@@ -428,8 +429,18 @@ Semua fitur Sprint 4 untuk modul EMR sudah dibangun dan diverifikasi.
 - **Integrasi**: Ditampilkan di “Workspace EMR” bersama timeline, chart, dan tracker.
 
 #### Workspace EMR ✅
-- **UI**: `pembelajaran.tsx` – Tab baru “Workspace EMR” + grid layout untuk Vital Signs Chart & Treatment Tracker.
+- **UI**: `pembelajaran.tsx` – Tab baru "Workspace EMR" + grid layout untuk Vital Signs Chart & Treatment Tracker.
 - **Data Flow**: Memanfaatkan `CaseData` secara langsung sehingga sinkron dengan database, hook, dan state percobaan.
+
+#### UX Improvement: Separate Case List Page ✅
+- **New Route**: `kasus.tsx` – Dedicated page for browsing and filtering cases
+- **Grid Layout**: Card-based grid (responsive: 1/2/3 columns) for better case discovery
+- **Filters**: Search, department filter, SKDI level filter in dedicated filter section
+- **Navigation**: Click case card → Navigate to `/pembelajaran?caseId=xxx`
+- **Pembelajaran Page**: Refactored to accept `caseId` URL parameter, removed embedded case list sidebar
+- **Sidebar Menu**: Updated from "Pembelajaran" to "Daftar Kasus" across dashboard and pembelajaran
+- **Space Optimization**: Removed left sidebar on pembelajaran page, full width for case content
+- **Better UX Flow**: Separate browse → study workflow instead of split-screen
 
 ---
 

@@ -1,9 +1,10 @@
 import 'dotenv/config'; // Load environment variables
+
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { CaseData } from '@/types/case';
 import { db } from '@/db';
 import { cases } from '@/db/schema';
-import type { CaseData } from '@/types/case';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
 async function importCases() {
   try {
@@ -12,7 +13,7 @@ async function importCases() {
     // Read the JSON file
     const jsonPath = join(process.cwd(), 'public', 'cases_internal_bedah_obg.json');
     const jsonData = readFileSync(jsonPath, 'utf-8');
-    const casesData: CaseData[] = JSON.parse(jsonData);
+    const casesData: Array<CaseData> = JSON.parse(jsonData);
 
     console.log(`📦 Found ${casesData.length} cases in JSON file`);
 

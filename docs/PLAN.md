@@ -365,10 +365,11 @@ interface SOAPNote {
 #### Sprint 4 Deliverables ✅
 - ✅ **Patient Timeline** – `PatientTimeline.tsx` menyusun alur kronologis (presentasi, vital, lab, tindakan) lengkap dengan filter event & badge severitas.
 - ✅ **Vital Signs Visualization** – `VitalSignsChart.tsx` memakai Recharts untuk memplot HR, RR, suhu, dan SpO₂ dengan tren deterministik plus guard SSR.
-- ✅ **Lab Results Display** – `LabResults.tsx` menggantikan tab “Lab & Penunjang” dengan tabel referensi, flag abnormal, catatan, serta daftar imaging.
+- ✅ **Lab Results Display** – `LabResults.tsx` menggantikan tab "Lab & Penunjang" dengan tabel referensi, flag abnormal, catatan, serta daftar imaging.
 - ✅ **Treatment Progress Tracker** – `TreatmentProgress.tsx` mengubah rencana tatalaksana menjadi checklist interaktif dengan progress bar dan penyimpanan lokal per kasus.
 - ✅ **SOAP Note Interface** – `SOAPNote.tsx` menyediakan template Subjective/Objective/Assessment/Plan yang otomatis terisi data kasus + auto-save draft.
-- ✅ **Workspace EMR Integration** – `pembelajaran.tsx` menambahkan tab “Workspace EMR” yang merangkai timeline, chart, tracker, dan SOAP note dalam satu layar untuk menjaga alur belajar sesuai diagram MVP.
+- ✅ **Workspace EMR Integration** – `pembelajaran.tsx` menambahkan tab "Workspace EMR" yang merangkai timeline, chart, tracker, dan SOAP note dalam satu layar untuk menjaga alur belajar sesuai diagram MVP.
+- ✅ **UX Improvement: Separate Case List** – `kasus.tsx` sebagai halaman terpisah untuk browsing kasus dengan grid layout responsif. Sidebar menu berubah dari "Pembelajaran" menjadi "Daftar Kasus". Pembelajaran page menerima `caseId` via URL parameter dan menampilkan konten case fullwidth tanpa sidebar case list.
 
 ---
 

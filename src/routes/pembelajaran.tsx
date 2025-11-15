@@ -1,47 +1,59 @@
 import { Link, Navigate, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { FileText, Home, LogOut, Menu, Search } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FileText, Home, LogOut, Menu } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
+
 import type { CaseData } from '@/types/case';
-import { useAuth } from '@/contexts/AuthContext';
-import { useCases, useDepartments } from '@/hooks/use-cases';
-import { useStudentProgress, useSubmitQuiz, useSaveReflection, useStartCaseAttempt } from '@/hooks/use-progress';
-import { useDebouncedCallback } from '@/hooks/use-debounce';
-import { useClinicalReasoning, useSaveClinicalReasoning, useCalculateReasoningScore } from '@/hooks/use-clinical-reasoning';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import type {
+  DifferentialDiagnosis,
+  EvidenceReference,
+  ProblemRepresentation,
+  ReasoningScoreBreakdown,
+} from '@/types/clinical-reasoning';
 import { ProblemRepresentationComponent } from '@/components/clinical-reasoning/ProblemRepresentation';
 import { DDxBuilder } from '@/components/clinical-reasoning/DDxBuilder';
 import { DecisionJustification } from '@/components/clinical-reasoning/DecisionJustification';
 import { ReasoningScore } from '@/components/clinical-reasoning/ReasoningScore';
+import { LabResults } from '@/components/emr/LabResults';
 import { PatientTimeline } from '@/components/emr/PatientTimeline';
 import { SOAPNote } from '@/components/emr/SOAPNote';
-import { VitalSignsChart } from '@/components/emr/VitalSignsChart';
-import { LabResults } from '@/components/emr/LabResults';
 import { TreatmentProgress } from '@/components/emr/TreatmentProgress';
-import type { ProblemRepresentation, DifferentialDiagnosis, EvidenceReference, ReasoningScoreBreakdown } from '@/types/clinical-reasoning';
+import { VitalSignsChart } from '@/components/emr/VitalSignsChart';
+import { useAuth } from '@/contexts/AuthContext';
+import { useCalculateReasoningScore, useClinicalReasoning, useSaveClinicalReasoning } from '@/hooks/use-clinical-reasoning';
+import { useDebouncedCallback } from '@/hooks/use-debounce';
+import { useCases } from '@/hooks/use-cases';
+import {
+  useSaveReflection,
+  useStartCaseAttempt,
+  useStudentProgress,
+  useSubmitQuiz,
+} from '@/hooks/use-progress';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
 
 type ReflectionState = { what: string; so_what: string; now_what: string };
 
 export const Route = createFileRoute('/pembelajaran')({
   component: PembelajaranPage,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      caseId: (search.caseId as string) || undefined,
+    };
+  },
 });
 
 function PembelajaranPage() {
   const { user, logout, isLoading } = useAuth();
   const navigate = useNavigate();
+  const { caseId } = Route.useSearch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedCase, setSelectedCase] = useState<CaseData | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('all');
-  const [selectedSkdiLevel, setSelectedSkdiLevel] = useState<string>('all');
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [reflection, setReflection] = useState<ReflectionState>({
@@ -54,9 +66,9 @@ function PembelajaranPage() {
   const [saveStatus, setSaveStatus] = useState<'idle' | 'typing' | 'draft' | 'saving' | 'saved' | 'error'>('idle');
   const [clinicalReasoning, setClinicalReasoning] = useState<{
     problemRepresentation: ProblemRepresentation;
-    differentialDiagnoses: DifferentialDiagnosis[];
+    differentialDiagnoses: Array<DifferentialDiagnosis>;
     decisionJustification: string;
-    evidenceReferences: EvidenceReference[];
+    evidenceReferences: Array<EvidenceReference>;
   }>({
     problemRepresentation: {
       summary: '',
@@ -74,21 +86,17 @@ function PembelajaranPage() {
   });
   const [reasoningScore, setReasoningScore] = useState<ReasoningScoreBreakdown | null>(null);
 
-  // Fetch cases from database
-  const { data: cases = [], isLoading: casesLoading } = useCases({
-    department: selectedDepartment,
-    search: searchTerm,
-    skdiLevel: selectedSkdiLevel,
-  });
-
-  // Fetch departments for filter
-  const { data: departments = ['all'] } = useDepartments();
+  // Fetch cases from database (to get specific case by ID)
+  const { data: cases = [], isLoading: casesLoading } = useCases({});
 
   // Fetch student progress
   const { data: studentProgress = {} } = useStudentProgress(user?.id || 0);
   const selectedCaseProgress = selectedCase
     ? studentProgress[selectedCase.case_id]
     : undefined;
+  const assessmentItems = selectedCase?.assessment_items;
+  const mcqQuestions = assessmentItems?.possible_mcq_questions;
+  const criticalActions = assessmentItems?.critical_actions;
 
   // Mutations
   const startAttemptMutation = useStartCaseAttempt();
@@ -99,8 +107,6 @@ function PembelajaranPage() {
 
   // Fetch clinical reasoning for current attempt
   const { data: existingReasoning } = useClinicalReasoning(currentAttemptId);
-
-  const skdiLevelOptions = useMemo(() => ['all', '1', '2', '3', '4'], []);
 
   const getDraftStorageKey = useCallback(
     (caseId: string) => {
@@ -214,19 +220,26 @@ function PembelajaranPage() {
     30000
   );
 
-  // Set first case as selected when cases load
+  // Auto-select case based on URL parameter
   useEffect(() => {
     if (cases.length === 0) {
       setSelectedCase(null);
       return;
     }
-    const stillVisible = selectedCase
-      ? cases.some((c) => c.case_id === selectedCase.case_id)
-      : false;
-    if (!selectedCase || !stillVisible) {
-      setSelectedCase(cases[0]);
+    if (caseId) {
+      // Find case by ID from URL
+      const caseFromUrl = cases.find((c) => c.case_id === caseId);
+      if (caseFromUrl) {
+        setSelectedCase(caseFromUrl);
+      } else {
+        // Case not found, redirect to case list
+        navigate({ to: '/kasus' });
+      }
+    } else {
+      // No case selected, redirect to case list
+      navigate({ to: '/kasus' });
     }
-  }, [cases, selectedCase]);
+  }, [cases, caseId, navigate]);
 
   // Load reflection for selected case and start attempt
   useEffect(() => {
@@ -266,9 +279,7 @@ function PembelajaranPage() {
       {
         onSuccess: (attempt) => {
           setCurrentAttemptId(attempt.id);
-          const started = attempt.startedAt
-            ? new Date(attempt.startedAt).getTime()
-            : Date.now();
+          const started = new Date(attempt.startedAt).getTime();
           setAttemptStartTime(started);
         },
       }
@@ -341,7 +352,7 @@ function PembelajaranPage() {
 
   const menuItems = [
     { icon: Home, label: 'Dashboard', href: '/dashboard' },
-    { icon: FileText, label: 'Pembelajaran', href: '/pembelajaran' },
+    { icon: FileText, label: 'Daftar Kasus', href: '/kasus' },
   ];
 
   const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => (
@@ -377,34 +388,6 @@ function PembelajaranPage() {
     </div>
   );
 
-  const getDifficultyColor = (difficulty?: string) => {
-    switch (difficulty) {
-      case 'easy':
-        return 'bg-green-500';
-      case 'medium':
-        return 'bg-yellow-500';
-      case 'hard':
-        return 'bg-red-500';
-      default:
-        return 'bg-gray-500';
-    }
-  };
-
-  const getSkdiBadgeClass = (level?: string) => {
-    switch (level) {
-      case '1':
-        return 'bg-emerald-100 text-emerald-800';
-      case '2':
-        return 'bg-amber-100 text-amber-800';
-      case '3':
-        return 'bg-orange-100 text-orange-800';
-      case '4':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-slate-100 text-slate-700';
-    }
-  };
-
   const saveStatusLabel = () => {
     switch (saveStatus) {
       case 'typing':
@@ -429,18 +412,16 @@ function PembelajaranPage() {
   };
 
   const handleQuizSubmit = () => {
-    if (!selectedCase?.assessment_items?.possible_mcq_questions || !user || !currentAttemptId) return;
-
-    const questions = selectedCase.assessment_items.possible_mcq_questions;
+    if (!mcqQuestions || !currentAttemptId) return;
     let correct = 0;
 
-    questions.forEach((q) => {
+    mcqQuestions.forEach((q) => {
       if (selectedAnswers[q.id] === q.answer_index) {
         correct++;
       }
     });
 
-    const score = (correct / questions.length) * 100;
+    const score = (correct / mcqQuestions.length) * 100;
     const timeSpentSeconds = attemptStartTime
       ? Math.max(1, Math.round((Date.now() - attemptStartTime) / 1000))
       : undefined;
@@ -453,7 +434,7 @@ function PembelajaranPage() {
         caseId: selectedCase.case_id,
         answers: selectedAnswers,
         score,
-        maxScore: questions.length,
+        maxScore: mcqQuestions.length,
         timeSpentSeconds,
       },
       {
@@ -483,7 +464,7 @@ function PembelajaranPage() {
   };
 
   const handleReflectionSave = () => {
-    if (!selectedCase || !user) return;
+    if (!selectedCase) return;
     debouncedRemoteSave.cancel();
     saveReflectionToServer(selectedCase.case_id, reflection, { notify: true });
   };
@@ -498,7 +479,7 @@ function PembelajaranPage() {
     });
   };
 
-  const handleDDxChange = (data: DifferentialDiagnosis[]) => {
+  const handleDDxChange = (data: Array<DifferentialDiagnosis>) => {
     setClinicalReasoning((prev) => {
       const updated = { ...prev, differentialDiagnoses: data };
       if (selectedCase) {
@@ -518,7 +499,7 @@ function PembelajaranPage() {
     });
   };
 
-  const handleReferencesChange = (data: EvidenceReference[]) => {
+  const handleReferencesChange = (data: Array<EvidenceReference>) => {
     setClinicalReasoning((prev) => {
       const updated = { ...prev, evidenceReferences: data };
       if (selectedCase) {
@@ -592,100 +573,6 @@ function PembelajaranPage() {
         {/* Page Content */}
         <main className="flex-1 p-3 md:p-4 bg-slate-50">
           <div className="h-full flex flex-col lg:flex-row gap-3">
-            {/* Case List Sidebar - Hidden on mobile, visible on large screens */}
-            <Card className="hidden lg:flex flex-col flex-1 min-w-60 max-w-[280px] h-[calc(100vh-140px)]">
-              <CardHeader className="py-3 px-4">
-                <CardTitle className="text-sm font-semibold">Daftar Kasus</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1 flex flex-col space-y-2 overflow-hidden p-3 pt-0">
-                <div className="space-y-2">
-                  <div className="relative">
-                    <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
-                    <Input
-                      placeholder="Cari kasus..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-8 h-8 text-xs"
-                    />
-                  </div>
-                  <select
-                    value={selectedDepartment}
-                    onChange={(e) => setSelectedDepartment(e.target.value)}
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded-md text-xs"
-                  >
-                    {departments.map((dept) => (
-                      <option key={dept} value={dept}>
-                        {dept === 'all' ? 'Semua Departemen' : dept}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    value={selectedSkdiLevel}
-                    onChange={(e) => setSelectedSkdiLevel(e.target.value)}
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded-md text-xs"
-                  >
-                    {skdiLevelOptions.map((level) => (
-                      <option key={level} value={level}>
-                        {level === 'all' ? 'Semua Level SKDI' : `Level ${level}`}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <ScrollArea className="flex-1">
-                  <div className="space-y-1.5 pr-3">
-                    {cases.map((c) => (
-                      <button
-                        key={c.case_id}
-                        onClick={() => setSelectedCase(c)}
-                        className={`w-full text-left p-2 rounded-md border transition-colors ${selectedCase?.case_id === c.case_id
-                          ? 'bg-blue-50 border-blue-500'
-                          : 'bg-white border-slate-200 hover:bg-slate-50'
-                          }`}
-                      >
-                        <div className="flex items-start justify-between gap-1.5">
-                          <div className="flex-1 min-w-0">
-                            <p className="font-medium text-xs">{c.case_id}</p>
-                            <p className="text-xs text-slate-600 leading-tight mt-0.5">
-                              {c.skdi_diagnosis}
-                            </p>
-                            <div className="flex gap-1 mt-1.5">
-                              <Badge variant="secondary" className="text-xs px-1.5 py-0 h-4">
-                                {c.department}
-                              </Badge>
-                              {c.difficulty && (
-                                <Badge
-                                  className={`text-xs px-1.5 py-0 h-4 ${getDifficultyColor(c.difficulty)} text-white`}
-                                >
-                                  {c.difficulty}
-                                </Badge>
-                              )}
-                              {c.skdi_level && (
-                                <Badge
-                                  className={`text-xs px-1.5 py-0 h-4 ${getSkdiBadgeClass(
-                                    c.skdi_level
-                                  )}`}
-                                >
-                                  SKDI {c.skdi_level}
-                                </Badge>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        {studentProgress[c.case_id] && (
-                          <div className="mt-1.5 text-xs text-slate-500">
-                            Attempts: {studentProgress[c.case_id].attempts} | Score: {studentProgress[c.case_id].lastScore.toFixed(0)}%
-                          </div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </CardContent>
-            </Card>
-
-            {/* Main Content Area */}
-            <div className="flex-1 flex flex-col lg:flex-row gap-3">
               {/* Case Details */}
               <Card className="flex-1 flex flex-col h-auto lg:h-[calc(100vh-140px)]">
                 <CardHeader className="py-3 px-4">
@@ -841,12 +728,12 @@ function PembelajaranPage() {
                         </TabsContent>
 
                         <TabsContent value="emr" className="space-y-3 pr-3">
-                          <PatientTimeline caseData={selectedCase} />
-                          <div className="grid gap-3 md:grid-cols-2">
-                            <VitalSignsChart vitalSigns={selectedCase.physical_exam?.vital_signs} />
-                            <TreatmentProgress caseId={selectedCase.case_id} plan={selectedCase.management_plan} />
-                          </div>
-                          <SOAPNote caseData={selectedCase} />
+                              <PatientTimeline caseData={selectedCase} />
+                              <div className="grid gap-3 md:grid-cols-2">
+                                <VitalSignsChart vitalSigns={selectedCase.physical_exam.vital_signs} />
+                                <TreatmentProgress caseId={selectedCase.case_id} plan={selectedCase.management_plan} />
+                              </div>
+                              <SOAPNote caseData={selectedCase} />
                         </TabsContent>
 
                         <TabsContent value="diagnosis" className="space-y-2 pr-3">
@@ -988,11 +875,11 @@ function PembelajaranPage() {
                           </div>
                           <div className="flex items-center justify-between text-[10px] text-slate-500">
                             <span>Status penyimpanan: {saveStatusLabel()}</span>
-                            {studentProgress[selectedCase.case_id]?.reflection_last_saved && (
+                            {selectedCaseProgress?.reflection_last_saved && (
                               <span>
                                 Terakhir simpan:{' '}
                                 {new Date(
-                                  studentProgress[selectedCase.case_id].reflection_last_saved!
+                                  selectedCaseProgress.reflection_last_saved
                                 ).toLocaleTimeString('id-ID')}
                               </span>
                             )}
@@ -1061,11 +948,11 @@ function PembelajaranPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col overflow-hidden p-3 pt-0">
-                  {selectedCase?.assessment_items?.possible_mcq_questions ? (
+                  {mcqQuestions ? (
                     <div className="space-y-2 flex flex-col flex-1 overflow-hidden">
                       <ScrollArea className="flex-1">
                         <div className="space-y-3 pr-3">
-                          {selectedCase.assessment_items.possible_mcq_questions.map((q, idx) => (
+                          {mcqQuestions.map((q, idx) => (
                             <div key={q.id} className="space-y-1.5">
                               <p className="font-medium text-xs leading-tight">
                                 {idx + 1}. {q.stem}
@@ -1126,23 +1013,21 @@ function PembelajaranPage() {
                               Skor: {(
                                 (Object.entries(selectedAnswers).filter(
                                   ([qId, ansIdx]) =>
-                                    selectedCase.assessment_items?.possible_mcq_questions?.find(
-                                      (q) => q.id === qId
-                                    )?.answer_index === ansIdx
+                                    mcqQuestions.find((q) => q.id === qId)?.answer_index === ansIdx
                                 ).length /
-                                  (selectedCase.assessment_items?.possible_mcq_questions?.length || 1)) *
+                                  (mcqQuestions.length || 1)) *
                                 100
                               ).toFixed(0)}%
                             </p>
                           </div>
                         )}
-                        {selectedCase.assessment_items?.critical_actions && selectedCase.assessment_items.critical_actions.length > 0 && (
+                        {criticalActions && criticalActions.length > 0 && (
                           <div className="border border-slate-200 rounded-lg p-2 bg-slate-50">
                             <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 mb-1.5">
                               Aksi kritis (untuk refleksi)
                             </div>
                             <ul className="text-xs list-disc list-inside space-y-0.5">
-                              {selectedCase.assessment_items.critical_actions.map((action, idx) => (
+                              {criticalActions.map((action, idx) => (
                                 <li key={idx} className="leading-tight">{action}</li>
                               ))}
                             </ul>
@@ -1157,7 +1042,6 @@ function PembelajaranPage() {
                   )}
                 </CardContent>
               </Card>
-            </div>
           </div>
         </main>
       </div>

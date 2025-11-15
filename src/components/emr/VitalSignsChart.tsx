@@ -9,8 +9,8 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { CaseData } from '@/types/case';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type VitalSigns = CaseData['physical_exam']['vital_signs'];
 

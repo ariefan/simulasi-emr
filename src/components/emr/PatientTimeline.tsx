@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
 import { format } from 'date-fns';
+import type { CaseData } from '@/types/case';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import type { CaseData } from '@/types/case';
 
 type EventType = 'note' | 'vital' | 'lab' | 'medication' | 'procedure' | 'plan';
 
@@ -45,9 +45,9 @@ const filterOptions: Array<{ label: string; value: EventType | 'all' }> = [
 
 const HOURS = 60 * 60 * 1000;
 
-const buildTimelineEvents = (caseData: CaseData): TimelineEvent[] => {
+const buildTimelineEvents = (caseData: CaseData): Array<TimelineEvent> => {
   const baseTime = new Date();
-  const events: TimelineEvent[] = [];
+  const events: Array<TimelineEvent> = [];
 
   events.push({
     id: `${caseData.case_id}-presentation`,

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-type DebouncedFunction<T extends (...args: any[]) => void> = ((
+type DebouncedFunction<T extends (...args: Array<any>) => void> = ((
   ...args: Parameters<T>
 ) => void) & { cancel: () => void };
 
 /**
  * Returns a stable debounced callback that can be cancelled manually.
  */
-export function useDebouncedCallback<T extends (...args: any[]) => void>(
+export function useDebouncedCallback<T extends (...args: Array<any>) => void>(
   callback: T,
   delay: number
 ): DebouncedFunction<T> {

@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { getCases, getCaseById, getDepartments } from '@/lib/case-actions';
+
 import type { CaseData } from '@/types/case';
+import { getCaseById, getCases, getDepartments } from '@/lib/case-actions';
 
 // Hook to fetch cases with optional filters
 export function useCases(filters?: { department?: string; search?: string; skdiLevel?: string }) {
-  return useQuery<CaseData[]>({
+  return useQuery<Array<CaseData>>({
     queryKey: ['cases', filters],
     queryFn: () => getCases({ data: filters } as any),
   });
@@ -21,7 +22,7 @@ export function useCase(caseId: string) {
 
 // Hook to fetch all departments for filter dropdown
 export function useDepartments() {
-  return useQuery<string[]>({
+  return useQuery<Array<string>>({
     queryKey: ['departments'],
     queryFn: () => getDepartments({ data: {} } as any),
   });

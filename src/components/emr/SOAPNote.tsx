@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import type { CaseData } from '@/types/case';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { useDebouncedCallback } from '@/hooks/use-debounce';
-import type { CaseData } from '@/types/case';
 
 type SOAPNoteField = 'subjective' | 'objective' | 'assessment' | 'plan';
 
@@ -91,7 +91,7 @@ export function SOAPNote({ caseData }: SOAPNoteProps) {
       window.localStorage.setItem(getStorageKey(caseData.case_id), JSON.stringify(draft));
       setStatus('saved');
       if (notify) {
-        // eslint-disable-next-line no-console
+         
         console.info('SOAP note saved locally');
       }
     },

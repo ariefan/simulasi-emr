@@ -1,15 +1,15 @@
 import { Plus, Trash2 } from 'lucide-react';
+import type { EvidenceReference } from '@/types/clinical-reasoning';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import type { EvidenceReference } from '@/types/clinical-reasoning';
 
 interface DecisionJustificationProps {
   justification: string;
-  references: EvidenceReference[];
+  references: Array<EvidenceReference>;
   onJustificationChange: (value: string) => void;
-  onReferencesChange: (references: EvidenceReference[]) => void;
+  onReferencesChange: (references: Array<EvidenceReference>) => void;
   disabled?: boolean;
 }
 

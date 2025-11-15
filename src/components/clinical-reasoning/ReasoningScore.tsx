@@ -1,6 +1,6 @@
 import { TrendingUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import type { ReasoningScoreBreakdown } from '@/types/clinical-reasoning';
+import { Button } from '@/components/ui/button';
 
 interface ReasoningScoreProps {
   score: ReasoningScoreBreakdown | null;

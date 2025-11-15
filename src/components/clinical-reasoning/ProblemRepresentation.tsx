@@ -1,7 +1,7 @@
+import type { ProblemRepresentation } from '@/types/clinical-reasoning';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import type { ProblemRepresentation } from '@/types/clinical-reasoning';
 
 interface ProblemRepresentationProps {
   data: ProblemRepresentation;

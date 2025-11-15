@@ -1,14 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  saveClinicalReasoning,
-  getClinicalReasoning,
-  calculateReasoningScore,
-} from '@/lib/clinical-reasoning-actions';
+
 import type {
-  ProblemRepresentation,
   DifferentialDiagnosis,
   EvidenceReference,
+  ProblemRepresentation,
 } from '@/types/clinical-reasoning';
+import {
+  calculateReasoningScore,
+  getClinicalReasoning,
+  saveClinicalReasoning,
+} from '@/lib/clinical-reasoning-actions';
 
 // Hook to fetch clinical reasoning for an attempt
 export function useClinicalReasoning(attemptId: number | null) {
@@ -29,9 +30,9 @@ export function useSaveClinicalReasoning() {
       studentId: number;
       caseId: string;
       problemRepresentation?: ProblemRepresentation;
-      differentialDiagnoses?: DifferentialDiagnosis[];
+      differentialDiagnoses?: Array<DifferentialDiagnosis>;
       decisionJustification?: string;
-      evidenceReferences?: EvidenceReference[];
+      evidenceReferences?: Array<EvidenceReference>;
     }) => saveClinicalReasoning(data as any),
     onSuccess: (_, variables) => {
       // Invalidate clinical reasoning query to refresh

@@ -23,7 +23,10 @@
       "Bash(test:*)",
       "Bash(cat:*)",
       "Bash(vercel:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(pnpm db:generate:*)",
+      "Bash(pnpm db:import-cases:*)",
+      "Bash(pnpm exec tsr:*)"
     ],
     "deny": [],
     "ask": []
