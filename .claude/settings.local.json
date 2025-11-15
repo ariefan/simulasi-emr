@@ -17,7 +17,13 @@
       "Bash(npx eslint:*)",
       "Bash(git add:*)",
       "Bash(git reset:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nAdd pembelajaran page with responsive design and fix navigation/type errors\n\n- Add pembelajaran.tsx with medical case management interface\n- Add case type definitions and sample case data (Internal, Bedah, ObGyn)\n- Fix navigation: replace button/onClick with Link components in dashboard and pembelajaran\n- Fix TypeScript errors: auth-actions handler signature, optional chaining in pembelajaran\n- Remove unused Header.tsx component with invalid route references\n- Auto-fix ESLint errors: import order, type imports, array syntax across UI components\n- Implement responsive design: mobile-first layout with lg/md breakpoints\n- Update route tree generation for new pembelajaran route\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd pembelajaran page with responsive design and fix navigation/type errors\n\n- Add pembelajaran.tsx with medical case management interface\n- Add case type definitions and sample case data (Internal, Bedah, ObGyn)\n- Fix navigation: replace button/onClick with Link components in dashboard and pembelajaran\n- Fix TypeScript errors: auth-actions handler signature, optional chaining in pembelajaran\n- Remove unused Header.tsx component with invalid route references\n- Auto-fix ESLint errors: import order, type imports, array syntax across UI components\n- Implement responsive design: mobile-first layout with lg/md breakpoints\n- Update route tree generation for new pembelajaran route\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(vercel --version:*)",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "Bash(vercel:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

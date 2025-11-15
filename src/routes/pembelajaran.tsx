@@ -297,16 +297,16 @@ function PembelajaranPage() {
                         <div className="flex items-start justify-between gap-1.5">
                           <div className="flex-1 min-w-0">
                             <p className="font-medium text-xs">{c.case_id}</p>
-                            <p className="text-[10px] text-slate-600 truncate leading-tight mt-0.5">
+                            <p className="text-xs text-slate-600 leading-tight mt-0.5">
                               {c.skdi_diagnosis}
                             </p>
                             <div className="flex gap-1 mt-1.5">
-                              <Badge variant="secondary" className="text-[9px] px-1.5 py-0 h-4">
+                              <Badge variant="secondary" className="text-xs px-1.5 py-0 h-4">
                                 {c.department}
                               </Badge>
                               {c.difficulty && (
                                 <Badge
-                                  className={`text-[9px] px-1.5 py-0 h-4 ${getDifficultyColor(c.difficulty)} text-white`}
+                                  className={`text-xs px-1.5 py-0 h-4 ${getDifficultyColor(c.difficulty)} text-white`}
                                 >
                                   {c.difficulty}
                                 </Badge>
@@ -315,7 +315,7 @@ function PembelajaranPage() {
                           </div>
                         </div>
                         {studentProgress[c.case_id] && (
-                          <div className="mt-1.5 text-[10px] text-slate-500">
+                          <div className="mt-1.5 text-xs text-slate-500">
                             Attempts: {studentProgress[c.case_id].attempts} | Score: {studentProgress[c.case_id].lastScore.toFixed(0)}%
                           </div>
                         )}
