@@ -14,158 +14,281 @@
     }
     body {
       margin: 0;
-      display: flex;
-      height: 100vh;
-      background: #f5f5f7;
+      background: #f3f4f6;
       color: #111827;
     }
+    .app-shell {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      min-height: 100vh;
+    }
     .sidebar {
-      width: 260px;
-      background: #111827;
+      background: #0f172a;
       color: #e5e7eb;
       display: flex;
       flex-direction: column;
       padding: 1rem;
-      gap: 1rem;
+      border-right: 1px solid rgba(148, 163, 184, 0.4);
     }
-    .sidebar h1 {
-      font-size: 1rem;
-      margin: 0;
+    .sidebar-header {
+      padding: 0.75rem 0.75rem 0.5rem;
+      border-radius: 0.75rem;
+      background: radial-gradient(circle at top left, #22c55e, #22c55e22 45%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .sidebar-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, #0f172a88, #020617);
+      mix-blend-mode: multiply;
+    }
+    .sidebar-header-content {
+      position: relative;
+      z-index: 1;
+    }
+    .sidebar-title {
+      font-size: 0.95rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
+      letter-spacing: 0.12em;
+      color: #bbf7d0;
+      margin-bottom: 0.25rem;
     }
-    .student-box {
+    .sidebar-main-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      opacity: 0.9;
+    }
+    .student-card {
       background: #020617;
       border-radius: 0.75rem;
       padding: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
     }
-    .student-box label {
+    .student-label {
       font-size: 0.75rem;
       color: #9ca3af;
+      margin-bottom: 0.25rem;
     }
-    .student-box input {
+    .student-input {
       width: 100%;
-      padding: 0.35rem 0.5rem;
-      border-radius: 0.4rem;
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.5rem;
       border: 1px solid #4b5563;
       background: #020617;
       color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+    .student-input:focus {
+      outline: none;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 1px #22c55e;
+    }
+    .student-note {
+      margin-top: 0.35rem;
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+    .sidebar-section-title {
       font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9ca3af;
+      margin: 0.5rem 0 0.25rem;
     }
     .case-list {
       flex: 1;
       overflow-y: auto;
       padding-right: 0.25rem;
+      margin-top: 0.25rem;
     }
-    .case-item {
+    .case-card {
       border-radius: 0.6rem;
-      padding: 0.6rem 0.6rem;
-      margin-bottom: 0.4rem;
+      padding: 0.5rem 0.55rem;
+      margin-bottom: 0.35rem;
+      background: #020617;
+      border: 1px solid #1f2937;
       cursor: pointer;
-      transition: background 0.15s ease, transform 0.1s ease;
-      border: 1px solid transparent;
+      transition: all 0.15s ease;
     }
-    .case-item:hover {
-      background: #1f2937;
+    .case-card:hover {
+      border-color: #22c55e;
       transform: translateY(-1px);
+      background: #020617;
     }
-    .case-item.active {
-      background: #10b981;
-      color: #022c22;
-      border-color: #6ee7b7;
+    .case-card.active {
+      border-color: #22c55e;
+      background: #022c22;
     }
     .case-title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
+      color: #f9fafb;
       margin-bottom: 0.15rem;
     }
     .case-meta {
       font-size: 0.7rem;
-      color: #d1d5db;
+      color: #9ca3af;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
     }
-
+    .case-meta-pill {
+      padding: 0.05rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+    .case-meta-tag {
+      padding: 0.05rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: #9ca3af;
+    }
+    .case-difficulty {
+      margin-left: auto;
+      font-size: 0.7rem;
+    }
+    .difficulty-pill {
+      padding: 0.05rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .difficulty-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #facc15;
+    }
+    .difficulty-label {
+      text-transform: lowercase;
+    }
     .main {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 1rem 1.25rem;
+      padding: 0.75rem 1rem 1rem;
       gap: 0.75rem;
-      overflow: hidden;
     }
-    .header {
+    .main-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .main-header-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 0.75rem;
     }
-    .header-left h2 {
-      margin: 0;
+    .case-breadcrumb {
+      font-size: 0.7rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.15rem;
+    }
+    .case-main-title {
       font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.1rem;
     }
-    .header-left p {
-      margin: 0.1rem 0 0;
-      font-size: 0.85rem;
+    .case-subtitle {
+      font-size: 0.8rem;
       color: #4b5563;
     }
     .header-right {
-      min-width: 240px;
-      max-width: 320px;
+      min-width: 260px;
       background: #ffffff;
-      border-radius: 0.75rem;
+      border-radius: 0.9rem;
       padding: 0.6rem 0.75rem;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-      font-size: 0.8rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .header-right-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+      margin-bottom: 0.15rem;
     }
     .stat-row {
       display: flex;
       justify-content: space-between;
-      margin: 0.25rem 0;
       align-items: center;
+      font-size: 0.8rem;
     }
     .stat-label {
       color: #6b7280;
     }
     .stat-value {
       font-weight: 600;
+      color: #111827;
     }
     .progress-bar {
       width: 100%;
       height: 6px;
+      background: #e5e7eb;
       border-radius: 999px;
       overflow: hidden;
-      background: #e5e7eb;
-      margin-top: 0.25rem;
+      margin-top: 0.15rem;
     }
     .progress-bar-inner {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      transition: width 0.25s ease;
+      background: linear-gradient(to right, #22c55e, #16a34a);
+      transition: width 0.2s ease;
     }
-
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+    }
     .tab-header-bar {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.4rem;
-      overflow-x: auto;
-      padding-bottom: 0.25rem;
+      padding: 0.4rem 0.6rem;
+      background: #f9fafb;
+      border-radius: 0.8rem;
+      border: 1px solid #e5e7eb;
     }
     .tab-pill {
-      flex-shrink: 0;
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      border: 1px solid #d1d5db;
-      background: #ffffff;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      opacity: 0.5;
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: #f3f4f6;
+      color: #4b5563;
+      opacity: 0.6;
     }
     .tab-pill.enabled {
       opacity: 1;
@@ -180,886 +303,405 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: #d1d5db;
+      border: 1px solid #6b7280;
+      background: #f9fafb;
     }
     .tab-pill.completed .status-dot {
       background: #22c55e;
+      border-color: #16a34a;
     }
-
     .content {
-      flex: 1;
-      overflow-y: auto;
+      margin-top: 0.4rem;
       background: #ffffff;
-      border-radius: 0.75rem;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      border-radius: 1rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+      min-height: 380px;
     }
-
     .section-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 0.2rem;
+      color: #0f172a;
+      margin-bottom: 0.1rem;
     }
     .section-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #6b7280;
       margin-bottom: 0.4rem;
     }
     .case-text {
       font-size: 0.88rem;
-      line-height: 1.5;
-      color: #374151;
+      line-height: 1.55;
+      color: #111827;
       white-space: pre-line;
+      background: #f9fafb;
+      border-radius: 0.75rem;
+      padding: 0.6rem 0.7rem;
+      border: 1px dashed #e5e7eb;
     }
-
     .gate-questions {
+      margin-top: 0.7rem;
+      padding-top: 0.6rem;
       border-top: 1px dashed #e5e7eb;
-      padding-top: 0.5rem;
-      margin-top: 0.5rem;
     }
     .gate-question {
       margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
     }
     .gate-question label {
       font-size: 0.8rem;
+      color: #374151;
       font-weight: 500;
-      display: block;
-      margin-bottom: 0.15rem;
     }
     .gate-question textarea {
-      width: 100%;
-      min-height: 48px;
-      border-radius: 0.5rem;
-      border: 1px solid #d1d5db;
-      padding: 0.4rem 0.5rem;
-      font-size: 0.82rem;
+      min-height: 64px;
       resize: vertical;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.6rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.82rem;
+      font-family: inherit;
+    }
+    .gate-question textarea:focus {
+      outline: none;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 1px #22c55e33;
     }
     .btn-row {
       display: flex;
       justify-content: flex-end;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    button {
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.8rem;
-      cursor: pointer;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
     }
     .btn-primary {
-      background: #22c55e;
-      color: #022c22;
-      font-weight: 600;
+      background: #16a34a;
+      border-radius: 999px;
+      color: white;
+      font-size: 0.8rem;
+      border: none;
+      padding: 0.35rem 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 8px 14px rgba(22, 163, 74, 0.25);
+    }
+    .btn-primary:hover {
+      background: #15803d;
     }
     .btn-secondary {
       background: #e5e7eb;
+      border-radius: 999px;
       color: #374151;
+      font-size: 0.8rem;
+      border: none;
+      padding: 0.35rem 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
-    .btn-primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
     .quiz-section {
-      margin-top: 0.75rem;
+      margin-top: 0.9rem;
       padding-top: 0.75rem;
       border-top: 1px solid #e5e7eb;
     }
     .quiz-item {
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.6rem;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.7rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
     }
     .quiz-item p {
-      margin: 0 0 0.25rem;
-      font-size: 0.85rem;
+      margin: 0 0 0.35rem;
+      font-size: 0.82rem;
     }
     .quiz-options {
-      font-size: 0.82rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.25rem 0.6rem;
     }
     .quiz-options label {
+      font-size: 0.8rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.3rem;
       cursor: pointer;
     }
     .quiz-summary {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
+      margin-top: 0.45rem;
+      font-size: 0.8rem;
+      color: #111827;
       font-weight: 500;
     }
-    .badge {
-      border-radius: 999px;
-      padding: 0.05rem 0.5rem;
-      font-size: 0.7rem;
-      border: 1px solid #d1d5db;
-      color: #4b5563;
-      background: #f9fafb;
-    }
-
-    @media (max-width: 900px) {
-      body {
-        flex-direction: column;
+    @media (max-width: 960px) {
+      .app-shell {
+        grid-template-columns: 1fr;
       }
       .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+        min-height: auto;
       }
-      .main {
-        height: calc(100vh - 160px);
-      }
-      .header {
+      .main-header-top {
         flex-direction: column;
-      }
-      .header-right {
-        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <div>
-      <h1>RME KOAS SIMULATOR</h1>
-    </div>
-    <div class="student-box">
-      <label for="studentName">Nama mahasiswa</label>
-      <input id="studentName" type="text" placeholder="Masukkan nama Anda..." />
-      <small id="studentGreeting" style="color:#9ca3af;">Progress akan tersimpan selama halaman ini terbuka.</small>
-    </div>
-    <div class="case-list" id="caseList"></div>
-  </div>
-
-  <div class="main">
-    <div class="header">
-      <div class="header-left">
-        <h2 id="caseTitle">Pilih kasus untuk mulai simulasi</h2>
-        <p id="caseSubtitle">Setting, departemen, dan ringkasan kasus akan muncul di sini.</p>
-      </div>
-      <div class="header-right">
-        <div class="stat-row">
-          <span class="stat-label">Mahasiswa</span>
-          <span class="stat-value" id="statStudentName">-</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Progress tab</span>
-          <span class="stat-value" id="statTabsProgress">0 / 0</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-bar-inner" id="tabsProgressBar"></div>
-        </div>
-        <div class="stat-row" style="margin-top:0.35rem;">
-          <span class="stat-label">Skor kuis</span>
-          <span class="stat-value" id="statQuizScore">-</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">Profil performa</span>
-          <span class="stat-value">
-            <span id="statPerformanceBadge" class="badge">Belum dinilai</span>
-          </span>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-content">
+          <div class="sidebar-title">Simulator RME Koas</div>
+          <div class="sidebar-main-title">Scaffolding & Clinical Reasoning</div>
+          <div class="sidebar-subtitle">
+            25 kasus sintetis (rawat jalan & rawat inap) untuk latihan penalaran klinis berbasis RME.
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-header-bar" id="tabHeaderBar"></div>
-
-    <div class="content" id="contentArea">
-      <div class="case-text">
-        Silakan pilih salah satu kasus di sisi kiri untuk memulai. Setiap tab akan menampilkan potongan data RME secara bertahap dan Anda perlu menjawab pertanyaan scaffolding sebelum bisa lanjut ke tahap berikutnya.
+      <div class="student-card">
+        <div class="student-label">Nama mahasiswa</div>
+        <input id="studentName" class="student-input" placeholder="Tulis nama Anda..." />
+        <div class="student-note" id="studentGreeting">
+          Progress akan tersimpan selama halaman ini terbuka.
+        </div>
       </div>
-    </div>
+
+      <div class="sidebar-section-title">Daftar kasus</div>
+      <div class="case-list" id="caseList">
+        <!-- populated via JS -->
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="main-header">
+        <div class="main-header-top">
+          <div>
+            <div class="case-breadcrumb">RME edukatif • Koas</div>
+            <div class="case-main-title" id="caseTitle">Pilih kasus untuk memulai</div>
+            <div class="case-subtitle" id="caseSubtitle">
+              Kasus akan muncul di sini.
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="header-right-title">Dashboard kinerja</div>
+            <div class="stat-row">
+              <span class="stat-label">Mahasiswa</span>
+              <span class="stat-value" id="statStudentName">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Progress tab</span>
+              <span class="stat-value" id="statTabsProgress">0 / 0</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-bar-inner" id="tabsProgressBar"></div>
+            </div>
+            <div class="stat-row" style="margin-top:0.35rem;">
+              <span class="stat-label">Skor kuis</span>
+              <span class="stat-value" id="statQuizScore">-</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Profil performa</span>
+              <span class="stat-value">
+                <span id="statPerformanceBadge" class="badge">Belum dinilai</span>
+              </span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">XP</span>
+              <span class="stat-value" id="statXP">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Level</span>
+              <span class="stat-value" id="statLevel">1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-header-bar" id="tabHeaderBar"></div>
+
+        <div class="content" id="contentArea">
+          <div class="case-text">
+            Silakan pilih salah satu kasus di sisi kiri untuk memulai simulasi. 
+            Anda akan dipandu langkah demi langkah melalui tab scaffolding. 
+            Setiap tab memiliki pertanyaan wajib yang perlu dijawab sebelum bisa lanjut ke tahap berikutnya.
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script>
-    // ==== DATA KASUS (3 CONTOH) ====
-    const casesData = [
-      {
-        "case_id": "RME-01A",
-        "title": "Pusing di Antara Tumpukan Laporan",
-        "setting": "Poli RS",
-        "department": "Penyakit Dalam",
-        "skdi_diagnosis": "Hipertensi esensial derajat 2 tanpa komplikasi (Level 4A)",
-        "icd10": "I10",
-        "skdi_level": "4A",
-        "tags": ["koas", "poli_rs", "penyakit_kronik", "kardiovaskular"],
-        "patient": {
-          "name": "Ny. S",
-          "age": 50,
-          "sex": "P",
-          "marital_status": "Menikah",
-          "gravida": null,
-          "para": null,
-          "address_type": "Perkotaan",
-          "insurance_status": "JKN"
-        },
-        "chief_complaint": "Kepala terasa berat dan pusing sejak sekitar 1 bulan terakhir, terutama setelah pulang bekerja.",
-        "history_of_present_illness": "Pasien mengeluh kepala terasa berat dan pusing ringan seperti berdenyut di belakang kepala sejak sekitar satu bulan. Keluhan biasanya muncul setelah hari kerja yang panjang atau saat banyak beban pikiran. Pusing tidak disertai muntah proyektil, kejang, gangguan penglihatan, bicara pelo, kelemahan anggota gerak, atau penurunan kesadaran. Pasien mengukur tekanan darah di posyandu dekat rumah dan sering mendapat hasil sekitar 150–160/90–100 mmHg. Empat tahun lalu ia pernah didiagnosis tekanan darah tinggi dan diberi obat, tetapi ia hanya meminum obat jika merasa pusing saja. Pasien belum pernah dirawat karena penyakit jantung atau stroke.",
-        "past_medical_history": "Didiagnosis hipertensi sekitar 4 tahun lalu, minum obat tidak teratur. Tidak ada riwayat stroke, penyakit jantung koroner, gagal ginjal, atau diabetes yang terkonfirmasi.",
-        "family_history": "Ayah memiliki riwayat hipertensi dan meninggal karena stroke di usia 65 tahun. Ibu memiliki riwayat kencing manis.",
-        "social_history": "Pasien bekerja sebagai staf administrasi kantor, banyak duduk dan jarang berolahraga. Sering makan di warung dengan makanan gurih dan asin. Tidak merokok, sesekali minum kopi. Pola tidur sering terganggu oleh lembur dan stres pekerjaan.",
-        "physical_exam": "Keadaan umum tampak cukup, kompos mentis. Tekanan darah 158/96 mmHg, nadi 82 kali per menit reguler, frekuensi napas 18 kali per menit, suhu 36,7°C, SpO₂ 99% udara ruangan. Tinggi badan 155 cm, berat badan 68 kg, tampak overweight. Pemeriksaan jantung: bunyi jantung reguler, tidak ada murmur. Paru: suara napas vesikuler, tidak ada ronki atau wheezing. Abdomen dalam batas normal, ekstremitas tanpa edema. Funduskopi belum dilakukan pada kunjungan ini.",
-        "laboratory": "Glukosa darah puasa 110 mg/dL. Ureum dan kreatinin dalam batas normal. Elektrolit natrium dan kalium normal. Profil lipid: kolesterol total 210 mg/dL, LDL 135 mg/dL, HDL 45 mg/dL, trigliserida 160 mg/dL. Urinalisis normal tanpa proteinuria.",
-        "imaging": "Belum dilakukan imaging khusus, EKG menunjukkan ritme sinus reguler tanpa tanda iskemia akut.",
-        "procedures": "Belum ada prosedur invasif yang dilakukan. Pemeriksaan penunjang tambahan seperti funduskopi dan ekokardiografi direncanakan bila diperlukan.",
-        "working_diagnosis": "Hipertensi esensial derajat 2 tanpa komplikasi klinis yang jelas pada kunjungan ini.",
-        "differential_diagnoses": [
-          "Sakit kepala tipe tegang berhubungan dengan stres pekerjaan",
-          "Migrain tanpa aura",
-          "Sekuele awal hipertensi dengan risiko kardiovaskular meningkat"
-        ],
-        "management_plan": "Menetapkan diagnosis hipertensi kronik dengan tekanan darah derajat 2. Memberikan edukasi perubahan gaya hidup termasuk diet rendah garam, peningkatan aktivitas fisik teratur, pengurangan konsumsi makanan tinggi lemak, dan manajemen stres. Memulai atau menyesuaikan terapi antihipertensi oral jangka panjang. Menjelaskan bahwa obat harus diminum setiap hari walaupun tidak pusing. Menetapkan target tekanan darah <140/90 mmHg, dan mempertimbangkan target yang lebih ketat bila terdapat faktor risiko lain. Merencanakan kunjungan ulang dalam 2–4 minggu.",
-        "red_flags": {
-          "clinical": [],
-          "decision": [
-            "Menghentikan atau tidak memulai obat antihipertensi dengan alasan pasien merasa hanya 'capek kerja'.",
-            "Memberikan obat hanya secara simptomatik saat pusing tanpa rencana terapi jangka panjang."
-          ]
-        },
-        "learning_points": [
-          "Mengenali pola tekanan darah tinggi kronik.",
-          "Mengintegrasikan edukasi gaya hidup dalam tatalaksana hipertensi.",
-          "Menyusun rencana terapi antihipertensi dan follow-up di poli RS."
-        ],
-        "assessment_items": {
-          "key_diagnosis": "Hipertensi esensial derajat 2 tanpa komplikasi",
-          "key_icd10": "I10",
-          "key_skdi_level": "4A",
-          "critical_actions": [
-            "Mengkonfirmasi tekanan darah tinggi yang konsisten.",
-            "Mengidentifikasi faktor risiko kardiovaskular.",
-            "Memulai/menyesuaikan terapi antihipertensi jangka panjang.",
-            "Memberikan edukasi gaya hidup.",
-            "Menetapkan jadwal follow-up."
-          ]
-        },
-        "scaffolding": {
-          "tabs": [
-            {
-              "id": "tab1",
-              "title": "Pembukaan: Keluhan Utama & Data Dasar",
-              "content_summary": "Seorang perempuan 50 tahun, staf administrasi, datang ke poli penyakit dalam dengan keluhan kepala terasa berat dan pusing ringan terutama setelah hari kerja panjang. Ia memiliki riwayat pernah diberi obat penurun tekanan darah beberapa tahun lalu tetapi tidak rutin minum.",
-              "linked_fields": ["chief_complaint", "patient"],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q1A",
-                  "prompt": "Apa 2–3 kemungkinan penyebab keluhan pasien ini berdasarkan data awal?",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01A-Q1B",
-                  "prompt": "Data anamnesis apa saja yang perlu Anda gali lebih lanjut sebelum menegakkan diagnosis?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab2",
-              "title": "Anamnesis Lengkap",
-              "content_summary": "Pasien menjelaskan bahwa pusing berdenyut ringan muncul dalam satu bulan terakhir, terutama setelah bekerja. Tekanan darah di posyandu sering 150–160/90–100 mmHg. Tidak ada gejala neurologis fokal atau nyeri dada. Pasien minum obat penurun tekanan darah hanya bila pusing.",
-              "linked_fields": [
-                "history_of_present_illness",
-                "past_medical_history",
-                "family_history",
-                "social_history"
-              ],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q2A",
-                  "prompt": "Pemeriksaan fisik apa yang wajib Anda lakukan pada pasien dengan keluhan seperti ini?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab3",
-              "title": "Pemeriksaan Fisik",
-              "content_summary": "Tekanan darah 158/96 mmHg, nadi 82x/menit, RR 18x/menit, suhu 36,7°C. Pasien tampak overweight, jantung dan paru dalam batas normal, tidak ada edema. Funduskopi belum dilakukan.",
-              "linked_fields": ["physical_exam"],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q3A",
-                  "prompt": "Adakah temuan yang mengarah pada keadaan gawat darurat? Apa pemeriksaan fisik tambahan yang menurut Anda penting namun belum dilakukan?",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01A-Q3B",
-                  "prompt": "Buatlah problem representation dalam satu kalimat untuk kasus ini.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab4",
-              "title": "Pemeriksaan Penunjang",
-              "content_summary": "Hasil lab menunjukkan fungsi ginjal normal dan profil lipid dengan LDL 135 mg/dL. Tidak ditemukan proteinuria. EKG dalam batas normal.",
-              "linked_fields": ["laboratory", "imaging"],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q4A",
-                  "prompt": "Tentukan working diagnosis dan tiga diagnosis banding berdasarkan seluruh data klinis dan penunjang.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab5",
-              "title": "Rencana Tata Laksana",
-              "content_summary": "Rencana tata laksana ideal meliputi edukasi gaya hidup, pemilihan obat antihipertensi jangka panjang, penetapan target tekanan darah, dan penjadwalan follow up.",
-              "linked_fields": ["management_plan"],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q5A",
-                  "prompt": "Susun rencana terapi untuk pasien ini. Apakah rencana Anda sudah aman dan sesuai dengan guideline?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab6",
-              "title": "Refleksi & Umpan Balik",
-              "content_summary": "Refleksi singkat tentang apa yang telah Anda lakukan dengan baik dan apa yang perlu diperbaiki pada penatalaksanaan hipertensi kronik.",
-              "linked_fields": [],
-              "gate_questions": [
-                {
-                  "id": "RME-01A-Q6A",
-                  "prompt": "Apa pelajaran utama yang Anda dapatkan dari kasus ini dan apa yang akan Anda lakukan berbeda pada pasien berikutnya dengan keluhan serupa?",
-                  "response_type": "free_text"
-                }
-              ]
-            }
-          ]
-        },
-        "quiz_items": [
-          {
-            "id": "RME-01A-QZ1",
-            "type": "MCQ",
-            "stem": "Target tekanan darah yang disarankan untuk pasien dewasa dengan hipertensi tanpa komplikasi berat adalah:",
-            "options": [
-              "<160/100 mmHg",
-              "<150/90 mmHg",
-              "<140/90 mmHg",
-              "<130/80 mmHg",
-              "<120/80 mmHg"
-            ],
-            "correct_answer_index": 2
-          },
-          {
-            "id": "RME-01A-QZ2",
-            "type": "MCQ",
-            "stem": "Pemeriksaan fisik tambahan yang paling tepat dilakukan pada pasien ini adalah:",
-            "options": [
-              "Pemeriksaan refleks tendon dalam",
-              "Funduskopi untuk menilai retinopati hipertensi",
-              "Pemeriksaan telinga",
-              "Pemeriksaan ekstremitas atas",
-              "Pemeriksaan kulit seluruh tubuh"
-            ],
-            "correct_answer_index": 1
-          },
-          {
-            "id": "RME-01A-QZ3",
-            "type": "SCT",
-            "stem": "Jika hasil funduskopi menunjukkan retinopati hipertensi derajat II, bagaimana pengaruhnya terhadap urgensi kontrol tekanan darah?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          },
-          {
-            "id": "RME-01A-QZ4",
-            "type": "MCQ",
-            "stem": "Strategi non-farmakologis yang PALING tepat ditekankan pada pasien ini adalah:",
-            "options": [
-              "Mengurangi konsumsi garam dan meningkatkan aktivitas fisik",
-              "Menghentikan semua aktivitas fisik",
-              "Meningkatkan konsumsi kopi harian",
-              "Mengurangi minum air putih",
-              "Menghindari kontrol rutin"
-            ],
-            "correct_answer_index": 0
-          },
-          {
-            "id": "RME-01A-QZ5",
-            "type": "SCT",
-            "stem": "Jika pasien menyatakan hanya ingin minum obat bila merasa pusing, bagaimana pengaruhnya terhadap risiko komplikasi jangka panjang?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          }
-        ]
-      },
-      {
-        "case_id": "RME-01B",
-        "title": "Perut yang Protes di Tengah Kesibukan",
-        "setting": "Puskesmas",
-        "department": "Penyakit Dalam",
-        "skdi_diagnosis": "Dispepsia/gastritis non spesifik tanpa alarm symptoms (Level 4A)",
-        "icd10": "K29.7",
-        "skdi_level": "4A",
-        "tags": ["koas", "puskesmas", "dispepsia"],
-        "patient": {
-          "name": "Tn. R",
-          "age": 28,
-          "sex": "L",
-          "marital_status": "Belum menikah",
-          "gravida": null,
-          "para": null,
-          "address_type": "Perkotaan",
-          "insurance_status": "JKN"
-        },
-        "chief_complaint": "Nyeri ulu hati sejak sekitar dua minggu terakhir.",
-        "history_of_present_illness": "Pasien mengeluh nyeri di daerah ulu hati sejak dua minggu terakhir. Nyeri terasa perih seperti terbakar, terutama bila terlambat makan dan sedikit berkurang setelah makan. Kadang disertai rasa mual, tetapi jarang muntah. Pasien tidak pernah muntah darah, tidak mengeluhkan BAB hitam, dan tidak menyebut penurunan berat badan yang jelas. Ia sering minum kopi 2–3 gelas per hari dan menyukai makanan pedas. Pasien mengakui kadang minum obat antinyeri (OAINS) bila merasa pegal setelah kerja shift malam, namun hal ini tidak tercatat di RME.",
-        "past_medical_history": "Tidak ada riwayat maag berat yang pernah dirawat di rumah sakit. Tidak ada riwayat operasi abdomen.",
-        "family_history": "Tidak ada riwayat kuat kanker saluran cerna dalam keluarga.",
-        "social_history": "Pasien bekerja sebagai buruh pabrik dengan sistem shift. Sering makan tidak teratur, sarapan kadang terlewat, dan sering makan makanan pedas serta gorengan. Tidak merokok berat, alkohol minimal.",
-        "physical_exam": "Keadaan umum cukup. Tekanan darah 120/80 mmHg, nadi 78 kali per menit, RR 18 kali per menit, suhu 36,8°C. Pemeriksaan abdomen menunjukkan nyeri tekan ringan di epigastrium tanpa defense muskular, tidak ada massa teraba, bising usus normal. Pemeriksaan organ lain dalam batas normal.",
-        "laboratory": "Hemoglobin 14 g/dL, tidak ada tanda anemia. Pada kunjungan ini belum dilakukan pemeriksaan laboratorium tambahan atau endoskopi.",
-        "imaging": "Belum dilakukan imaging.",
-        "procedures": "Belum dilakukan prosedur endoskopi. Direncanakan bila gejala menetap atau muncul gejala alarm.",
-        "working_diagnosis": "Dispepsia/gastritis non spesifik tanpa gejala alarm.",
-        "differential_diagnoses": [
-          "Dispepsia fungsional",
-          "Gastritis erosif terkait penggunaan OAINS",
-          "Penyakit refluks gastroesofageal ringan"
-        ],
-        "management_plan": "Memberikan edukasi mengenai pola makan teratur, menghindari makanan pedas, gorengan, dan minuman berkafein berlebihan. Menganjurkan pasien mengurangi atau menghentikan penggunaan OAINS tanpa indikasi yang jelas. Memberikan terapi simptomatik berupa antasida atau obat penghambat produksi asam lambung selama periode uji terapi. Menjelaskan tanda dan gejala alarm dan kapan harus kembali lebih cepat. Menjadwalkan kontrol ulang untuk evaluasi respons terapi.",
-        "red_flags": {
-          "clinical": [],
-          "decision": [
-            "Memberikan OAINS tambahan untuk mengatasi nyeri ulu hati.",
-            "Mengabaikan munculnya gejala alarm bila terjadi di kemudian hari dan tidak melakukan rujukan."
-          ]
-        },
-        "learning_points": [
-          "Membedakan dispepsia tanpa alarm symptoms dari situasi yang membutuhkan rujukan.",
-          "Menggali riwayat penggunaan OAINS pada pasien dengan keluhan ulu hati.",
-          "Menyusun rencana terapi simptomatik dan edukasi gaya hidup di tingkat puskesmas."
-        ],
-        "assessment_items": {
-          "key_diagnosis": "Dispepsia/gastritis non spesifik tanpa alarm symptoms",
-          "key_icd10": "K29.7",
-          "key_skdi_level": "4A",
-          "critical_actions": [
-            "Menggali riwayat OAINS secara eksplisit.",
-            "Menilai adanya atau ketiadaan gejala alarm.",
-            "Memberikan terapi simptomatik yang tepat di FKTP.",
-            "Memberikan edukasi tentang pola makan dan faktor pencetus.",
-            "Menetapkan indikasi rujukan."
-          ]
-        },
-        "scaffolding": {
-          "tabs": [
-            {
-              "id": "tab1",
-              "title": "Pembukaan: Keluhan Utama & Data Dasar",
-              "content_summary": "Seorang laki-laki 28 tahun datang ke puskesmas dengan keluhan nyeri di ulu hati sejak dua minggu. Ia bekerja shift dan mengaku sering terlambat makan.",
-              "linked_fields": ["chief_complaint", "patient"],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q1A",
-                  "prompt": "Apa 2–3 kemungkinan diagnosis awal untuk keluhan nyeri ulu hati yang membaik setelah makan?",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01B-Q1B",
-                  "prompt": "Data apa saja yang perlu Anda gali lebih lanjut pada anamnesis pasien ini?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab2",
-              "title": "Anamnesis Lengkap",
-              "content_summary": "Pasien mengeluh nyeri perih di ulu hati, membaik setelah makan dan memburuk bila terlambat makan. Sering minum kopi dan makan pedas, serta kadang menggunakan OAINS setelah kerja shift.",
-              "linked_fields": [
-                "history_of_present_illness",
-                "past_medical_history",
-                "family_history",
-                "social_history"
-              ],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q2A",
-                  "prompt": "Pemeriksaan fisik apa yang perlu Anda lakukan untuk menilai kondisi pasien ini?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab3",
-              "title": "Pemeriksaan Fisik",
-              "content_summary": "Pemeriksaan vital sign dalam batas normal. Abdomen menunjukkan nyeri tekan ringan di epigastrium tanpa tanda peritonitis atau massa.",
-              "linked_fields": ["physical_exam"],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q3A",
-                  "prompt": "Adakah temuan yang mengarah pada keadaan gawat darurat? Pemeriksaan apa yang sebaiknya dilakukan bila Anda mencurigai adanya alarm symptoms?",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01B-Q3B",
-                  "prompt": "Susun problem representation dalam 1 kalimat untuk kasus ini.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab4",
-              "title": "Pemeriksaan Penunjang",
-              "content_summary": "Tidak dilakukan pemeriksaan laboratorium atau endoskopi pada kunjungan awal karena tidak ditemukan alarm symptoms.",
-              "linked_fields": ["laboratory", "imaging"],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q4A",
-                  "prompt": "Tentukan working diagnosis untuk kasus ini dan sebutkan beberapa diagnosis banding yang masih mungkin.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab5",
-              "title": "Rencana Tata Laksana",
-              "content_summary": "Penatalaksanaan meliputi edukasi pola makan, pengurangan kafein dan makanan pedas, menghindari OAINS, serta pemberian terapi simptomatik.",
-              "linked_fields": ["management_plan"],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q5A",
-                  "prompt": "Tuliskan rencana terapi Anda untuk pasien ini. Terapi atau tindakan apa yang sebaiknya dihindari?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab6",
-              "title": "Refleksi & Umpan Balik",
-              "content_summary": "Refleksi tentang bagaimana mengenali kasus yang bisa dikelola di puskesmas dan kapan harus merujuk.",
-              "linked_fields": [],
-              "gate_questions": [
-                {
-                  "id": "RME-01B-Q6A",
-                  "prompt": "Apa pelajaran utama Anda dari kasus nyeri ulu hati ini, terutama terkait identifikasi alarm symptoms?",
-                  "response_type": "free_text"
-                }
-              ]
-            }
-          ]
-        },
-        "quiz_items": [
-          {
-            "id": "RME-01B-QZ1",
-            "type": "MCQ",
-            "stem": "Gejala berikut yang merupakan 'alarm symptom' pada pasien dengan nyeri ulu hati adalah:",
-            "options": [
-              "Nyeri yang hilang setelah makan",
-              "Mual ringan tanpa muntah",
-              "BAB hitam seperti aspal",
-              "Nyeri muncul saat stres kerja",
-              "Tidak suka makanan pedas"
-            ],
-            "correct_answer_index": 2
-          },
-          {
-            "id": "RME-01B-QZ2",
-            "type": "SCT",
-            "stem": "Jika pasien mengaku sering minum OAINS untuk mengatasi pegal setelah shift malam, bagaimana pengaruhnya terhadap dugaan Anda akan iritasi mukosa lambung?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          },
-          {
-            "id": "RME-01B-QZ3",
-            "type": "MCQ",
-            "stem": "Tindakan berikut yang TIDAK tepat pada kunjungan awal pasien ini adalah:",
-            "options": [
-              "Memberikan edukasi pola makan teratur",
-              "Menganjurkan menghindari OAINS bila tidak perlu",
-              "Memberikan terapi antasida atau penekan asam",
-              "Memberikan OAINS tambahan untuk mengurangi nyeri",
-              "Menjelaskan kapan harus kembali bila gejala memburuk"
-            ],
-            "correct_answer_index": 3
-          },
-          {
-            "id": "RME-01B-QZ4",
-            "type": "MCQ",
-            "stem": "Kapan pasien perlu dirujuk untuk pemeriksaan lebih lanjut?",
-            "options": [
-              "Bila muncul hematemesis atau melena",
-              "Bila nyeri hilang dengan antasida",
-              "Bila pasien bekerja shift malam",
-              "Bila pasien menyukai makanan pedas",
-              "Bila pasien merasa cemas terhadap penyakitnya"
-            ],
-            "correct_answer_index": 0
-          },
-          {
-            "id": "RME-01B-QZ5",
-            "type": "SCT",
-            "stem": "Jika pada kunjungan berikutnya pasien mengalami penurunan berat badan 6 kg dalam 2 bulan, bagaimana pengaruhnya terhadap urgensi rujukan?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          }
-        ]
-      },
-      {
-        "case_id": "RME-01C",
-        "title": "Langkah Kecil yang Terhambat Luka Kaki",
-        "setting": "Puskesmas",
-        "department": "Penyakit Dalam",
-        "skdi_diagnosis": "Diabetes melitus tipe 2 tidak terkontrol dengan ulkus kaki dan neuropati perifer (Level 4A)",
-        "icd10": "E11.621",
-        "skdi_level": "4A",
-        "tags": ["koas", "puskesmas", "diabetes", "komplikasi"],
-        "patient": {
-          "name": "Tn. M",
-          "age": 56,
-          "sex": "L",
-          "marital_status": "Menikah",
-          "gravida": null,
-          "para": null,
-          "address_type": "Perkotaan",
-          "insurance_status": "JKN"
-        },
-        "chief_complaint": "Luka di telapak kaki kanan yang sulit sembuh sejak sekitar satu minggu.",
-        "history_of_present_illness": "Pasien mengeluh adanya luka di telapak kaki kanan sejak satu minggu yang lalu. Awalnya hanya lecet kecil karena memakai sandal baru, namun luka tidak kunjung sembuh dan semakin melebar. Luka mulai mengeluarkan bau tidak sedap. Pasien mengeluhkan kaki kanan kadang terasa kebas dan nyeri seperti terbakar, terutama malam hari. Pasien memiliki riwayat kencing manis sekitar 8 tahun tetapi tidak teratur kontrol dan sering lupa minum obat, terutama saat bekerja sebagai sopir jarak jauh. Ia juga mengeluh sering haus, sering BAK, dan penglihatan mulai kabur.",
-        "past_medical_history": "Riwayat diabetes melitus tipe 2 sekitar 8 tahun, kontrol dan kepatuhan obat buruk. Tidak ada riwayat amputasi sebelumnya.",
-        "family_history": "Ayah memiliki riwayat diabetes dan katarak.",
-        "social_history": "Pasien bekerja sebagai sopir angkutan, sering makan tidak teratur dan cenderung tinggi karbohidrat sederhana. Aktivitas fisik terbatas. Riwayat merokok lama, saat ini masih merokok beberapa batang per hari.",
-        "physical_exam": "Keadaan umum cukup. Tekanan darah 150/90 mmHg, nadi 90 kali per menit, RR 20 kali per menit, suhu 37,3°C. Pemeriksaan kaki kanan menunjukkan ulkus di plantar kaki kanan dengan diameter sekitar 2,5 cm, dasar sebagian nekrotik dengan sedikit jaringan granulasi, terdapat discharge yang berbau. Sekitar luka tampak kemerahan. Puls perifer dorsalis pedis terasa lemah. Uji sensasi getar pada kaki kanan menurun, menunjukkan neuropati perifer.",
-        "laboratory": "Glukosa darah puasa 210 mg/dL, glukosa 2 jam post prandial 290 mg/dL. HbA1c 9,5%. Leukosit 12.000/µL. Ureum dan kreatinin dalam batas normal.",
-        "imaging": "Belum dilakukan foto rontgen kaki pada kunjungan ini, direncanakan di RS rujukan.",
-        "procedures": "Belum dilakukan debridement definitif di puskesmas. Luka dibersihkan secara sederhana. Rujukan ke RS untuk evaluasi lebih lanjut dan kemungkinan debridement atau tindakan lain direncanakan.",
-        "working_diagnosis": "Diabetes melitus tipe 2 tidak terkontrol dengan ulkus kaki terinfeksi dan neuropati perifer.",
-        "differential_diagnoses": [
-          "Ulkus kaki neuropatik pada DM tanpa infeksi berat",
-          "Ulkus iskemik akibat penyakit arteri perifer",
-          "Selulitis tungkai"
-        ],
-        "management_plan": "Menetapkan bahwa pasien memiliki ulkus kaki pada DM dengan kontrol glukosa darah yang buruk dan tanda infeksi. Melakukan penatalaksanaan awal di puskesmas berupa pembersihan luka, edukasi, dan pengaturan kembali terapi diabetes bila memungkinkan. Karena terdapat ulkus yang dalam, berbau, dengan puls perifer lemah dan risiko komplikasi berat, pasien harus segera dirujuk ke rumah sakit untuk evaluasi menyeluruh, debridement luka, kemungkinan antibiotik intravena, dan penilaian penyakit pembuluh darah perifer. Edukasi mengenai perawatan kaki, pentingnya kontrol gula darah, dan risiko amputasi bila terlambat mendapatkan penanganan juga diberikan.",
-        "red_flags": {
-          "clinical": [
-            "Ulkus kaki dengan jaringan nekrotik dan bau tidak sedap.",
-            "Puls perifer lemah yang mengindikasikan kemungkinan gangguan aliran darah.",
-            "Riwayat DM lama dengan kontrol buruk dan neuropati perifer."
-          ],
-          "decision": [
-            "Hanya memberikan salep dan obat oral tanpa merujuk, meskipun terdapat ulkus infeksi dengan risiko progresi.",
-            "Menunda rujukan ke RS meskipun ada tanda infeksi dan gangguan sirkulasi perifer."
-          ]
-        },
-        "learning_points": [
-          "Mengenali ulkus kaki diabetik dengan tanda infeksi dan gangguan sirkulasi sebagai kondisi berisiko tinggi.",
-          "Memahami batasan tata laksana di puskesmas dan pentingnya rujukan tepat waktu.",
-          "Menyadari peran edukasi perawatan kaki dan kontrol glikemik untuk mencegah komplikasi berat."
-        ],
-        "assessment_items": {
-          "key_diagnosis": "DM tipe 2 tidak terkontrol dengan ulkus kaki dan neuropati perifer",
-          "key_icd10": "E11.621",
-          "key_skdi_level": "4A",
-          "critical_actions": [
-            "Mengidentifikasi ulkus kaki diabetik sebagai komplikasi serius.",
-            "Menilai adanya tanda infeksi lokal dan gangguan sirkulasi perifer.",
-            "Melakukan penatalaksanaan awal luka secara sederhana.",
-            "Merujuk pasien ke rumah sakit untuk perawatan lanjutan.",
-            "Memberikan edukasi perawatan kaki dan kontrol glikemik."
-          ]
-        },
-        "scaffolding": {
-          "tabs": [
-            {
-              "id": "tab1",
-              "title": "Pembukaan: Keluhan Utama & Data Dasar",
-              "content_summary": "Seorang laki-laki 56 tahun datang ke puskesmas dengan luka di telapak kaki kanan yang tidak kunjung sembuh setelah satu minggu. Ia tampak sedikit pincang saat berjalan.",
-              "linked_fields": ["chief_complaint", "patient"],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q1A",
-                  "prompt": "Apa dua atau tiga kemungkinan penyebab luka pada kaki pasien ini mengingat riwayat kencing manis lama?",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01C-Q1B",
-                  "prompt": "Data anamnesis apa saja yang perlu Anda gali sebelum menilai tingkat kegawatan kasus ini?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab2",
-              "title": "Anamnesis Lengkap",
-              "content_summary": "Pasien menjelaskan luka berawal dari lecet karena sandal baru dan tidak kunjung sembuh. Ia memiliki riwayat DM lama, sering lupa minum obat, dan mengeluh kesemutan serta nyeri seperti terbakar di kaki.",
-              "linked_fields": [
-                "history_of_present_illness",
-                "past_medical_history",
-                "family_history",
-                "social_history"
-              ],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q2A",
-                  "prompt": "Pemeriksaan fisik apa yang paling penting dilakukan pada ekstremitas bawah pasien ini?",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab3",
-              "title": "Pemeriksaan Fisik",
-              "content_summary": "Ditemukan ulkus di plantar kaki kanan dengan dasar sebagian nekrotik dan bau, dengan puls perifer lemah dan penurunan sensasi getar.",
-              "linked_fields": ["physical_exam"],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q3A",
-                  "prompt": "Identifikasi temuan yang Anda anggap sebagai red flag klinis pada pemeriksaan fisik.",
-                  "response_type": "free_text"
-                },
-                {
-                  "id": "RME-01C-Q3B",
-                  "prompt": "Susun problem representation satu kalimat untuk menggambarkan profil kasus ini.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab4",
-              "title": "Pemeriksaan Penunjang",
-              "content_summary": "Hasil laboratorium menunjukkan glukosa darah dan HbA1c tinggi dengan leukositosis, menunjukkan DM tidak terkontrol dan infeksi.",
-              "linked_fields": ["laboratory", "imaging"],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q4A",
-                  "prompt": "Tentukan working diagnosis dan sebutkan diagnosis banding yang masih mungkin dipertimbangkan.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab5",
-              "title": "Rencana Tata Laksana",
-              "content_summary": "Penatalaksanaan meliputi perawatan luka awal di puskesmas, optimalisasi terapi DM, dan rujukan ke RS untuk perawatan luka lanjutan.",
-              "linked_fields": ["management_plan"],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q5A",
-                  "prompt": "Apakah pasien ini cukup ditangani di puskesmas saja? Jelaskan rencana tata laksana dan alasan rujukan atau tidak dirujuk.",
-                  "response_type": "free_text"
-                }
-              ]
-            },
-            {
-              "id": "tab6",
-              "title": "Refleksi & Umpan Balik",
-              "content_summary": "Refleksi tentang pentingnya pengenalan dini ulkus kaki diabetik dan konsekuensi bila keputusan klinis tidak tepat.",
-              "linked_fields": [],
-              "gate_questions": [
-                {
-                  "id": "RME-01C-Q6A",
-                  "prompt": "Apa konsekuensi klinis terburuk jika kasus seperti ini tidak dirujuk dengan tepat waktu? Apa yang akan Anda lakukan berbeda pada kasus berikutnya?",
-                  "response_type": "free_text"
-                }
-              ]
-            }
-          ]
-        },
-        "quiz_items": [
-          {
-            "id": "RME-01C-QZ1",
-            "type": "MCQ",
-            "stem": "Temuan berikut yang merupakan red flag klinis pada kasus ini adalah:",
-            "options": [
-              "Luka lecet kecil tanpa bau",
-              "Ulkus kaki dengan dasar nekrotik dan bau",
-              "Keringat dingin saat datang",
-              "Tidak ada keluhan nyeri",
-              "Kuku kaki panjang"
-            ],
-            "correct_answer_index": 1
-          },
-          {
-            "id": "RME-01C-QZ2",
-            "type": "MCQ",
-            "stem": "Tindakan yang PALING tepat dilakukan di puskesmas pada kunjungan ini adalah:",
-            "options": [
-              "Memberikan salep bebas dan memulangkan pasien tanpa rujukan",
-              "Membersihkan luka, mengatur terapi DM, dan merujuk ke rumah sakit",
-              "Tidak menyentuh luka dan hanya memberi vitamin",
-              "Memberikan analgetik kuat lalu pulangkan",
-              "Menganjurkan pasien merendam kaki dengan air panas"
-            ],
-            "correct_answer_index": 1
-          },
-          {
-            "id": "RME-01C-QZ3",
-            "type": "SCT",
-            "stem": "Jika puls perifer pada kaki tidak teraba sama sekali, bagaimana pengaruhnya terhadap urgensi rujukan ke rumah sakit?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          },
-          {
-            "id": "RME-01C-QZ4",
-            "type": "MCQ",
-            "stem": "Parameter laboratorium yang PALING tepat untuk menilai kontrol jangka panjang glukosa darah adalah:",
-            "options": [
-              "Glukosa darah sewaktu",
-              "Glukosa darah puasa",
-              "Glukosa darah 2 jam post prandial",
-              "HbA1c",
-              "Urinalisis"
-            ],
-            "correct_answer_index": 3
-          },
-          {
-            "id": "RME-01C-QZ5",
-            "type": "SCT",
-            "stem": "Jika pasien sangat sulit mengubah pola makan dan enggan kontrol rutin, bagaimana pengaruhnya terhadap risiko komplikasi kaki di masa depan?",
-            "options": [
-              "Sangat menurun",
-              "Menurun",
-              "Tidak berubah",
-              "Meningkat",
-              "Sangat meningkat"
-            ],
-            "expert_answer_index": 4
-          }
-        ]
-      }
+        // ==== KONFIGURASI SUMBER DATA JSON (20 RAJAL + 5 RANAP) ====
+    const CASE_FILES = [
+      "rme_rajal_batch1.json",
+      "rme_rajal_batch2.json",
+      "rme_rajal_batch3.json",
+      "rme_rajal_batch4.json",
+      "rme_ranap_diare_21.json",
+      "rme_ranap_asma_22.json",
+      "rme_ranap_pielo_23.json",
+      "rme_ranap_hepa_24.json",
+      "rme_ranap_hipogli_25.json"
     ];
 
-    // ==== STATE ====
+    // menampung seluruh kasus yang berhasil dimuat
+    let casesData = [];
+
+    // key untuk menyimpan progres & personalisasi di browser
+    const STORAGE_KEY = "rme_koas_simulator_v1";
+
+    // load semua file JSON dan gabungkan menjadi satu array kasus
+    async function loadCasesFromFiles() {
+      const allCases = [];
+
+      for (const file of CASE_FILES) {
+        try {
+          const res = await fetch(file);
+          if (!res.ok) {
+            console.warn("Gagal memuat", file, res.status);
+            continue;
+          }
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            allCases.push(...data);
+          } else if (data) {
+            allCases.push(data);
+          }
+        } catch (err) {
+          console.error("Error membaca", file, err);
+        }
+      }
+
+      // urutkan berdasarkan case_id supaya konsisten
+      allCases.sort((a, b) => (a.case_id || "").localeCompare(b.case_id || ""));
+      return allCases;
+    }
+
+    // membaca progres tersimpan (jawaban + nama mahasiswa) dari localStorage
+    function getSavedState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        return JSON.parse(raw);
+      } catch (e) {
+        console.warn("Gagal parse state tersimpan:", e);
+        return null;
+      }
+    }
+
+    // menyimpan progres (jawaban, skor kuis, nama) ke localStorage
+    function saveState() {
+      try {
+        const payload = {
+          answers,
+          studentName: studentNameInput ? studentNameInput.value || "" : ""
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      } catch (e) {
+        console.warn("Gagal menyimpan state:", e);
+      }
+    }
+function getTabs(c) {
+  // 1) Jika sudah punya struktur tabs (cadangan)
+  if (c.scaffolding && Array.isArray(c.scaffolding.tabs)) {
+    return c.scaffolding.tabs;
+  }
+
+  // 2) Kasus rawat jalan: pakai scaffolding_steps (sudah ada)
+  if (Array.isArray(c.scaffolding_steps)) {
+    return c.scaffolding_steps.map((step, idx) => {
+      const tabId = step.step_id || `step_${idx + 1}`;
+      const prompts = Array.isArray(step.prompt_student) ? step.prompt_student : [];
+
+      return {
+        id: tabId,
+        title: step.tab || `Langkah ${idx + 1}`,
+        subtitle: step.stage ? `Tahap: ${step.stage}` : "",
+        case_narrative: c.synopsis || c.chief_complaint || "",
+        gate_questions: prompts.map((pText, qi) => ({
+          id: `${tabId}_q${qi + 1}`,
+          prompt: pText
+        }))
+      };
+    });
+  }
+
+  // 3) Kasus rawat inap: scaffolding ada di dalam timeline.day_x.scaffolding
+  if (c.timeline && typeof c.timeline === "object") {
+    const dayEntries = Object.entries(c.timeline).sort((a, b) =>
+      a[0].localeCompare(b[0])
+    ); // urut: day_0, day_1, dst.
+
+    return dayEntries.map(([dayKey, dayVal], idx) => {
+      const tabId = dayKey;
+      const scaffArr = Array.isArray(dayVal.scaffolding)
+        ? dayVal.scaffolding
+        : [];
+
+      const gate_questions = scaffArr.map((step, i) => ({
+        id: `${tabId}_${step.step_id || "s" + (i + 1)}`,
+        prompt: step.prompt || step.gate || `Langkah ${i + 1}`
+      }));
+
+      return {
+        id: tabId,
+        title: dayVal.label || `Hari ${idx + 1}`,
+        subtitle: "",
+        case_narrative:
+          (dayVal.clinical_data && dayVal.clinical_data.summary) ||
+          c.synopsis ||
+          c.chief_complaint ||
+          "",
+        gate_questions
+      };
+    });
+  }
+
+  // fallback: tidak ada scaffolding
+  return [];
+}
+
+    // hitung total XP & level koas berdasarkan progres semua kasus
+    // 10 XP per tab yang semua pertanyaan scaffolding-nya terisi
+    // 5 XP per jawaban kuis yang benar
+    function computeXPAndLevel() {
+      let totalXP = 0;
+
+      casesData.forEach(c => {
+        const caseAns = answers[c.case_id] || {};
+        const tabs = getTabs(c);
+
+        // XP dari tab (scaffolding)
+        tabs.forEach(tab => {
+          const tabAns = caseAns[tab.id] || {};
+          const gateQs = tab.gate_questions || [];
+          if (
+            gateQs.length &&
+            gateQs.every(q => ((tabAns[q.id] || "").trim().length > 0))
+          ) {
+            totalXP += 10;
+          }
+        });
+
+        // XP dari kuis
+        const score = caseAns.quizScore;
+        if (score && typeof score.correct === "number") {
+          totalXP += score.correct * 5;
+        }
+      });
+
+      const level = Math.floor(totalXP / 50) + 1;
+      return { totalXP, level };
+    }
+
+// ==== STATE ====
     let currentCaseIndex = null;
     let currentTabIndex = 0;
     const answers = {}; // { case_id: { tabId: { questionId: text }, quiz: {questionId: idx} } }
@@ -1077,22 +719,64 @@
     const statQuizScore = document.getElementById("statQuizScore");
     const tabsProgressBar = document.getElementById("tabsProgressBar");
     const statPerformanceBadge = document.getElementById("statPerformanceBadge");
+    const statXP = document.getElementById("statXP");
+    const statLevel = document.getElementById("statLevel");
 
     // ==== INIT CASE LIST ====
+
     function renderCaseList() {
       caseListEl.innerHTML = "";
-      casesData.forEach((c, index) => {
+      casesData.forEach((c, idx) => {
         const item = document.createElement("div");
-        item.className = "case-item" + (index === currentCaseIndex ? " active" : "");
-        item.onclick = () => selectCase(index);
+        item.className = "case-card";
+        item.onclick = () => selectCase(idx);
 
         const title = document.createElement("div");
         title.className = "case-title";
-        title.textContent = c.title;
+        title.textContent = c.title || c.case_title || c.case_id || `Kasus ${idx + 1}`;
 
         const meta = document.createElement("div");
         meta.className = "case-meta";
-        meta.textContent = `${c.setting} • ${c.department}`;
+
+        const pill1 = document.createElement("span");
+        pill1.className = "case-meta-pill";
+        pill1.textContent = c.setting || "Layanan primer";
+        meta.appendChild(pill1);
+
+        const pill2 = document.createElement("span");
+        pill2.className = "case-meta-pill";
+        pill2.textContent = c.department || c.unit || "Klinik umum";
+        meta.appendChild(pill2);
+
+        if (c.skdi_level) {
+          const pill3 = document.createElement("span");
+          pill3.className = "case-meta-pill";
+          pill3.textContent = `SKDI ${c.skdi_level}`;
+          meta.appendChild(pill3);
+        }
+
+        if (Array.isArray(c.tags)) {
+          c.tags.slice(0, 2).forEach(t => {
+            const tag = document.createElement("span");
+            tag.className = "case-meta-tag";
+            tag.textContent = t;
+            meta.appendChild(tag);
+          });
+        }
+
+        const diff = document.createElement("div");
+        diff.className = "case-difficulty";
+        const pill = document.createElement("span");
+        pill.className = "difficulty-pill";
+        const dot = document.createElement("span");
+        dot.className = "difficulty-dot";
+        const lab = document.createElement("span");
+        lab.className = "difficulty-label";
+        lab.textContent = c.difficulty_label || "sedang";
+        pill.appendChild(dot);
+        pill.appendChild(lab);
+        diff.appendChild(pill);
+        meta.appendChild(diff);
 
         item.appendChild(title);
         item.appendChild(meta);
@@ -1111,8 +795,8 @@
       });
 
       const c = casesData[index];
-      caseTitleEl.textContent = c.title;
-      caseSubtitleEl.textContent = `${c.setting} • ${c.department}`;
+      caseTitleEl.textContent = c.title || c.case_title || c.case_id || `Kasus ${index + 1}`;
+      caseSubtitleEl.textContent = `${c.setting || "Layanan primer"} • ${c.department || c.unit || "Unit klinis"}`;
       renderTabs();
       renderCurrentTab();
       updateDashboard();
@@ -1120,37 +804,52 @@
 
     // ==== RENDER TABS ====
     function getCompletedTabsCount(c) {
-      const caseAnswers = answers[c.case_id] || {};
-      const tabs = c.scaffolding?.tabs || [];
-      let completed = 0;
-      tabs.forEach(tab => {
-        const gateQs = tab.gate_questions || [];
-        if (gateQs.length === 0) return;
-        const tabAnswers = caseAnswers[tab.id] || {};
-        const allAnswered = gateQs.every(q => (tabAnswers[q.id] || "").trim().length > 0);
-        if (allAnswered) completed++;
-      });
-      return completed;
+  const caseAnswers = answers[c.case_id] || {};
+  const tabs = getTabs(c);
+  let completed = 0;
+
+  tabs.forEach(tab => {
+    const tabAns = caseAnswers[tab.id] || {};
+    const gateQs = tab.gate_questions || [];
+    if (
+      gateQs.length &&
+      gateQs.every(q => (tabAns[q.id] || "").trim().length > 0)
+    ) {
+      completed++;
+    }
+  });
+
+  return completed;
     }
 
     function renderTabs() {
       tabHeaderBar.innerHTML = "";
       if (currentCaseIndex === null) return;
+
       const c = casesData[currentCaseIndex];
-      const tabs = c.scaffolding?.tabs || [];
-      const completedCount = getCompletedTabsCount(c);
+      const tabs = getTabs(c);
+      const completed = getCompletedTabsCount(c);
 
       tabs.forEach((tab, idx) => {
         const pill = document.createElement("button");
         pill.type = "button";
         pill.className = "tab-pill";
-        const enabled = idx === 0 || idx <= completedCount;
+
+        const enabled = idx <= completed;
         if (enabled) pill.classList.add("enabled");
         if (idx === currentTabIndex) pill.classList.add("active");
-        if (idx < completedCount) pill.classList.add("completed");
-        pill.disabled = !enabled;
+
+        const caseAns = answers[c.case_id] || {};
+        const tabAns = caseAns[tab.id] || {};
+        const gateQs = tab.gate_questions || [];
+        const isCompleted = gateQs.length && gateQs.every(q => (tabAns[q.id] || "").trim().length > 0);
+        if (isCompleted) pill.classList.add("completed");
+
         pill.onclick = () => {
-          if (!enabled) return;
+          if (!enabled) {
+            alert("Lengkapi tab sebelumnya terlebih dahulu.");
+            return;
+          }
           currentTabIndex = idx;
           renderTabs();
           renderCurrentTab();
@@ -1179,7 +878,7 @@
       }
 
       const c = casesData[currentCaseIndex];
-      const tabs = c.scaffolding?.tabs || [];
+      const tabs = getTabs(c);
       if (!tabs.length) {
         contentArea.textContent = "Kasus ini belum memiliki tab scaffolding.";
         return;
@@ -1192,11 +891,11 @@
 
       const sectionSubtitle = document.createElement("div");
       sectionSubtitle.className = "section-subtitle";
-      sectionSubtitle.textContent = `Tab ${currentTabIndex + 1} dari ${tabs.length}`;
+      sectionSubtitle.textContent = tab.subtitle || "Baca ringkasan kasus, kemudian jawab pertanyaan di bawah.";
 
       const caseText = document.createElement("div");
       caseText.className = "case-text";
-      caseText.textContent = tab.content_summary || "";
+      caseText.textContent = tab.case_narrative || c.case_narrative || c.chief_complaint || "Ringkasan kasus akan tampil di sini.";
 
       contentArea.appendChild(sectionTitle);
       contentArea.appendChild(sectionSubtitle);
@@ -1224,8 +923,8 @@
 
           const textarea = document.createElement("textarea");
           textarea.value = tabAns[q.id] || "";
-          textarea.oninput = () => {
-            tabAns[q.id] = textarea.value;
+          textarea.oninput = (e) => {
+            tabAns[q.id] = e.target.value;
           };
 
           qDiv.appendChild(label);
@@ -1240,22 +939,31 @@
         saveBtn.type = "button";
         saveBtn.className = "btn-primary";
         saveBtn.textContent = currentTabIndex === tabs.length - 1 ? "Tandai tab selesai" : "Simpan & lanjut tab berikutnya";
-        saveBtn.onclick = () => {
-          const allAnswered = tab.gate_questions.every(q => (tabAns[q.id] || "").trim().length > 0);
-          if (!allAnswered) {
-            alert("Lengkapi semua jawaban terlebih dahulu sebelum lanjut.");
-            return;
-          }
-          const completedCount = getCompletedTabsCount(c);
-          if (currentTabIndex < tabs.length - 1) {
-            currentTabIndex = Math.min(currentTabIndex + 1, completedCount + 1);
-            renderTabs();
-            renderCurrentTab();
-          } else {
-            renderTabs();
-            alert("Semua pertanyaan pada tab ini telah terisi.");
-          }
-        };
+     saveBtn.onclick = () => {
+  const allAnswered = tab.gate_questions.every(
+    q => (tabAns[q.id] || "").trim().length > 0
+  );
+  if (!allAnswered) {
+    alert("Lengkapi semua jawaban terlebih dahulu sebelum lanjut.");
+    return;
+  }
+
+  // setelah jawaban terisi, hitung ulang tab yang sudah lengkap
+  const completedCount = getCompletedTabsCount(c);
+
+  // kalau masih ada tab berikutnya → maju satu tab
+  if (currentTabIndex < tabs.length - 1) {
+    currentTabIndex = Math.min(currentTabIndex + 1, completedCount + 1);
+  } else {
+    // di tab terakhir cukup beri info
+    alert("Semua pertanyaan pada tab ini telah terisi.");
+  }
+
+  // SELALU render ulang tabs + konten tab saat ini
+  renderTabs();
+  renderCurrentTab();
+  saveState();
+};
 
         btnRow.appendChild(saveBtn);
         gateWrapper.appendChild(btnRow);
@@ -1267,100 +975,147 @@
       if (completedCount === tabs.length) {
         renderQuizSection(c);
       }
-
-      updateDashboard();
     }
 
-    // ==== QUIZ SECTION ====
-    function renderQuizSection(c) {
-      const quizWrapper = document.createElement("div");
-      quizWrapper.className = "quiz-section";
+function renderQuizSection(c) {
+  const items = getQuizItems(c);
+  if (!items.length) return;
 
-      const title = document.createElement("div");
-      title.className = "section-title";
-      title.textContent = "Kuis klinis kasus ini";
+  const quizWrapper = document.createElement("div");
+  quizWrapper.className = "quiz-section";
 
-      const subtitle = document.createElement("div");
-      subtitle.className = "section-subtitle";
-      subtitle.textContent = "Jawab pertanyaan di bawah untuk menguji clinical reasoning dan decision making Anda.";
+  const title = document.createElement("div");
+  title.className = "section-title";
+  title.textContent = "Kuis penalaran klinis";
+  quizWrapper.appendChild(title);
 
-      quizWrapper.appendChild(title);
-      quizWrapper.appendChild(subtitle);
+  const subtitle = document.createElement("div");
+  subtitle.className = "section-subtitle";
+  subtitle.textContent = "Jawab soal berikut.";
+  quizWrapper.appendChild(subtitle);
 
-      const quizAns = (answers[c.case_id].quiz = answers[c.case_id].quiz || {});
-      c.quiz_items.forEach((q, idx) => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "quiz-item";
+  const caseAns = (answers[c.case_id] = answers[c.case_id] || {});
+  const quizAns = (caseAns.quiz = caseAns.quiz || {});
 
-        const p = document.createElement("p");
-        const qLabel = q.type === "SCT" ? "SCT" : "MCQ";
-        p.innerHTML = `<strong>Q${idx + 1} (${qLabel})</strong>: ${q.stem}`;
-        itemDiv.appendChild(p);
+  items.forEach((q, idx) => {
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "quiz-item";
 
-        const optsDiv = document.createElement("div");
-        optsDiv.className = "quiz-options";
+    const p = document.createElement("p");
+    const qLabel = q.type || "MCQ";
+    const text = q.question || q.stem || "";
+    const qId = q.quiz_id || q.id || `q${idx + 1}`;
 
-        q.options.forEach((opt, optIdx) => {
-          const label = document.createElement("label");
-          const radio = document.createElement("input");
-          radio.type = "radio";
-          radio.name = q.id;
-          radio.value = optIdx;
-          radio.checked = quizAns[q.id] === optIdx;
-          radio.onchange = () => {
-            quizAns[q.id] = optIdx;
-          };
-          label.appendChild(radio);
-          label.appendChild(document.createTextNode(opt));
-          optsDiv.appendChild(label);
-        });
+    p.innerHTML = `<strong>Q${idx + 1} (${qLabel})</strong>: ${text}`;
+    itemDiv.appendChild(p);
 
-        itemDiv.appendChild(optsDiv);
-        quizWrapper.appendChild(itemDiv);
-      });
+    const optsDiv = document.createElement("div");
+    optsDiv.className = "quiz-options";
 
-      const btnRow = document.createElement("div");
-      btnRow.className = "btn-row";
-
-      const submitQuizBtn = document.createElement("button");
-      submitQuizBtn.type = "button";
-      submitQuizBtn.className = "btn-primary";
-      submitQuizBtn.textContent = "Hitung skor kuis";
-      submitQuizBtn.onclick = () => {
-        const result = computeQuizScore(c);
-        const summaryEl = quizWrapper.querySelector(".quiz-summary") || document.createElement("div");
-        summaryEl.className = "quiz-summary";
-        const percent = result.total ? Math.round((result.correct / result.total) * 100) : 0;
-        summaryEl.textContent = `Skor Anda: ${result.correct} benar dari ${result.total} soal (${percent}%).`;
-        quizWrapper.appendChild(summaryEl);
-        updateDashboard();
+    Object.entries(q.options || {}).forEach(([key, optText]) => {
+      const label = document.createElement("label");
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = qId;
+      radio.value = key;
+      radio.checked = quizAns[qId] === key;
+      radio.onchange = () => {
+        quizAns[qId] = key;
       };
+      label.appendChild(radio);
+      label.appendChild(document.createTextNode(`${key}. ${optText}`));
+      optsDiv.appendChild(label);
+    });
 
-      btnRow.appendChild(submitQuizBtn);
-      quizWrapper.appendChild(btnRow);
+    itemDiv.appendChild(optsDiv);
+    quizWrapper.appendChild(itemDiv);
+  });
 
-      contentArea.appendChild(quizWrapper);
+  const btnRow = document.createElement("div");
+  btnRow.className = "btn-row";
+
+  const submitQuizBtn = document.createElement("button");
+  submitQuizBtn.type = "button";
+  submitQuizBtn.className = "btn-primary";
+  submitQuizBtn.textContent = "Hitung skor kuis";
+  submitQuizBtn.onclick = () => {
+    const result = computeQuizScore(c);
+    const summaryEl = quizWrapper.querySelector(".quiz-summary") || document.createElement("div");
+    summaryEl.className = "quiz-summary";
+    const percent = result.total ? Math.round((result.correct / result.total) * 100) : 0;
+    summaryEl.textContent = `Skor Anda: ${result.correct}/${result.total} (${percent}%).`;
+    quizWrapper.appendChild(summaryEl);
+    updateDashboard();
+    saveState();
+  };
+
+  btnRow.appendChild(submitQuizBtn);
+  quizWrapper.appendChild(btnRow);
+
+  contentArea.appendChild(quizWrapper);
+}
+
+function getQuizItems(c) {
+  let all = [];
+
+  // 1. Kasus rawat jalan – quiz di level atas
+  if (Array.isArray(c.quiz_items)) {
+    all = all.concat(c.quiz_items);
+  }
+
+  // 2. Kasus rawat inap – quiz tersebar dalam timeline
+  if (c.timeline && typeof c.timeline === "object") {
+    Object.values(c.timeline).forEach(day => {
+
+      // format 1 → day.quiz_items
+      if (Array.isArray(day.quiz_items)) {
+        all = all.concat(day.quiz_items);
+      }
+
+      // format 2 → day.quiz
+      if (Array.isArray(day.quiz)) {
+        all = all.concat(day.quiz);
+      }
+
+      // format 3 → day.final_quiz_nodes
+      if (Array.isArray(day.final_quiz)) {
+        all = all.concat(day.final_quiz);
+      }
+    });
+  }
+
+  // 3. Final quiz (kasus rawat inap)
+  if (Array.isArray(c.final_quiz)) {
+    all = all.concat(c.final_quiz);
+  }
+
+  return all;
+}
+
+
+
+function computeQuizScore(c) {
+  const quizAns = (answers[c.case_id] || {}).quiz || {};
+  let correct = 0;
+  let total = 0;
+
+  const items = getQuizItems(c);
+
+  items.forEach((q, idx) => {
+    const qId = q.quiz_id || q.id || `q${idx + 1}`;
+    const keyCorrect = q.correct_option || q.correct_answer_key;
+    if (!keyCorrect) return;
+    total++;
+    if (quizAns[qId] === keyCorrect) {
+      correct++;
     }
+  });
 
-    function computeQuizScore(c) {
-      const quizAns = (answers[c.case_id] || {}).quiz || {};
-      let correct = 0;
-      let total = 0;
-      c.quiz_items.forEach(q => {
-        if (typeof q.correct_answer_index === "number" || typeof q.expert_answer_index === "number") {
-          total++;
-          const keyIdx = typeof q.correct_answer_index === "number" ? q.correct_answer_index : q.expert_answer_index;
-          if (quizAns[q.id] === keyIdx) {
-            correct++;
-          }
-        }
-      });
-      // store score
-      answers[c.case_id].quizScore = { correct, total };
-      return { correct, total };
-    }
+  answers[c.case_id].quizScore = { correct, total };
+  return { correct, total };
+}
 
-    // ==== DASHBOARD ====
+
     function updateDashboard() {
       const studentName = studentNameInput.value.trim();
       statStudentName.textContent = studentName || "-";
@@ -1368,6 +1123,13 @@
         studentGreeting.textContent = `Halo, ${studentName}!`;
       } else {
         studentGreeting.textContent = "Progress akan tersimpan selama halaman ini terbuka.";
+      }
+
+      // XP & level dihitung dari semua kasus yang sudah dikerjakan
+      const xpInfo = computeXPAndLevel();
+      if (statXP && statLevel) {
+        statXP.textContent = xpInfo.totalXP;
+        statLevel.textContent = xpInfo.level;
       }
 
       if (currentCaseIndex === null) {
@@ -1380,10 +1142,10 @@
         return;
       }
 
-      const c = casesData[currentCaseIndex];
-      const tabs = c.scaffolding?.tabs || [];
-      const completed = getCompletedTabsCount(c);
-      statTabsProgress.textContent = `${completed} / ${tabs.length}`;
+const c = casesData[currentCaseIndex];
+const tabs = getTabs(c);
+const completed = getCompletedTabsCount(c);
+statTabsProgress.textContent = `${completed} / ${tabs.length}`;
       const percent = tabs.length ? (completed / tabs.length) * 100 : 0;
       tabsProgressBar.style.width = `${percent}%`;
 
@@ -1413,10 +1175,31 @@
     }
 
     // ==== EVENT: STUDENT NAME CHANGE ====
-    studentNameInput.addEventListener("input", updateDashboard);
+    studentNameInput.addEventListener("input", () => {
+      updateDashboard();
+      saveState();
+    });
 
     // ==== INIT ====
-    renderCaseList();
+    async function initApp() {
+      // 1. muat seluruh kasus dari file JSON
+      casesData = await loadCasesFromFiles();
+
+      // 2. baca progres tersimpan (jika ada)
+      const saved = getSavedState();
+      if (saved && saved.answers) {
+        Object.assign(answers, saved.answers);
+      }
+      if (saved && saved.studentName) {
+        studentNameInput.value = saved.studentName;
+      }
+
+      // 3. render UI awal
+      renderCaseList();
+      updateDashboard();
+    }
+
+    initApp();
   </script>
 </body>
 </html>
