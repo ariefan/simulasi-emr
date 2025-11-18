@@ -1,0 +1,405 @@
+{
+  "case_id": "rme-21",
+  "title": "Hari yang Terlalu Panas untuk Perut Siti (Rawat Inap Puskesmas)",
+  "setting": "Rawat inap puskesmas (2 hari)",
+  "department": "IPD/IKA",
+  "primary_diagnosis": "Diare akut non-invasif dengan dehidrasi sedang",
+  "skdi_level": "4A",
+  "difficulty": "ringan",
+  "encounter_type": "inpatient",
+  "chief_complaint": "Diare cair sejak 8 jam disertai muntah dan lemas.",
+  "synopsis": "Perempuan 24 tahun datang ke IGD Puskesmas dengan diare cair sejak 8 jam, frekuensi 6–8 kali, disertai muntah 2 kali, nafsu makan menurun, dan rasa lemas. Pemeriksaan menunjukkan tanda dehidrasi sedang. Pasien dirawat 2 hari di ruang rawat inap Puskesmas untuk rehidrasi intravena dan pemantauan, kemudian dipulangkan dengan perbaikan klinis dan edukasi.",
+  "key_exam_findings": "TD 100/70 mmHg, nadi 104/menit, RR 20/menit, suhu 37,6°C, CRT 3 detik, turgor kulit menurun, mukosa mulut kering, nyeri tekan ringan difus di abdomen, bising usus meningkat, tanpa tanda peritonitis.",
+  "key_lab_results": "GDS 98 mg/dL, Hb 12,5 g/dL, leukosit 9.200/uL, CRP rendah, urinalisis normal, tes kehamilan negatif.",
+  "working_diagnosis": "Diare akut non-invasif (kemungkinan gastroenteritis viral) dengan dehidrasi sedang.",
+  "differential_diagnoses": [
+    "Gastroenteritis bakteri (diare invasif)",
+    "Keracunan makanan",
+    "Intoleransi laktosa akut",
+    "Irritable bowel syndrome (episode akut)",
+    "Diare akibat obat (misalnya laksatif)"
+  ],
+  "management_summary": "Rehidrasi intravena Ringer Laktat, pemberian ORS, zinc, dan antiemetik bila perlu. Observasi tanda vital, frekuensi diare, dan intake-output. Tidak diberikan antibiotik karena tidak ada indikasi diare invasif. Setelah 48 jam, pasien membaik, diare berkurang, hidrasi normal, lalu dipulangkan dengan edukasi dan rencana follow-up.",
+  "red_flags_clinical": [
+    "Diare berdarah",
+    "Demam tinggi > 38,5°C",
+    "Tanda dehidrasi berat (syok, oliguria berat, gangguan kesadaran)",
+    "Nyeri perut hebat terlokalisir / defans muskular",
+    "GDS sangat rendah atau sangat tinggi",
+    "Tampak toksik, lemah berat"
+  ],
+  "learning_objectives": [
+    "Menilai derajat dehidrasi pada pasien diare akut.",
+    "Membedakan indikasi rawat inap, pulang, dan rujuk pada diare akut.",
+    "Menyusun rencana rehidrasi (IV dan oral) dan monitoring pada pasien dengan dehidrasi sedang.",
+    "Mengidentifikasi indikasi pemberian antibiotik pada diare akut dan penggunaan antibiotik yang rasional.",
+    "Merencanakan edukasi pulang dan tanda bahaya pada pasien diare akut yang telah dirawat inap."
+  ],
+  "timeline": {
+    "day_0": {
+      "label": "Day 0 - IGD Puskesmas (Masuk Rawat Inap)",
+      "clinical_data": {
+        "history": {
+          "onset": "8 jam sebelum datang",
+          "stool_frequency": "6–8 kali/hari",
+          "stool_character": "Cair, tanpa darah, tidak berlendir kental",
+          "vomit": "2 kali, isi makanan dan cairan",
+          "fever": "Tidak ada demam tinggi, suhu di rumah sekitar 37,5°C",
+          "oral_intake": "Menurun, sulit minum karena mual",
+          "diet_history": "Makan ayam geprek di warung dekat kantor malam sebelumnya; ada teman dengan keluhan serupa",
+          "past_history": "Tidak ada riwayat DM, hipertensi, penyakit ginjal, atau penyakit kronis lain yang relevan",
+          "drug_history": "Tidak sedang konsumsi antibiotik atau laksatif sebelum diare",
+          "menstrual_history": "Tidak sedang haid; tes kehamilan kemudian negatif"
+        },
+        "physical_exam": {
+          "blood_pressure": "100/70 mmHg",
+          "heart_rate": "104 x/menit",
+          "respiratory_rate": "20 x/menit",
+          "temperature": "37,6 °C",
+          "crt": "3 detik",
+          "skin_turgor": "Menurun",
+          "mucosa": "Kering",
+          "abdomen": "Sedikit distensi, nyeri tekan ringan difus, bising usus meningkat, tanpa tanda peritonitis",
+          "mental_status": "Compos mentis, tampak lemas"
+        },
+        "labs": {
+          "gds": "98 mg/dL",
+          "hemoglobin": "12,5 g/dL",
+          "leukocyte": "9.200/uL",
+          "crp": "Rendah/normal",
+          "urinalysis": "Normal",
+          "pregnancy_test": "Negatif"
+        },
+        "initial_assessment": "Diare akut dengan dehidrasi sedang berdasarkan CRT 3 detik, turgor menurun, mukosa kering, takikardia, namun tanpa syok atau gangguan kesadaran. Tidak ada tanda diare invasif."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G1-S1",
+          "gate": "IGD - Identifikasi masalah",
+          "prompt": "Dari data klinis saat masuk IGD, sebutkan masalah-masalah utama yang Anda identifikasi pada Siti.",
+          "expected_points": [
+            "Diare cair akut",
+            "Muntah",
+            "Tanda-tanda dehidrasi sedang",
+            "Lemas"
+          ]
+        },
+        {
+          "step_id": "G1-S2",
+          "gate": "IGD - Derajat dehidrasi",
+          "prompt": "Berdasarkan CRT 3 detik, turgor menurun, mukosa kering, dan nadi 104 x/menit, bagaimana derajat dehidrasi Siti?",
+          "expected_answer": "Dehidrasi sedang."
+        },
+        {
+          "step_id": "G1-S3",
+          "gate": "IGD - Red flag",
+          "prompt": "Apakah pada saat masuk IGD terdapat red flag yang mengharuskan rujukan segera ke rumah sakit yang lebih tinggi?",
+          "expected_points": [
+            "Tidak ada diare berdarah",
+            "Tidak ada demam tinggi > 38,5°C",
+            "Tidak ada syok (TD masih 100/70, kesadaran baik)",
+            "Tidak ada nyeri perut hebat/defans muskular",
+            "Tidak ada penurunan kesadaran"
+          ]
+        },
+        {
+          "step_id": "G1-S4",
+          "gate": "IGD - Keputusan awal",
+          "prompt": "Dengan kondisi seperti ini, apa keputusan tatalaksana awal yang paling tepat untuk Siti?",
+          "expected_answer": "Rawat inap di Puskesmas dengan rehidrasi intravena, pemantauan tanda vital dan intake-output, serta transisi ke cairan oral bila membaik."
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G1-Q1",
+          "type": "single_best_answer",
+          "question": "Tanda yang paling menegakkan diagnosis dehidrasi sedang pada Siti adalah:",
+          "options": {
+            "A": "Tidak bisa minum sama sekali",
+            "B": "CRT sekitar 3 detik",
+            "C": "Turgor sangat buruk dengan mata sangat cekung dan syok",
+            "D": "Denyut nadi tidak teraba",
+            "E": "Penurunan kesadaran berat"
+          },
+          "correct_option": "B",
+          "explanation": "CRT sekitar 3 detik dengan turgor menurun, takikardia, dan lemas tanpa syok mendukung dehidrasi sedang."
+        },
+        {
+          "quiz_id": "G1-Q2",
+          "type": "sct",
+          "question": "“Pasien dengan diare akut dan dehidrasi sedang sebaiknya dirawat di fasilitas yang mampu memberikan rehidrasi IV dan pemantauan.”",
+          "scale": [
+            "Sangat setuju",
+            "Setuju",
+            "Ragu-ragu",
+            "Tidak setuju",
+            "Sangat tidak setuju"
+          ],
+          "correct_scale": [
+            "Sangat setuju",
+            "Setuju"
+          ],
+          "explanation": "Rawat inap mencegah progresi ke dehidrasi berat dan memfasilitasi pemantauan ketat."
+        }
+      ]
+    },
+    "day_1": {
+      "label": "Day 1 - 24 jam pertama rawat inap",
+      "clinical_data": {
+        "therapy": {
+          "iv_fluids": "Ringer Laktat 1500 ml/24 jam",
+          "oral": "ORS sips, ditingkatkan sesuai toleransi",
+          "drugs": [
+            "Zinc 20 mg/hari",
+            "Antiemetik (ondansetron) bila mual/muntah",
+            "Probiotik bila tersedia"
+          ]
+        },
+        "progress": {
+          "symptoms": {
+            "vomit": "Sudah berhenti",
+            "stool_frequency": "3 kali sejak malam",
+            "stool_character": "Masih cair, tanpa darah",
+            "appetite": "Mulai membaik",
+            "weakness": "Masih ada lemas ringan namun membaik"
+          },
+          "vital_signs": {
+            "blood_pressure": "110/75 mmHg",
+            "heart_rate": "88 x/menit",
+            "respiratory_rate": "18 x/menit",
+            "temperature": "37,2 °C",
+            "crt": "< 2 detik",
+            "skin_turgor": "Lebih baik",
+            "mucosa": "Lebih lembab"
+          },
+          "intake_output": {
+            "oral_intake": "± 1 liter/24 jam, mulai bisa makan bubur",
+            "urine_output": "Cukup, warna kuning muda",
+            "stool_output": "3 kali, masih cair"
+          }
+        },
+        "assessment": "Pasien menunjukkan perbaikan hidrasi dan vital sign. Masih diare namun frekuensi menurun. Tidak ada tanda bahaya atau indikasi rujuk."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G2-S1",
+          "gate": "Day 1 - Evaluasi respon hidrasi",
+          "prompt": "Sebutkan indikator yang menunjukkan bahwa hidrasi Siti membaik pada hari pertama rawat inap.",
+          "expected_points": [
+            "CRT menjadi < 2 detik",
+            "Nadi turun menjadi 88 x/menit",
+            "Tekanan darah lebih stabil",
+            "Mukosa mulut lebih lembab",
+            "Turgor kulit membaik",
+            "Muntah berhenti"
+          ]
+        },
+        {
+          "step_id": "G2-S2",
+          "gate": "Day 1 - Keputusan cairan IV",
+          "prompt": "Apakah cairan intravena masih perlu dilanjutkan pada 24 jam berikutnya? Jelaskan.",
+          "expected_answer": "Ya, masih dilanjutkan sambil meningkatkan intake oral, karena diare masih ada dan status hidrasi masih dalam masa pemulihan."
+        },
+        {
+          "step_id": "G2-S3",
+          "gate": "Day 1 - Antibiotik atau tidak?",
+          "prompt": "Dengan gambaran klinis hari pertama (diare cair tanpa darah, demam tidak tinggi, tampak membaik), apakah Anda akan memberikan antibiotik? Jelaskan.",
+          "expected_answer": "Tidak. Indikasi antibiotik biasanya bila dicurigai diare invasif (diare berdarah, demam tinggi, tampak toksik)."
+        },
+        {
+          "step_id": "G2-S4",
+          "gate": "Day 1 - Evaluasi risiko",
+          "prompt": "Apakah ada tanda bahaya baru pada hari pertama yang mengharuskan rujuk?",
+          "expected_answer": "Tidak ada tanda bahaya baru; vital sign stabil, gejala membaik, sehingga tidak ada indikasi rujuk."
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G2-Q1",
+          "type": "single_best_answer",
+          "question": "Indikasi utama pemberian antibiotik pada diare akut adalah:",
+          "options": {
+            "A": "Semua pasien diare dewasa",
+            "B": "Diare setelah makan pedas",
+            "C": "Diare cair tanpa demam",
+            "D": "Diare berdarah atau demam tinggi",
+            "E": "Diare yang baru mulai < 12 jam"
+          },
+          "correct_option": "D",
+          "explanation": "Antibiotik dipertimbangkan bila terdapat kecurigaan diare invasif (diare berdarah, demam tinggi, tampak toksik)."
+        }
+      ]
+    },
+    "day_2": {
+      "label": "Day 2 - Evaluasi pra-pulang",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "vomit": "Tidak ada",
+            "stool_frequency": "1 kali sejak subuh",
+            "stool_character": "Lebih kental, tidak berdarah",
+            "appetite": "Baik, sudah mau makan bubur/nasi lunak",
+            "weakness": "Minimal, pasien merasa segar"
+          },
+          "vital_signs": {
+            "blood_pressure": "112/75 mmHg",
+            "heart_rate": "82 x/menit",
+            "respiratory_rate": "16 x/menit",
+            "temperature": "36,9 °C",
+            "crt": "< 2 detik",
+            "skin_turgor": "Normal",
+            "mucosa": "Lembab"
+          },
+          "intake_output": {
+            "oral_intake": "± 1,5 liter/24 jam, toleransi makan baik",
+            "urine_output": "Adekuat, kuning muda",
+            "stool_output": "1 kali, tidak berdarah"
+          }
+        },
+        "assessment": "Pasien menunjukkan perbaikan klinis yang jelas: hidrasi normal, vital sign stabil, frekuensi diare menurun, intake oral cukup. Tidak ada indikasi rawat lanjut atau rujuk.",
+        "plan": "Persiapan pulang dengan edukasi cairan, diet, zinc lanjutan, serta tanda bahaya."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G3-S1",
+          "gate": "Day 2 - Menilai kesiapan pulang",
+          "prompt": "Jelaskan indikator bahwa Siti sudah siap dipulangkan dari rawat inap Puskesmas.",
+          "expected_points": [
+            "Vital sign stabil",
+            "Hidrasi sudah normal (CRT normal, turgor baik, mukosa lembab)",
+            "Diare hanya 0–1 kali/hari",
+            "Tidak ada muntah",
+            "Intake oral cukup",
+            "Tidak ada demam tinggi",
+            "Tidak ada tanda bahaya lain"
+          ]
+        },
+        {
+          "step_id": "G3-S2",
+          "gate": "Day 2 - Keputusan akhir",
+          "prompt": "Dengan data hari kedua, apakah Anda akan melanjutkan rawat inap atau memulangkan pasien? Jelaskan.",
+          "expected_answer": "Pasien dapat dipulangkan karena sudah stabil, hidrasi baik, frekuensi diare menurun, dan intake oral cukup. Tidak ada indikasi rawat lanjut maupun rujuk."
+        },
+        {
+          "step_id": "G3-S3",
+          "gate": "Day 2 - Rencana pulang",
+          "prompt": "Apa saja komponen rencana pulang dan edukasi yang perlu diberikan kepada Siti?",
+          "expected_points": [
+            "Anjurkan minum cukup (± 2–3 L/hari, termasuk ORS bila diare masih ada)",
+            "Melanjutkan zinc 10–14 hari",
+            "Diet lembut, hindari makanan berlemak/pedas beberapa hari",
+            "Tanda bahaya: diare memburuk, darah pada feses, muntah hebat, demam tinggi, lemas berat",
+            "Kembali bila tidak membaik atau muncul tanda bahaya"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G3-Q1",
+          "type": "sct",
+          "question": "“Pasien dengan diare akut yang sudah hidrasi baik, vital sign stabil, diare tinggal 1 kali, dan intake oral cukup dapat dipulangkan.”",
+          "scale": [
+            "Sangat setuju",
+            "Setuju",
+            "Ragu-ragu",
+            "Tidak setuju",
+            "Sangat tidak setuju"
+          ],
+          "correct_scale": [
+            "Sangat setuju",
+            "Setuju"
+          ],
+          "explanation": "Kriteria kesiapan pulang sudah terpenuhi sehingga pulang dengan edukasi adalah keputusan tepat."
+        }
+      ]
+    }
+  },
+  "discharge_plan": {
+    "summary": "Pasien dipulangkan setelah 48 jam rawat inap dengan perbaikan klinis bermakna. Diberikan edukasi mengenai hidrasi, diet, zinc oral lanjutan, dan tanda bahaya yang mengharuskan kembali atau rujuk.",
+    "key_education_points": [
+      "Minum cairan yang cukup (± 2–3 liter/hari), termasuk ORS bila diare masih ada.",
+      "Melanjutkan zinc selama 10–14 hari sesuai anjuran.",
+      "Menghindari makanan berlemak, pedas, atau terlalu manis selama beberapa hari.",
+      "Segera kembali atau ke IGD bila diare memburuk, muncul darah pada feses, muntah hebat, demam tinggi, atau lemas berat.",
+      "Kontrol bila dalam 3 hari setelah pulang belum ada perbaikan atau muncul keluhan baru."
+    ]
+  },
+  "final_quiz": [
+    {
+      "quiz_id": "FQ1",
+      "type": "single_best_answer",
+      "question": "Penyebab tersering diare akut non-invasif di komunitas adalah:",
+      "options": {
+        "A": "Virus",
+        "B": "Bakteri",
+        "C": "Parasit",
+        "D": "Obat-obatan",
+        "E": "Penyakit autoimun"
+      },
+      "correct_option": "A",
+      "explanation": "Sebagian besar diare akut non-invasif di komunitas disebabkan oleh infeksi virus."
+    },
+    {
+      "quiz_id": "FQ2",
+      "type": "sct",
+      "question": "“Diare dengan dehidrasi sedang sebaiknya dirawat di fasilitas yang mampu memberikan rehidrasi IV dan pemantauan.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Rawat inap mencegah progresi ke dehidrasi berat dan memfasilitasi pemantauan ketat."
+    },
+    {
+      "quiz_id": "FQ3",
+      "type": "single_best_answer",
+      "question": "Zinc pada diare akut dianjurkan diberikan selama:",
+      "options": {
+        "A": "3 hari",
+        "B": "5 hari",
+        "C": "7 hari",
+        "D": "10–14 hari",
+        "E": "1 bulan"
+      },
+      "correct_option": "D",
+      "explanation": "Pedoman WHO dan nasional menganjurkan zinc 10–14 hari untuk membantu pemulihan mukosa usus."
+    },
+    {
+      "quiz_id": "FQ4",
+      "type": "single_best_answer",
+      "question": "Indikasi rujuk ke RS yang lebih tinggi pada diare akut adalah, KECUALI:",
+      "options": {
+        "A": "Syok",
+        "B": "Dehidrasi berat",
+        "C": "Nyeri perut hebat dengan defans muskular",
+        "D": "Tidak ada perbaikan sama sekali setelah 6–12 jam terapi intensif",
+        "E": "Diare membaik dan vital sign stabil"
+      },
+      "correct_option": "E",
+      "explanation": "Diare membaik dengan vital sign stabil adalah kondisi aman untuk rawat di FKTP atau pulang, bukan indikasi rujuk."
+    },
+    {
+      "quiz_id": "FQ5",
+      "type": "sct",
+      "question": "“Keputusan memulangkan pasien dapat diambil bila hidrasi sudah baik, vital sign stabil, intake oral cukup, dan tidak ada tanda bahaya.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Ini adalah prinsip umum menentukan kesiapan pulang pada kasus diare akut yang telah dirawat inap."
+    }
+  ]
+}

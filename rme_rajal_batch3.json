@@ -1,0 +1,475 @@
+[
+  {
+    "case_id": "RME-11",
+    "title": "Demam Tinggi Setelah Musim Hujan (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IKA",
+    "skdi_condition": "Demam dengue",
+    "skdi_level": "4A",
+    "difficulty": "Ringan",
+    "chief_complaint": "Demam tinggi sejak 3 hari.",
+    "synopsis": "Anak laki-laki 12 tahun datang ke Puskesmas dengan demam naik turun sejak 3 hari, disertai lemas, mual, dan nafsu makan menurun. Tidak ada batuk dan pilek berat. Tinggal di daerah padat penduduk, endemis DBD, dan beberapa teman sekolah juga sedang sakit. Tidak ada perdarahan spontan, tidak ada sesak napas.",
+    "key_exam_findings": "Suhu 38,5°C, TD 100/70 mmHg, nadi 98/menit, CRT <2 detik. Tidak ada petekie spontan, tidak ada hepatomegali jelas, tidak tampak sesak.",
+    "key_lab_results": "Hematokrit 38%, trombosit 160.000/uL, leukosit 4.000/uL, NS1 antigen positif.",
+    "working_diagnosis": "Demam dengue fase febril tanpa tanda peringatan.",
+    "differential_diagnoses": [
+      "Infeksi virus non spesifik",
+      "Demam tifoid dini",
+      "Infeksi saluran napas atas viral"
+    ],
+    "management_summary": "Terapi suportif dengan hidrasi adekuat, antipiretik (parasetamol), pemantauan harian suhu, status klinis, dan gejala tanda peringatan. Edukasi orang tua mengenai tanda bahaya DBD (nyeri perut hebat, muntah berulang, perdarahan, letargi, tidak mau minum) dan pentingnya kontrol ulang dalam 24 jam atau segera bila memburuk.",
+    "red_flags_clinical": [
+      "Nyeri perut hebat dan nyeri tekan difus",
+      "Muntah berulang dan tidak bisa minum",
+      "Perdarahan spontan (mimisan berat, gusi, muntah darah, BAB hitam)",
+      "Letargi, gelisah berat, tanda syok (nadi cepat lemah, ekstremitas dingin)"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi kecurigaan klinis demam dengue pada fase awal.",
+      "Membedakan fase demam dengue dan memahami pentingnya monitoring ketat pada fase kritis.",
+      "Menyusun rencana monitoring dan edukasi yang tepat bagi pasien dan keluarga."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama & Data Awal",
+        "prompt_student": [
+          "Berdasarkan keluhan awal (demam 3 hari), diagnosis apa yang Anda pertimbangkan?",
+          "Apa saja pertanyaan penting terkait riwayat demam yang harus Anda gali (pola demam, gejala penyerta, paparan lingkungan)?"
+        ],
+        "expected_focus": "Mencurigai DBD dalam konteks endemis dan menggali detail demam serta gejala sistemik.",
+        "unlocks_next_tab": "Anamnesis Lengkap"
+      },
+      {
+        "step_id": "S2",
+        "stage": "anamnesis_detail",
+        "tab": "Anamnesis Lengkap",
+        "prompt_student": [
+          "Setelah melihat riwayat lengkap, apakah Anda menemukan tanda peringatan (warning signs) dengue?",
+          "Bagaimana Anda merangkum problem representation pasien ini dalam 1–2 kalimat?"
+        ],
+        "expected_focus": "Menilai ada/tidaknya warning signs dan membuat ringkasan klinis yang fokus.",
+        "unlocks_next_tab": "Pemeriksaan Fisik"
+      },
+      {
+        "step_id": "S3",
+        "stage": "physical_exam",
+        "tab": "Pemeriksaan Fisik",
+        "prompt_student": [
+          "Temuan PF apa yang paling penting untuk menilai risiko syok pada DBD?",
+          "Apakah temuan PF pada kasus ini menunjukkan syok atau tanda bahaya? Jelaskan."
+        ],
+        "expected_focus": "Penilaian hemodinamik (TD, nadi, CRT, perfusi) dan tanda perdarahan.",
+        "unlocks_next_tab": "Pemeriksaan Penunjang"
+      },
+      {
+        "step_id": "S4",
+        "stage": "investigation",
+        "tab": "Pemeriksaan Penunjang",
+        "prompt_student": [
+          "Bagaimana Anda menafsirkan hasil Ht dan trombosit pada kasus ini?",
+          "Apakah pasien ini memerlukan rawat inap segera atau dapat dikelola rawat jalan dengan monitoring ketat? Jelaskan alasan Anda."
+        ],
+        "expected_focus": "Menilai stabilitas Ht dan trombosit, serta menentukan tempat perawatan.",
+        "unlocks_next_tab": "Tata Laksana & Edukasi"
+      },
+      {
+        "step_id": "S5",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rencana tata laksana, termasuk hidrasi, obat, monitoring, dan jadwal kontrol.",
+          "Poin edukasi apa yang PALING penting disampaikan ke orang tua terkait tanda bahaya dan kapan harus segera ke fasilitas kesehatan?"
+        ],
+        "expected_focus": "Rencana tatalaksana praktis dan edukasi warning signs.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Pada fase awal demam dengue seperti kasus ini, pemeriksaan yang paling penting untuk dilakukan ulang secara berkala adalah:",
+        "options": {
+          "A": "Urinalisis lengkap",
+          "B": "CT-scan abdomen",
+          "C": "Hematokrit dan trombosit",
+          "D": "Tes fungsi tiroid"
+        },
+        "correct_option": "C",
+        "explanation": "Pemantauan Ht dan trombosit berulang penting untuk mendeteksi hemokonsentrasi dan trombositopenia yang menandakan fase kritis DBD."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Pernyataan berikut yang PALING tepat terkait terapi pada kasus ini adalah:",
+        "options": {
+          "A": "Memberikan ibuprofen untuk menurunkan demam",
+          "B": "Memberikan parasetamol dan menganjurkan hidrasi oral yang cukup",
+          "C": "Menghentikan semua minum agar tidak mual",
+          "D": "Memberikan antibiotik spektrum luas secara rutin"
+        },
+        "correct_option": "B",
+        "explanation": "Parasetamol adalah antipiretik pilihan; hidrasi oral adekuat sangat penting. NSAID dan aspirin dihindari karena risiko perdarahan."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Tanda bahaya yang mengharuskan pasien ini segera dibawa ke IGD adalah:",
+        "options": {
+          "A": "Demam turun tiba-tiba tanpa gejala lain",
+          "B": "Nafsu makan menurun ringan",
+          "C": "Nyeri perut hebat dan muntah berulang",
+          "D": "Batuk ringan tanpa sesak"
+        },
+        "correct_option": "C",
+        "explanation": "Nyeri perut hebat dan muntah berulang adalah warning signs DBD yang membutuhkan evaluasi segera."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-12",
+    "title": "Nyeri Tajam di Perut Kanan Bawah (IGD RS)",
+    "setting": "IGD RS",
+    "department": "Bedah",
+    "skdi_condition": "Apendisitis akut",
+    "skdi_level": "3B",
+    "difficulty": "Sedang",
+    "chief_complaint": "Nyeri perut kanan bawah sejak 12 jam.",
+    "synopsis": "Laki-laki 22 tahun datang ke IGD dengan nyeri perut yang awalnya dirasakan di ulu hati, kemudian berpindah ke perut kanan bawah sejak 12 jam. Nyeri bertambah saat berjalan dan batuk. Disertai mual dan penurunan nafsu makan, tanpa diare. Tidak ada riwayat trauma perut. Tidak ada muntah darah atau BAB berdarah.",
+    "key_exam_findings": "Suhu 38°C, TD 118/76 mmHg, nadi 104/menit, nyeri tekan dan nyeri lepas (rebound tenderness) di titik McBurney, Rovsing sign positif, tidak ada distensi abdomen luas.",
+    "key_lab_results": "Leukosit 14.800/uL dengan dominasi neutrofil.",
+    "working_diagnosis": "Apendisitis akut non perforasi.",
+    "differential_diagnoses": [
+      "Gastroenteritis",
+      "Nyeri abdomen fungsional",
+      "Torsio ovarium (jika perempuan)",
+      "Pielonefritis"
+    ],
+    "management_summary": "Menetapkan kecurigaan apendisitis akut, melakukan puasa, pasang infus, beri cairan IV, analgesik yang aman, antibiotik preoperatif sesuai protokol, dan segera konsultasi bedah untuk apendektomi. Hindari menunda tindakan tanpa alasan yang jelas.",
+    "red_flags_clinical": [
+      "Nyeri perut difus dengan tanda peritonitis generalisata",
+      "Demam tinggi dengan takikardi dan hipotensi",
+      "Nyeri menetap berat dengan tanda syok"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi pola nyeri khas apendisitis akut dan membedakannya dengan nyeri abdomen non spesifik.",
+      "Menyusun tatalaksana awal apendisitis akut di IGD termasuk persiapan operasi.",
+      "Mengenali tanda peritonitis dan indikasi rujukan emergensi jika fasilitas tidak memadai."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama & Riwayat Singkat",
+        "prompt_student": [
+          "Bagaimana pola nyeri perut pada apendisitis akut yang khas?",
+          "Data anamnesis apa yang membantu membedakan apendisitis dari gastroenteritis biasa?"
+        ],
+        "expected_focus": "Migrasi nyeri, karakter nyeri, mual, onset dan lokasi nyeri.",
+        "unlocks_next_tab": "Anamnesis Lengkap"
+      },
+      {
+        "step_id": "S2",
+        "stage": "physical_exam",
+        "tab": "Pemeriksaan Fisik Abdomen",
+        "prompt_student": [
+          "Manuver pemeriksaan fisik apa yang penting pada kecurigaan apendisitis?",
+          "Dengan temuan PF yang ada, apakah Anda menduga sudah ada peritonitis generalisata?"
+        ],
+        "expected_focus": "McBurney, rebound, Rovsing, dan penilaian peritonitis.",
+        "unlocks_next_tab": "Penunjang & Penilaian Risiko"
+      },
+      {
+        "step_id": "S3",
+        "stage": "investigation",
+        "tab": "Penunjang & Risiko",
+        "prompt_student": [
+          "Bagaimana Anda menafsirkan leukositosis pada kasus ini?",
+          "Apakah imaging (USG/CT) selalu wajib sebelum tindakan bedah pada apendisitis tipikal? Jelaskan."
+        ],
+        "expected_focus": "Menggunakan lab untuk mendukung diagnosis dan menyadari peran imaging sesuai konteks.",
+        "unlocks_next_tab": "Tatalaksana & Persiapan Operasi"
+      },
+      {
+        "step_id": "S4",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun langkah tatalaksana awal di IGD sebelum operasi (puasa, cairan, analgesik, antibiotik, informed consent).",
+          "Apa risiko jika apendisitis akut terlambat dioperasi? Bagaimana Anda menjelaskan ini kepada pasien/keluarga?"
+        ],
+        "expected_focus": "Urutan tindakan pra-bedah dan komunikasi risiko keterlambatan.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Pernyataan yang PALING sesuai dengan nyeri apendisitis akut adalah:",
+        "options": {
+          "A": "Nyeri sejak awal di RLQ tanpa perubahan lokasi",
+          "B": "Nyeri dimulai di periumbilikus/epigastrium lalu berpindah ke RLQ",
+          "C": "Nyeri hanya saat batuk tanpa nyeri spontan",
+          "D": "Nyeri selalu hilang setelah makan"
+        },
+        "correct_option": "B",
+        "explanation": "Pola migrasi nyeri dari periumbilikus/epigastrium ke RLQ khas apendisitis."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Tindakan berikut yang PALING TEPAT di IGD sebelum operasi adalah:",
+        "options": {
+          "A": "Menganjurkan pasien makan agar kuat saat operasi",
+          "B": "Memberikan obat pencahar untuk mengurangi nyeri",
+          "C": "Puasa, cairan IV, analgesik yang sesuai, antibiotik, dan konsultasi bedah",
+          "D": "Memulangkan pasien dengan analgesik oral saja"
+        },
+        "correct_option": "C",
+        "explanation": "Persiapan pra-bedah termasuk puasa, cairan IV, analgesik, antibiotik, dan konsultasi bedah."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Red flag yang menunjukkan kemungkinan perforasi apendiks adalah:",
+        "options": {
+          "A": "Nyeri RLQ ringan tanpa demam",
+          "B": "Nyeri difus seluruh perut dengan defense muscular",
+          "C": "Nyeri berkurang total secara spontan dalam 1 jam",
+          "D": "Tidak nafsu makan saja"
+        },
+        "correct_option": "B",
+        "explanation": "Nyeri difus dengan tanda peritonitis generalisata mengarah ke perforasi/peritonitis."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-13",
+    "title": "Kehamilan yang Perlu Diawasi Lebih Dekat (ANC Risiko Tinggi, Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "Obsgin",
+    "skdi_condition": "ANC risiko tinggi (riwayat hipertensi gestasional)",
+    "skdi_level": "4A",
+    "difficulty": "Sedang",
+    "chief_complaint": "Pusing ringan dan bengkak kaki pada usia kehamilan 28 minggu.",
+    "synopsis": "Perempuan 32 tahun, G2P1, hamil 28 minggu, datang untuk ANC rutin dengan keluhan pusing ringan dan bengkak pada kedua tungkai. Riwayat kehamilan sebelumnya dengan hipertensi gestasional. Gerakan janin dirasakan normal, tidak ada nyeri ulu hati atau pandangan kabur.",
+    "key_exam_findings": "TD 138/90 mmHg, nadi 92, edema tungkai 1+, TFU sesuai usia kehamilan, DJJ 142 bpm, refleks normal.",
+    "key_lab_results": "Protein urine +1, Hb 10,5 g/dL, GDS normal.",
+    "working_diagnosis": "Kehamilan dengan risiko preeklampsia (ANC risiko tinggi).",
+    "differential_diagnoses": [
+      "Preeklampsia ringan awal",
+      "Edema fisiologis kehamilan",
+      "Anemia kehamilan sebagai penyebab pusing"
+    ],
+    "management_summary": "Mengklasifikasikan sebagai kehamilan risiko tinggi, melakukan monitoring tekanan darah dan proteinuria berkala, edukasi tanda bahaya preeklampsia (nyeri ulu hati, pandangan kabur, sakit kepala hebat, penurunan gerak janin), suplementasi zat besi, dan penjadwalan ANC lebih sering. Rujuk ke fasilitas lebih tinggi bila tekanan darah meningkat atau muncul tanda berat.",
+    "red_flags_clinical": [
+      "TD ≥160/110 mmHg",
+      "Nyeri ulu hati hebat",
+      "Pandangan kabur atau skotoma",
+      "Penurunan gerakan janin",
+      "Sakit kepala hebat terus-menerus"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi ibu hamil risiko tinggi berdasarkan riwayat dan temuan ANC.",
+      "Membedakan edema fisiologis kehamilan dari tanda preeklampsia.",
+      "Menyusun rencana monitoring ANC risiko tinggi dan edukasi ibu hamil."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Data ANC & Keluhan",
+        "prompt_student": [
+          "Faktor risiko apa yang membuat kehamilan ini masuk kategori risiko tinggi?",
+          "Data apa saja yang wajib dikumpulkan pada ANC (TD, proteinuria, TFU, DJJ)?"
+        ],
+        "expected_focus": "Riwayat hipertensi gestasional, TD borderline, proteinuria.",
+        "unlocks_next_tab": "Pemeriksaan Fisik & Penunjang"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam_and_investigation",
+        "tab": "PF & Penunjang",
+        "prompt_student": [
+          "Apakah TD dan proteinuria pada kasus ini sudah memenuhi kriteria preeklampsia berat? Jelaskan.",
+          "Pemeriksaan apa yang perlu diulang dan dengan frekuensi berapa untuk kasus seperti ini di Puskesmas?"
+        ],
+        "expected_focus": "Menilai derajat risiko dan merencanakan frekuensi monitoring.",
+        "unlocks_next_tab": "Rencana ANC & Edukasi"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Rencana ANC & Refleksi",
+        "prompt_student": [
+          "Susun rencana ANC dengan jadwal kontrol, pemeriksaan yang dipantau, dan indikasi rujukan.",
+          "Bagaimana Anda menjelaskan kepada ibu hamil mengenai tanda bahaya preeklampsia dengan bahasa yang mudah dimengerti?"
+        ],
+        "expected_focus": "Perencanaan ANC terstruktur dan komunikasi risiko.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Yang termasuk faktor risiko preeklampsia pada kasus ini adalah:",
+        "options": {
+          "A": "Usia 32 tahun tanpa faktor lain",
+          "B": "Riwayat hipertensi gestasional pada kehamilan sebelumnya",
+          "C": "Kehamilan pertama pada usia 20 tahun",
+          "D": "Tidak ada riwayat penyakit apapun"
+        },
+        "correct_option": "B",
+        "explanation": "Riwayat hipertensi gestasional meningkatkan risiko preeklampsia pada kehamilan berikutnya."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Tanda yang mengarah ke preeklampsia berat dan memerlukan rujukan segera adalah:",
+        "options": {
+          "A": "Edema tungkai 1+ tanpa keluhan lain",
+          "B": "TD 138/90 dengan pusing ringan",
+          "C": "Nyeri ulu hati hebat dan pandangan kabur",
+          "D": "Nafsu makan sedikit berkurang"
+        },
+        "correct_option": "C",
+        "explanation": "Nyeri ulu hati hebat dan pandangan kabur adalah tanda bahaya preeklampsia berat."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Strategi berikut PALING tepat dilakukan di Puskesmas untuk kasus ini:",
+        "options": {
+          "A": "Memulangkan tanpa jadwal kontrol dan tanpa edukasi",
+          "B": "Monitoring TD dan proteinuria berkala dengan edukasi tanda bahaya",
+          "C": "Langsung terminasi kehamilan di Puskesmas",
+          "D": "Memberikan obat tidur agar ibu tidak cemas"
+        },
+        "correct_option": "B",
+        "explanation": "ANC risiko tinggi perlu monitoring teratur dan edukasi tanda bahaya preeklampsia."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-14",
+    "title": "Perdarahan di Awal Kehamilan (Abortus Inkompletus, Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "Obsgin",
+    "skdi_condition": "Abortus inkompletus",
+    "skdi_level": "3B",
+    "difficulty": "Sedang",
+    "chief_complaint": "Perdarahan pervaginam pada usia kehamilan sekitar 10 minggu.",
+    "synopsis": "Perempuan 29 tahun, G2P0A1, hamil 10 minggu berdasarkan HPHT, datang dengan keluhan perdarahan pervaginam sejak 6 jam, disertai kram perut bagian bawah dan keluarnya jaringan kecil seperti bekuan. Tidak ada demam. Pernah mengalami abortus spontan 2 tahun lalu.",
+    "key_exam_findings": "TD 110/70, nadi 98, keadaan umum cukup, perdarahan sedang, os serviks terbuka pada pemeriksaan pelvis, uterus teraba lebih kecil dari taksiran usia kehamilan.",
+    "key_lab_results": "Hb 11 g/dL, golongan darah diketahui, bila tersedia: uji kehamilan masih positif.",
+    "working_diagnosis": "Abortus inkompletus.",
+    "differential_diagnoses": [
+      "Abortus komplit",
+      "Kehamilan ektopik terganggu",
+      "Perdarahan implantasi"
+    ],
+    "management_summary": "Menilai status hemodinamik, memastikan diagnosis melalui pemeriksaan klinis (dan USG jika tersedia), merencanakan evakuasi sisa produk konsepsi (misoprostol atau kuretase di fasilitas rujukan), memberikan analgesia, dan memberikan konseling psikologis dan keluarga. Rujuk segera bila perdarahan banyak atau fasilitas tidak mampu melakukan evakuasi aman.",
+    "red_flags_clinical": [
+      "Tanda syok (TD turun, nadi cepat lemah, pucat berat)",
+      "Perdarahan pervaginam sangat banyak",
+      "Demam tinggi yang mengarah ke infeksi",
+      "Nyeri abdomen hebat dengan defense"
+    ],
+    "learning_objectives": [
+      "Mengenali gambaran klinis abortus inkompletus di layanan primer.",
+      "Menilai status hemodinamik dan menentukan kebutuhan rujukan segera.",
+      "Memberikan penjelasan dan dukungan kepada pasien dan keluarga terkait abortus."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan & Triage",
+        "prompt_student": [
+          "Apa prioritas penilaian pertama pada ibu hamil dengan perdarahan pervaginam?",
+          "Data tambahan apa yang penting dari riwayat kehamilan sekarang dan sebelumnya?"
+        ],
+        "expected_focus": "Penilaian hemodinamik, usia kehamilan, jumlah perdarahan, nyeri, riwayat abortus.",
+        "unlocks_next_tab": "Pemeriksaan Fisik & Pelvis"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Fisik & Pelvis",
+        "prompt_student": [
+          "Temuan apa pada pemeriksaan serviks yang membedakan abortus inkompletus dari abortus iminens?",
+          "Bagaimana Anda menilai apakah perdarahan saat ini masih dalam batas kompensasi?"
+        ],
+        "expected_focus": "Os serviks terbuka, status perdarahan, dan tanda vital.",
+        "unlocks_next_tab": "Penunjang & Keputusan Rujukan"
+      },
+      {
+        "step_id": "S3",
+        "stage": "decision_making",
+        "tab": "Penunjang & Rujukan",
+        "prompt_student": [
+          "Jika USG tidak tersedia di Puskesmas, apa dasar Anda menegakkan abortus inkompletus?",
+          "Kapan Anda memutuskan untuk merujuk segera ke RS dan apa informasi yang harus disertakan dalam surat rujukan?"
+        ],
+        "expected_focus": "Pengambilan keputusan berbasis klinis dan indikasi rujukan.",
+        "unlocks_next_tab": "Tata Laksana & Konseling"
+      },
+      {
+        "step_id": "S4",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun langkah tatalaksana awal di Puskesmas (resusitasi bila perlu, akses IV, analgesia, rujukan).",
+          "Bagaimana Anda menjelaskan kepada pasien mengenai apa yang terjadi dan kemungkinan kehamilan berikutnya?"
+        ],
+        "expected_focus": "Stabilisasi awal, rujukan aman, dan konseling sensitif.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Ciri klinis yang paling khas untuk abortus inkompletus adalah:",
+        "options": {
+          "A": "Os serviks tertutup, perdarahan minimal",
+          "B": "Os serviks terbuka, masih ada jaringan di kavum uteri",
+          "C": "Tidak ada perdarahan, hanya nyeri ringan",
+          "D": "Nyeri hebat tanpa perdarahan"
+        },
+        "correct_option": "B",
+        "explanation": "Abortus inkompletus ditandai os terbuka dan sisa produk konsepsi yang belum seluruhnya keluar."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Prioritas utama di Puskesmas sebelum merujuk pasien dengan perdarahan berat adalah:",
+        "options": {
+          "A": "Menghabiskan waktu untuk pemeriksaan lab lengkap",
+          "B": "Stabilisasi hemodinamik (akses IV, cairan) dan menyiapkan rujukan",
+          "C": "Memberikan obat tidur agar pasien tenang saja",
+          "D": "Hanya memberikan suplemen zat besi"
+        },
+        "correct_option": "B",
+        "explanation": "Stabilisasi hemodinamik dan rujukan cepat adalah prioritas pada perdarahan berat."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Hal berikut PALING tepat disampaikan saat konseling kepada pasien:",
+        "options": {
+          "A": "Abortus selalu berarti pasien tidak akan bisa hamil lagi",
+          "B": "Abortus inkompletus tidak berbahaya sehingga tidak perlu ditangani",
+          "C": "Abortus dapat memiliki penyebab yang beragam dan banyak wanita dapat hamil sehat lagi di masa depan",
+          "D": "Pasien pasti bersalah karena kejadian ini"
+        },
+        "correct_option": "C",
+        "explanation": "Konseling harus menenangkan dan berbasis fakta, bahwa banyak wanita dengan riwayat abortus dapat hamil sehat lagi."
+      }
+    ]
+  }
+]

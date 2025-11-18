@@ -1,0 +1,407 @@
+{
+  "case_id": "rme-22",
+  "title": "Napas yang Tak Kunjung Lega (Eksaserbasi Asma Dirujuk ke RS)",
+  "setting": "Rawat inap puskesmas (2 hari, berakhir rujuk)",
+  "department": "IPD/Paru",
+  "primary_diagnosis": "Eksaserbasi asma sedang yang memburuk",
+  "skdi_level": "3B",
+  "difficulty": "sedang",
+  "encounter_type": "inpatient",
+  "chief_complaint": "Sesak napas sejak sore, memburuk saat datang ke Puskesmas.",
+  "synopsis": "Seorang laki-laki 28 tahun dengan riwayat asma datang ke IGD Puskesmas dengan sesak napas, wheezing bilateral, dan PEFR sekitar 44% dari prediksi. Pasien dirawat inap di Puskesmas dengan nebulisasi berulang, oksigen, dan steroid. Hari pertama tampak perbaikan ringan, tetapi pada hari kedua pasien justru memburuk: RR meningkat, saturasi tidak membaik meski menggunakan oksigen, PEFR menurun, dan muncul tanda-tanda impending respiratory failure. Pasien kemudian dirujuk ke rumah sakit dengan fasilitas yang lebih lengkap.",
+  "key_exam_findings": "TD 130/85 mmHg, nadi 112/menit, RR 28/menit, suhu 37,3°C, saturasi O2 92% tanpa oksigen, retraksi otot napas ringan, wheezing bilateral, tanpa ronki basah.",
+  "key_lab_results": "GDS 102 mg/dL, Hb 14 g/dL, leukosit 9.800/uL, CRP rendah.",
+  "working_diagnosis": "Eksaserbasi asma sedang pada dewasa, dengan risiko memburuk.",
+  "differential_diagnoses": [
+    "PPOK eksaserbasi (kurang cocok mengingat usia muda dan riwayat asma lama)",
+    "Gagal jantung kiri (tidak ada edema paru, tidak ada ronki basah, tidak ada edema perifer)",
+    "Pneumonia (tidak ada demam tinggi, tidak ada ronki lokal, tidak ada batuk berdahak purulen)",
+    "Panic attack (sesak dengan komponen kecemasan, namun adanya wheezing dan riwayat asma mendukung asma)",
+    "Emboli paru (tidak khas pada kasus ini, tidak ada faktor risiko jelas)"
+  ],
+  "management_summary": "Eksaserbasi asma sedang dengan PEFR ~44% dan saturasi 92% awalnya ditatalaksana di Puskesmas dengan nebulisasi bronkodilator berulang, oksigen nasal, dan steroid intravena. Hari pertama tampak perbaikan ringan, namun pada hari kedua kondisi memburuk: RR meningkat, saturasi tidak naik dengan oksigen, PEFR menurun, dan muncul tanda impending respiratory failure. Sesuai batas kewenangan FKTP dan prinsip patient safety, pasien diputuskan untuk dirujuk ke rumah sakit dengan fasilitas monitor dan terapi lanjutan.",
+  "red_flags_clinical": [
+    "Saturasi O2 yang tidak membaik atau menurun meski sudah diberikan oksigen",
+    "RR meningkat (> 30 kali/menit)",
+    "Kesulitan berbicara (hanya bisa mengucapkan beberapa kata per napas)",
+    "Silent chest (wheezing berkurang, tetapi napas lemah)",
+    "Takikardia berat",
+    "Penurunan kesadaran atau agitasi berat",
+    "PEFR menurun atau tetap sangat rendah (< 50% prediksi)"
+  ],
+  "learning_objectives": [
+    "Mengklasifikasikan derajat eksaserbasi asma dan menentukan indikasi rawat di FKTP.",
+    "Mengevaluasi respon terapi asma dalam 24–48 jam dan mengidentifikasi kegagalan terapi.",
+    "Mengenali tanda-tanda impending respiratory failure pada pasien asma.",
+    "Menentukan kapan pasien asma harus dirujuk ke rumah sakit yang lebih tinggi sesuai kewenangan Puskesmas.",
+    "Menyusun komunikasi rujukan yang jelas dan aman (clinical handover) untuk pasien asma yang memburuk."
+  ],
+  "timeline": {
+    "day_0": {
+      "label": "Day 0 - IGD Puskesmas (Masuk Rawat Inap)",
+      "clinical_data": {
+        "history": {
+          "onset": "Sesak napas sejak sekitar 6 jam sebelum datang ke Puskesmas.",
+          "course": "Sesak dirasakan sejak pulang kantor, makin berat saat malam, disertai batuk kering.",
+          "associated_symptoms": "Batuk kering, dada terasa berat, tidak ada demam tinggi, tidak ada nyeri dada tajam, tidak ada batuk berdahak purulen.",
+          "asthma_history": "Riwayat asma sejak SMA, biasa menggunakan inhaler salbutamol bila kambuh. Tidak kontrol teratur ke dokter.",
+          "medication_history": "Inhaler habis sejak 2 minggu lalu, belum sempat membeli lagi. Tidak ada obat rutin lain.",
+          "trigger_history": "Bekerja di lingkungan berdebu, tidur kurang dalam beberapa hari terakhir.",
+          "smoking_alcohol": "Tidak merokok, tidak konsumsi alkohol.",
+          "family_history": "Ada riwayat asma pada ibu."
+        },
+        "physical_exam": {
+          "blood_pressure": "130/85 mmHg",
+          "heart_rate": "112 x/menit",
+          "respiratory_rate": "28 x/menit",
+          "temperature": "37,3 °C",
+          "oxygen_saturation": "92% (tanpa oksigen)",
+          "chest_exam": "Retraksi otot bantu napas ringan, wheezing bilateral difus, tanpa ronki basah.",
+          "mental_status": "Cemas, tetapi masih dapat berbicara kalimat penuh."
+        },
+        "peak_flow": {
+          "pefr_measured": "210 L/menit",
+          "pefr_predicted": "≈ 480 L/menit",
+          "pefr_percent_predicted": "≈ 44%",
+          "interpretation": "Zona kuning, eksaserbasi asma sedang."
+        },
+        "labs": {
+          "gds": "102 mg/dL",
+          "hemoglobin": "14 g/dL",
+          "leukocyte": "9.800/uL",
+          "crp": "Rendah"
+        },
+        "initial_assessment": "Eksaserbasi asma sedang pada dewasa, dengan risiko memburuk. Kondisi awal masih stabil tanpa tanda gagal napas imminen, tetapi membutuhkan nebulisasi intensif dan observasi ketat."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G1-S1",
+          "gate": "Day 0 - Identifikasi masalah",
+          "prompt": "Dari data klinis saat masuk IGD, sebutkan masalah utama yang Anda identifikasi pada Andi.",
+          "expected_points": [
+            "Sesak napas akut",
+            "Riwayat asma",
+            "Wheezing bilateral",
+            "PEFR sekitar 44% dari prediksi",
+            "Saturasi 92% tanpa oksigen",
+            "Takikardia dan peningkatan RR"
+          ]
+        },
+        {
+          "step_id": "G1-S2",
+          "gate": "Day 0 - Derajat eksaserbasi",
+          "prompt": "Berdasarkan PEFR dan temuan klinis, bagaimana derajat eksaserbasi asma yang dialami Andi?",
+          "expected_answer": "Eksaserbasi asma sedang (PEFR sekitar 40–60% dari prediksi, sesak, wheezing, tetapi belum gagal napas)."
+        },
+        {
+          "step_id": "G1-S3",
+          "gate": "Day 0 - Indikasi rawat inap FKTP",
+          "prompt": "Apakah kondisi Andi memenuhi indikasi rawat inap di Puskesmas? Jelaskan alasan Anda.",
+          "expected_answer": "Ya, perlu rawat inap karena PEFR < 60%, saturasi 92%, gejala sesak sedang, dan memerlukan nebulisasi berulang serta pemantauan ketat."
+        },
+        {
+          "step_id": "G1-S4",
+          "gate": "Day 0 - Rencana awal",
+          "prompt": "Tuliskan rencana tatalaksana awal yang sesuai untuk Andi di Puskesmas.",
+          "expected_points": [
+            "Nebulisasi bronkodilator berulang (salbutamol/ipratropium)",
+            "Oksigen nasal 2 L/menit",
+            "Steroid sistemik (misalnya metilprednisolon IV)",
+            "Pemantauan saturasi, RR, dan PEFR",
+            "Edukasi awal mengenai asma dan pemicu"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G1-Q1",
+          "type": "single_best_answer",
+          "question": "Berdasarkan PEFR sekitar 44% dari prediksi, derajat eksaserbasi asma yang dialami Andi adalah:",
+          "options": {
+            "A": "Ringan",
+            "B": "Sedang",
+            "C": "Berat",
+            "D": "Status asmatikus",
+            "E": "Remisi"
+          },
+          "correct_option": "B",
+          "explanation": "PEFR 40–60% dari prediksi umumnya digolongkan sebagai eksaserbasi asma derajat sedang."
+        },
+        {
+          "quiz_id": "G1-Q2",
+          "type": "sct",
+          "question": "“Eksaserbasi asma sedang dengan PEFR < 60% dan saturasi 92% dapat dirawat di Puskesmas rawat inap dengan catatan dilakukan pemantauan dan evaluasi ketat dalam 24 jam pertama.”",
+          "scale": [
+            "Sangat setuju",
+            "Setuju",
+            "Ragu-ragu",
+            "Tidak setuju",
+            "Sangat tidak setuju"
+          ],
+          "correct_scale": [
+            "Sangat setuju",
+            "Setuju"
+          ],
+          "explanation": "Eksaserbasi sedang masih bisa ditangani di FKTP dengan fasilitas rawat inap, asalkan ada pemantauan dan rencana rujuk bila tidak membaik."
+        }
+      ]
+    },
+    "day_1": {
+      "label": "Day 1 - 24 jam pertama rawat inap",
+      "clinical_data": {
+        "therapy": {
+          "oxygen": "Oksigen nasal 2 L/menit",
+          "nebulizers": "Nebulisasi salbutamol/ipratropium tiap 4 jam",
+          "steroids": "Metilprednisolon IV dosis sedang",
+          "other": "Edukasi teknik napas, cairan adekuat, istirahat cukup"
+        },
+        "progress": {
+          "symptoms": {
+            "breathlessness": "Masih sesak tetapi sedikit lebih ringan dibanding saat masuk.",
+            "cough": "Batuk kering berkurang sedikit.",
+            "speech": "Masih dapat berbicara dalam kalimat agak panjang, namun terputus oleh sesak."
+          },
+          "vital_signs": {
+            "blood_pressure": "125/80 mmHg",
+            "heart_rate": "102 x/menit",
+            "respiratory_rate": "24 x/menit",
+            "temperature": "37,1 °C",
+            "oxygen_saturation": "94% dengan oksigen nasal 2 L/menit"
+          },
+          "chest_exam": "Wheezing bilateral masih jelas, retraksi otot bantu napas ringan masih tampak.",
+          "peak_flow": {
+            "pefr_measured": "230 L/menit",
+            "pefr_percent_predicted": "≈ 48%",
+            "interpretation": "Perbaikan kecil dibanding hari pertama, namun masih dalam zona kuning."
+          }
+        },
+        "assessment": "Ada perbaikan kecil pada saturasi dan PEFR, tetapi Andi masih belum stabil sepenuhnya. Perlu dilanjutkan terapi dan pemantauan."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G2-S1",
+          "gate": "Day 1 - Evaluasi respon terapi",
+          "prompt": "Sebutkan indikator yang menunjukkan perbaikan kondisi Andi pada hari pertama rawat inap.",
+          "expected_points": [
+            "Saturasi naik dari 92% menjadi 94% dengan oksigen",
+            "RR turun dari 28 menjadi 24 x/menit",
+            "PEFR naik dari 210 menjadi 230 L/menit",
+            "Keluhan sesak sedikit berkurang"
+          ]
+        },
+        {
+          "step_id": "G2-S2",
+          "gate": "Day 1 - Cukup membaik atau belum?",
+          "prompt": "Apakah perbaikan yang terjadi pada Andi di hari pertama sudah cukup untuk mempertimbangkan pemulangan? Jelaskan.",
+          "expected_answer": "Belum. PEFR masih < 60% prediksi, masih membutuhkan oksigen, wheezing masih jelas, dan masih sesak. Pasien perlu tetap dirawat dan dipantau."
+        },
+        {
+          "step_id": "G2-S3",
+          "gate": "Day 1 - Rencana 24 jam berikutnya",
+          "prompt": "Apa rencana tatalaksana untuk 24 jam berikutnya jika kondisi Andi seperti ini?",
+          "expected_points": [
+            "Melanjutkan nebulisasi berulang",
+            "Melanjutkan steroid sistemik",
+            "Tetap memberikan oksigen dan memantau saturasi",
+            "Memantau PEFR secara berkala",
+            "Mempersiapkan rencana rujuk bila terjadi perburukan atau tidak ada perbaikan bermakna"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G2-Q1",
+          "type": "single_best_answer",
+          "question": "Indikator yang paling penting untuk menilai respon awal terapi pada eksaserbasi asma adalah:",
+          "options": {
+            "A": "Penurunan suhu tubuh",
+            "B": "Peningkatan nafsu makan",
+            "C": "Perubahan PEFR dan saturasi O2",
+            "D": "Perubahan warna sputum",
+            "E": "Berat badan stabil"
+          },
+          "correct_option": "C",
+          "explanation": "PEFR dan saturasi O2 adalah indikator objektif yang penting untuk menilai perbaikan pada eksaserbasi asma."
+        }
+      ]
+    },
+    "day_2": {
+      "label": "Day 2 - Perburukan dan keputusan rujuk",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "breathlessness": "Pada pagi hari kedua, pasien tampak lebih sesak, sulit berbicara satu kalimat penuh.",
+            "cough": "Masih batuk kering.",
+            "fatigue": "Tampak sangat lelah, gelisah."
+          },
+          "vital_signs": {
+            "blood_pressure": "125/78 mmHg",
+            "heart_rate": "118 x/menit",
+            "respiratory_rate": "32 x/menit",
+            "temperature": "37,2 °C",
+            "oxygen_saturation": "92% meskipun sudah menggunakan oksigen nasal 2 L/menit"
+          },
+          "chest_exam": "Wheezing tidak lagi sekeras hari sebelumnya; di beberapa area terdengar napas lemah (silent chest), retraksi otot bantu napas tampak jelas.",
+          "peak_flow": {
+            "pefr_measured": "190 L/menit",
+            "pefr_percent_predicted": "≈ 40%",
+            "interpretation": "PEFR menurun kembali, menunjukkan perburukan kondisi."
+          }
+        },
+        "assessment": "Kondisi Andi memburuk: RR meningkat, saturasi tidak membaik meskipun menggunakan oksigen, tanda-tanda impending respiratory failure muncul (napas cepat, sulit berbicara, silent chest). Puskesmas tidak memiliki fasilitas untuk penanganan asma berat/gagal napas.",
+        "plan": "Pasien harus segera dirujuk ke rumah sakit dengan fasilitas monitor ketat, kemungkinan bronkodilator kontinu dan dukungan ventilasi bila diperlukan."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G3-S1",
+          "gate": "Day 2 - Menilai perburukan",
+          "prompt": "Bandingkan kondisi Andi pada hari pertama dan hari kedua. Apa saja indikator bahwa kondisi pasien justru memburuk?",
+          "expected_points": [
+            "RR meningkat dari 24 menjadi 32 x/menit",
+            "Saturasi kembali turun menjadi 92% meskipun memakai oksigen",
+            "Nadi meningkat menjadi 118 x/menit",
+            "Pasien semakin sulit berbicara kalimat lengkap",
+            "PEFR menurun dari 230 menjadi 190 L/menit",
+            "Muncul area silent chest dan retraksi otot bantu napas yang lebih nyata"
+          ]
+        },
+        {
+          "step_id": "G3-S2",
+          "gate": "Day 2 - Indikasi rujuk",
+          "prompt": "Berdasarkan temuan hari kedua, apakah Andi masih bisa dirawat di Puskesmas? Jelaskan keputusan Anda.",
+          "expected_answer": "Tidak. Andi menunjukkan tanda-tanda impending respiratory failure (RR tinggi, saturasi tidak membaik, PEFR menurun, silent chest, kesulitan berbicara). Kondisi ini melampaui kewenangan dan fasilitas Puskesmas, sehingga pasien harus dirujuk ke RS."
+        },
+        {
+          "step_id": "G3-S3",
+          "gate": "Day 2 - Rencana rujuk",
+          "prompt": "Apa saja yang harus dipersiapkan dalam proses rujuk pasien asma seperti Andi ke rumah sakit yang lebih tinggi?",
+          "expected_points": [
+            "Melanjutkan pemberian oksigen selama transport",
+            "Memberikan bronkodilator inhalasi/nebulizer sebelum dan bila perlu selama perjalanan",
+            "Mencatat dan menyampaikan ringkasan klinis (vital sign, PEFR, terapi yang telah diberikan, respons, alasan rujuk)",
+            "Menggunakan transport yang aman (ambulans) dan pendamping tenaga kesehatan",
+            "Menghubungi rumah sakit tujuan bila memungkinkan (pre-alert)"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G3-Q1",
+          "type": "single_best_answer",
+          "question": "Manakah yang merupakan tanda impending respiratory failure pada asma?",
+          "options": {
+            "A": "Wheezing keras merata",
+            "B": "Silent chest di beberapa area dan pasien sulit berbicara",
+            "C": "Batuk produktif dengan sputum kental",
+            "D": "Tidak ada perubahan napas namun pasien mengeluh lelah",
+            "E": "Hidung tersumbat"
+          },
+          "correct_option": "B",
+          "explanation": "Silent chest dan kesulitan berbicara menunjukkan ventilasi yang sangat terganggu dan merupakan tanda bahaya."
+        },
+        {
+          "quiz_id": "G3-Q2",
+          "type": "single_best_answer",
+          "question": "Alasan utama Andi harus dirujuk ke rumah sakit adalah:",
+          "options": {
+            "A": "PEFR naik sedikit",
+            "B": "Pasien ingin pindah rumah sakit",
+            "C": "Saturasi tidak membaik meskipun dengan oksigen dan PEFR menurun",
+            "D": "Tidak tersedia obat batuk di Puskesmas",
+            "E": "Pasien merasa bosan dirawat"
+          },
+          "correct_option": "C",
+          "explanation": "Perburukan objektif (SpO2 tidak membaik dan PEFR menurun) adalah indikasi kuat untuk rujuk ke fasilitas yang lebih lengkap."
+        }
+      ]
+    }
+  },
+  "discharge_plan": {
+    "summary": "Pasien tidak dipulangkan dari Puskesmas, tetapi dirujuk ke rumah sakit karena kondisi memburuk dan melampaui kapasitas pelayanan Puskesmas. Rencana rujuk meliputi stabilisasi singkat, dokumentasi lengkap, dan transport aman dengan pendampingan tenaga kesehatan.",
+    "key_education_points": [
+      "Menjelaskan kepada pasien dan keluarga bahwa kondisi sesak memburuk dan membutuhkan fasilitas perawatan yang lebih lengkap.",
+      "Memberikan penjelasan singkat mengenai risiko bila tidak dirujuk (gagal napas, risiko mengancam jiwa).",
+      "Menyampaikan bahwa terapi awal sudah diberikan di Puskesmas, namun respon tidak optimal.",
+      "Menginformasikan tujuan rujukan dan apa yang kemungkinan akan dilakukan di rumah sakit.",
+      "Menekankan pentingnya kepatuhan terhadap kontrol asma dan penggunaan inhaler setelah stabil di rumah sakit."
+    ]
+  },
+  "final_quiz": [
+    {
+      "quiz_id": "FQ1",
+      "type": "single_best_answer",
+      "question": "Manakah yang PALING tepat sebagai indikator bahwa pasien asma harus dirujuk segera ke rumah sakit?",
+      "options": {
+        "A": "PEFR naik dari 40% menjadi 55%",
+        "B": "RR turun dari 28 menjadi 22 x/menit",
+        "C": "Pasien mulai sulit berbicara dan muncul silent chest meskipun sudah diterapi",
+        "D": "Pasien mengeluh bosan dirawat",
+        "E": "Batuk mulai berkurang"
+      },
+      "correct_option": "C",
+      "explanation": "Kesulitan berbicara dan munculnya silent chest menunjukkan bahaya serius dan memerlukan rujuk segera."
+    },
+    {
+      "quiz_id": "FQ2",
+      "type": "sct",
+      "question": "“Eksaserbasi asma sedang yang tidak menunjukkan perbaikan bermakna dalam 24–48 jam meskipun sudah diterapi harus dipertimbangkan untuk dirujuk ke rumah sakit.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Failure to respond to standar therapy adalah indikasi penting untuk rujuk."
+    },
+    {
+      "quiz_id": "FQ3",
+      "type": "single_best_answer",
+      "question": "Tindakan yang paling tepat dilakukan DI PUSKESMAS sebelum merujuk pasien asma yang memburuk adalah:",
+      "options": {
+        "A": "Menghentikan semua obat dan menunggu di rumah",
+        "B": "Memberikan bronkodilator dan oksigen, lalu mempersiapkan rujukan dengan ambulans",
+        "C": "Memulangkan pasien dan menyuruh ke RS sendiri",
+        "D": "Memberikan antibiotik saja",
+        "E": "Tidak melakukan apa-apa dan langsung memanggil keluarga"
+      },
+      "correct_option": "B",
+      "explanation": "Stabilisasi awal (oksigen, bronkodilator) dan transport aman dengan pendampingan adalah kunci."
+    },
+    {
+      "quiz_id": "FQ4",
+      "type": "single_best_answer",
+      "question": "PEFR digunakan untuk:",
+      "options": {
+        "A": "Mengukur kapasitas residu paru",
+        "B": "Menilai derajat obstruksi dan respon terapi pada asma",
+        "C": "Menilai fungsi jantung",
+        "D": "Menentukan kadar oksigen dalam darah",
+        "E": "Mengukur kapasitas vital paru secara lengkap"
+      },
+      "correct_option": "B",
+      "explanation": "PEFR (peak expiratory flow rate) adalah parameter sederhana untuk menilai derajat obstruksi saluran napas dan respon terapi pada asma."
+    },
+    {
+      "quiz_id": "FQ5",
+      "type": "sct",
+      "question": "“Di Puskesmas, dokter umum boleh menangani eksaserbasi asma sedang, tetapi harus punya ambang batas yang jelas kapan harus merujuk ke rumah sakit yang lebih lengkap.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Ini esensi dari sistem rujukan berjenjang dan patient safety dalam penatalaksanaan asma."
+    }
+  ]
+}

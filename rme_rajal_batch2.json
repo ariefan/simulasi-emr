@@ -1,0 +1,443 @@
+[
+  {
+    "case_id": "RME-07",
+    "title": "Tiba-Tiba Lemah Sebelah (IGD RS)",
+    "setting": "IGD RS",
+    "department": "Saraf",
+    "skdi_condition": "Stroke iskemik akut",
+    "skdi_level": "3B",
+    "difficulty": "Berat",
+    "chief_complaint": "Lemah separuh tubuh kanan secara mendadak.",
+    "synopsis": "Laki-laki 58 tahun datang 1 jam setelah tiba-tiba mengalami kelemahan tubuh sebelah kanan dan bicara pelo saat menonton TV. Tidak ada kejang atau penurunan kesadaran. Riwayat hipertensi dan dislipidemia. Perokok.",
+    "key_exam_findings": "TD 180/100 mmHg, nadi 92, RR 20. Hemiparese dekstra, deviasi mulut ke kiri, disartria, refleks patologis sisi kanan (+). Tidak ada kaku kuduk.",
+    "key_lab_results": "Gula darah sewaktu normal, fungsi koagulasi awal dalam batas protokol trombolisis (detail lokal).",
+    "working_diagnosis": "Stroke iskemik akut onset <4,5 jam.",
+    "differential_diagnoses": [
+      "Transient ischemic attack (TIA)",
+      "Stroke hemoragik",
+      "Hipoglikemia dengan gejala neurologis",
+      "Lesi massa intrakranial akut"
+    ],
+    "management_summary": "Stabilisasi ABC, cek gula darah segera, aktifkan stroke code, lakukan CT scan kepala non kontras secepatnya untuk membedakan iskemik/hemoragik, evaluasi eligibility trombolisis/invasif sesuai protokol, kontrol tekanan darah sesuai panduan, dan rujuk ke unit stroke/ICU bila tersedia.",
+    "red_flags_clinical": [
+      "Penurunan kesadaran",
+      "Muntah proyektil dan sakit kepala hebat mendadak",
+      "Tanda peningkatan TIK (bradikardi, hipertensi, respirasi tidak teratur)"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi gejala klinis stroke akut dan pentingnya time window.",
+      "Menyusun penatalaksanaan awal stroke akut di IGD termasuk kebutuhan CT scan segera.",
+      "Berkomunikasi dengan keluarga mengenai urgensi terapi dan potensi outcome."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Kedatangan di IGD",
+        "prompt_student": [
+          "Apa tiga hal pertama yang harus Anda nilai pada pasien dengan dugaan stroke akut?",
+          "Pertanyaan kunci apa yang Anda ajukan untuk menentukan onset waktu gejala?"
+        ],
+        "expected_focus": "Penilaian ABC, waktu onset, dan gejala fokal.",
+        "unlocks_next_tab": "Pemeriksaan Neurologis"
+      },
+      {
+        "step_id": "S2",
+        "stage": "neurologic_exam",
+        "tab": "Pemeriksaan Neurologis",
+        "prompt_student": [
+          "Temuan PF apa yang mendukung stroke iskemik akut?",
+          "Bagaimana Anda menilai derajat defisit neurologis secara terstruktur (misalnya NIHSS dasar)?"
+        ],
+        "expected_focus": "Defisit fokal konsisten lesi vaskular, pengukuran objektif defisit.",
+        "unlocks_next_tab": "Penunjang & Imaging"
+      },
+      {
+        "step_id": "S3",
+        "stage": "investigation",
+        "tab": "Penunjang & Imaging",
+        "prompt_student": [
+          "Mengapa CT scan tanpa kontras penting dilakukan segera?",
+          "Pemeriksaan penunjang minimal apa yang harus tersedia sebelum mempertimbangkan trombolisis?"
+        ],
+        "expected_focus": "Memahami peran CT untuk eksklusi perdarahan dan pentingnya lab dasar.",
+        "unlocks_next_tab": "Tata Laksana & Refleksi"
+      },
+      {
+        "step_id": "S4",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rencana tatalaksana awal 0–3 jam pertama pasien ini.",
+          "Bagaimana Anda menjelaskan kepada keluarga tentang urgensi tindakan dan kemungkinan risiko terapi?"
+        ],
+        "expected_focus": "Time-sensitive management dan komunikasi risiko–manfaat.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Time window yang umumnya digunakan untuk mempertimbangkan trombolisis IV pada stroke iskemik akut adalah:",
+        "options": {
+          "A": "< 1 jam",
+          "B": "< 3 jam",
+          "C": "< 4,5 jam (sesuai protokol yang berlaku)",
+          "D": "< 24 jam"
+        },
+        "correct_option": "C",
+        "explanation": "Banyak panduan menggunakan batas 4,5 jam sejak onset gejala untuk trombolisis IV, dengan syarat lain terpenuhi."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Pemeriksaan imaging pertama yang paling tepat untuk pasien ini adalah:",
+        "options": {
+          "A": "MRI dengan kontras",
+          "B": "CT scan kepala tanpa kontras",
+          "C": "Foto polos kepala",
+          "D": "USG Doppler karotis"
+        },
+        "correct_option": "B",
+        "explanation": "CT scan tanpa kontras diperlukan segera untuk menyingkirkan perdarahan dan menentukan jalur terapi."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Tindakan berikut yang PALING berbahaya bila dilakukan sebelum CT scan:",
+        "options": {
+          "A": "Memberikan oksigen suplemental",
+          "B": "Meninggikan kepala 30 derajat",
+          "C": "Memberikan trombolitik IV tanpa imaging",
+          "D": "Mengukur tekanan darah"
+        },
+        "correct_option": "C",
+        "explanation": "Trombolitik tidak boleh diberikan tanpa memastikan bahwa stroke bukan stroke perdarahan."
+      }
+    ]
+  },
+
+  {
+    "case_id": "RME-08",
+    "title": "Nyeri Kepala di Antara Jadwal Padat (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "Saraf",
+    "skdi_condition": "Nyeri kepala non spesifik (tension-type headache)",
+    "skdi_level": "4A",
+    "difficulty": "Ringan",
+    "chief_complaint": "Nyeri kepala sejak beberapa minggu.",
+    "synopsis": "Perempuan 30 tahun mengeluh nyeri kepala seperti tertekan di kedua sisi kepala, memberat saat stres pekerjaan, tidak membangunkan dari tidur, tidak disertai muntah proyektil, kejang, atau gangguan penglihatan. Riwayat trauma kepala tidak ada. Pola tidur dan makan kurang teratur.",
+    "key_exam_findings": "TD 118/76, nadi 78, PF neurologis normal, tidak ada kaku kuduk, funduskopi normal (bila dilakukan).",
+    "key_lab_results": "Tidak ada kelainan spesifik; lab tidak rutin diperlukan bila anamnesis dan PF benigna.",
+    "working_diagnosis": "Nyeri kepala tipe tegang tanpa red flag.",
+    "differential_diagnoses": [
+      "Migren",
+      "Nyeri kepala sekunder akibat anemia atau gangguan visus",
+      "Nyeri kepala sekunder lain (HT emergensi, massa intrakranial) – kurang mendukung"
+    ],
+    "management_summary": "Edukasi pemicu nyeri kepala, perbaikan pola tidur dan makan, manajemen stres, latihan relaksasi, analgesik sederhana bila perlu, dan edukasi red flag yang memerlukan evaluasi ulang.",
+    "red_flags_clinical": [
+      "Nyeri kepala tiba-tiba sangat hebat ('thunderclap')",
+      "Nyeri kepala baru pada usia >50 tahun",
+      "Disertai defisit neurologis fokal, kejang, atau perubahan perilaku",
+      "Nyeri kepala disertai demam tinggi dan kaku kuduk"
+    ],
+    "learning_objectives": [
+      "Membedakan nyeri kepala primer ringan dari kondisi yang memerlukan investigasi lanjut.",
+      "Menggunakan anamnesis terstruktur untuk mencari red flag nyeri kepala.",
+      "Menyusun tatalaksana non-farmakologis dan farmakologis sederhana untuk nyeri kepala tipe tegang."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama",
+        "prompt_student": [
+          "Apa pertanyaan kunci untuk menyingkirkan red flag nyeri kepala?",
+          "Nyeri kepala tipe apa yang paling sering terjadi di layanan primer?"
+        ],
+        "expected_focus": "Menanyakan onset, intensitas, gejala penyerta, dan usia onset.",
+        "unlocks_next_tab": "Anamnesis Lengkap"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Fisik & Neurologis",
+        "prompt_student": [
+          "PF neurologis apa yang wajib pada pasien nyeri kepala?",
+          "Bagaimana Anda menafsirkan nyeri kepala dengan PF neurologis normal?"
+        ],
+        "expected_focus": "Mengetahui pentingnya PF neurologis lengkap dan interpretasinya.",
+        "unlocks_next_tab": "Tata Laksana"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun paket tatalaksana (non-obat dan obat) untuk pasien ini.",
+          "Apa pesan edukasi utama tentang kapan pasien harus segera kembali (red flag)?"
+        ],
+        "expected_focus": "Merencanakan manajemen komprehensif dan edukasi red flag.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Gejala berikut yang PALING mengkhawatirkan dan mengarah ke nyeri kepala sekunder serius:",
+        "options": {
+          "A": "Nyeri kepala ringan bilateral saat stres",
+          "B": "Nyeri kepala semakin berat pelan-pelan selama beberapa tahun tanpa gejala lain",
+          "C": "Nyeri kepala hebat mendadak disertai kaku kuduk",
+          "D": "Nyeri kepala saat memakai kacamata lama"
+        },
+        "correct_option": "C",
+        "explanation": "Nyeri kepala hebat mendadak dengan kaku kuduk mengarah ke kemungkinan perdarahan subaraknoid atau meningitis."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Pilihan tatalaksana awal paling tepat untuk nyeri kepala tipe tegang tanpa red flag:",
+        "options": {
+          "A": "CT scan kepala segera untuk semua kasus",
+          "B": "Analgesik sederhana, edukasi sleep hygiene, dan manajemen stres",
+          "C": "Antibiotik spektrum luas",
+          "D": "Steroid dosis tinggi"
+        },
+        "correct_option": "B",
+        "explanation": "Nyeri kepala tipe tegang ditatalaksana dengan pendekatan non-farmakologis dan analgesik sederhana."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Kapan imaging kepala (CT/MRI) paling tepat dipertimbangkan?",
+        "options": {
+          "A": "Setiap ada nyeri kepala, tanpa kecuali",
+          "B": "Hanya jika pasien meminta",
+          "C": "Jika terdapat red flag seperti defisit neurologis fokal atau perubahan kepribadian",
+          "D": "Jika nyeri kepala tidak langsung hilang dengan 1 tablet analgesik"
+        },
+        "correct_option": "C",
+        "explanation": "Imaging dipertimbangkan bila ada red flag, tidak untuk semua nyeri kepala ringan."
+      }
+    ]
+  },
+
+  {
+    "case_id": "RME-09",
+    "title": "Ginjal yang Mulai Kewalahan (Poli RS)",
+    "setting": "Poli RS",
+    "department": "IPD",
+    "skdi_condition": "Chronic kidney disease (CKD) stadium 3",
+    "skdi_level": "2",
+    "difficulty": "Ringan",
+    "chief_complaint": "Lemas dan bengkak ringan di tungkai.",
+    "synopsis": "Laki-laki 55 tahun dengan riwayat hipertensi dan DM tipe 2 8 tahun datang dengan keluhan mudah lelah dan bengkak ringan di pergelangan kaki. Tidak ada sesak berat. Riwayat kontrol tekanan darah dan gula darah kurang teratur.",
+    "key_exam_findings": "TD 150/92, nadi 84, RR 18. Edema pretibial 1+, tidak ada ronki paru, tidak ada defisit neurologis.",
+    "key_lab_results": "Kreatinin 1,8 mg/dL, eGFR ~45 mL/min/1,73m², ureum meningkat ringan, Hb 10,5 g/dL, urin: proteinuria +.",
+    "working_diagnosis": "CKD stadium 3 kemungkinan akibat nefropati diabetik dan hipertensi kronik.",
+    "differential_diagnoses": [
+      "Acute on chronic kidney disease",
+      "CKD akibat glomerulonefritis kronik",
+      "CKD akibat obstruksi saluran kemih kronik"
+    ],
+    "management_summary": "Optimasi kontrol tekanan darah (ACEi/ARB bila tidak kontraindikasi), kontrol DM, pembatasan garam, evaluasi obat nefrotoksik, edukasi diet ramah ginjal, monitoring berkala fungsi ginjal, dan rujukan ke nefrolog bila perlu.",
+    "red_flags_clinical": [
+      "Sesak berat dengan edema paru",
+      "Oliguria/anuria",
+      "Hiperkalemia berat (aritmia)",
+      "Tanda uremia (mual berat, muntah, penurunan kesadaran)"
+    ],
+    "learning_objectives": [
+      "Mengenali CKD berdasarkan eGFR dan tanda klinis awal.",
+      "Mengidentifikasi faktor risiko dan progresivitas CKD pada pasien DM/hipertensi.",
+      "Menyusun rencana pengelolaan jangka panjang untuk memperlambat progresi CKD."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama & Riwayat Singkat",
+        "prompt_student": [
+          "Data apa yang menunjukkan kemungkinan penyakit ginjal kronik?",
+          "Riwayat penyakit apa yang paling penting Anda gali lebih dalam pada kasus ini?"
+        ],
+        "expected_focus": "LAMAnya DM/HT, obat-obatan nefrotoksik, gejala uremia.",
+        "unlocks_next_tab": "PF & Penunjang"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam_and_investigation",
+        "tab": "PF & Penunjang",
+        "prompt_student": [
+          "Bagaimana Anda menilai derajat CKD menggunakan eGFR?",
+          "Pemeriksaan apa yang perlu dilakukan secara berkala pada pasien CKD (misalnya elektrolit, Hb, urin)?"
+        ],
+        "expected_focus": "Klasifikasi CKD dan pemantauan komplikasi.",
+        "unlocks_next_tab": "Tata Laksana"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rencana terapi untuk memperlambat progresi CKD pada pasien ini.",
+          "Kapan Anda akan mempertimbangkan rujukan ke nefrolog?"
+        ],
+        "expected_focus": "Strategi slow progression, indikasi rujukan.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Kategori stadium CKD dengan eGFR sekitar 45 mL/min/1,73m² adalah:",
+        "options": {
+          "A": "Stadium 1",
+          "B": "Stadium 2",
+          "C": "Stadium 3",
+          "D": "Stadium 5"
+        },
+        "correct_option": "C",
+        "explanation": "CKD stadium 3 biasanya eGFR 30–59 mL/min/1,73m²."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Obat antihipertensi yang sering direkomendasikan pada CKD dengan proteinuria (bila tidak kontraindikasi):",
+        "options": {
+          "A": "ACE inhibitor atau ARB",
+          "B": "NSAID",
+          "C": "Steroid dosis tinggi",
+          "D": "Diuretik tiazid saja"
+        },
+        "correct_option": "A",
+        "explanation": "ACEi/ARB dapat membantu menurunkan proteinuria dan memperlambat progresi CKD."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Prinsip diet pada pasien CKD adalah:",
+        "options": {
+          "A": "Menaikkan asupan garam untuk mencegah hipotensi",
+          "B": "Tidak perlu modifikasi diet",
+          "C": "Membatasi garam dan mengatur asupan protein sesuai stadium CKD",
+          "D": "Menghindari semua jenis sayur dan buah"
+        },
+        "correct_option": "C",
+        "explanation": "Pembatasan garam dan pengaturan protein adalah bagian penting diet CKD."
+      }
+    ]
+  },
+
+  {
+    "case_id": "RME-10",
+    "title": "Sesak Saat Naik Tangga (Gagal Jantung Kronik, Poli RS)",
+    "setting": "Poli RS",
+    "department": "IPD",
+    "skdi_condition": "Gagal jantung kronik (chronic heart failure)",
+    "skdi_level": "3A",
+    "difficulty": "Berat",
+    "chief_complaint": "Sesak saat aktivitas dan bengkak di tungkai.",
+    "synopsis": "Laki-laki 62 tahun dengan riwayat infark miokard 5 tahun lalu, datang dengan keluhan sesak saat naik tangga (NYHA III), cepat lelah, dan bengkak di kedua tungkai sejak beberapa bulan. Berat badan meningkat 3 kg dalam 1 bulan. Riwayat diet tinggi garam dan kepatuhan obat kurang baik.",
+    "key_exam_findings": "TD 130/80, nadi 88, RR 20. JVP meningkat, edema tungkai 2+, hepatomegali ringan, ronki basah halus di basal paru.",
+    "key_lab_results": "BNP meningkat, fungsi ginjal sedikit menurun, Hb normal, elektrolit dalam batas normal.",
+    "working_diagnosis": "Gagal jantung kronik sistolik kelas fungsional NYHA III.",
+    "differential_diagnoses": [
+      "PPOK dengan cor pulmonale",
+      "Penyakit ginjal kronik dengan overload cairan",
+      "Penyakit katup jantung"
+    ],
+    "management_summary": "Optimasi terapi HF kronik (ACEi/ARB/ARNI, beta blocker, diuretik, ± MRA sesuai pedoman), edukasi pembatasan garam dan cairan, pemantauan berat badan harian, manajemen komorbid (HT, DM), serta rencana follow up teratur dan tanda dekompensasi yang harus diwaspadai.",
+    "red_flags_clinical": [
+      "Sesak saat istirahat",
+      "Edema paru akut",
+      "NYHA IV dengan hipotensi dan perfusi buruk"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi tanda klinis gagal jantung kronik dan klasifikasi NYHA.",
+      "Menyusun rejimen obat standar HF kronik dan memantau efek samping.",
+      "Memberikan edukasi jangka panjang kepada pasien tentang diet, aktivitas, dan self-monitoring."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama & Riwayat",
+        "prompt_student": [
+          "Data apa yang menunjukkan bahwa ini adalah gagal jantung kronik, bukan akut?",
+          "Komorbid apa yang perlu dieksplorasi yang dapat memperburuk HF kronik?"
+        ],
+        "expected_focus": "Durasi gejala, pola memburuk pelan-pelan, riwayat infark, HT, DM.",
+        "unlocks_next_tab": "PF & Penunjang"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam_and_investigation",
+        "tab": "PF & Penunjang",
+        "prompt_student": [
+          "Temuan PF apa yang tipikal pada HF kronik (misalnya JVP, edema, ronki)?",
+          "Pemeriksaan penunjang apa yang penting untuk menilai fungsi jantung dan stadium penyakit?"
+        ],
+        "expected_focus": "Temuan kongesti dan perlunya ekokardiografi, BNP.",
+        "unlocks_next_tab": "Tata Laksana"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rejimen obat lini utama untuk HF kronik (sebutkan kelompok obat).",
+          "Apa pesan edukasi terpenting terkait diet, monitoring berat badan, dan kapan harus segera ke RS?"
+        ],
+        "expected_focus": "Pilar terapi HF (ACEi/ARB/ARNI, BB, diuretik, MRA) dan edukasi self-management.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Kelas fungsional NYHA III berarti:",
+        "options": {
+          "A": "Tidak ada keterbatasan aktivitas, aktivitas biasa tidak menimbulkan gejala",
+          "B": "Keterbatasan ringan, gejala pada aktivitas berat",
+          "C": "Keterbatasan bermakna, gejala pada aktivitas sehari-hari yang ringan",
+          "D": "Gejala saat istirahat"
+        },
+        "correct_option": "C",
+        "explanation": "NYHA III: keterbatasan bermakna aktivitas fisik; gejala timbul pada aktivitas kurang dari aktivitas biasa."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Kelompok obat yang menjadi pilar terapi gagal jantung sistolik kronik adalah KECUALI:",
+        "options": {
+          "A": "ACE inhibitor/ARB/ARNI",
+          "B": "Beta blocker",
+          "C": "Mineralocorticoid receptor antagonist (MRA)",
+          "D": "Glukokortikoid jangka panjang"
+        },
+        "correct_option": "D",
+        "explanation": "Glukokortikoid bukan terapi standar HF kronik dan dapat memperburuk retensi cairan."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Edukasi berikut PALING penting pada pasien ini:",
+        "options": {
+          "A": "Tidak perlu menimbang berat badan",
+          "B": "Boleh konsumsi garam bebas",
+          "C": "Menimbang berat badan harian dan melaporkan kenaikan mendadak",
+          "D": "Menghentikan obat bila merasa sudah membaik"
+        },
+        "correct_option": "C",
+        "explanation": "Kenaikan berat badan mendadak dapat menandakan retensi cairan dan dekompensasi HF."
+      }
+    ]
+  }
+]
