@@ -1,0 +1,271 @@
+{
+  "case_id": "rme-25",
+  "title": "Gula Darah yang Terlalu Rajin Turun (Hipoglikemia Berulang di Bangsal RS)",
+  "setting": "Rawat inap rumah sakit (2 hari, membaik)",
+  "department": "IPD",
+  "primary_diagnosis": "Hipoglikemia berulang pada pasien DM tipe 2 rawat inap",
+  "skdi_level": "3B",
+  "difficulty": "sedang",
+  "encounter_type": "inpatient",
+  "chief_complaint": "Berkeringat dingin dan gemetar pada malam hari di bangsal.",
+  "synopsis": "Seorang laki-laki 60 tahun dengan DM tipe 2 dirawat di RS karena selulitis tungkai. Ia mendapat insulin kerja pendek sesuai sliding scale. Dalam 24 jam pertama, terjadi dua kali hipoglikemia dengan gejala berkeringat dingin dan gemetar. Dokter jaga bangsal harus mengenali hipoglikemia, melakukan tata laksana segera, mengevaluasi penyebab (mismatch dosis insulin dan intake), mengatur ulang regimen insulin, dan memantau agar hipoglikemia tidak berulang. Dalam 2 hari, kondisi stabil dan regimen insulin disesuaikan.",
+  "key_exam_findings": "Pada saat kejadian hipoglikemia: berkeringat, tremor, tampak cemas, GDS 48 mg/dL, TD 130/80 mmHg, nadi 98/menit, RR 18/menit, sadar penuh.",
+  "key_lab_results": "Beberapa kali pemeriksaan GDS fluktuatif (48–220 mg/dL), HbA1c tinggi (misal 9%), elektrolit dalam batas normal, fungsi ginjal normal.",
+  "working_diagnosis": "Hipoglikemia berulang pada pasien DM tipe 2 rawat inap akibat mismatch antara dosis insulin dan intake oral.",
+  "differential_diagnoses": [
+    "Hipoglikemia akibat gangguan ginjal berat",
+    "Hipoglikemia akibat sepsis berat",
+    "Hipoglikemia akibat overdosis obat oral hipoglikemik",
+    "Hipoglikemia reaktif postprandial",
+    "Episode cemas/panik tanpa hipoglikemia (bila GDS normal)"
+  ],
+  "management_summary": "Pasien mengalami hipoglikemia berulang pada malam hari saat menjalani sliding scale insulin dengan intake makanan yang tidak konsisten. Dokter jaga bangsal memberikan glukosa oral/IV segera, mengevaluasi pola makan dan dosis insulin, menyesuaikan regimen insulin (mengurangi dosis malam, menghindari insulin kerja panjang berlebihan), dan melakukan edukasi mengenai pentingnya sinkronisasi makan dan insulin. Setelah penyesuaian, tidak ada hipoglikemia ulang dalam 24 jam terakhir dan pasien stabil.",
+  "red_flags_clinical": [
+    "Penurunan kesadaran",
+    "Keadaan kejang",
+    "Hipoglikemia berulang meski dosis sudah dikurangi",
+    "GDS < 40 mg/dL",
+    "Kecurigaan gangguan fungsi ginjal berat"
+  ],
+  "learning_objectives": [
+    "Mengenali tanda dan gejala hipoglikemia pada pasien DM rawat inap.",
+    "Melakukan tata laksana segera hipoglikemia (oral/IV) dengan benar.",
+    "Mengevaluasi penyebab hipoglikemia berulang di bangsal (mismatch insulin–makan, fungsi ginjal, infeksi).",
+    "Menyesuaikan regimen insulin berdasarkan pola GDS dan intake.",
+    "Memberikan edukasi singkat kepada pasien tentang pencegahan hipoglikemia."
+  ],
+  "timeline": {
+    "day_0": {
+      "label": "Day 0 - Episode hipoglikemia pertama di bangsal",
+      "clinical_data": {
+        "background": {
+          "reason_for_admission": "Dirawat karena selulitis tungkai kanan, DM tipe 2 tidak terkontrol.",
+          "baseline_medication": "Sebelum dirawat: metformin dan sulfonilurea (obat oral), di RS diganti sliding scale insulin.",
+          "diet_in_hospital": "Diet rumah sakit DM, tetapi pasien makan kurang dari porsi yang dianjurkan."
+        },
+        "episode": {
+          "time": "Sekitar pukul 22.00, saat perawat melakukan observasi rutin.",
+          "symptoms": "Pasien merasa gemetar, berkeringat dingin, sedikit pusing, lapar.",
+          "vital_signs": {
+            "blood_pressure": "130/80 mmHg",
+            "heart_rate": "98 x/menit",
+            "respiratory_rate": "18 x/menit",
+            "temperature": "36,8 °C"
+          },
+          "gds": "48 mg/dL"
+        },
+        "initial_assessment": "Hipoglikemia simptomatik pada pasien DM rawat inap."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G1-S1",
+          "gate": "Day 0 - Identifikasi hipoglikemia",
+          "prompt": "Apa saja tanda dan gejala yang menunjukkan hipoglikemia pada pasien ini?",
+          "expected_points": [
+            "Berkeringat dingin",
+            "Gemetar",
+            "Lemas/pusing",
+            "GDS 48 mg/dL"
+          ]
+        },
+        {
+          "step_id": "G1-S2",
+          "gate": "Day 0 - Tata laksana segera",
+          "prompt": "Apa langkah tata laksana segera yang harus dilakukan begitu mengetahui GDS 48 mg/dL dan pasien masih sadar?",
+          "expected_answer": "Memberikan glukosa oral cepat serap (misalnya 15–20 gram karbohidrat cepat) bila pasien dapat menelan. Bila tidak memungkinkan, berikan glukosa IV sesuai protokol."
+        },
+        {
+          "step_id": "G1-S3",
+          "gate": "Day 0 - Evaluasi setelah koreksi",
+          "prompt": "Setelah koreksi awal, apa yang perlu Anda lakukan selanjutnya?",
+          "expected_points": [
+            "Ulang GDS setelah 15 menit",
+            "Berikan snack/makanan bila GDS sudah membaik",
+            "Mencatat kejadian dan dosis insulin sebelumnya",
+            "Menganalisis hubungan antara waktu suntik insulin dan pola makan pasien"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G1-Q1",
+          "type": "single_best_answer",
+          "question": "Tata laksana pertama pada pasien sadar dengan hipoglikemia (GDS < 70 mg/dL) adalah:",
+          "options": {
+            "A": "Memberikan insulin tambahan",
+            "B": "Memberikan cairan NaCl 0,9%",
+            "C": "Memberikan karbohidrat cepat serap (oral) bila mampu menelan",
+            "D": "Menyuruh pasien tidur",
+            "E": "Menunggu tanpa tindakan"
+          },
+          "correct_option": "C",
+          "explanation": "Hipoglikemia gejala ringan–sedang pada pasien sadar dikoreksi dengan karbohidrat cepat serap."
+        }
+      ]
+    },
+    "day_1": {
+      "label": "Day 1 - Evaluasi dan episode ulang",
+      "clinical_data": {
+        "progress": {
+          "morning": {
+            "symptoms": "Pagi hari pasien merasa lebih baik, namun mengaku sempat malas makan malam kemarin.",
+            "gds": "Pagi sebelum makan: 92 mg/dL; 2 jam setelah makan: 168 mg/dL."
+          },
+          "insulin": "Tetap diberikan sliding scale insulin seperti hari sebelumnya.",
+          "second_episode": {
+            "time": "Malam berikutnya sekitar pukul 01.00.",
+            "symptoms": "Pasien kembali berkeringat dingin, gemetar, agak bingung ringan.",
+            "gds": "52 mg/dL"
+          }
+        },
+        "assessment": "Terjadi hipoglikemia berulang. Diduga terkait mismatch antara dosis insulin sliding scale dan asupan makanan, terutama pada malam hari."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G2-S1",
+          "gate": "Day 1 - Analisis penyebab berulang",
+          "prompt": "Apa saja faktor yang dapat menyebabkan hipoglikemia berulang pada pasien ini?",
+          "expected_points": [
+            "Dosis insulin terlalu tinggi untuk pola makan pasien",
+            "Asupan makan malam kurang atau tidak habis",
+            "Pengaturan jadwal insulin dan makan tidak sinkron",
+            "Tidak ada penyesuaian dosis saat pasien sakit dan asupan menurun"
+          ]
+        },
+        {
+          "step_id": "G2-S2",
+          "gate": "Day 1 - Koreksi kedua",
+          "prompt": "Apa yang Anda lakukan setelah menemukan GDS 52 mg/dL pada episode kedua ini?",
+          "expected_answer": "Segera koreksi hipoglikemia (karbohidrat cepat serap atau glukosa IV sesuai kondisi), ulang GDS setelah 15 menit, dan bila membaik, berikan snack. Setelah stabil, lanjutkan evaluasi regimen insulin."
+        },
+        {
+          "step_id": "G2-S3",
+          "gate": "Day 1 - Rencana penyesuaian terapi",
+          "prompt": "Langkah apa yang perlu dilakukan terkait regimen insulin pasien setelah terjadi hipoglikemia berulang?",
+          "expected_points": [
+            "Mengurangi dosis insulin, terutama dosis malam",
+            "Mempertimbangkan modifikasi sliding scale atau mengganti ke regimen yang lebih stabil",
+            "Mengkomunikasikan dengan tim perawatan dan ahli gizi tentang pola makan",
+            "Menentukan target GDS yang realistis pada pasien rawat inap"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G2-Q1",
+          "type": "single_best_answer",
+          "question": "Faktor paling sering yang menyebabkan hipoglikemia di rumah sakit adalah:",
+          "options": {
+            "A": "Kesalahan diagnosis DM",
+            "B": "Asupan makanan tidak sesuai dengan dosis insulin/obat",
+            "C": "Selalu makan terlalu banyak",
+            "D": "Pemeriksaan GDS terlalu sering",
+            "E": "Minum air terlalu banyak"
+          },
+          "correct_option": "B",
+          "explanation": "Mismatch antara asupan dan dosis insulin/obat adalah penyebab paling umum hipoglikemia."
+        }
+      ]
+    },
+    "day_2": {
+      "label": "Day 2 - Stabil setelah penyesuaian",
+      "clinical_data": {
+        "progress": {
+          "insulin_adjustment": "Dosis insulin malam dikurangi dan regimen sliding scale diperlonggar.",
+          "diet": "Pasien diedukasi untuk selalu makan snack malam ringan dan tidak melewatkan makan.",
+          "gds_profile": {
+            "pre_breakfast": "110 mg/dL",
+            "post_breakfast": "170 mg/dL",
+            "pre_dinner": "130 mg/dL",
+            "pre_midnight": "120 mg/dL"
+          },
+          "symptoms": "Tidak ada lagi episode berkeringat dingin atau gemetar. Pasien merasa lebih stabil."
+        },
+        "assessment": "Setelah penyesuaian dosis insulin dan pola makan, hipoglikemia tidak berulang dalam 24 jam terakhir. Regimen terapi lebih aman dan stabil."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G3-S1",
+          "gate": "Day 2 - Evaluasi keberhasilan penyesuaian",
+          "prompt": "Apa bukti bahwa penyesuaian regimen insulin dan diet berhasil?",
+          "expected_points": [
+            "Tidak ada hipoglikemia ulang dalam 24 jam terakhir",
+            "Profil GDS lebih stabil dan dalam rentang aman",
+            "Pasien tidak mengeluh gejala hipoglikemia",
+            "Pasien memahami pentingnya makan teratur"
+          ]
+        },
+        {
+          "step_id": "G3-S2",
+          "gate": "Day 2 - Edukasi pasien",
+          "prompt": "Apa poin edukasi utama yang harus disampaikan pada pasien DM terkait pencegahan hipoglikemia?",
+          "expected_points": [
+            "Jangan melewatkan waktu makan bila sudah menggunakan insulin/obat",
+            "Kenali gejala hipoglikemia dan lakukan koreksi segera",
+            "Laporkan bila sering terjadi hipoglikemia ke dokter",
+            "Pentingnya pemantauan GDS berkala"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G3-Q1",
+          "type": "sct",
+          "question": "“Menyesuaikan dosis insulin berdasarkan pola makan dan profil GDS adalah bagian penting dari pencegahan hipoglikemia berulang.”",
+          "scale": [
+            "Sangat setuju",
+            "Setuju",
+            "Ragu-ragu",
+            "Tidak setuju",
+            "Sangat tidak setuju"
+          ],
+          "correct_scale": [
+            "Sangat setuju",
+            "Setuju"
+          ],
+          "explanation": "Individualisasi terapi adalah kunci dalam manajemen DM."
+        }
+      ]
+    }
+  },
+  "discharge_plan": {
+    "summary": "Setelah penyesuaian dosis insulin dan edukasi pola makan, pasien tidak mengalami hipoglikemia berulang. Regimen insulin yang lebih aman disusun, dan pasien siap melanjutkan perawatan dengan kontrol jalan.",
+    "key_education_points": [
+      "Pentingnya tidak melewatkan makan saat menggunakan insulin.",
+      "Mengenali gejala hipoglikemia dan segera mengoreksi dengan karbohidrat cepat serap.",
+      "Mencatat profil GDS bila memungkinkan dan membawanya saat kontrol.",
+      "Segera melapor bila sering terjadi hipoglikemia atau gejala tidak biasa.",
+      "Mengikuti jadwal kontrol ke poliklinik penyakit dalam/DM."
+    ]
+  },
+  "final_quiz": [
+    {
+      "quiz_id": "FQ1",
+      "type": "single_best_answer",
+      "question": "Gejala khas hipoglikemia antara lain:",
+      "options": {
+        "A": "Polidipsia dan poliuria",
+        "B": "Berkeringat dingin, gemetar, dan lapar",
+        "C": "Kenaikan berat badan mendadak",
+        "D": "Demam dan menggigil",
+        "E": "Batuk dan sesak napas"
+      },
+      "correct_option": "B",
+      "explanation": "Gejala adrenergik seperti berkeringat, gemetar, dan lapar adalah khas hipoglikemia."
+    },
+    {
+      "quiz_id": "FQ2",
+      "type": "single_best_answer",
+      "question": "Langkah berikut yang PALING membantu mencegah hipoglikemia berulang adalah:",
+      "options": {
+        "A": "Memberikan insulin tanpa memperhatikan makan",
+        "B": "Mengatur dosis insulin sesuai pola makan dan GDS",
+        "C": "Menghentikan semua obat DM tanpa kontrol",
+        "D": "Menyuruh pasien puasa total",
+        "E": "Memberikan diuretik"
+      },
+      "correct_option": "B",
+      "explanation": "Penyesuaian insulin terhadap pola makan dan hasil GDS adalah kunci."
+    }
+  ]
+}

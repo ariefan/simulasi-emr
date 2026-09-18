@@ -1,0 +1,325 @@
+{
+  "case_id": "rme-24",
+  "title": "Mata Kuning yang Tak Kunjung Cerah (Hepatitis A, Rawat Inap Puskesmas Berakhir Rujuk)",
+  "setting": "Rawat inap puskesmas (2 hari, berakhir rujuk)",
+  "department": "IPD",
+  "primary_diagnosis": "Hepatitis A akut dengan risiko perburukan",
+  "skdi_level": "3A",
+  "difficulty": "sedang",
+  "encounter_type": "inpatient",
+  "chief_complaint": "Mata kuning dan lemas sejak 5 hari.",
+  "synopsis": "Seorang laki-laki 20 tahun datang ke Puskesmas dengan keluhan lemas, mual, dan mata kuning sejak 5 hari. Pemeriksaan menunjukkan ikterus sklera, hepatomegali ringan, dan riwayat demam serta penurunan nafsu makan sebelumnya. Pasien dirawat inap di Puskesmas untuk observasi dan suportif. Namun dalam 48 jam, keluhan mual dan lemas memburuk, pasien sulit makan dan minum, ikterus makin jelas, dan terdapat kecurigaan perburukan fungsi hati. Dengan mempertimbangkan keterbatasan fasilitas Puskesmas, pasien dirujuk ke RS.",
+  "key_exam_findings": "TD 110/70 mmHg, nadi 88/menit, suhu 37,5°C, RR 18/menit, ikterus sklera dan kulit, hati teraba 2 jari di bawah arcus costae kanan, nyeri tekan ringan.",
+  "key_lab_results": "SGOT 850 U/L, SGPT 1200 U/L, bilirubin total 7 mg/dL (direk 4 mg/dL), leukosit normal, Hb normal (catatan: angka-angka ini dapat disesuaikan di sistem).",
+  "working_diagnosis": "Hepatitis A akut (infeksi virus hepatitis A) dengan tanda hepatitis akut ikterik.",
+  "differential_diagnoses": [
+    "Hepatitis B akut",
+    "Hepatitis C akut",
+    "Hepatitis obat (drug-induced liver injury)",
+    "Hepatitis alkoholik (tidak sesuai umur dan riwayat)",
+    "Obstruksi bilier (batu CBD, tumor)"
+  ],
+  "management_summary": "Pasien diduga hepatitis A akut berdasarkan onset subakut, gejala prodromal, dan ikterus. Di Puskesmas, pasien dirawat dengan terapi suportif: istirahat, cairan, antiemetik, dan pemantauan gejala. Dalam 2 hari rawat inap, pasien justru makin sulit makan, ikterus makin jelas, dan terdapat kecurigaan perburukan fungsi hati (misalnya muntah berulang, sangat lemas). Karena keterbatasan fasilitas pemeriksaan laboratorium lanjutan dan penanganan komplikasi gagal hati, pasien dirujuk ke RS.",
+  "red_flags_clinical": [
+    "Muntah berulang sehingga intake oral sangat kurang",
+    "Lemas berat, tampak mengantuk atau perubahan kesadaran",
+    "Tanda perdarahan (mimisan, mudah memar, perdarahan gusi)",
+    "Ikterus yang semakin progresif",
+    "Tanda gagal hati (ensefalopati hepatik)"
+  ],
+  "learning_objectives": [
+    "Mengenali gejala dan tanda hepatitis A akut pada dewasa muda.",
+    "Memahami batas kewenangan Puskesmas dalam merawat hepatitis A.",
+    "Mengidentifikasi tanda-tanda perburukan fungsi hati yang mengharuskan rujukan.",
+    "Menyusun rencana rujuk yang aman dan terstruktur dari Puskesmas ke RS.",
+    "Memberikan edukasi dasar mengenai hepatitis A dan pencegahannya."
+  ],
+  "timeline": {
+    "day_0": {
+      "label": "Day 0 - Masuk Rawat Inap Puskesmas",
+      "clinical_data": {
+        "history": {
+          "onset": "Mata kuning dan lemas sejak 5 hari sebelum datang.",
+          "prodromal": "1 minggu sebelumnya demam ringan, mual, tidak nafsu makan, rasa tidak enak badan.",
+          "current_symptoms": "Lemas, mual, kadang muntah 1–2 kali/hari, mata kuning, urine seperti teh pekat, feses lebih pucat.",
+          "risk_factors": "Sering makan di warung dekat kampus, higienitas meragukan; tidak ada riwayat penggunaan obat-obatan hepatotoksik.",
+          "travel_history": "Tinggal di daerah dengan sanitasi sedang, tidak ada perjalanan luar negeri.",
+          "alcohol_drug": "Tidak minum alkohol, tidak menyuntik narkoba.",
+          "family_history": "Tidak ada riwayat hepatitis kronik keluarga."
+        },
+        "physical_exam": {
+          "blood_pressure": "110/70 mmHg",
+          "heart_rate": "88 x/menit",
+          "respiratory_rate": "18 x/menit",
+          "temperature": "37,5 °C",
+          "oxygen_saturation": "98% tanpa oksigen",
+          "general": "Lemas, sklera dan kulit tampak kuning.",
+          "abdomen": "Hati teraba 2 jari di bawah arcus costae kanan, nyeri tekan ringan, tidak ada asites nyata.",
+          "neuro": "Kesadaran compos mentis, tidak ada asterixis."
+        },
+        "labs": {
+          "sgot": "850 U/L",
+          "sgpt": "1200 U/L",
+          "bilirubin_total": "7 mg/dL",
+          "bilirubin_direct": "4 mg/dL",
+          "hemoglobin": "14 g/dL",
+          "leukocyte": "7.800/uL",
+          "platelet": "Normal (misal 250.000/uL)"
+        },
+        "initial_assessment": "Hepatitis A akut dengan ikterus. Pasien stabil hemodinamik, tanpa tanda gagal hati berat, namun perlu observasi dan suportif. Puskesmas memiliki keterbatasan pemeriksaan lanjut seperti INR/PT dan penanganan komplikasi gagal hati."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G1-S1",
+          "gate": "Day 0 - Identifikasi masalah",
+          "prompt": "Sebutkan masalah utama yang Anda identifikasi pada pasien ini.",
+          "expected_points": [
+            "Ikterus sklera dan kulit",
+            "Lemas dan mual",
+            "Urine gelap dan feses pucat",
+            "Peningkatan SGOT/SGPT dan bilirubin"
+          ]
+        },
+        {
+          "step_id": "G1-S2",
+          "gate": "Day 0 - Diagnosis kerja",
+          "prompt": "Diagnosis kerja apa yang paling mungkin? Berikan alasan singkat.",
+          "expected_answer": "Hepatitis A akut, karena gejala prodromal, ikterus, peningkatan enzim hati yang tinggi, dan faktor risiko lingkungan."
+        },
+        {
+          "step_id": "G1-S3",
+          "gate": "Day 0 - Alasan rawat inap Puskesmas",
+          "prompt": "Mengapa pasien ini dirawat di Puskesmas dan tidak langsung dipulangkan?",
+          "expected_points": [
+            "Lemas dan mual sehingga perlu observasi",
+            "Perlu pemantauan intake oral dan gejala mual-muntah",
+            "Perlu edukasi dan pemantauan tanda perburukan",
+            "Tidak ada tanda gagal hati berat saat masuk"
+          ]
+        },
+        {
+          "step_id": "G1-S4",
+          "gate": "Day 0 - Rencana tatalaksana awal",
+          "prompt": "Apa rencana tatalaksana awal untuk 24 jam pertama di Puskesmas?",
+          "expected_points": [
+            "Istirahat tirah baring relatif",
+            "Cairan intravena bila intake oral kurang",
+            "Antiemetik untuk mual-muntah",
+            "Pantau vital sign dan tanda perdarahan",
+            "Edukasi mengenai penyakit dan higienitas"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G1-Q1",
+          "type": "single_best_answer",
+          "question": "Hepatitis A paling sering ditularkan melalui:",
+          "options": {
+            "A": "Transfusi darah",
+            "B": "Hubungan seksual tanpa kondom",
+            "C": "Fecal-oral melalui makanan/minuman terkontaminasi",
+            "D": "Penggunaan jarum suntik bersama",
+            "E": "Transplasenta"
+          },
+          "correct_option": "C",
+          "explanation": "Hepatitis A terutama ditularkan melalui jalur fecal-oral."
+        }
+      ]
+    },
+    "day_1": {
+      "label": "Day 1 - Observasi di Rawat Inap Puskesmas",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "nausea": "Mual masih ada, muntah 2 kali dalam 24 jam.",
+            "appetite": "Nafsu makan sangat kurang, hanya minum sedikit.",
+            "fatigue": "Lemas, lebih sering berbaring."
+          },
+          "vital_signs": {
+            "blood_pressure": "108/68 mmHg",
+            "heart_rate": "92 x/menit",
+            "respiratory_rate": "18 x/menit",
+            "temperature": "37,3 °C",
+            "oxygen_saturation": "98%"
+          },
+          "physical_exam": {
+            "jaundice": "Ikterus tampak jelas, mirip kemarin.",
+            "abdomen": "Hati masih teraba 2 jari di bawah arcus, nyeri tekan ringan."
+          },
+          "intake_output": {
+            "oral_intake": "Sangat terbatas, pasien sulit makan; masih bisa minum sedikit.",
+            "urine_output": "Masih adekuat, warna pekat."
+          }
+        },
+        "assessment": "Pasien masih stabil hemodinamik, namun intake oral sangat kurang dan mual berlanjut. Belum tampak ensefalopati, namun risiko perburukan masih perlu diwaspadai."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G2-S1",
+          "gate": "Day 1 - Evaluasi kondisi",
+          "prompt": "Apa saja hal yang perlu Anda nilai pada hari pertama untuk menilai perkembangan penyakit?",
+          "expected_points": [
+            "Perubahan derajat ikterus",
+            "Frekuensi mual dan muntah",
+            "Intake oral (makan dan minum)",
+            "Tanda perdarahan atau memar",
+            "Perubahan kesadaran"
+          ]
+        },
+        {
+          "step_id": "G2-S2",
+          "gate": "Day 1 - Alasan masih dirawat",
+          "prompt": "Apakah pasien sudah layak dipulangkan di hari pertama? Jelaskan.",
+          "expected_answer": "Belum, karena intake oral masih sangat kurang, mual muntah masih ada, dan perlu observasi lebih lanjut untuk memastikan tidak terjadi perburukan fungsi hati."
+        },
+        {
+          "step_id": "G2-S3",
+          "gate": "Day 1 - Waspada tanda gagal hati",
+          "prompt": "Tanda-tanda awal gagal hati apa yang perlu Anda waspadai pada pasien ini?",
+          "expected_points": [
+            "Perubahan kesadaran (konfusi, mengantuk, disorientasi)",
+            "Tanda perdarahan (gusi berdarah, mimisan, memar spontan)",
+            "Mual muntah berat dan tidak dapat makan/minum",
+            "Ikterus yang semakin berat"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G2-Q1",
+          "type": "single_best_answer",
+          "question": "Penatalaksanaan utama hepatitis A akut tanpa komplikasi adalah:",
+          "options": {
+            "A": "Antivirus spesifik dosis tinggi",
+            "B": "Istirahat, suportif, dan pemantauan ketat",
+            "C": "Kemoterapi",
+            "D": "Steroid sistemik jangka panjang",
+            "E": "Tidak perlu istirahat, hanya vitamin"
+          },
+          "correct_option": "B",
+          "explanation": "Hepatitis A biasanya self-limiting dan ditatalaksana secara suportif."
+        }
+      ]
+    },
+    "day_2": {
+      "label": "Day 2 - Perburukan dan Keputusan Rujuk",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "nausea": "Mual berat, muntah 4–5 kali dalam 24 jam.",
+            "appetite": "Nyaris tidak bisa makan, hanya minum sedikit.",
+            "fatigue": "Lemas berat, tampak sangat lelah."
+          },
+          "vital_signs": {
+            "blood_pressure": "105/68 mmHg",
+            "heart_rate": "96 x/menit",
+            "respiratory_rate": "18 x/menit",
+            "temperature": "37,2 °C",
+            "oxygen_saturation": "98%"
+          },
+          "physical_exam": {
+            "jaundice": "Ikterus tampak lebih jelas dibanding hari sebelumnya.",
+            "abdomen": "Hepatomegali masih ada, nyeri tekan ringan."
+          },
+          "intake_output": {
+            "oral_intake": "Sangat minim, pasien menolak makan karena mual.",
+            "urine_output": "Masih keluar namun harus dipantau ketat."
+          }
+        },
+        "assessment": "Mual muntah berat dan intake oral yang sangat kurang meningkatkan risiko dehidrasi dan perburukan fungsi hati. Dengan keterbatasan fasilitas Puskesmas (tidak ada pemeriksaan INR/PT, tidak ada fasilitas ICU, tidak ada hepatolog), pasien sebaiknya dirujuk ke RS.",
+        "plan": "Stabilisasi singkat, cairan IV adekuat, antiemetik, lalu rujuk ke RS dengan pendampingan medis."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G3-S1",
+          "gate": "Day 2 - Menilai perburukan",
+          "prompt": "Bandingkan kondisi pasien hari ini dengan hari sebelumnya. Apa yang menunjukkan perburukan?",
+          "expected_points": [
+            "Frekuensi muntah meningkat",
+            "Intake oral sangat menurun",
+            "Lemas semakin berat",
+            "Ikterus tampak makin jelas"
+          ]
+        },
+        {
+          "step_id": "G3-S2",
+          "gate": "Day 2 - Indikasi rujuk",
+          "prompt": "Apakah pasien masih layak dirawat di Puskesmas? Jelaskan keputusan Anda.",
+          "expected_answer": "Tidak, karena mual muntah berat dan intake sangat kurang, serta risiko perburukan fungsi hati. Puskesmas tidak memiliki fasilitas untuk penatalaksanaan gagal hati, sehingga pasien harus dirujuk ke RS."
+        },
+        {
+          "step_id": "G3-S3",
+          "gate": "Day 2 - Rencana rujuk",
+          "prompt": "Apa saja yang perlu dipersiapkan dalam proses rujuk dari Puskesmas ke RS untuk pasien ini?",
+          "expected_points": [
+            "Stabilisasi cairan IV sebelum berangkat",
+            "Pemberian antiemetik untuk mencegah muntah saat perjalanan",
+            "Dokumentasi ringkas klinis dan hasil lab awal",
+            "Koordinasi dengan RS tujuan bila memungkinkan",
+            "Transport aman (ambulans) dengan pendamping nakes"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G3-Q1",
+          "type": "single_best_answer",
+          "question": "Indikasi rujuk utama pada pasien hepatitis A akut ini adalah:",
+          "options": {
+            "A": "Demam yang sudah tidak ada",
+            "B": "Mual muntah berat dan intake oral sangat kurang",
+            "C": "Usia muda",
+            "D": "Tidak adanya nyeri perut",
+            "E": "Tidak ada keluhan BAK"
+          },
+          "correct_option": "B",
+          "explanation": "Mual muntah berat dan intake sangat kurang meningkatkan risiko perburukan dan memerlukan fasilitas lanjutan."
+        }
+      ]
+    }
+  },
+  "discharge_plan": {
+    "summary": "Pasien tidak dipulangkan dari Puskesmas, tetapi dirujuk ke RS untuk penilaian fungsi hati lebih lanjut dan penatalaksanaan komplikasi potensial. Proses rujuk dilakukan setelah stabilisasi singkat dan penjelasan kepada pasien dan keluarga.",
+    "key_education_points": [
+      "Menjelaskan kepada pasien dan keluarga bahwa kondisi hepatitis A biasanya membaik, tetapi saat ini gejala berat sehingga perlu fasilitas RS.",
+      "Memberi tahu risiko bila tidak dirujuk (dehidrasi, perburukan fungsi hati).",
+      "Menjelaskan tindakan yang sudah dilakukan di Puskesmas dan alasan rujuk.",
+      "Memberi edukasi dasar tentang pentingnya higienitas dan pencegahan penularan fecal-oral.",
+      "Menginformasikan kemungkinan lama rawat inap di RS tergantung kondisi klinis."
+    ]
+  },
+  "final_quiz": [
+    {
+      "quiz_id": "FQ1",
+      "type": "single_best_answer",
+      "question": "Pemeriksaan berikut yang paling penting untuk menilai fungsi sintesis hati (tidak tersedia di Puskesmas) adalah:",
+      "options": {
+        "A": "SGOT/SGPT",
+        "B": "Bilirubin total",
+        "C": "INR/PT",
+        "D": "Albumin urin",
+        "E": "GDS"
+      },
+      "correct_option": "C",
+      "explanation": "INR/PT merupakan indikator fungsi sintesis hati dan penting dalam menilai gagal hati."
+    },
+    {
+      "quiz_id": "FQ2",
+      "type": "sct",
+      "question": "“Pasien hepatitis A dengan mual muntah berat, intake sangat kurang, dan ikterus progresif sebaiknya dirujuk ke RS.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Ini adalah keadaan risiko tinggi yang melampaui kapasitas tata laksana di Puskesmas."
+    }
+  ]
+}

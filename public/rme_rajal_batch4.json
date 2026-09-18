@@ -1,0 +1,668 @@
+[
+  {
+    "case_id": "RME-15",
+    "title": "Tekanan Darah yang Mengkhawatirkan (IGD RS)",
+    "setting": "IGD RS",
+    "department": "Obsgin",
+    "skdi_condition": "Preeklampsia berat",
+    "skdi_level": "3B",
+    "difficulty": "Berat",
+    "chief_complaint": "Sakit kepala hebat dan pandangan kabur pada kehamilan 34 minggu.",
+    "synopsis": "Perempuan 30 tahun, G1P0, hamil 34 minggu, datang ke IGD dengan sakit kepala hebat sejak pagi, pandangan kabur, mual, dan bengkak tungkai yang memburuk dalam 1 minggu. Gerak janin dirasa berkurang sejak malam. Riwayat ANC tidak teratur, tidak ada riwayat hipertensi sebelum hamil.",
+    "key_exam_findings": "Keadaan umum tampak sakit sedang, TD 170/110 mmHg, nadi 102/menit, RR 22/menit. Edema tungkai 2+, refleks patella hiperaktif, tanpa clonus jelas. TFU sesuai 34 minggu, DJJ 168 bpm.",
+    "key_lab_results": "Proteinuria +3, trombosit 110.000/uL, AST/ALT meningkat 2x nilai normal, kreatinin 1,3 mg/dL.",
+    "working_diagnosis": "Preeklampsia berat pada kehamilan 34 minggu.",
+    "differential_diagnoses": [
+      "Hipertensi kronik dengan superimposed preeklampsia",
+      "Migren berat pada kehamilan",
+      "HELLP syndrome"
+    ],
+    "management_summary": "Stabilisasi ibu dengan posisi miring kiri, pemberian MgSO4 (loading dan maintenance) untuk prevensi kejang, inisiasi antihipertensi IV sesuai protokol, monitoring ketat TD, diuresis, dan status janin, kemudian konsultasi obstetri untuk merencanakan terminasi kehamilan (induksi atau seksio) sesuai kondisi ibu dan janin. Rujuk ke fasilitas dengan NICU bila diperlukan.",
+    "red_flags_clinical": [
+      "Kejang (eklampsia)",
+      "Penurunan kesadaran",
+      "Nyeri epigastrium hebat",
+      "Oliguria",
+      "Tanda gagal jantung atau edema paru"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi kriteria preeklampsia berat berdasarkan gejala, PF, dan lab.",
+      "Menyusun tatalaksana awal preeklampsia berat di IGD termasuk MgSO4 dan antihipertensi.",
+      "Menjelaskan prinsip terminasi kehamilan sebagai terapi definitif dan waktu yang tepat untuk melakukannya."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "triage",
+        "tab": "Triage & Data Awal",
+        "prompt_student": [
+          "Apa prioritas penilaian pertama pada ibu hamil dengan curiga preeklampsia berat di IGD?",
+          "Data apa yang harus segera Anda tanyakan terkait gejala neurologis dan gejala lain?"
+        ],
+        "expected_focus": "Penilaian ABC, TD, gejala sakit kepala hebat, pandangan kabur, nyeri epigastrium, gerak janin.",
+        "unlocks_next_tab": "Pemeriksaan Fisik & Refleks"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Fisik & Refleks",
+        "prompt_student": [
+          "Temuan PF apa yang mendukung diagnosis preeklampsia berat?",
+          "Bagaimana Anda menilai adanya risiko eklampsia dari PF?"
+        ],
+        "expected_focus": "Hipertensi berat, edema, refleks hiperaktif, tanda gagal organ.",
+        "unlocks_next_tab": "Pemeriksaan Penunjang"
+      },
+      {
+        "step_id": "S3",
+        "stage": "investigation",
+        "tab": "Pemeriksaan Penunjang",
+        "prompt_student": [
+          "Bagaimana Anda menafsirkan proteinuria, fungsi ginjal, trombosit, dan enzim hati pada kasus ini?",
+          "Apakah ada kriteria HELLP yang perlu diwaspadai?"
+        ],
+        "expected_focus": "Menilai derajat keparahan dan komplikasi (HELLP, gangguan ginjal).",
+        "unlocks_next_tab": "Tata Laksana & Keputusan Terminasi"
+      },
+      {
+        "step_id": "S4",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rencana tatalaksana 0–6 jam pertama di IGD (MgSO4, antihipertensi, monitoring, persiapan terminasi).",
+          "Bagaimana Anda menjelaskan kepada ibu dan keluarga mengenai perlunya terminasi kehamilan demi keselamatan ibu?"
+        ],
+        "expected_focus": "Langkah terapi terstruktur dan komunikasi risiko–manfaat terminasi.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Manakah yang termasuk kriteria preeklampsia berat?",
+        "options": {
+          "A": "TD 140/90 mmHg tanpa proteinuria",
+          "B": "TD 150/90 mmHg dengan edema tungkai fisiologis",
+          "C": "TD ≥160/110 mmHg dengan proteinuria signifikan dan gejala neurologis",
+          "D": "TD 130/80 mmHg dengan sakit kepala ringan"
+        },
+        "correct_option": "C",
+        "explanation": "Preeklampsia berat ditandai hipertensi berat (≥160/110) plus temuan seperti proteinuria berat atau gejala organ target."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Peran utama MgSO4 pada preeklampsia berat adalah:",
+        "options": {
+          "A": "Menurunkan tekanan darah secara langsung",
+          "B": "Meningkatkan kontraksi uterus",
+          "C": "Mencegah dan mengatasi kejang (eklampsia)",
+          "D": "Mengurangi proteinuria"
+        },
+        "correct_option": "C",
+        "explanation": "MgSO4 adalah obat pilihan untuk prevensi dan terapi kejang pada preeklampsia/eclampsia."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Prinsip terapi definitif preeklampsia berat adalah:",
+        "options": {
+          "A": "Pemberian antihipertensi jangka panjang tanpa terminasi kehamilan",
+          "B": "Terminasi kehamilan setelah kondisi ibu distabilisasi",
+          "C": "Istirahat total di rumah sampai persalinan spontan",
+          "D": "Pemberian diuretik dosis tinggi saja"
+        },
+        "correct_option": "B",
+        "explanation": "Satu-satunya terapi definitif preeklampsia adalah mengakhiri kehamilan setelah stabilisasi."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-16",
+    "title": "Luka Kaki yang Tak Kunjung Sembuh (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IPD",
+    "skdi_condition": "Diabetes melitus tipe 2 tidak terkontrol dengan ulkus kaki diabetik",
+    "skdi_level": "4A",
+    "difficulty": "Berat",
+    "chief_complaint": "Sering BAK, berat badan turun, dan luka kaki sulit sembuh.",
+    "synopsis": "Laki-laki 57 tahun dengan DM tipe 2 selama 10 tahun datang karena sering BAK, sangat haus, berat badan turun 4 kg dalam 1 bulan, dan luka di kaki kanan yang sudah 3 minggu tidak sembuh. Obat diminum tidak teratur dan insulin sering dilewatkan karena takut hipoglikemia. Masih merokok dan jarang aktivitas fisik.",
+    "key_exam_findings": "Keadaan umum cukup, TD 142/90, nadi 88. Kaki kanan: ulkus plantar diameter 1,5 cm, dasar granulasi sebagian, tidak ada pus tebal, tidak ada selulitis luas, nadi perifer teraba, sensibilitas distal berkurang (monofilament menurun).",
+    "key_lab_results": "Gula darah sewaktu 325 mg/dL, HbA1c 11,4%, kreatinin 1,1 mg/dL, profil lipid tinggi.",
+    "working_diagnosis": "DM tipe 2 tidak terkontrol dengan neuropati perifer awal dan ulkus kaki diabetik grade 1.",
+    "differential_diagnoses": [
+      "Ulkus traumatik non diabetes",
+      "Penyakit vaskular perifer tanpa DM",
+      "Infeksi kulit non spesifik"
+    ],
+    "management_summary": "Menguatkan edukasi DM dan risiko komplikasi, mengintensifkan terapi glikemik (penyesuaian insulin/obat oral), perawatan ulkus kaki dengan prinsip off-loading, menjaga kebersihan luka, mengelola faktor risiko (diet, berhenti merokok, aktivitas fisik), dan menjadwalkan follow up ketat. Rujuk ke klinik kaki diabetes atau penyakit dalam bila terdapat tanda infeksi atau progresivitas.",
+    "red_flags_clinical": [
+      "Infeksi berat pada kaki (bau busuk, pus, selulitis luas)",
+      "Demam tinggi dan tanda sepsis",
+      "Iskemia kritis (kaki dingin, nadi tidak teraba, nyeri istirahat berat)",
+      "Kecurigaan osteomielitis"
+    ],
+    "learning_objectives": [
+      "Mengenali DM tidak terkontrol dengan komplikasi kaki diabetik.",
+      "Melakukan penilaian kaki diabetik secara sistematis di layanan primer.",
+      "Menyusun rencana intensifikasi terapi DM dan edukasi perilaku untuk mencegah komplikasi lebih lanjut."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama & Riwayat DM",
+        "prompt_student": [
+          "Data apa yang menunjukkan DM pasien ini tidak terkontrol?",
+          "Apa saja faktor risiko yang mungkin berperan pada terjadinya ulkus kaki diabetik pada pasien ini?"
+        ],
+        "expected_focus": "Gula darah tinggi, HbA1c tinggi, kepatuhan buruk, merokok, pola hidup.",
+        "unlocks_next_tab": "Pemeriksaan Kaki Diabetik"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Kaki Diabetik",
+        "prompt_student": [
+          "Komponen apa saja yang harus dinilai dalam foot examination pada pasien DM?",
+          "Bagaimana Anda mengklasifikasikan ulkus kaki pada kasus ini (grade, ada tidaknya infeksi atau iskemia)?"
+        ],
+        "expected_focus": "Pulsasi, sensibilitas, deformitas, lokasi dan grade ulkus.",
+        "unlocks_next_tab": "Penunjang & Stratifikasi Risiko"
+      },
+      {
+        "step_id": "S3",
+        "stage": "investigation",
+        "tab": "Penunjang & Risiko",
+        "prompt_student": [
+          "Bagaimana menafsirkan HbA1c 11,4% pada pasien ini?",
+          "Pemeriksaan lab atau imaging apa yang perlu dipertimbangkan jika dicurigai infeksi tulang?"
+        ],
+        "expected_focus": "Menilai derajat ketidakterkontrolan dan indikasi foto Rontgen/penunjang lain.",
+        "unlocks_next_tab": "Tata Laksana & Edukasi"
+      },
+      {
+        "step_id": "S4",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Refleksi",
+        "prompt_student": [
+          "Susun rencana intensifikasi terapi DM dan perawatan kaki pada pasien ini di Puskesmas.",
+          "Bagaimana Anda memotivasi pasien untuk berhenti merokok dan lebih patuh pada pengobatan?"
+        ],
+        "expected_focus": "Perencanaan terapi, perawatan luka, dan pendekatan komunikasi motivasional.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Nilai HbA1c 11,4% pada pasien ini menunjukkan bahwa:",
+        "options": {
+          "A": "Kontrol DM sangat baik",
+          "B": "Kontrol DM cukup",
+          "C": "DM tidak terkontrol untuk jangka beberapa bulan terakhir",
+          "D": "DM baru pertama kali terdeteksi"
+        },
+        "correct_option": "C",
+        "explanation": "HbA1c >9% menandakan DM sangat tidak terkontrol dalam beberapa bulan terakhir."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Komponen pemeriksaan kaki diabetik yang penting KECUALI:",
+        "options": {
+          "A": "Pemeriksaan pulsasi perifer",
+          "B": "Pemeriksaan sensibilitas dengan monofilament",
+          "C": "Pemeriksaan deformitas kaki",
+          "D": "Pemeriksaan refleks pupil"
+        },
+        "correct_option": "D",
+        "explanation": "Refleks pupil bukan bagian utama pemeriksaan kaki diabetes."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Edukasi paling penting untuk disampaikan kepada pasien ini adalah:",
+        "options": {
+          "A": "Tidak masalah jika sesekali berhenti minum obat DM",
+          "B": "Merokok justru membantu sirkulasi darah",
+          "C": "Perawatan kaki harian dan kepatuhan terapi sangat penting untuk mencegah amputasi",
+          "D": "DM tidak ada hubungannya dengan luka kaki"
+        },
+        "correct_option": "C",
+        "explanation": "Perawatan kaki dan kepatuhan terapi adalah kunci mencegah komplikasi serius termasuk amputasi."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-17",
+    "title": "Batuk yang Tak Kunjung Sembuh (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IPD",
+    "skdi_condition": "Tuberkulosis paru BTA positif",
+    "skdi_level": "4A",
+    "difficulty": "Sedang",
+    "chief_complaint": "Batuk berdahak lebih dari 3 minggu.",
+    "synopsis": "Laki-laki 45 tahun mengeluh batuk berdahak sejak 1 bulan, terutama pagi hari, disertai keringat malam dan penurunan berat badan 3 kg. Tidak ada sesak berat atau hemoptisis masif. Tinggal di lingkungan padat dan ventilasi kurang baik.",
+    "key_exam_findings": "BB menurun, TD 110/72, nadi 94, RR 20. Pada auskultasi terdengar ronki halus di apeks paru kanan. Tidak ada sianosis.",
+    "key_lab_results": "Pemeriksaan dahak BTA: 2 dari 3 spesimen positif. Tes HIV negatif. Foto toraks: infiltrat dan kavitas kecil di apeks paru kanan.",
+    "working_diagnosis": "Tuberkulosis paru BTA positif.",
+    "differential_diagnoses": [
+      "Bronkitis kronik",
+      "Kanker paru",
+      "Infeksi jamur paru"
+    ],
+    "management_summary": "Memulai terapi OAT kategori 1 sesuai pedoman, menjelaskan pentingnya kepatuhan dan durasi terapi, mengedukasi tentang pencegahan penularan (masker, etika batuk, ventilasi), melakukan penelusuran kontak serumah, dan menjadwalkan follow up teratur.",
+    "red_flags_clinical": [
+      "Hemoptisis masif",
+      "Sesak berat",
+      "Penurunan kesadaran",
+      "Tanda gagal napas"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi indikasi pemeriksaan BTA pada pasien batuk kronik.",
+      "Menegakkan diagnosis TB paru BTA positif dan memulai OAT sesuai pedoman.",
+      "Memberikan edukasi pencegahan penularan dan penelusuran kontak pada pasien TB."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "initial_presentation",
+        "tab": "Keluhan Utama",
+        "prompt_student": [
+          "Kapan batuk harus dicurigai sebagai TB dan memerlukan pemeriksaan dahak BTA?",
+          "Data riwayat apa yang penting untuk menilai risiko TB pada pasien ini?"
+        ],
+        "expected_focus": "Durasi batuk >2 minggu, penurunan BB, lingkungan padat, kontak TB.",
+        "unlocks_next_tab": "Pemeriksaan Fisik & Dahak"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam_and_investigation",
+        "tab": "PF & Pemeriksaan Dahak",
+        "prompt_student": [
+          "Bagaimana Anda menafsirkan hasil BTA positif pada 2 dari 3 spesimen?",
+          "Peran foto toraks dalam diagnosis TB pada kasus ini apa?"
+        ],
+        "expected_focus": "Konfirmasi TB BTA positif dan peran radiologi sebagai pendukung.",
+        "unlocks_next_tab": "Tatalaksana OAT & Kontak"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Tata Laksana & Penelusuran Kontak",
+        "prompt_student": [
+          "Susun rencana tatalaksana OAT (fase intensif dan lanjutan) untuk pasien ini.",
+          "Langkah apa yang Anda lakukan terkait keluarga dan kontak serumah?"
+        ],
+        "expected_focus": "Rezim OAT dan contact tracing.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Pasien batuk lebih dari 2 minggu dengan gejala umum dan faktor risiko TB sebaiknya:",
+        "options": {
+          "A": "Langsung diberi antibiotik tanpa pemeriksaan",
+          "B": "Diberi obat batuk dan disuruh pulang",
+          "C": "Diperiksa dahak BTA minimal 2 spesimen",
+          "D": "Diberi steroid untuk mengurangi inflamasi"
+        },
+        "correct_option": "C",
+        "explanation": "Batuk kronik >2 minggu dengan kecurigaan TB memerlukan pemeriksaan dahak BTA."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Tujuan utama fase intensif pengobatan TB adalah:",
+        "options": {
+          "A": "Mengurangi efek samping obat",
+          "B": "Mencegah pasien kembali bekerja",
+          "C": "Membunuh sebagian besar basil TB dan membuat pasien tidak menular",
+          "D": "Meningkatkan nafsu makan"
+        },
+        "correct_option": "C",
+        "explanation": "Fase intensif bertujuan menekan beban kuman dan mengurangi infektivitas."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Edukasi PENTING bagi pasien TB paru BTA positif adalah:",
+        "options": {
+          "A": "Tidak perlu memakai masker saat batuk",
+          "B": "Boleh berhenti OAT bila sudah merasa baikan setelah 1 bulan",
+          "C": "Harus menyelesaikan pengobatan sesuai durasi dan minum obat setiap hari",
+          "D": "Tidak perlu memberitahu keluarga tentang penyakitnya"
+        },
+        "correct_option": "C",
+        "explanation": "Kepatuhan penuh terhadap durasi OAT adalah kunci keberhasilan terapi dan mencegah resistensi."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-18",
+    "title": "Berat Badan yang Tak Pernah Naik (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IKA",
+    "skdi_condition": "Malnutrisi energi protein berat (marasmus)",
+    "skdi_level": "4A",
+    "difficulty": "Sedang",
+    "chief_complaint": "Anak tampak sangat kurus dan berat badan tidak naik.",
+    "synopsis": "Anak perempuan 2 tahun dibawa ibunya karena berat badan tidak naik selama 4 bulan dan tampak semakin kurus. Nafsu makan kurang, sering diare ringan. ASI dihentikan usia 10 bulan dan anak sering diberi bubur encer dan teh manis. Lingkungan dengan sanitasi buruk dan ekonomi keluarga rendah.",
+    "key_exam_findings": "Berat badan < -3 SD untuk usia, MUAC <11,5 cm, tampak sangat kurus (wasting), wajah seperti orang tua, sedikit lemak subkutan, tidak ada edema, anak apatis namun masih responsif.",
+    "key_lab_results": "Hb 10 g/dL, albumin normal atau sedikit menurun, glukosa darah normal. Tidak ada tanda infeksi berat saat ini.",
+    "working_diagnosis": "Malnutrisi energi protein berat tipe marasmus.",
+    "differential_diagnoses": [
+      "Kwashiorkor",
+      "Failure to thrive akibat penyakit kronik (jantung bawaan, TB)",
+      "Kelainan metabolik"
+    ],
+    "management_summary": "Memulai rehabilitasi nutrisi bertahap sesuai protokol (pemberian makanan padat energi dan protein sesuai fase), mengobati infeksi penyerta bila ada, memberikan suplementasi mikronutrien, edukasi ibu tentang praktek pemberian makan yang benar dan higienitas, serta menjadwalkan follow up ketat untuk memantau kenaikan berat badan.",
+    "red_flags_clinical": [
+      "Diare berat dengan dehidrasi",
+      "Hipotermia",
+      "Letargi berat atau penurunan kesadaran",
+      "Pneumonia berat atau sepsis"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi malnutrisi berat dengan antropometri (BB/U, MUAC) dan tanda klinis.",
+      "Menyusun rencana rehabilitasi nutrisi bertahap yang aman.",
+      "Memberikan edukasi gizi dan sanitasi kepada keluarga untuk mencegah kekambuhan."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "assessment",
+        "tab": "Antropometri & Riwayat Gizi",
+        "prompt_student": [
+          "Parameter antropometri apa yang digunakan untuk menilai status gizi anak ini?",
+          "Dari riwayat, faktor apa saja yang berkontribusi pada malnutrisi anak ini?"
+        ],
+        "expected_focus": "BB/U, MUAC, diet inadekuat, infeksi berulang, sanitasi.",
+        "unlocks_next_tab": "Pemeriksaan Fisik Menyeluruh"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Fisik & Komplikasi",
+        "prompt_student": [
+          "Komplikasi apa yang harus Anda cari pada anak dengan malnutrisi berat?",
+          "Apakah anak ini memerlukan rawat inap segera atau dapat dirawat jalan dengan monitoring ketat?"
+        ],
+        "expected_focus": "Mencari infeksi, dehidrasi, hipotermia, dan menentukan derajat keparahan.",
+        "unlocks_next_tab": "Rencana Rehabilitasi Nutrisi"
+      },
+      {
+        "step_id": "S3",
+        "stage": "management_and_reflection",
+        "tab": "Rehabilitasi Nutrisi & Edukasi",
+        "prompt_student": [
+          "Susun rencana rehabilitasi nutrisi (tahap awal, transisi, dan lanjutan) untuk anak ini.",
+          "Bagaimana Anda menjelaskan kepada ibu tentang cara memberi makan yang benar sesuai usia anak?"
+        ],
+        "expected_focus": "Pemberian nutrisi bertahap dan edukasi praktis kepada keluarga.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "MUAC <11,5 cm pada anak usia 6–59 bulan menunjukkan:",
+        "options": {
+          "A": "Gizi baik",
+          "B": "Gizi kurang ringan",
+          "C": "Malnutrisi akut berat",
+          "D": "Obesitas"
+        },
+        "correct_option": "C",
+        "explanation": "MUAC <11,5 cm adalah kriteria malnutrisi akut berat pada anak."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Prinsip penting rehabilitasi nutrisi pada malnutrisi berat adalah:",
+        "options": {
+          "A": "Langsung memberikan makanan sangat banyak dan padat kalori",
+          "B": "Menaikkan asupan secara bertahap dengan pemantauan ketat",
+          "C": "Memberi hanya air putih beberapa hari",
+          "D": "Menghindari semua lemak dan protein"
+        },
+        "correct_option": "B",
+        "explanation": "Rehabilitasi harus bertahap untuk mencegah refeeding syndrome dan komplikasi lain."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Edukasi yang PALING penting bagi orang tua adalah:",
+        "options": {
+          "A": "Anak tidak boleh bermain di luar rumah",
+          "B": "Memberi makan sesuai jadwal dengan porsi kecil tapi sering dan gizi seimbang",
+          "C": "Menghindari semua makanan berwarna",
+          "D": "Memberi teh manis dan biskuit saja"
+        },
+        "correct_option": "B",
+        "explanation": "Pemberian makan bergizi seimbang, sering, dan sesuai usia sangat penting untuk perbaikan dan pencegahan kekambuhan."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-19",
+    "title": "Benjolan yang Teraba di Kamar Mandi (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IPD",
+    "skdi_condition": "Karsinoma payudara (suspek)",
+    "skdi_level": "2",
+    "difficulty": "Ringan",
+    "chief_complaint": "Benjolan pada payudara kiri sejak 3 bulan.",
+    "synopsis": "Perempuan 41 tahun menyadari benjolan di payudara kiri yang perlahan membesar selama 3 bulan. Benjolan tidak nyeri, kadang terasa kencang. Tidak ada keluar cairan dari puting. Terdapat riwayat kanker payudara pada tante dari pihak ibu.",
+    "key_exam_findings": "Teraba massa sekitar 3 cm di kuadran atas luar payudara kiri, konsistensi keras, tepi tidak rata, pergerakan terbatas terhadap jaringan dasar, sedikit retraksi kulit di atas benjolan, kelenjar aksila kiri tidak teraba membesar.",
+    "key_lab_results": "Belum dilakukan; perlu perencanaan imaging dan biopsi.",
+    "working_diagnosis": "Suspek karsinoma payudara kiri.",
+    "differential_diagnoses": [
+      "Fibroadenoma mammae",
+      "Kista payudara",
+      "Mastitis kronik"
+    ],
+    "management_summary": "Menjelaskan temuan klinis yang mencurigakan secara empatik, merujuk pasien ke rumah sakit rujukan untuk mammografi/USG payudara dan biopsi (FNAB/core), serta memberi edukasi mengenai pentingnya deteksi dini dan kemungkinan keberhasilan terapi bila ditangani lebih awal.",
+    "red_flags_clinical": [
+      "Benjolan keras tidak mobile",
+      "Retraksi puting atau kulit jeruk",
+      "Ulserasi kulit payudara",
+      "Kelenjar aksila membesar"
+    ],
+    "learning_objectives": [
+      "Mengidentifikasi tanda klinis benjolan payudara yang mencurigakan keganasan.",
+      "Melakukan pemeriksaan payudara klinis secara sistematis.",
+      "Menentukan indikasi rujukan dan menjelaskan pentingnya evaluasi lanjut dengan cara yang sensitif."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "history",
+        "tab": "Riwayat Benjolan & Faktor Risiko",
+        "prompt_student": [
+          "Pertanyaan apa yang perlu diajukan terkait benjolan payudara (durasi, perubahan siklus, gejala penyerta)?",
+          "Faktor risiko apa pada pasien ini yang meningkatkan kecurigaan keganasan?"
+        ],
+        "expected_focus": "Durasi, pertumbuhan, nyeri, perubahan kulit/puting, riwayat keluarga.",
+        "unlocks_next_tab": "Pemeriksaan Payudara"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam",
+        "tab": "Pemeriksaan Payudara Klinis",
+        "prompt_student": [
+          "Bagaimana Anda melakukan pemeriksaan payudara yang sistematis?",
+          "Temuan apa pada pemeriksaan ini yang paling mengarah ke kanker payudara?"
+        ],
+        "expected_focus": "Inspeksi, palpasi sistematik, karakter massa, perubahan kulit dan puting.",
+        "unlocks_next_tab": "Keputusan Rujukan"
+      },
+      {
+        "step_id": "S3",
+        "stage": "decision_and_counseling",
+        "tab": "Rujukan & Konseling",
+        "prompt_student": [
+          "Apa saja komponen 'triple assessment' untuk benjolan payudara?",
+          "Bagaimana Anda menjelaskan perlunya rujukan ke rumah sakit dengan bahasa yang jelas dan empatik?"
+        ],
+        "expected_focus": "Kombinasi klinis, imaging, dan biopsi; komunikasi yang sensitif.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Temuan berikut yang PALING mencurigakan ke arah kanker payudara adalah:",
+        "options": {
+          "A": "Benjolan lunak, mobile, nyeri tekan",
+          "B": "Benjolan keras, tidak mobile, dengan retraksi kulit",
+          "C": "Nyeri payudara siklik tanpa benjolan",
+          "D": "Keluar ASI pada ibu menyusui"
+        },
+        "correct_option": "B",
+        "explanation": "Massa keras, tidak mobile, dengan perubahan kulit/puting sangat mencurigakan keganasan."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Triple assessment pada benjolan payudara mencakup:",
+        "options": {
+          "A": "Pemeriksaan klinis, USG abdomen, dan CT kepala",
+          "B": "Pemeriksaan klinis, mammografi/USG payudara, dan biopsi",
+          "C": "Pemeriksaan klinis saja",
+          "D": "Lab darah lengkap saja"
+        },
+        "correct_option": "B",
+        "explanation": "Triple assessment: klinis + imaging lokal (mammografi/USG) + biopsi."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Pernyataan konseling yang paling tepat adalah:",
+        "options": {
+          "A": "Ini pasti kanker stadium akhir, tidak ada yang bisa dilakukan",
+          "B": "Benjolan ini tidak perlu dievaluasi lebih lanjut",
+          "C": "Benjolan ini tampak mencurigakan, kita perlu pemeriksaan lanjutan di rumah sakit untuk memastikannya sedini mungkin",
+          "D": "Anda harus menyimpan ini sendiri dan tidak perlu memberi tahu keluarga"
+        },
+        "correct_option": "C",
+        "explanation": "Konseling harus jujur, empatik, dan menekankan pentingnya evaluasi lanjut dini."
+      }
+    ]
+  },
+  {
+    "case_id": "RME-20",
+    "title": "Batuk Lama pada Perokok Berat (Puskesmas)",
+    "setting": "Puskesmas",
+    "department": "IPD",
+    "skdi_condition": "Karsinoma paru (suspek)",
+    "skdi_level": "2",
+    "difficulty": "Berat",
+    "chief_complaint": "Batuk kronik dengan penurunan berat badan.",
+    "synopsis": "Laki-laki 60 tahun, perokok berat 40 pack-year, mengeluh batuk berdahak selama 2 bulan, kadang bercampur darah. Berat badan turun 5 kg dalam 3 bulan, cepat lelah dan nyeri dada tumpul di sisi kiri. Sesak napas saat aktivitas sedang. Tidak ada riwayat TB yang terkonfirmasi.",
+    "key_exam_findings": "Tampak kurus, TD 120/76, nadi 90, RR 22. Gerakan hemitoraks kiri sedikit tertinggal, ronki dan wheezing lokal di lapang paru kiri bagian tengah, suara napas menurun di area tertentu.",
+    "key_lab_results": "Hb 11 g/dL, leukosit dan trombosit dalam batas normal. Foto toraks menunjukkan massa di lapang paru kiri dengan penebalan hilus.",
+    "working_diagnosis": "Curiga karsinoma paru kiri pada perokok berat.",
+    "differential_diagnoses": [
+      "TB paru kronik",
+      "PPOK dengan eksaserbasi",
+      "Infeksi jamur paru",
+      "Metastasis paru"
+    ],
+    "management_summary": "Mencurigai kanker paru berdasarkan gejala dan temuan radiologi, merujuk pasien ke rumah sakit rujukan paru/onkologi untuk CT scan toraks, bronkoskopi, dan biopsi, memberikan terapi simptomatik sementara, dan melakukan konseling berhenti merokok serta edukasi tentang pentingnya diagnosis dan terapi dini.",
+    "red_flags_clinical": [
+      "Hemoptisis masif",
+      "Sesak berat dan tanda gagal napas",
+      "Penurunan berat badan drastis",
+      "Nyeri dada yang menetap dan bertambah berat"
+    ],
+    "learning_objectives": [
+      "Membedakan batuk kronik akibat TB, PPOK, dan karsinoma paru berdasarkan riwayat dan temuan klinis.",
+      "Mengidentifikasi tanda klinis dan radiologis yang mencurigakan kanker paru.",
+      "Menentukan indikasi rujukan lebih lanjut dan melakukan konseling berhenti merokok."
+    ],
+    "scaffolding_steps": [
+      {
+        "step_id": "S1",
+        "stage": "history",
+        "tab": "Riwayat Batuk & Merokok",
+        "prompt_student": [
+          "Pertanyaan apa yang perlu diajukan untuk membedakan batuk kronik akibat TB, PPOK, dan kanker paru?",
+          "Bagaimana peran riwayat merokok dan penurunan berat badan dalam kecurigaan Anda?"
+        ],
+        "expected_focus": "Durasi batuk, hemoptisis, sesak, riwayat merokok, penurunan BB, gejala sistemik.",
+        "unlocks_next_tab": "Pemeriksaan Fisik & Radiologi"
+      },
+      {
+        "step_id": "S2",
+        "stage": "exam_and_imaging",
+        "tab": "Pemeriksaan Fisik & Foto Toraks",
+        "prompt_student": [
+          "Temuan PF dan foto toraks apa yang mendukung kecurigaan kanker paru pada kasus ini?",
+          "Kapan CT scan toraks diperlukan dalam evaluasi batuk kronik pada perokok berat?"
+        ],
+        "expected_focus": "Massa paru, penebalan hilus, perubahan suara napas, indikasi imaging lanjutan.",
+        "unlocks_next_tab": "Rujukan & Konseling"
+      },
+      {
+        "step_id": "S3",
+        "stage": "decision_and_counseling",
+        "tab": "Rujukan & Edukasi",
+        "prompt_student": [
+          "Kemana Anda akan merujuk pasien ini dan pemeriksaan apa yang Anda harapkan dilakukan?",
+          "Bagaimana Anda mengedukasi pasien tentang berhenti merokok dan pentingnya evaluasi lebih lanjut meski pasien mungkin takut dengan diagnosis kanker?"
+        ],
+        "expected_focus": "Rujukan ke paru/onkologi, CT scan, bronkoskopi/biopsi, dan komunikasi risiko secara empatik.",
+        "unlocks_next_tab": "Kuis & Feedback"
+      }
+    ],
+    "quiz_items": [
+      {
+        "quiz_id": "Q1",
+        "type": "single_best_answer",
+        "question": "Manakah kombinasi gejala berikut yang PALING mencurigakan kanker paru pada perokok berat?",
+        "options": {
+          "A": "Batuk akut 3 hari, tanpa penurunan berat badan",
+          "B": "Batuk kronik, berat badan turun, hemoptisis, dan nyeri dada",
+          "C": "Batuk kering saat udara dingin saja",
+          "D": "Batuk dengan pilek dan demam 2 hari"
+        },
+        "correct_option": "B",
+        "explanation": "Batuk kronik, penurunan berat badan, hemoptisis, dan nyeri dada pada perokok berat sangat mencurigakan kanker paru."
+      },
+      {
+        "quiz_id": "Q2",
+        "type": "single_best_answer",
+        "question": "Pemeriksaan lanjutan yang PALING tepat setelah foto toraks mencurigakan massa paru adalah:",
+        "options": {
+          "A": "CT scan toraks dan bronkoskopi/biopsi",
+          "B": "USG abdomen saja",
+          "C": "Foto polos tulang belakang",
+          "D": "Tidak perlu pemeriksaan lebih lanjut"
+        },
+        "correct_option": "A",
+        "explanation": "CT toraks dan bronkoskopi/biopsi diperlukan untuk staging dan konfirmasi diagnosis kanker paru."
+      },
+      {
+        "quiz_id": "Q3",
+        "type": "single_best_answer",
+        "question": "Prinsip edukasi berhenti merokok yang paling tepat adalah:",
+        "options": {
+          "A": "Mengatakan bahwa berhenti merokok tidak ada manfaatnya karena sudah terlanjur sakit",
+          "B": "Menjelaskan bahwa berhenti merokok tetap bermanfaat untuk kualitas hidup dan respon terapi, serta menawarkan bantuan (farmakologis dan non-farmakologis)",
+          "C": "Melarang pasien berbicara tentang ketakutannya",
+          "D": "Menyarankan mengganti rokok dengan rokok elektrik tanpa penjelasan"
+        },
+        "correct_option": "B",
+        "explanation": "Berhenti merokok selalu bermanfaat dan perlu didukung dengan pendekatan terstruktur dan empatik."
+      }
+    ]
+  }
+]

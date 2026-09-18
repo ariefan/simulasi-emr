@@ -1,0 +1,335 @@
+{
+  "case_id": "rme-23",
+  "title": "Nyeri Pinggang yang Tidak Sekadar Kecapekan (Pielonefritis Rawat Inap RS)",
+  "setting": "Rawat inap rumah sakit (3 hari)",
+  "department": "IPD",
+  "primary_diagnosis": "Pielonefritis akut komunitas",
+  "skdi_level": "3A",
+  "difficulty": "sedang",
+  "encounter_type": "inpatient",
+  "chief_complaint": "Demam dan nyeri pinggang kanan sejak 3 hari.",
+  "synopsis": "Perempuan 32 tahun datang ke IGD RS dengan keluhan demam tinggi, menggigil, dan nyeri pinggang kanan sejak 3 hari. Pemeriksaan menunjukkan nyeri ketok CVA kanan, demam 39°C, dan leukositosis. Urinalisis menunjukkan piuria dan bakteriuria. Pasien dirawat inap dengan antibiotik intravena, cairan, dan antipiretik. Dalam 3 hari rawat inap, kondisi membaik sesuai standar lama rawat inap BPJS dan pasien dipulangkan dengan antibiotik oral.",
+  "key_exam_findings": "TD 110/70 mmHg, nadi 104/menit, suhu 39,1°C, RR 20/menit, nyeri ketok CVA kanan positif, nyeri tekan ringan di kuadran kanan bawah abdomen, tanpa defans.",
+  "key_lab_results": "Leukosit 15.200/uL (neutrofil dominan), Hb 12,8 g/dL, kreatinin 0,9 mg/dL, ureum 28 mg/dL. Urinalisis: leukosit +++, nitrit +, bakteri banyak.",
+  "working_diagnosis": "Pielonefritis akut kanan komunitas tanpa komplikasi.",
+  "differential_diagnoses": [
+    "Infeksi saluran kemih bawah (sistitis) tanpa pielonefritis",
+    "Kolik renal tanpa infeksi",
+    "Apendisitis akut (bila nyeri dominan di kuadran kanan bawah)",
+    "Cholecystitis (bila nyeri dominan di hipokondrium kanan)",
+    "Pyelonefritis obstruktif akibat batu"
+  ],
+  "management_summary": "Pasien dirawat sebagai pielonefritis akut tanpa komplikasi dengan antibiotik intravena spektrum sesuai pedoman (misalnya sefalosporin generasi ketiga), cairan intravena, antipiretik, dan analgesik. Dilakukan pemantauan vital sign dan output urin. Setelah 48–72 jam, demam menurun, nyeri pinggang membaik, dan kondisi stabil. Pasien dipulangkan pada hari ketiga dengan antibiotik oral untuk melanjutkan terapi.",
+  "red_flags_clinical": [
+    "Hipotensi, takikardia berat, tanda sepsis",
+    "Oliguria atau penurunan tajam output urin",
+    "Nyeri pinggang yang memburuk, kecurigaan obstruksi",
+    "Gangguan kesadaran",
+    "LFG menurun tajam/kreatinin meningkat pesat"
+  ],
+  "learning_objectives": [
+    "Mengenali gejala dan tanda pielonefritis akut pada dewasa.",
+    "Membedakan pielonefritis dari infeksi saluran kemih bawah (sistitis).",
+    "Menentukan indikasi rawat inap dan pilihan antibiotik intravena awal.",
+    "Memantau respon klinis dalam 48–72 jam dan menentukan kesiapan pulang.",
+    "Memberikan edukasi pencegahan kekambuhan infeksi saluran kemih."
+  ],
+  "timeline": {
+    "day_0": {
+      "label": "Day 0 - Masuk IGD dan awal rawat inap RS",
+      "clinical_data": {
+        "history": {
+          "onset": "Demam dan nyeri pinggang sejak 3 hari sebelum masuk RS.",
+          "course": "Demam semakin tinggi, sering menggigil, nyeri pinggang kanan makin berat.",
+          "urinary_symptoms": "Anyang-anyangan, sering kencing, sedikit rasa nyeri saat berkemih, tidak ada darah tampak.",
+          "systemic_symptoms": "Nafsu makan menurun, mual ringan, tidak muntah berat.",
+          "past_history": "Tidak ada DM, tidak ada penyakit ginjal kronik, pernah ISK ringan 1 tahun lalu.",
+          "gyne_history": "Tidak sedang hamil, haid teratur.",
+          "drug_history": "Minum parasetamol sesekali, belum konsumsi antibiotik.",
+          "family_history": "Tidak ada riwayat penyakit ginjal kronik dalam keluarga."
+        },
+        "physical_exam": {
+          "blood_pressure": "110/70 mmHg",
+          "heart_rate": "104 x/menit",
+          "respiratory_rate": "20 x/menit",
+          "temperature": "39,1 °C",
+          "oxygen_saturation": "98% tanpa oksigen",
+          "abdomen": "Nyeri tekan ringan di kuadran kanan bawah, tidak ada defans, bising usus normal.",
+          "cva_tenderness": "Nyeri ketok CVA kanan positif, kiri negatif.",
+          "general": "Tampak sakit, berkeringat, namun sadar penuh."
+        },
+        "labs": {
+          "hemoglobin": "12,8 g/dL",
+          "leukocyte": "15.200/uL (neutrofil dominan)",
+          "ureum": "28 mg/dL",
+          "creatinine": "0,9 mg/dL",
+          "urinalysis": "Leukosit +++, nitrit +, bakteri banyak, eritrosit +",
+          "pregnancy_test": "Negatif"
+        },
+        "initial_assessment": "Pielonefritis akut kanan tanpa tanda sepsis berat atau gangguan ginjal. Perlu rawat inap RS untuk antibiotik IV dan pemantauan."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G1-S1",
+          "gate": "Day 0 - Identifikasi masalah",
+          "prompt": "Sebutkan masalah utama pada pasien ini berdasarkan data IGD.",
+          "expected_points": [
+            "Demam tinggi 3 hari",
+            "Nyeri pinggang kanan (nyeri ketok CVA positif)",
+            "Keluhan BAK (disuria, frekuensi meningkat)",
+            "Leukositosis dan piuria"
+          ]
+        },
+        {
+          "step_id": "G1-S2",
+          "gate": "Day 0 - Diagnosis kerja",
+          "prompt": "Diagnosis kerja apa yang paling mungkin pada kasus ini? Berikan alasan singkat.",
+          "expected_answer": "Pielonefritis akut kanan, karena adanya demam tinggi, nyeri pinggang dengan nyeri ketok CVA positif, dan urinalisis menunjukkan infeksi saluran kemih."
+        },
+        {
+          "step_id": "G1-S3",
+          "gate": "Day 0 - Indikasi rawat inap",
+          "prompt": "Mengapa pasien ini perlu dirawat inap di RS, bukan ditatalaksana rawat jalan?",
+          "expected_points": [
+            "Demam tinggi dan gejala sistemik",
+            "Nyeri pinggang yang cukup berat",
+            "Membutuhkan antibiotik IV",
+            "Perlu pemantauan kemungkinan sepsis atau gangguan ginjal"
+          ]
+        },
+        {
+          "step_id": "G1-S4",
+          "gate": "Day 0 - Rencana tatalaksana awal",
+          "prompt": "Tuliskan rencana tatalaksana awal di bangsal untuk 24 jam pertama.",
+          "expected_points": [
+            "Antibiotik intravena spektrum sesuai (misalnya sefalosporin generasi ketiga)",
+            "Cairan IV untuk hidrasi",
+            "Antipiretik dan analgesik",
+            "Pemantauan vital sign dan output urin",
+            "Kultur urin bila memungkinkan"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G1-Q1",
+          "type": "single_best_answer",
+          "question": "Temuan yang paling khas untuk mendukung diagnosis pielonefritis akut adalah:",
+          "options": {
+            "A": "Demam tanpa keluhan BAK",
+            "B": "Nyeri ketok CVA positif dan piuria pada urinalisis",
+            "C": "Diare dan nyeri perut difus",
+            "D": "Batuk dan ronki basah di paru",
+            "E": "Nyeri dada pleuritik"
+          },
+          "correct_option": "B",
+          "explanation": "Pielonefritis ditandai oleh nyeri pinggang dengan nyeri ketok CVA positif serta bukti infeksi pada urinalisis."
+        }
+      ]
+    },
+    "day_1": {
+      "label": "Day 1 - 24 jam pertama di bangsal",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "fever": "Demam masih ada tetapi lebih jarang, puncak 38,5 °C.",
+            "flank_pain": "Nyeri pinggang berkurang, masih terasa bila bergerak.",
+            "urinary": "Masih sering BAK, rasa nyeri berkurang."
+          },
+          "vital_signs": {
+            "blood_pressure": "112/72 mmHg",
+            "heart_rate": "96 x/menit",
+            "respiratory_rate": "18 x/menit",
+            "temperature": "38,2 °C",
+            "oxygen_saturation": "98% tanpa oksigen"
+          },
+          "intake_output": {
+            "oral_intake": "Mulai bisa minum dan makan lebih baik.",
+            "urine_output": "Adekuat, warna kuning, tidak pekat."
+          }
+        },
+        "assessment": "Ada perbaikan klinis: demam turun, nyeri berkurang, BAK membaik. Pasien merespon antibiotik IV."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G2-S1",
+          "gate": "Day 1 - Evaluasi respon terapi",
+          "prompt": "Apa saja indikator bahwa pasien mulai merespon terapi pada hari pertama rawat inap?",
+          "expected_points": [
+            "Demam menurun (dari 39,1 menjadi sekitar 38,2 °C)",
+            "Nyeri pinggang berkurang",
+            "Keluhan BAK membaik",
+            "Nadi dan RR lebih stabil",
+            "Intake dan output urin adekuat"
+          ]
+        },
+        {
+          "step_id": "G2-S2",
+          "gate": "Day 1 - Lanjut antibiotik",
+          "prompt": "Apakah antibiotik intravena masih perlu dilanjutkan? Jelaskan alasan Anda.",
+          "expected_answer": "Ya, antibiotik IV tetap dilanjutkan karena baru 24 jam, walaupun ada perbaikan. Lama terapi IV umumnya 48–72 jam sebelum dipertimbangkan beralih ke oral."
+        },
+        {
+          "step_id": "G2-S3",
+          "gate": "Day 1 - Deteksi komplikasi",
+          "prompt": "Komplikasi apa yang Anda waspadai pada fase ini dan bagaimana cara mendeteksinya?",
+          "expected_points": [
+            "Sepsis (monitor TD, nadi, kesadaran)",
+            "Gangguan ginjal (monitor kreatinin, output urin)",
+            "Abses ginjal (demam menetap, nyeri tidak membaik)"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G2-Q1",
+          "type": "single_best_answer",
+          "question": "Kapan secara umum dipertimbangkan untuk mengubah antibiotik IV menjadi oral pada pielonefritis tanpa komplikasi?",
+          "options": {
+            "A": "Segera setelah dosis IV pertama",
+            "B": "Setelah pasien bebas demam 12 jam",
+            "C": "Setelah 48–72 jam bila ada perbaikan klinis",
+            "D": "Setelah 7 hari rawat inap",
+            "E": "Tidak perlu antibiotik oral"
+          },
+          "correct_option": "C",
+          "explanation": "Pada pielonefritis tanpa komplikasi, antibiotik IV dapat dialihkan ke oral setelah 48–72 jam bila ada respon klinis yang baik."
+        }
+      ]
+    },
+    "day_2": {
+      "label": "Day 2 - Persiapan pulang (Hari ke-3 rawat inap)",
+      "clinical_data": {
+        "progress": {
+          "symptoms": {
+            "fever": "Demam sudah hilang, suhu maksimal 37,4 °C.",
+            "flank_pain": "Nyeri pinggang minimal, hanya terasa sedikit bila ditekan.",
+            "urinary": "BAK lancar tanpa rasa nyeri."
+          },
+          "vital_signs": {
+            "blood_pressure": "114/74 mmHg",
+            "heart_rate": "84 x/menit",
+            "respiratory_rate": "16 x/menit",
+            "temperature": "36,9 °C",
+            "oxygen_saturation": "99% tanpa oksigen"
+          },
+          "intake_output": {
+            "oral_intake": "Baik, pasien makan dan minum cukup.",
+            "urine_output": "Adekuat, warna normal."
+          }
+        },
+        "assessment": "Pasien dalam perbaikan klinis yang jelas. Tidak ada tanda sepsis atau gangguan ginjal. Siap dipertimbangkan untuk pulang dengan antibiotik oral.",
+        "plan": "Alihkan ke antibiotik oral, edukasi, dan rencana kontrol."
+      },
+      "scaffolding": [
+        {
+          "step_id": "G3-S1",
+          "gate": "Day 2 - Kesiapan pulang",
+          "prompt": "Sebutkan indikator bahwa pasien sudah siap dipulangkan.",
+          "expected_points": [
+            "Demam hilang",
+            "Nyeri pinggang minimal",
+            "BAK tidak nyeri dan lancar",
+            "Vital sign stabil",
+            "Intake oral baik",
+            "Tidak ada tanda sepsis atau gangguan ginjal"
+          ]
+        },
+        {
+          "step_id": "G3-S2",
+          "gate": "Day 2 - Rencana terapi lanjutan",
+          "prompt": "Bagaimana rencana terapi antibiotik setelah pasien pulang dari RS?",
+          "expected_answer": "Mengganti antibiotik IV menjadi antibiotik oral yang sesuai dan melanjutkannya selama total durasi terapi (misalnya 10–14 hari total, disesuaikan panduan), serta memastikan kepatuhan minum obat."
+        },
+        {
+          "step_id": "G3-S3",
+          "gate": "Day 2 - Edukasi pencegahan kekambuhan",
+          "prompt": "Apa saja poin edukasi penting untuk mencegah kekambuhan ISK/pielonefritis?",
+          "expected_points": [
+            "Minum air yang cukup",
+            "Jangan menahan BAK terlalu lama",
+            "Kebersihan genital (front to back pada perempuan)",
+            "Kontrol bila muncul gejala ISK awal",
+            "Selesaikan antibiotik sesuai anjuran"
+          ]
+        }
+      ],
+      "quiz_items": [
+        {
+          "quiz_id": "G3-Q1",
+          "type": "sct",
+          "question": "“Pasien pielonefritis yang sudah bebas demam, nyeri minimal, dan BAK lancar dapat dipulangkan dengan melanjutkan antibiotik oral dan rencana kontrol.”",
+          "scale": [
+            "Sangat setuju",
+            "Setuju",
+            "Ragu-ragu",
+            "Tidak setuju",
+            "Sangat tidak setuju"
+          ],
+          "correct_scale": [
+            "Sangat setuju",
+            "Setuju"
+          ],
+          "explanation": "Ini adalah prinsip penentuan kesiapan pulang pada pielonefritis tanpa komplikasi."
+        }
+      ]
+    }
+  },
+  "discharge_plan": {
+    "summary": "Pasien dipulangkan pada hari ketiga rawat inap dengan kondisi membaik, bebas demam, dan keluhan minimal. Pasien diberikan antibiotik oral untuk menyelesaikan total durasi terapi dan edukasi pencegahan kekambuhan.",
+    "key_education_points": [
+      "Minum antibiotik oral sesuai dosis dan durasi yang dianjurkan, jangan dihentikan sebelum waktunya.",
+      "Perbanyak minum air putih kecuali ada kontraindikasi.",
+      "Segera kontrol bila muncul kembali demam, nyeri pinggang, atau nyeri BAK.",
+      "Jaga kebersihan genital dan hindari menahan BAK.",
+      "Kontrol ke poliklinik dalam 5–7 hari atau sesuai jadwal yang ditentukan."
+    ]
+  },
+  "final_quiz": [
+    {
+      "quiz_id": "FQ1",
+      "type": "single_best_answer",
+      "question": "Indikasi utama rawat inap pada pielonefritis akut adalah:",
+      "options": {
+        "A": "Demam ringan tanpa keluhan lain",
+        "B": "Nyeri pinggang ringan dan urinalisis normal",
+        "C": "Demam tinggi, nyeri pinggang, dan piuria",
+        "D": "Hanya keluhan sering BAK tanpa demam",
+        "E": "Urine berwarna kuning jernih tanpa keluhan"
+      },
+      "correct_option": "C",
+      "explanation": "Demam tinggi, nyeri pinggang, dan piuria menunjukkan infeksi saluran kemih atas yang memerlukan terapi intensif."
+    },
+    {
+      "quiz_id": "FQ2",
+      "type": "single_best_answer",
+      "question": "Komplikasi serius yang harus diwaspadai pada pielonefritis adalah:",
+      "options": {
+        "A": "Rhinitis alergi",
+        "B": "Abses ginjal dan sepsis",
+        "C": "Konjungtivitis",
+        "D": "Otitis media",
+        "E": "Dermatitis kontak"
+      },
+      "correct_option": "B",
+      "explanation": "Abses ginjal dan sepsis adalah komplikasi berat pielonefritis."
+    },
+    {
+      "quiz_id": "FQ3",
+      "type": "sct",
+      "question": "“Pielonefritis tanpa komplikasi pada pasien stabil dapat dipulangkan setelah 48–72 jam bila sudah ada perbaikan klinis dan dapat melanjutkan antibiotik oral.”",
+      "scale": [
+        "Sangat setuju",
+        "Setuju",
+        "Ragu-ragu",
+        "Tidak setuju",
+        "Sangat tidak setuju"
+      ],
+      "correct_scale": [
+        "Sangat setuju",
+        "Setuju"
+      ],
+      "explanation": "Ini sesuai praktik klinis umum dan efisiensi lama rawat inap."
+    }
+  ]
+}
