@@ -1,7 +1,6 @@
 import React from 'react';
 import { ClinicalCase } from '../types/clinical';
 import { getCaseTitle, getCaseDepartment, getCaseSetting } from '../lib/caseLoader';
-import { User, Heart, Thermometer, Wind, Gauge } from 'lucide-react';
 
 interface PatientBannerProps {
   currentCase: ClinicalCase;
@@ -38,83 +37,78 @@ export const PatientBanner: React.FC<PatientBannerProps> = ({
   const progressPercent = totalTabsCount > 0 ? Math.round((completedTabsCount / totalTabsCount) * 100) : 0;
 
   return (
-    <div className="bg-slate-900 border-b border-slate-800 p-4 shrink-0 shadow-sm">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-3.5 shrink-0 transition-colors">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         {/* Left: Patient Demographic & Diagnosis */}
-        <div className="flex items-start gap-3.5">
-          <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 shrink-0 shadow-inner">
-            <User className="w-6 h-6 text-emerald-400" />
+        <div className="flex items-center gap-3">
+          <div className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-xs font-bold text-slate-700 dark:text-slate-300">
+            {currentCase.case_id}
           </div>
           <div>
-            <div className="flex items-center gap-2 flex-wrap mb-0.5">
-              <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                RM-{currentCase.case_id}
-              </span>
-              <h2 className="text-base font-bold text-white tracking-tight">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 {getCaseTitle(currentCase)}
               </h2>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-              <span>{getCaseDepartment(currentCase)}</span>
-              <span>•</span>
-              <span>{getCaseSetting(currentCase)}</span>
-              <span>•</span>
-              <span className="text-amber-300/90 font-medium">
+              <span className="text-xs text-slate-400">•</span>
+              <span className="text-xs font-medium text-emerald-800 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/60">
                 {currentCase.working_diagnosis || currentCase.primary_diagnosis || currentCase.skdi_condition || 'Kasus Klinis'}
               </span>
             </div>
+            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <span>{getCaseDepartment(currentCase)}</span>
+              <span>•</span>
+              <span>{getCaseSetting(currentCase)}</span>
+              {currentCase.skdi_level && (
+                <>
+                  <span>•</span>
+                  <span>Tingkat Kemampuan SKDI {currentCase.skdi_level}</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Center: Vital Signs Strip */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex items-center gap-1.5 bg-slate-950/70 border border-slate-800 px-2.5 py-1 rounded-lg text-xs">
-            <Gauge className="w-3.5 h-3.5 text-blue-400" />
-            <span className="text-slate-400 text-[11px]">TD:</span>
-            <span className="font-mono font-semibold text-slate-200">{bp}</span>
+        {/* Center: Clean Medical Vital Signs Table */}
+        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 p-1.5 rounded-lg border border-slate-200 dark:border-slate-800">
+          <div className="px-2 py-0.5 text-center">
+            <span className="text-[10px] uppercase font-semibold text-slate-400 block">TD</span>
+            <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{bp}</span>
           </div>
-
-          <div className="flex items-center gap-1.5 bg-slate-950/70 border border-slate-800 px-2.5 py-1 rounded-lg text-xs">
-            <Heart className="w-3.5 h-3.5 text-rose-400" />
-            <span className="text-slate-400 text-[11px]">HR:</span>
-            <span className="font-mono font-semibold text-slate-200">{hr}</span>
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
+          <div className="px-2 py-0.5 text-center">
+            <span className="text-[10px] uppercase font-semibold text-slate-400 block">HR</span>
+            <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{hr}</span>
           </div>
-
-          <div className="flex items-center gap-1.5 bg-slate-950/70 border border-slate-800 px-2.5 py-1 rounded-lg text-xs">
-            <Wind className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="text-slate-400 text-[11px]">RR:</span>
-            <span className="font-mono font-semibold text-slate-200">{rr}</span>
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
+          <div className="px-2 py-0.5 text-center">
+            <span className="text-[10px] uppercase font-semibold text-slate-400 block">RR</span>
+            <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{rr}</span>
           </div>
-
-          <div className="flex items-center gap-1.5 bg-slate-950/70 border border-slate-800 px-2.5 py-1 rounded-lg text-xs">
-            <Thermometer className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-slate-400 text-[11px]">T:</span>
-            <span className="font-mono font-semibold text-slate-200">{temp}</span>
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
+          <div className="px-2 py-0.5 text-center">
+            <span className="text-[10px] uppercase font-semibold text-slate-400 block">Suhu</span>
+            <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{temp}</span>
           </div>
         </div>
 
-        {/* Right: Scaffolding Progress */}
-        <div className="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 min-w-[200px]">
-          <div className="flex items-center justify-between text-xs mb-1.5">
-            <span className="text-slate-400 font-medium">Progres Penalaran</span>
-            <span className="font-bold text-emerald-400">
-              {completedTabsCount} / {totalTabsCount} Tab ({progressPercent}%)
+        {/* Right: Clean Progress Indicator */}
+        <div className="flex items-center gap-3">
+          <div className="text-right">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 block">
+              Tahap Evaluasi: {completedTabsCount}/{totalTabsCount}
             </span>
+            {quizScore && quizScore.total > 0 && (
+              <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 block">
+                Skor Kuis: {quizScore.correct}/{quizScore.total}
+              </span>
+            )}
           </div>
-          <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div className="w-20 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-300"
+              className="h-full bg-emerald-600 transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          {quizScore && quizScore.total > 0 && (
-            <div className="mt-1.5 flex items-center justify-between text-[11px]">
-              <span className="text-slate-400">Skor Kuis SKDI:</span>
-              <span className="font-bold text-amber-400">
-                {quizScore.correct}/{quizScore.total} ({Math.round((quizScore.correct / quizScore.total) * 100)}%)
-              </span>
-            </div>
-          )}
         </div>
       </div>
     </div>

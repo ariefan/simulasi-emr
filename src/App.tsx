@@ -10,10 +10,10 @@ import { QuizTab } from './components/tabs/QuizTab';
 import { ScoreReportModal } from './components/ScoreReportModal';
 import { IdleResetModal } from './components/IdleResetModal';
 import { useIdleTimer } from './hooks/useIdleTimer';
-import confetti from 'canvas-confetti';
 import { FileText, Brain, HelpCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 const STORAGE_KEY = 'simulasi_rme_v2_state';
+const THEME_KEY = 'simulasi_rme_theme';
 
 export const App: React.FC = () => {
   const [cases, setCases] = useState<ClinicalCase[]>([]);
@@ -24,6 +24,30 @@ export const App: React.FC = () => {
   const [answers, setAnswers] = useState<StudentAnswers>({});
   const [studentName, setStudentName] = useState<string>('');
   const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  // Initialize theme from storage or default to light
+  useEffect(() => {
+    const savedTheme = localStorage.getItem(THEME_KEY) as 'light' | 'dark' | null;
+    const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
+    setTheme(initialTheme);
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    localStorage.setItem(THEME_KEY, nextTheme);
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   // Pure reset function without confirm dialog for automated idle reset
   const resetKioskState = () => {
@@ -46,7 +70,6 @@ export const App: React.FC = () => {
     onReset: resetKioskState,
     enabled: !loading && hasUserProgress,
   });
-
 
   // Load cases and saved state on mount
   useEffect(() => {
@@ -106,8 +129,7 @@ export const App: React.FC = () => {
     }
   });
 
-  // Calculate Total XP & Level
-  let totalXP = 0;
+  // Calculate completed cases count
   let completedCasesCount = 0;
   cases.forEach(c => {
     const caseSession = answers[c.case_id];
@@ -120,7 +142,6 @@ export const App: React.FC = () => {
       const tabAns = cTabsAns[tab.id] || {};
       const gateQs = tab.gate_questions || [];
       if (gateQs.length > 0 && gateQs.every(q => (tabAns[q.id] || '').trim().length > 0)) {
-        totalXP += 10;
         cCompleted++;
       }
     });
@@ -128,13 +149,7 @@ export const App: React.FC = () => {
     if (cTabs.length > 0 && cCompleted === cTabs.length) {
       completedCasesCount++;
     }
-
-    if (caseSession.quizScore && typeof caseSession.quizScore.correct === 'number') {
-      totalXP += caseSession.quizScore.correct * 5;
-    }
   });
-
-  const level = Math.floor(totalXP / 50) + 1;
 
   // Handlers
   const handleSelectCase = (index: number) => {
@@ -174,13 +189,6 @@ export const App: React.FC = () => {
     if (scaffoldingTabIndex < tabs.length - 1) {
       setScaffoldingTabIndex(prev => prev + 1);
     } else {
-      // Completed all tabs! Trigger celebration confetti
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-      // Switch to quiz if quiz exists
       if (quizItems.length > 0) {
         setActiveMainTab('quiz');
       }
@@ -216,43 +224,30 @@ export const App: React.FC = () => {
         }
       };
     });
-
-    if (score.correct > 0) {
-      confetti({
-        particleCount: 100,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
-    }
   };
 
-  const handleResetKiosk = () => {
+  const handleManualReset = () => {
     if (window.confirm('Reset semua progress dan data untuk pengunjung booth berikutnya?')) {
-      setAnswers({});
-      setStudentName('');
-      setSelectedCaseIndex(0);
-      setScaffoldingTabIndex(0);
-      setActiveMainTab('scaffolding');
-      localStorage.removeItem(STORAGE_KEY);
+      resetKioskState();
     }
   };
 
   if (loading) {
     return (
-      <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center text-slate-100 gap-3">
-        <Loader2 className="w-8 h-8 text-emerald-500 animate-spin" />
-        <p className="text-xs text-slate-400 font-medium">Memuat Bank Kasus Penalaran Klinis...</p>
+      <div className="h-screen w-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-slate-900 dark:text-slate-100 gap-3">
+        <Loader2 className="w-8 h-8 text-emerald-600 dark:text-emerald-400 animate-spin" />
+        <p className="text-xs text-slate-500 font-medium">Memuat Bank Kasus Klinis...</p>
       </div>
     );
   }
 
   if (cases.length === 0) {
     return (
-      <div className="h-screen w-screen bg-slate-950 flex flex-col items-center justify-center text-slate-100 p-6 text-center">
-        <AlertCircle className="w-12 h-12 text-rose-500 mb-3" />
+      <div className="h-screen w-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-slate-900 dark:text-slate-100 p-6 text-center">
+        <AlertCircle className="w-12 h-12 text-rose-600 mb-3" />
         <h2 className="text-base font-bold">Gagal memuat bank kasus</h2>
-        <p className="text-xs text-slate-400 mt-1 max-w-sm">
-          Pastikan file JSON kasus tersedia di direktori public aplikasi.
+        <p className="text-xs text-slate-500 mt-1 max-w-sm">
+          Pastikan file kasus tersedia di direktori public aplikasi.
         </p>
       </div>
     );
@@ -261,17 +256,17 @@ export const App: React.FC = () => {
   const currentTab = tabs[scaffoldingTabIndex];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col overflow-hidden transition-colors">
       {/* Top Navigation */}
       <Navbar
         studentName={studentName}
         onStudentNameChange={setStudentName}
-        totalXP={totalXP}
-        level={level}
-        onResetKiosk={handleResetKiosk}
+        onResetKiosk={handleManualReset}
         onOpenReport={() => setIsReportOpen(true)}
         totalCompletedCases={completedCasesCount}
         totalCases={cases.length}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Main Workspace Layout */}
@@ -285,7 +280,7 @@ export const App: React.FC = () => {
         />
 
         {/* Right Main Stage */}
-        <main className="flex-1 flex flex-col overflow-y-auto bg-slate-950">
+        <main className="flex-1 flex flex-col overflow-y-auto bg-slate-50/50 dark:bg-slate-950">
           {currentCase && (
             <>
               {/* Patient Banner */}
@@ -297,50 +292,50 @@ export const App: React.FC = () => {
               />
 
               {/* Mode Switcher Tabs Header */}
-              <div className="bg-slate-900/60 border-b border-slate-800 px-6 py-2 flex items-center justify-between no-print sticky top-0 z-20 backdrop-blur">
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setActiveMainTab('emr')}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition ${
-                      activeMainTab === 'emr'
-                        ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                    }`}
-                  >
-                    <FileText className="w-3.5 h-3.5" />
-                    <span>Rekam Medis (EMR Chart)</span>
-                  </button>
-
+              <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-2 flex items-center justify-between no-print sticky top-0 z-20">
+                <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => setActiveMainTab('scaffolding')}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                       activeMainTab === 'scaffolding'
-                        ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                        ? 'bg-emerald-700 text-white shadow-sm'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <Brain className="w-3.5 h-3.5" />
-                    <span>Alur Scaffolding & Penalaran</span>
+                    <span>Penalaran Klinis (Scaffolding)</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveMainTab('emr')}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      activeMainTab === 'emr'
+                        ? 'bg-emerald-700 text-white shadow-sm'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Rekam Medis (EMR View)</span>
                   </button>
 
                   {quizItems.length > 0 && (
                     <button
                       onClick={() => setActiveMainTab('quiz')}
-                      className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                         activeMainTab === 'quiz'
-                          ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                          ? 'bg-emerald-700 text-white shadow-sm'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
-                      <span>Kuis SKDI ({quizItems.length})</span>
+                      <span>Kuis Formatif ({quizItems.length})</span>
                     </button>
                   )}
                 </div>
 
                 {/* Sub-steps pills for scaffolding */}
                 {activeMainTab === 'scaffolding' && tabs.length > 1 && (
-                  <div className="hidden md:flex items-center gap-1.5 bg-slate-950 p-1 rounded-lg border border-slate-800">
+                  <div className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-lg border border-slate-200 dark:border-slate-800">
                     {tabs.map((t, idx) => {
                       const tabAns = currentTabsAnswers[t.id] || {};
                       const gateQs = t.gate_questions || [];
@@ -351,17 +346,17 @@ export const App: React.FC = () => {
                         <button
                           key={t.id}
                           onClick={() => setScaffoldingTabIndex(idx)}
-                          className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition flex items-center gap-1.5 ${
+                          className={`px-2.5 py-1 text-[11px] font-medium rounded transition flex items-center gap-1.5 ${
                             isCurrent
-                              ? 'bg-emerald-500 text-slate-950 shadow-sm font-bold'
+                              ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm font-semibold'
                               : isCompleted
-                              ? 'text-emerald-400 hover:bg-slate-800'
-                              : 'text-slate-500 hover:text-slate-300'
+                              ? 'text-emerald-700 dark:text-emerald-400 hover:bg-slate-200 dark:hover:bg-slate-800'
+                              : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
                           }`}
                         >
                           <span>{t.title}</span>
                           {isCompleted && !isCurrent && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                           )}
                         </button>
                       );
@@ -410,8 +405,6 @@ export const App: React.FC = () => {
         studentName={studentName}
         cases={cases}
         answers={answers}
-        totalXP={totalXP}
-        level={level}
       />
 
       {/* Kiosk Auto-Reset Idle Modal */}
@@ -424,4 +417,3 @@ export const App: React.FC = () => {
     </div>
   );
 };
-

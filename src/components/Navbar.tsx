@@ -1,98 +1,94 @@
-import React from 'react';
-import { Activity, Award, RotateCcw, Printer, Stethoscope, Sparkles } from 'lucide-react';
+import { RotateCcw, Printer, Sun, Moon, CheckCircle2 } from 'lucide-react';
+
 
 interface NavbarProps {
   studentName: string;
   onStudentNameChange: (name: string) => void;
-  totalXP: number;
-  level: number;
   onResetKiosk: () => void;
   onOpenReport: () => void;
   totalCompletedCases: number;
   totalCases: number;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   studentName,
   onStudentNameChange,
-  totalXP,
-  level,
   onResetKiosk,
   onOpenReport,
   totalCompletedCases,
   totalCases,
+  theme,
+  onToggleTheme,
 }) => {
   return (
-    <header className="h-16 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 flex items-center justify-between z-30 sticky top-0 no-print">
-      {/* Brand */}
+    <header className="h-14 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between z-30 sticky top-0 no-print transition-colors">
+      {/* Brand & System Title */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
-          <Stethoscope className="w-5 h-5" />
+        <div className="w-8 h-8 rounded-lg bg-emerald-700 dark:bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
+          RME
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="font-bold text-base text-slate-100 tracking-tight">RME Simulator</span>
-            <span className="px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded">
-              Booth Edition
+            <span className="font-bold text-sm text-slate-900 dark:text-slate-100 tracking-tight">
+              Simulator RME & Penalaran Klinis
+            </span>
+            <span className="px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded">
+              SKDI v2.0
             </span>
           </div>
-          <p className="text-xs text-slate-400 hidden sm:block">
-            Penalaran Klinis & Rekam Medis Elektronik Terintegrasi SKDI
-          </p>
         </div>
       </div>
 
       {/* Center: Student Name Profile */}
-      <div className="flex items-center gap-2 bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-1.5 max-w-xs w-full">
-        <span className="text-xs text-slate-400 font-medium whitespace-nowrap">Koas:</span>
+      <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-1 max-w-xs w-full">
+        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">Dokter Muda:</span>
         <input
           type="text"
           value={studentName}
           onChange={(e) => onStudentNameChange(e.target.value)}
-          placeholder="Tulis nama Anda..."
-          className="bg-transparent border-none text-xs text-slate-100 placeholder-slate-500 focus:outline-none w-full font-medium"
+          placeholder="Ketik nama Anda..."
+          className="bg-transparent border-none text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none w-full font-medium"
         />
       </div>
 
-      {/* Right Stats & Actions */}
-      <div className="flex items-center gap-3">
-        {/* XP & Level Badge */}
-        <div className="flex items-center gap-2 bg-slate-800/80 border border-slate-700/80 rounded-lg px-3 py-1">
-          <div className="flex items-center gap-1.5 text-amber-400">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-xs font-bold">{totalXP} XP</span>
-          </div>
-          <span className="text-slate-600">•</span>
-          <div className="flex items-center gap-1 text-emerald-400">
-            <Award className="w-4 h-4" />
-            <span className="text-xs font-bold">Lvl {level}</span>
-          </div>
+      {/* Right Actions & Progress */}
+      <div className="flex items-center gap-2">
+        {/* Cases Completed Counter */}
+        <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/60 px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700/60">
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+          <span>Progres: <strong className="text-slate-900 dark:text-slate-200">{totalCompletedCases}/{totalCases}</strong></span>
         </div>
 
-        {/* Completed Indicator */}
-        <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-400 bg-slate-800/50 px-2.5 py-1 rounded-lg border border-slate-800">
-          <Activity className="w-3.5 h-3.5 text-teal-400" />
-          <span>Selesai: <strong className="text-slate-200">{totalCompletedCases}/{totalCases}</strong></span>
-        </div>
+        {/* Theme Switcher */}
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          title={theme === 'dark' ? 'Ganti ke Mode Terang' : 'Ganti ke Mode Gelap'}
+          className="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition"
+        >
+          {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
+        </button>
 
         {/* Print / Report Button */}
         <button
           onClick={onOpenReport}
-          title="Cetak Resume Hasil Penilaian"
-          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-teal-600/20 text-teal-300 border border-teal-500/30 hover:bg-teal-600/30 transition shadow-sm"
+          title="Cetak Transkrip / Resume"
+          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white transition shadow-sm"
         >
           <Printer className="w-3.5 h-3.5" />
-          <span className="hidden md:inline">Cetak Resume</span>
+          <span className="hidden sm:inline">Transkrip</span>
         </button>
 
         {/* Reset Kiosk Button */}
         <button
           onClick={onResetKiosk}
-          title="Reset Sesi Mahasiswa (Untuk Pengunjung Baru)"
-          className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-red-950/40 text-red-400 border border-red-900/50 hover:bg-red-900/50 transition"
+          title="Reset Sesi untuk Pengunjung Berikutnya"
+          className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-rose-50 dark:bg-slate-800 dark:hover:bg-rose-950/40 text-slate-600 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 border border-slate-200 dark:border-slate-700 transition"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          <span className="hidden md:inline">Reset Booth</span>
+          <span className="hidden lg:inline">Reset Sesi</span>
         </button>
       </div>
     </header>
