@@ -8,6 +8,8 @@ import { EMRViewTab } from './components/tabs/EMRViewTab';
 import { ScaffoldingTab } from './components/tabs/ScaffoldingTab';
 import { QuizTab } from './components/tabs/QuizTab';
 import { ScoreReportModal } from './components/ScoreReportModal';
+import { IdleResetModal } from './components/IdleResetModal';
+import { useIdleTimer } from './hooks/useIdleTimer';
 import confetti from 'canvas-confetti';
 import { FileText, Brain, HelpCircle, AlertCircle, Loader2 } from 'lucide-react';
 
@@ -22,6 +24,29 @@ export const App: React.FC = () => {
   const [answers, setAnswers] = useState<StudentAnswers>({});
   const [studentName, setStudentName] = useState<string>('');
   const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
+
+  // Pure reset function without confirm dialog for automated idle reset
+  const resetKioskState = () => {
+    setAnswers({});
+    setStudentName('');
+    setSelectedCaseIndex(0);
+    setScaffoldingTabIndex(0);
+    setActiveMainTab('scaffolding');
+    setIsReportOpen(false);
+    localStorage.removeItem(STORAGE_KEY);
+  };
+
+  // Check if student has started interacting with any content
+  const hasUserProgress = Object.keys(answers).length > 0 || studentName.trim().length > 0;
+
+  // 2-minute inactivity timer with 15s warning modal before auto-reset
+  const { isWarning, secondsRemaining, stayActive, triggerReset } = useIdleTimer({
+    timeoutMs: 120_000,
+    countdownMs: 15_000,
+    onReset: resetKioskState,
+    enabled: !loading && hasUserProgress,
+  });
+
 
   // Load cases and saved state on mount
   useEffect(() => {
@@ -388,6 +413,15 @@ export const App: React.FC = () => {
         totalXP={totalXP}
         level={level}
       />
+
+      {/* Kiosk Auto-Reset Idle Modal */}
+      <IdleResetModal
+        isOpen={isWarning}
+        secondsRemaining={secondsRemaining}
+        onStay={stayActive}
+        onResetNow={triggerReset}
+      />
     </div>
   );
 };
+
