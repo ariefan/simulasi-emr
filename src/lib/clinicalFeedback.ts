@@ -4,9 +4,15 @@ export interface ClinicalEvaluationResult {
   feedback: string;
   keyPointsCovered: string[];
   suggestedFocus: string;
+  isAIEvaluated?: boolean;
 }
 
-export function evaluateClinicalAnswer(_prompt: string, answer: string, expectedFocus?: string): ClinicalEvaluationResult {
+export async function evaluateClinicalAnswer(
+  prompt: string,
+  answer: string,
+  expectedFocus?: string,
+  caseTitle?: string
+): Promise<ClinicalEvaluationResult> {
   const trimmed = answer.trim();
   if (trimmed.length < 5) {
     return {
@@ -14,13 +20,43 @@ export function evaluateClinicalAnswer(_prompt: string, answer: string, expected
       level: 'Perlu Perbaikan',
       feedback: 'Jawaban terlalu singkat. Berikan analisis klinis yang lebih terstruktur.',
       keyPointsCovered: [],
-      suggestedFocus: expectedFocus || 'Sebutkan anamnesis, pemeriksaan fisik, atau diagnosis banding yang spesifik.'
+      suggestedFocus: expectedFocus || 'Sebutkan anamnesis, pemeriksaan fisik, atau diagnosis banding yang spesifik.',
+      isAIEvaluated: false
     };
   }
 
+  // Try Serverless AI Evaluation first
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6500); // 6.5s timeout for fast kiosk response
+
+    const res = await fetch('/api/evaluate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt, answer, expectedFocus, caseTitle }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data && typeof data.score === 'number') {
+        return data as ClinicalEvaluationResult;
+      }
+    }
+  } catch (err) {
+    // Network offline or endpoint unreachable -> silent graceful fallback to local heuristic
+    console.info('[ClinicalFeedback] Fallback to local heuristic evaluator:', err);
+  }
+
+  return evaluateLocalHeuristic(answer, expectedFocus);
+}
+
+export function evaluateLocalHeuristic(answer: string, expectedFocus?: string): ClinicalEvaluationResult {
+  const trimmed = answer.trim();
   const answerLower = trimmed.toLowerCase();
 
-  // Basic clinical reasoning dictionary
   const clinicalKeywords = [
     'anamnesis', 'vital', 'tanda vital', 'tekanan darah', 'nadi', 'suhu', 'respirasi', 'spo2',
     'pemeriksaan fisik', 'inspeksi', 'palpasi', 'perkusi', 'auskultasi',
@@ -33,7 +69,6 @@ export function evaluateClinicalAnswer(_prompt: string, answer: string, expected
 
   const matchedKeywords = clinicalKeywords.filter(kw => answerLower.includes(kw));
 
-  // Determine score based on depth and keyword matches
   let score = 50;
   if (trimmed.length > 50) score += 20;
   if (trimmed.length > 120) score += 10;
@@ -45,10 +80,10 @@ export function evaluateClinicalAnswer(_prompt: string, answer: string, expected
 
   if (score >= 80) {
     level = 'Optimal';
-    feedback = 'Penalaran klinis sangat tajam, terstruktur, dan mencakup elemen penting penanganan kasus.';
+    feedback = 'Penalaran klinis terstruktur dan mencakup elemen penting evaluasi kasus.';
   } else if (score >= 60) {
     level = 'Kompeten';
-    feedback = 'Penalaran klinis memadai. Dapat diperkaya dengan korelasi data vital dan rencana evaluasi lanjut.';
+    feedback = 'Penalaran klinis memadai. Pertajam korelasi tanda vital dan rencana evaluasi lanjut.';
   } else {
     level = 'Perlu Perbaikan';
     feedback = 'Perlu pendalaman lebih lanjut pada sistematika diagnosis dan pertimbangan red flags.';
@@ -59,7 +94,8 @@ export function evaluateClinicalAnswer(_prompt: string, answer: string, expected
     level,
     feedback,
     keyPointsCovered: matchedKeywords.slice(0, 5),
-    suggestedFocus: expectedFocus || 'Pertahankan ketepatan identifikasi kegawatdaruratan dan rasionalisasi terapi.'
+    suggestedFocus: expectedFocus || 'Pertahankan ketepatan identifikasi kegawatdaruratan dan rasionalisasi terapi.',
+    isAIEvaluated: false
   };
 }
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NormalizedTab, ClinicalCase } from '../../types/clinical';
 import { evaluateClinicalAnswer, getSampleAnswer, ClinicalEvaluationResult } from '../../lib/clinicalFeedback';
-import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { getCaseTitle } from '../../lib/caseLoader';
+import { ArrowRight, CheckCircle2, AlertCircle, Sparkles, Loader2 } from 'lucide-react';
 
 interface ScaffoldingTabProps {
   currentTab: NormalizedTab;
@@ -23,25 +24,40 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
   currentCase,
 }) => {
   const [evaluations, setEvaluations] = useState<{ [qId: string]: ClinicalEvaluationResult }>({});
+  const [evaluatingMap, setEvaluatingMap] = useState<{ [qId: string]: boolean }>({});
 
-  const handleFillSample = (qId: string, prompt: string, expected?: string) => {
+  const caseTitle = getCaseTitle(currentCase);
+
+  const runEvaluation = async (qId: string, prompt: string, answerText: string, expected?: string) => {
+    if (evaluatingMap[qId]) return;
+    setEvaluatingMap(prev => ({ ...prev, [qId]: true }));
+    try {
+      const evalRes = await evaluateClinicalAnswer(prompt, answerText, expected, caseTitle);
+      setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setEvaluatingMap(prev => ({ ...prev, [qId]: false }));
+    }
+  };
+
+  const handleFillSample = async (qId: string, prompt: string, expected?: string) => {
     const sample = getSampleAnswer(prompt, expected);
     onAnswerChange(qId, sample);
-    const evalRes = evaluateClinicalAnswer(prompt, sample, expected);
-    setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
+    await runEvaluation(qId, prompt, sample, expected);
   };
 
-  const handleEvaluate = (qId: string, prompt: string, expected?: string) => {
+  const handleEvaluate = async (qId: string, prompt: string, expected?: string) => {
     const ans = caseAnswers[qId] || '';
-    const evalRes = evaluateClinicalAnswer(prompt, ans, expected);
-    setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
+    if (ans.trim().length > 0) {
+      await runEvaluation(qId, prompt, ans, expected);
+    }
   };
 
-  const handleBlurEvaluate = (qId: string, prompt: string, expected?: string) => {
+  const handleBlurEvaluate = async (qId: string, prompt: string, expected?: string) => {
     const ans = caseAnswers[qId] || '';
-    if (ans.trim().length > 3) {
-      const evalRes = evaluateClinicalAnswer(prompt, ans, expected);
-      setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
+    if (ans.trim().length > 5 && !evaluations[qId]) {
+      await runEvaluation(qId, prompt, ans, expected);
     }
   };
 
@@ -49,15 +65,18 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
     q => (caseAnswers[q.id] || '').trim().length > 0
   );
 
-  const handleProceed = () => {
-    // Auto-evaluate any answered questions that don't have evaluations yet
-    currentTab.gate_questions.forEach(q => {
+  const handleProceed = async () => {
+    // Auto-evaluate any answered questions that don't have evaluations yet in parallel
+    const promises = currentTab.gate_questions.map(async (q) => {
       const ans = caseAnswers[q.id] || '';
       if (ans.trim().length > 0 && !evaluations[q.id]) {
-        const evalRes = evaluateClinicalAnswer(q.prompt, ans, q.expected);
-        setEvaluations(prev => ({ ...prev, [q.id]: evalRes }));
+        return evaluateClinicalAnswer(q.prompt, ans, q.expected, caseTitle).then(res => {
+          setEvaluations(prev => ({ ...prev, [q.id]: res }));
+        });
       }
     });
+
+    await Promise.allSettled(promises);
     onSaveAndNext();
   };
 
@@ -82,16 +101,17 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
       <div className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
-            Pertanyaan Evaluasi Klinis
+            Pertanyaan Evaluasi Penalaran Klinis
           </h4>
           <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
-            Wajib dijawab sebelum ke tahap berikutnya
+            Semua pertanyaan wajib diisi untuk membuka tahap berikutnya
           </span>
         </div>
 
         {currentTab.gate_questions.map((q, idx) => {
           const answer = caseAnswers[q.id] || '';
           const evalResult = evaluations[q.id];
+          const isEvaluating = evaluatingMap[q.id] || false;
 
           return (
             <div
@@ -120,7 +140,7 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                   value={answer}
                   onChange={(e) => onAnswerChange(q.id, e.target.value)}
                   onBlur={() => handleBlurEvaluate(q.id, q.prompt, q.expected)}
-                  placeholder="Ketik analisis penalaran klinis Anda..."
+                  placeholder="Ketik analisis penalaran klinis Anda di sini..."
                   rows={3}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition resize-y font-normal scroll-m-20"
                 />
@@ -129,17 +149,27 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                   <button
                     type="button"
                     onClick={() => handleEvaluate(q.id, q.prompt, q.expected)}
-                    disabled={answer.trim().length === 0}
-                    className="text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 disabled:text-slate-400 font-semibold p-1 touch-manipulation"
+                    disabled={answer.trim().length === 0 || isEvaluating}
+                    className="text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 disabled:text-slate-400 font-semibold p-1 touch-manipulation flex items-center gap-1"
                   >
-                    Evaluasi Jawaban
+                    {isEvaluating ? (
+                      <>
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                        <span>Menganalisis...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-3 h-3" />
+                        <span>Evaluasi Jawaban</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
 
               {/* Evaluation Feedback Card */}
               {evalResult && (
-                <div className={`p-3 rounded-lg border text-xs space-y-1 ${
+                <div className={`p-3 rounded-lg border text-xs space-y-1.5 animate-fadeIn ${
                   evalResult.level === 'Optimal'
                     ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200'
                     : evalResult.level === 'Kompeten'
@@ -155,12 +185,27 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                       )}
                       <span>Hasil Evaluasi: {evalResult.level} ({evalResult.score}/100)</span>
                     </span>
+                    {evalResult.isAIEvaluated && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-800 dark:text-emerald-300 font-medium">
+                        AI Evaluator
+                      </span>
+                    )}
                   </div>
                   <p className="text-[11px] leading-relaxed opacity-95">{evalResult.feedback}</p>
                   {evalResult.suggestedFocus && (
                     <p className="text-[11px] opacity-85 pt-1 border-t border-slate-200 dark:border-slate-800">
                       <strong>Fokus Utama:</strong> {evalResult.suggestedFocus}
                     </p>
+                  )}
+                  {evalResult.keyPointsCovered && evalResult.keyPointsCovered.length > 0 && (
+                    <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Poin Teridentifikasi:</span>
+                      {evalResult.keyPointsCovered.map((kp, kIdx) => (
+                        <span key={kIdx} className="text-[10px] bg-white/70 dark:bg-slate-900/70 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                          {kp}
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}
