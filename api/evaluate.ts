@@ -1,11 +1,17 @@
-export default async function handler(req: any, res: any) {
+interface EvaluationPayload {
+  prompt: string;
+  answer: string;
+  expectedFocus?: string;
+  caseTitle?: string;
+}
 
+export default async function handler(req: any, res: any) {
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed. Use POST.' });
   }
 
-  const { prompt, answer, expectedFocus, caseTitle } = req.body as EvaluationPayload;
+  const { prompt, answer, expectedFocus, caseTitle } = (req.body || {}) as EvaluationPayload;
 
   if (!answer || typeof answer !== 'string' || answer.trim().length < 3) {
     return res.status(400).json({
@@ -17,7 +23,7 @@ export default async function handler(req: any, res: any) {
     });
   }
 
-  const apiKey = process.env.OPENROUTER_API_KEY;
+  const apiKey = (globalThis as any).process?.env?.OPENROUTER_API_KEY;
 
   // Fallback to local heuristic evaluation if no OpenRouter key is configured
   if (!apiKey) {
@@ -80,7 +86,7 @@ Jawaban Mahasiswa: "${answer}"`;
       return res.status(200).json(evaluateLocally(answer, expectedFocus));
     }
 
-    const data = await response.json();
+    const data: any = await response.json();
     const content = data.choices?.[0]?.message?.content;
 
     if (!content) {
