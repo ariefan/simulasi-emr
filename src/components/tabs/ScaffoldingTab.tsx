@@ -37,14 +37,34 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
     setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
   };
 
+  const handleBlurEvaluate = (qId: string, prompt: string, expected?: string) => {
+    const ans = caseAnswers[qId] || '';
+    if (ans.trim().length > 3) {
+      const evalRes = evaluateClinicalAnswer(prompt, ans, expected);
+      setEvaluations(prev => ({ ...prev, [qId]: evalRes }));
+    }
+  };
+
   const allQuestionsAnswered = currentTab.gate_questions.every(
     q => (caseAnswers[q.id] || '').trim().length > 0
   );
 
+  const handleProceed = () => {
+    // Auto-evaluate any answered questions that don't have evaluations yet
+    currentTab.gate_questions.forEach(q => {
+      const ans = caseAnswers[q.id] || '';
+      if (ans.trim().length > 0 && !evaluations[q.id]) {
+        const evalRes = evaluateClinicalAnswer(q.prompt, ans, q.expected);
+        setEvaluations(prev => ({ ...prev, [q.id]: evalRes }));
+      }
+    });
+    onSaveAndNext();
+  };
+
   return (
-    <div className="space-y-4 max-w-4xl mx-auto pb-12">
+    <div className="space-y-4 max-w-4xl mx-auto pb-16">
       {/* Case Context / Narrative for Current Step */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm">
         <div className="flex items-center justify-between mb-2">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {currentTab.title} {currentTab.subtitle && `• ${currentTab.subtitle}`}
@@ -53,7 +73,7 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
             Tahap {tabIndex + 1} dari {totalTabs}
           </span>
         </div>
-        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line bg-slate-50 dark:bg-slate-950 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
+        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line bg-slate-50 dark:bg-slate-950 p-3 sm:p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
           {currentTab.case_narrative || currentCase.synopsis || currentCase.chief_complaint}
         </p>
       </div>
@@ -64,8 +84,8 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
             Pertanyaan Evaluasi Klinis
           </h4>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400">
-            Semua pertanyaan wajib diisi untuk membuka tahap berikutnya
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
+            Wajib dijawab sebelum ke tahap berikutnya
           </span>
         </div>
 
@@ -76,9 +96,9 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
           return (
             <div
               key={q.id}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 space-y-3 shadow-sm"
+              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-4.5 space-y-3 shadow-sm"
             >
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start justify-between gap-2.5">
                 <label className="text-xs font-semibold text-slate-900 dark:text-slate-100 leading-snug flex-1">
                   <span className="text-emerald-700 dark:text-emerald-400 font-bold mr-1.5">{idx + 1}.</span>
                   {q.prompt}
@@ -88,28 +108,29 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                 <button
                   type="button"
                   onClick={() => handleFillSample(q.id, q.prompt, q.expected)}
-                  className="text-[11px] font-medium px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition shrink-0"
+                  className="text-[11px] font-medium px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition shrink-0 min-h-[36px] flex items-center touch-manipulation"
                 >
                   Contoh Jawaban
                 </button>
               </div>
 
-              {/* Textarea */}
+              {/* Textarea with auto-scroll padding for on-screen keyboard */}
               <div>
                 <textarea
                   value={answer}
                   onChange={(e) => onAnswerChange(q.id, e.target.value)}
+                  onBlur={() => handleBlurEvaluate(q.id, q.prompt, q.expected)}
                   placeholder="Ketik analisis penalaran klinis Anda..."
                   rows={3}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition resize-y font-normal"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition resize-y font-normal scroll-m-20"
                 />
-                <div className="flex items-center justify-between text-[10px] text-slate-500 mt-1 px-1">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 mt-1 px-1">
                   <span>{answer.length} karakter</span>
                   <button
                     type="button"
                     onClick={() => handleEvaluate(q.id, q.prompt, q.expected)}
                     disabled={answer.trim().length === 0}
-                    className="text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 disabled:text-slate-400 font-semibold"
+                    className="text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 disabled:text-slate-400 font-semibold p-1 touch-manipulation"
                   >
                     Evaluasi Jawaban
                   </button>
@@ -148,17 +169,17 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
         })}
       </div>
 
-      {/* Action Footer */}
+      {/* Action Footer with touch-friendly button */}
       <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          Progres: Langkah {tabIndex + 1} dari {totalTabs}
+          Tahap {tabIndex + 1} dari {totalTabs}
         </span>
 
         <button
           type="button"
-          onClick={onSaveAndNext}
+          onClick={handleProceed}
           disabled={!allQuestionsAnswered}
-          className={`flex items-center gap-2 px-5 py-2 rounded-lg font-semibold text-xs transition ${
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-xs transition touch-manipulation min-h-[42px] ${
             allQuestionsAnswered
               ? 'bg-emerald-700 hover:bg-emerald-800 text-white shadow-sm'
               : 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed'

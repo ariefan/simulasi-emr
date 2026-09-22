@@ -25,6 +25,7 @@ export const App: React.FC = () => {
   const [studentName, setStudentName] = useState<string>('');
   const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   // Initialize theme from storage or default to light
   useEffect(() => {
@@ -57,6 +58,7 @@ export const App: React.FC = () => {
     setScaffoldingTabIndex(0);
     setActiveMainTab('scaffolding');
     setIsReportOpen(false);
+    setIsSidebarOpen(false);
     localStorage.removeItem(STORAGE_KEY);
   };
 
@@ -267,20 +269,24 @@ export const App: React.FC = () => {
         totalCases={cases.length}
         theme={theme}
         onToggleTheme={toggleTheme}
+        onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
+        isSidebarOpen={isSidebarOpen}
       />
 
       {/* Main Workspace Layout */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar */}
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Left Sidebar (Desktop fixed, Tablet/Mobile off-canvas drawer) */}
         <Sidebar
           cases={cases}
           selectedCaseIndex={selectedCaseIndex}
           onSelectCase={handleSelectCase}
           answers={answers}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
         />
 
         {/* Right Main Stage */}
-        <main className="flex-1 flex flex-col overflow-y-auto bg-slate-50/50 dark:bg-slate-950">
+        <main className="flex-1 flex flex-col overflow-y-auto bg-slate-50/50 dark:bg-slate-950 w-full">
           {currentCase && (
             <>
               {/* Patient Banner */}
@@ -292,50 +298,50 @@ export const App: React.FC = () => {
               />
 
               {/* Mode Switcher Tabs Header */}
-              <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-2 flex items-center justify-between no-print sticky top-0 z-20">
-                <div className="flex items-center gap-1.5">
+              <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-2 no-print sticky top-0 z-20">
+                <div className="flex items-center gap-1.5 overflow-x-auto py-0.5">
                   <button
                     onClick={() => setActiveMainTab('scaffolding')}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition touch-manipulation min-h-[36px] ${
                       activeMainTab === 'scaffolding'
                         ? 'bg-emerald-700 text-white shadow-sm'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <Brain className="w-3.5 h-3.5" />
-                    <span>Penalaran Klinis (Scaffolding)</span>
+                    <span>Penalaran Klinis</span>
                   </button>
 
                   <button
                     onClick={() => setActiveMainTab('emr')}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition touch-manipulation min-h-[36px] ${
                       activeMainTab === 'emr'
                         ? 'bg-emerald-700 text-white shadow-sm'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <FileText className="w-3.5 h-3.5" />
-                    <span>Rekam Medis (EMR View)</span>
+                    <span>Rekam Medis (EMR)</span>
                   </button>
 
                   {quizItems.length > 0 && (
                     <button
                       onClick={() => setActiveMainTab('quiz')}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition touch-manipulation min-h-[36px] ${
                         activeMainTab === 'quiz'
                           ? 'bg-emerald-700 text-white shadow-sm'
                           : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
-                      <span>Kuis Formatif ({quizItems.length})</span>
+                      <span>Kuis ({quizItems.length})</span>
                     </button>
                   )}
                 </div>
 
                 {/* Sub-steps pills for scaffolding */}
                 {activeMainTab === 'scaffolding' && tabs.length > 1 && (
-                  <div className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-lg border border-slate-200 dark:border-slate-800">
+                  <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-lg border border-slate-200 dark:border-slate-800 overflow-x-auto">
                     {tabs.map((t, idx) => {
                       const tabAns = currentTabsAnswers[t.id] || {};
                       const gateQs = t.gate_questions || [];
@@ -346,7 +352,7 @@ export const App: React.FC = () => {
                         <button
                           key={t.id}
                           onClick={() => setScaffoldingTabIndex(idx)}
-                          className={`px-2.5 py-1 text-[11px] font-medium rounded transition flex items-center gap-1.5 ${
+                          className={`px-2.5 py-1 text-[11px] font-medium rounded transition flex items-center gap-1.5 touch-manipulation whitespace-nowrap min-h-[32px] ${
                             isCurrent
                               ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm font-semibold'
                               : isCompleted
@@ -366,7 +372,7 @@ export const App: React.FC = () => {
               </div>
 
               {/* Tab Stage Content */}
-              <div className="p-6 flex-1">
+              <div className="p-4 sm:p-6 flex-1">
                 {activeMainTab === 'emr' && (
                   <EMRViewTab currentCase={currentCase} />
                 )}
