@@ -40,20 +40,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         )}
 
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-700 dark:bg-emerald-600 flex items-center justify-center text-white font-bold text-xs shrink-0">
-            RME
-          </div>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-sm text-slate-900 dark:text-slate-100 tracking-tight whitespace-nowrap">
-                Simulator RME
-              </span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded">
-                SKDI v2.0
-              </span>
-            </div>
-          </div>
+        <div className="flex items-center gap-1.5">
+          <span className="font-bold text-sm text-slate-900 dark:text-slate-100 tracking-tight whitespace-nowrap">
+            Simulator RME
+          </span>
+          <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded">
+            SKDI v2.0
+          </span>
         </div>
       </div>
 
