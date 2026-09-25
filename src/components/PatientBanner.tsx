@@ -72,19 +72,19 @@ export const PatientBanner: React.FC<PatientBannerProps> = ({
           {/* Vitals */}
           <div className="grid grid-cols-4 bg-slate-50 dark:bg-slate-950 p-1 rounded-lg border border-slate-200 dark:border-slate-800 divide-x divide-slate-200 dark:divide-slate-800">
             <div className="px-2 py-0.5 text-center">
-              <span className="text-[9px] uppercase font-semibold text-slate-400 block">TD</span>
+              <span className="text-xs uppercase font-semibold text-slate-400 block">TD</span>
               <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{bp}</span>
             </div>
             <div className="px-2 py-0.5 text-center">
-              <span className="text-[9px] uppercase font-semibold text-slate-400 block">HR</span>
+              <span className="text-xs uppercase font-semibold text-slate-400 block">HR</span>
               <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{hr}</span>
             </div>
             <div className="px-2 py-0.5 text-center">
-              <span className="text-[9px] uppercase font-semibold text-slate-400 block">RR</span>
+              <span className="text-xs uppercase font-semibold text-slate-400 block">RR</span>
               <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{rr}</span>
             </div>
             <div className="px-2 py-0.5 text-center">
-              <span className="text-[9px] uppercase font-semibold text-slate-400 block">Suhu</span>
+              <span className="text-xs uppercase font-semibold text-slate-400 block">Suhu</span>
               <span className="text-xs font-bold font-mono text-slate-800 dark:text-slate-200">{temp}</span>
             </div>
           </div>
@@ -92,11 +92,11 @@ export const PatientBanner: React.FC<PatientBannerProps> = ({
           {/* Progress Indicator */}
           <div className="hidden sm:flex items-center gap-2">
             <div className="text-right">
-              <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 block">
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block">
                 {completedTabsCount}/{totalTabsCount} Tahap
               </span>
               {quizScore && quizScore.total > 0 && (
-                <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 block">
+                <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 block">
                   Kuis: {quizScore.correct}/{quizScore.total}
                 </span>
               )}

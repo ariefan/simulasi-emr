@@ -82,28 +82,13 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto pb-16">
-      {/* Case Context / Narrative for Current Step */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            {currentTab.title} {currentTab.subtitle && `• ${currentTab.subtitle}`}
-          </h3>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-            Tahap {tabIndex + 1} dari {totalTabs}
-          </span>
-        </div>
-        <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line bg-slate-50 dark:bg-slate-950 p-3 sm:p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
-          {currentTab.case_narrative || currentCase.synopsis || currentCase.chief_complaint}
-        </p>
-      </div>
-
       {/* Scaffolding Gate Questions */}
       <div className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
             Pertanyaan Evaluasi Penalaran Klinis
           </h4>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
+          <span className="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">
             Semua pertanyaan wajib diisi untuk membuka tahap berikutnya
           </span>
         </div>
@@ -128,7 +113,7 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                 <button
                   type="button"
                   onClick={() => handleFillSample(q.id, q.prompt, q.expected)}
-                  className="text-[11px] font-medium px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition shrink-0 min-h-[36px] flex items-center touch-manipulation"
+                  className="text-xs font-medium px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition shrink-0 min-h-[36px] flex items-center touch-manipulation"
                 >
                   Contoh Jawaban
                 </button>
@@ -144,7 +129,7 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                   rows={3}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition resize-y font-normal scroll-m-20"
                 />
-                <div className="flex items-center justify-between text-[11px] text-slate-500 mt-1 px-1">
+                <div className="flex items-center justify-between text-xs text-slate-500 mt-1 px-1">
                   <span>{answer.length} karakter</span>
                   <button
                     type="button"
@@ -186,22 +171,22 @@ export const ScaffoldingTab: React.FC<ScaffoldingTabProps> = ({
                       <span>Hasil Evaluasi: {evalResult.level} ({evalResult.score}/100)</span>
                     </span>
                     {evalResult.isAIEvaluated && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-800 dark:text-emerald-300 font-medium">
+                      <span className="text-xs px-1.5 py-0.5 rounded bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-800 dark:text-emerald-300 font-medium">
                         AI Evaluator
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] leading-relaxed opacity-95">{evalResult.feedback}</p>
+                  <p className="text-xs leading-relaxed opacity-95">{evalResult.feedback}</p>
                   {evalResult.suggestedFocus && (
-                    <p className="text-[11px] opacity-85 pt-1 border-t border-slate-200 dark:border-slate-800">
+                    <p className="text-xs opacity-85 pt-1 border-t border-slate-200 dark:border-slate-800">
                       <strong>Fokus Utama:</strong> {evalResult.suggestedFocus}
                     </p>
                   )}
                   {evalResult.keyPointsCovered && evalResult.keyPointsCovered.length > 0 && (
                     <div className="flex items-center gap-1.5 flex-wrap pt-1">
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">Poin Teridentifikasi:</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Poin Teridentifikasi:</span>
                       {evalResult.keyPointsCovered.map((kp, kIdx) => (
-                        <span key={kIdx} className="text-[10px] bg-white/70 dark:bg-slate-900/70 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                        <span key={kIdx} className="text-xs bg-white/70 dark:bg-slate-900/70 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
                           {kp}
                         </span>
                       ))}

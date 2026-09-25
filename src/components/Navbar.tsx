@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="font-bold text-sm text-slate-900 dark:text-slate-100 tracking-tight whitespace-nowrap">
             Simulator RME
           </span>
-          <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded">
+          <span className="hidden sm:inline-block px-1.5 py-0.5 text-xs font-medium uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded">
             SKDI v2.0
           </span>
         </div>

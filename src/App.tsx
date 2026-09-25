@@ -297,6 +297,25 @@ export const App: React.FC = () => {
                 quizScore={currentCaseSession.quizScore}
               />
 
+              {/* Case Narrative — persistent above mode tabs so it stays visible in every tab */}
+              {currentTab && (
+                <div className="px-4 sm:px-6 py-4 sm:py-5">
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm max-w-4xl mx-auto">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        {currentTab.title} {currentTab.subtitle && `• ${currentTab.subtitle}`}
+                      </h3>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                        Tahap {scaffoldingTabIndex + 1} dari {tabs.length}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line bg-slate-50 dark:bg-slate-950 p-3 sm:p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
+                      {currentTab.case_narrative || currentCase.synopsis || currentCase.chief_complaint}
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Mode Switcher Tabs Header */}
               <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-2 no-print sticky top-0 z-20">
                 <div className="flex items-center gap-1.5 overflow-x-auto py-0.5">
@@ -352,7 +371,7 @@ export const App: React.FC = () => {
                         <button
                           key={t.id}
                           onClick={() => setScaffoldingTabIndex(idx)}
-                          className={`px-2.5 py-1 text-[11px] font-medium rounded transition flex items-center gap-1.5 touch-manipulation whitespace-nowrap min-h-[32px] ${
+                          className={`px-2.5 py-1 text-xs font-medium rounded transition flex items-center gap-1.5 touch-manipulation whitespace-nowrap min-h-[32px] ${
                             isCurrent
                               ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm font-semibold'
                               : isCompleted

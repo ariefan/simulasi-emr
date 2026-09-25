@@ -70,7 +70,7 @@ export const QuizTab: React.FC<QuizTabProps> = ({
         {submitted && savedScore && (
           <div className="flex items-center gap-3 bg-slate-50 dark:bg-slate-950 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shrink-0">
             <div>
-              <div className="text-[10px] uppercase font-semibold text-slate-400">Hasil Kuis:</div>
+              <div className="text-xs uppercase font-semibold text-slate-400">Hasil Kuis:</div>
               <div className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 {savedScore.correct} / {savedScore.total} Benar ({percent}%)
               </div>
@@ -114,12 +114,12 @@ export const QuizTab: React.FC<QuizTabProps> = ({
                 {submitted && (
                   <div className="shrink-0">
                     {isCorrect ? (
-                      <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                      <span className="flex items-center gap-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Benar
                       </span>
                     ) : (
-                      <span className="flex items-center gap-1 text-[11px] font-bold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-800">
+                      <span className="flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-800">
                         <XCircle className="w-3.5 h-3.5" />
                         Salah
                       </span>
@@ -170,7 +170,7 @@ export const QuizTab: React.FC<QuizTabProps> = ({
               {/* Explanation / Rationale */}
               {submitted && (q.explanation || (q.rationales && selectedOption && q.rationales[selectedOption])) && (
                 <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-3 rounded-lg text-xs space-y-1 text-slate-700 dark:text-slate-300">
-                  <span className="font-bold text-slate-800 dark:text-slate-200 text-[11px] block">
+                  <span className="font-bold text-slate-800 dark:text-slate-200 text-xs block">
                     Pembahasan:
                   </span>
                   <p className="leading-relaxed">

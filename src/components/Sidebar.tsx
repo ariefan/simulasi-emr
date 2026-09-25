@@ -113,7 +113,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex rounded-md bg-slate-200/70 dark:bg-slate-800 p-0.5 text-xs">
             <button
               onClick={() => setFilterType('all')}
-              className={`flex-1 py-1.5 text-[11px] font-medium rounded transition touch-manipulation ${
+              className={`flex-1 py-1.5 text-xs font-medium rounded transition touch-manipulation ${
                 filterType === 'all'
                   ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -123,7 +123,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
             <button
               onClick={() => setFilterType('rajal')}
-              className={`flex-1 py-1.5 text-[11px] font-medium rounded transition touch-manipulation ${
+              className={`flex-1 py-1.5 text-xs font-medium rounded transition touch-manipulation ${
                 filterType === 'rajal'
                   ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -133,7 +133,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
             <button
               onClick={() => setFilterType('ranap')}
-              className={`flex-1 py-1.5 text-[11px] font-medium rounded transition touch-manipulation ${
+              className={`flex-1 py-1.5 text-xs font-medium rounded transition touch-manipulation ${
                 filterType === 'ranap'
                   ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -167,18 +167,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                 >
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
+                    <span className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
                       {c.case_id}
                     </span>
                     <div className="flex items-center gap-1.5">
                       {completed && (
-                        <span className="flex items-center gap-0.5 text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold">
+                        <span className="flex items-center gap-0.5 text-xs text-emerald-700 dark:text-emerald-400 font-semibold">
                           <CheckCircle2 className="w-3 h-3" />
                           Selesai
                         </span>
                       )}
                       {c.skdi_level && (
-                        <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
+                        <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
                           SKDI {c.skdi_level}
                         </span>
                       )}
@@ -191,7 +191,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {getCaseTitle(c)}
                   </h4>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                     <span className="truncate max-w-[150px]">
                       {getCaseDepartment(c)} • {getCaseSetting(c)}
                     </span>

@@ -149,13 +149,13 @@ export const ScoreReportModal: React.FC<ScoreReportModalProps> = ({
                           <span className="font-semibold text-xs text-slate-900 dark:text-slate-100 block">
                             {c.case_id} - {getCaseTitle(c)}
                           </span>
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-xs text-slate-500">
                             {c.working_diagnosis || c.primary_diagnosis || c.skdi_condition}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400">
+                        <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
                           {quizScore ? `Kuis: ${quizScore.correct}/${quizScore.total}` : 'Scaffolding Selesai'}
                         </span>
                         {isExpanded ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
@@ -165,7 +165,7 @@ export const ScoreReportModal: React.FC<ScoreReportModalProps> = ({
                     {/* Print Header only for paper */}
                     <div className="hidden print:block p-3 border-b border-slate-200">
                       <strong className="text-xs">{c.case_id} - {getCaseTitle(c)}</strong>
-                      <span className="text-[11px] text-slate-600 block">{c.working_diagnosis || c.primary_diagnosis}</span>
+                      <span className="text-xs text-slate-600 block">{c.working_diagnosis || c.primary_diagnosis}</span>
                     </div>
 
                     {/* Detailed Question & Student Answers (Visible in print always, accordion in UI) */}
@@ -176,7 +176,7 @@ export const ScoreReportModal: React.FC<ScoreReportModalProps> = ({
 
                         return (
                           <div key={tab.id} className="pt-2">
-                            <span className="text-[11px] font-bold uppercase text-slate-500 dark:text-slate-400 block mb-1">
+                            <span className="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 block mb-1">
                               Tahap {tIdx + 1}: {tab.title}
                             </span>
                             <div className="space-y-2">
@@ -187,7 +187,7 @@ export const ScoreReportModal: React.FC<ScoreReportModalProps> = ({
                                     <p className="font-medium text-slate-700 dark:text-slate-300 mb-1">
                                       {qIdx + 1}. {q.prompt}
                                     </p>
-                                    <div className="p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 text-slate-900 dark:text-slate-100 font-mono text-[11px] leading-relaxed whitespace-pre-wrap">
+                                    <div className="p-2 rounded bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 text-slate-900 dark:text-slate-100 font-mono text-xs leading-relaxed whitespace-pre-wrap">
                                       {ansText.trim() ? ansText : <span className="italic text-slate-400">Tidak ada jawaban.</span>}
                                     </div>
                                   </div>
@@ -214,7 +214,7 @@ export const ScoreReportModal: React.FC<ScoreReportModalProps> = ({
           <div className="pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-end text-xs text-slate-500 dark:text-slate-400">
             <div>
               <p className="font-semibold text-slate-900 dark:text-slate-100">Simulator RME Koas v2.0</p>
-              <p className="text-[10px]">Terstandarisasi Kurikulum SKDI</p>
+              <p className="text-xs">Terstandarisasi Kurikulum SKDI</p>
             </div>
             <div className="text-right">
               <p className="border-b border-slate-300 dark:border-slate-700 pb-8 min-w-[140px]">Tanda Tangan Penguji / Booth</p>
