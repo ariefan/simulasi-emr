@@ -10,7 +10,7 @@ export const EMRViewTab: React.FC<EMRViewTabProps> = ({ currentCase }) => {
     <div className="space-y-4 max-w-5xl mx-auto pb-12">
       {/* Overview & Chief Complaint Card */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
           Anamnesis & Keluhan Utama
         </h3>
         <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2">
@@ -43,17 +43,17 @@ export const EMRViewTab: React.FC<EMRViewTabProps> = ({ currentCase }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {/* Differential Diagnoses */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 shadow-sm">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
             Diagnosis Banding (DDx)
           </h3>
           {currentCase.differential_diagnoses && currentCase.differential_diagnoses.length > 0 ? (
             <ul className="space-y-1.5">
               {currentCase.differential_diagnoses.map((ddx, idx) => (
-                <li key={idx} className="text-xs text-slate-700 dark:text-slate-300 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-2.5 py-1.5 rounded border border-slate-200 dark:border-slate-800">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
+                <li key={idx} className="text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2 bg-slate-50 dark:bg-slate-950 px-2.5 py-1.5 rounded border border-slate-200 dark:border-slate-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-1" />
                   <span>{ddx}</span>
                 </li>
               ))}
@@ -64,15 +64,15 @@ export const EMRViewTab: React.FC<EMRViewTabProps> = ({ currentCase }) => {
         </div>
 
         {/* Clinical Red Flags */}
-        <div className="bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/40 rounded-xl p-4.5 shadow-sm">
+        <div className="bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/40 rounded-xl p-5 shadow-sm">
           <h3 className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-2.5">
             Tanda Bahaya (Red Flags)
           </h3>
           {currentCase.red_flags_clinical && currentCase.red_flags_clinical.length > 0 ? (
             <ul className="space-y-1.5">
               {currentCase.red_flags_clinical.map((rf, idx) => (
-                <li key={idx} className="text-xs text-rose-800 dark:text-rose-300 flex items-start gap-1.5 bg-rose-50 dark:bg-rose-950/20 px-2.5 py-1.5 rounded border border-rose-200 dark:border-rose-900/30">
-                  <span className="font-bold">•</span>
+                <li key={idx} className="text-xs text-rose-800 dark:text-rose-300 flex items-start gap-2 bg-rose-50 dark:bg-rose-950/20 px-2.5 py-1.5 rounded border border-rose-200 dark:border-rose-900/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1" />
                   <span>{rf}</span>
                 </li>
               ))}
@@ -83,7 +83,7 @@ export const EMRViewTab: React.FC<EMRViewTabProps> = ({ currentCase }) => {
         </div>
 
         {/* Learning Objectives */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 shadow-sm">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm md:col-span-2 xl:col-span-1">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
             Capaian Pembelajaran
           </h3>
@@ -104,7 +104,7 @@ export const EMRViewTab: React.FC<EMRViewTabProps> = ({ currentCase }) => {
 
       {/* Management Summary */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
           Rencana Tatalaksana & Terapi
         </h3>
         <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-950 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
